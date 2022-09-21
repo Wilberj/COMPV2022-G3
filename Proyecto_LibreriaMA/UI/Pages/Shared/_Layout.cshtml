@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - UI</title>
+    <link rel="stylesheet" href="~/css/theme.css"/>
+</head>
+<body>
+    <header class="header">
+        AppMain
+    </header>
+    <nav class="nav1">
+    </nav>
+    <aside class="AppAside">
+        <nav class="nav2">
+            <a href="~/Index">Inicio</a>
+            <a href="~/ViewCatalogos"> Mantenimineto de Catalogos</a>
+            <a href="~/GestionCompras/Compra"> Ingresar Compra</a>
+            <a href="~/AdminMercancia/AdminMercanciaView"> Administracion Mercancia</a>
+
+
+        </nav>
+    </aside>
+    <main role="main" class="AppMain">
+            @RenderBody()
+        </main>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

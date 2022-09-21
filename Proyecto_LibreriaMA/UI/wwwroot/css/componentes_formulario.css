@@ -1,0 +1,119 @@
+.FormContainer1, .FormContainer2 {
+    display: grid;
+    padding: 15px;
+    grid-template-columns: calc(50% - 20px) calc(50% - 20px);
+    grid-gap: 10px;
+    margin-bottom: 15px;
+    border-radius: 0.4cm;
+    box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.FormContainer2 {
+    grid-template-columns: calc(33% - 10px) calc(33% - 10px) calc(33% - 10px);
+}
+
+.btn, .btn_primary,
+.btn_secundary {
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-font-primary);
+    background-color: var(--color-cinco);
+    border: none;
+    box-sizing: border-box;
+    border-radius: 0.4cm;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn_primary {
+    background-color: var(--color-primary);
+}
+
+.btn_secundary {
+    background-color: var(--color-secundario);
+}
+
+.text, .text_primary,
+.text_secundary {
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: var(--color-font-main);
+    background-color: var(--color-main);
+    box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    border-radius: 0.4cm;
+    border: none;
+    width: calc(100%);
+    font-size: 15px;
+    color: rgb(83, 82, 82);
+    font-weight: bold;
+}
+
+.tableClass1 {
+    width: 100%;
+    box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.2);
+    padding: 0px;
+    overflow: hidden;
+    border-radius: 0.3cm;
+    border-collapse: collapse;
+
+}
+
+.tableClass1 th {
+    color: var(--color-font-main);
+    border: none;
+    border-bottom: 1px solid #9ea7af;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.tableClass1 td {
+    padding: 10px;
+    margin: 0px;
+    text-align: left;
+    text-transform: capitalize;
+}
+
+.tableClass1 tbody tr:nth-child(odd) {
+    background: #EBEBEB;
+}
+
+.checkbox{
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    display: block;
+    margin: 8px;
+}
+.FormElement{
+   display: grid;
+   grid-template-rows: 30px auto; 
+   justify-items: center;
+}
+.TabMenu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.TabMenu label{
+    margin-left: 10px;
+    font-size: 17px;
+    font-weight: 550;
+    color: var(--color-cuarto);
+    border-bottom: var(--color-cuarto) solid 2px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
