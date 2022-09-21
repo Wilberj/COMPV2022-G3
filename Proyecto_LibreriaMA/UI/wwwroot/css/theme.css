@@ -1,0 +1,22 @@
+@import url('./layout.css');
+@import url('./componentes_formulario.css');
+@import url('./modal.css');
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,700&display=swap');
+
+:root {
+    --main-font: sans-serif;
+    --main-font-two: 100% "DM Sans", sans-serif;
+    --color-main: rgb(255, 255, 255);
+    --color-font-main: rgb(31, 29, 29);
+    --color-primary: #05A5C7;
+    --color-font-primary: rgb(255, 255, 255);
+    --color-secundario: #550808ec;
+    --color-terciario: #1b1d1d;
+    --color-font-terciario: #fff;
+    --color-cuarto: rgb(63, 61, 61);
+    --color-font-cuarto: #fff;
+    --color-cinco: rgb(11, 88, 28);
+
+    
+}

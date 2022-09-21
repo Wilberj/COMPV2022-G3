@@ -1,0 +1,36 @@
+w-modal {
+    opacity: 0;
+    transition: all 1s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+w-modal .ModalContent {
+    width: 80%;
+    max-width: 1000px;
+    background-color: var(--color-main);
+    border-radius: 0.4cm;
+    margin: auto;
+    margin-top: 50px;
+}
+
+w-modal .ModalHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+w-modal .ModalHeader label {
+    font-size: 24px;
+    font-weight: bold;
+}
+.ModalContentComponent{
+    padding: 15px;
+}
