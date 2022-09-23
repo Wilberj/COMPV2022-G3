@@ -18,6 +18,7 @@
           "System.Security.Principal.Windows": "4.7.0"
         },
         "compile": {
+<<<<<<< HEAD
           "ref/netstandard2.0/_._": {
             "related": ".xml"
           }
@@ -26,6 +27,12 @@
           "lib/netstandard2.0/Microsoft.Win32.Registry.dll": {
             "related": ".xml"
           }
+=======
+          "ref/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Win32.Registry.dll": {}
+>>>>>>> 9525f0e80edeae5d1e7188c13295493f9322cdae
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard2.0/Microsoft.Win32.Registry.dll": {
@@ -81,6 +88,7 @@
           "runtime.native.System.Data.SqlClient.sni": "4.7.0"
         },
         "compile": {
+<<<<<<< HEAD
           "ref/netcoreapp2.1/System.Data.SqlClient.dll": {
             "related": ".xml"
           }
@@ -89,6 +97,12 @@
           "lib/netcoreapp2.1/System.Data.SqlClient.dll": {
             "related": ".xml"
           }
+=======
+          "ref/netcoreapp2.1/System.Data.SqlClient.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/System.Data.SqlClient.dll": {}
+>>>>>>> 9525f0e80edeae5d1e7188c13295493f9322cdae
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll": {
@@ -108,6 +122,7 @@
           "System.Security.Principal.Windows": "4.7.0"
         },
         "compile": {
+<<<<<<< HEAD
           "ref/netstandard2.0/_._": {
             "related": ".xml"
           }
@@ -116,6 +131,12 @@
           "lib/netstandard2.0/System.Security.AccessControl.dll": {
             "related": ".xml"
           }
+=======
+          "ref/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Security.AccessControl.dll": {}
+>>>>>>> 9525f0e80edeae5d1e7188c13295493f9322cdae
         },
         "runtimeTargets": {
           "runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.dll": {
@@ -127,6 +148,7 @@
       "System.Security.Principal.Windows/4.7.0": {
         "type": "package",
         "compile": {
+<<<<<<< HEAD
           "ref/netcoreapp3.0/_._": {
             "related": ".xml"
           }
@@ -135,6 +157,12 @@
           "lib/netstandard2.0/System.Security.Principal.Windows.dll": {
             "related": ".xml"
           }
+=======
+          "ref/netcoreapp3.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Security.Principal.Windows.dll": {}
+>>>>>>> 9525f0e80edeae5d1e7188c13295493f9322cdae
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netcoreapp2.1/System.Security.Principal.Windows.dll": {
@@ -488,23 +516,39 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\jgabr\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\JHONA\\.nuget\\packages\\": {},
+>>>>>>> 9525f0e80edeae5d1e7188c13295493f9322cdae
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\jgabr\\OneDrive\\Escritorio\\UNAN\\QUINTO AÑO\\SEMESTRE 2\\Practicas\\LibreriaMariaAux-COMPV2022-G3\\Proyecto_LibreriaMA\\CAPA_NEGOCIO\\CAPA_NEGOCIO.csproj",
       "projectName": "CAPA_NEGOCIO",
       "projectPath": "C:\\Users\\jgabr\\OneDrive\\Escritorio\\UNAN\\QUINTO AÑO\\SEMESTRE 2\\Practicas\\LibreriaMariaAux-COMPV2022-G3\\Proyecto_LibreriaMA\\CAPA_NEGOCIO\\CAPA_NEGOCIO.csproj",
       "packagesPath": "C:\\Users\\jgabr\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\jgabr\\OneDrive\\Escritorio\\UNAN\\QUINTO AÑO\\SEMESTRE 2\\Practicas\\LibreriaMariaAux-COMPV2022-G3\\Proyecto_LibreriaMA\\CAPA_NEGOCIO\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\JHONA\\Desktop\\Proyecto Final\\Proyecto_LibreriaMA\\CAPA_NEGOCIO\\CAPA_NEGOCIO.csproj",
+      "projectName": "CAPA_NEGOCIO",
+      "projectPath": "C:\\Users\\JHONA\\Desktop\\Proyecto Final\\Proyecto_LibreriaMA\\CAPA_NEGOCIO\\CAPA_NEGOCIO.csproj",
+      "packagesPath": "C:\\Users\\JHONA\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\JHONA\\Desktop\\Proyecto Final\\Proyecto_LibreriaMA\\CAPA_NEGOCIO\\obj\\",
+>>>>>>> 9525f0e80edeae5d1e7188c13295493f9322cdae
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\jgabr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\JHONA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 9525f0e80edeae5d1e7188c13295493f9322cdae
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -519,8 +563,13 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+<<<<<<< HEAD
             "C:\\Users\\jgabr\\OneDrive\\Escritorio\\UNAN\\QUINTO AÑO\\SEMESTRE 2\\Practicas\\LibreriaMariaAux-COMPV2022-G3\\Proyecto_LibreriaMA\\CAPA_DATOS\\CAPA_DATOS.csproj": {
               "projectPath": "C:\\Users\\jgabr\\OneDrive\\Escritorio\\UNAN\\QUINTO AÑO\\SEMESTRE 2\\Practicas\\LibreriaMariaAux-COMPV2022-G3\\Proyecto_LibreriaMA\\CAPA_DATOS\\CAPA_DATOS.csproj"
+=======
+            "C:\\Users\\JHONA\\Desktop\\Proyecto Final\\Proyecto_LibreriaMA\\CAPA_DATOS\\CAPA_DATOS.csproj": {
+              "projectPath": "C:\\Users\\JHONA\\Desktop\\Proyecto Final\\Proyecto_LibreriaMA\\CAPA_DATOS\\CAPA_DATOS.csproj"
+>>>>>>> 9525f0e80edeae5d1e7188c13295493f9322cdae
             }
           }
         }
@@ -540,8 +589,12 @@
           "net47",
           "net471",
           "net472",
+<<<<<<< HEAD
           "net48",
           "net481"
+=======
+          "net48"
+>>>>>>> 9525f0e80edeae5d1e7188c13295493f9322cdae
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -550,7 +603,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+>>>>>>> 9525f0e80edeae5d1e7188c13295493f9322cdae
       }
     }
   }
