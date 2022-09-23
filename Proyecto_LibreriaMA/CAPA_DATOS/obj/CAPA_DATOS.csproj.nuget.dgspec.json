@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jgabr\\OneDrive\\Escritorio\\UNAN\\QUINTO AÑO\\SEMESTRE 2\\Practicas\\LibreriaMariaAux-COMPV2022-G3\\Proyecto_LibreriaMA\\CAPA_DATOS\\CAPA_DATOS.csproj": {}
+    "C:\\Users\\JHONA\\Desktop\\Proyecto Final\\Proyecto_LibreriaMA\\CAPA_DATOS\\CAPA_DATOS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jgabr\\OneDrive\\Escritorio\\UNAN\\QUINTO AÑO\\SEMESTRE 2\\Practicas\\LibreriaMariaAux-COMPV2022-G3\\Proyecto_LibreriaMA\\CAPA_DATOS\\CAPA_DATOS.csproj": {
+    "C:\\Users\\JHONA\\Desktop\\Proyecto Final\\Proyecto_LibreriaMA\\CAPA_DATOS\\CAPA_DATOS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jgabr\\OneDrive\\Escritorio\\UNAN\\QUINTO AÑO\\SEMESTRE 2\\Practicas\\LibreriaMariaAux-COMPV2022-G3\\Proyecto_LibreriaMA\\CAPA_DATOS\\CAPA_DATOS.csproj",
+        "projectUniqueName": "C:\\Users\\JHONA\\Desktop\\Proyecto Final\\Proyecto_LibreriaMA\\CAPA_DATOS\\CAPA_DATOS.csproj",
         "projectName": "CAPA_DATOS",
-        "projectPath": "C:\\Users\\jgabr\\OneDrive\\Escritorio\\UNAN\\QUINTO AÑO\\SEMESTRE 2\\Practicas\\LibreriaMariaAux-COMPV2022-G3\\Proyecto_LibreriaMA\\CAPA_DATOS\\CAPA_DATOS.csproj",
-        "packagesPath": "C:\\Users\\jgabr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jgabr\\OneDrive\\Escritorio\\UNAN\\QUINTO AÑO\\SEMESTRE 2\\Practicas\\LibreriaMariaAux-COMPV2022-G3\\Proyecto_LibreriaMA\\CAPA_DATOS\\obj\\",
+        "projectPath": "C:\\Users\\JHONA\\Desktop\\Proyecto Final\\Proyecto_LibreriaMA\\CAPA_DATOS\\CAPA_DATOS.csproj",
+        "packagesPath": "C:\\Users\\JHONA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\JHONA\\Desktop\\Proyecto Final\\Proyecto_LibreriaMA\\CAPA_DATOS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\jgabr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\JHONA\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -55,8 +55,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -65,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
