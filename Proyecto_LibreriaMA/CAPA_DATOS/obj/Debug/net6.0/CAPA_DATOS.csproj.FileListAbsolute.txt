@@ -1,0 +1,12 @@
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_DATOS\bin\Debug\net6.0\CAPA_DATOS.deps.json
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_DATOS\bin\Debug\net6.0\CAPA_DATOS.dll
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_DATOS\bin\Debug\net6.0\CAPA_DATOS.pdb
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_DATOS\obj\Debug\net6.0\CAPA_DATOS.csproj.AssemblyReference.cache
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_DATOS\obj\Debug\net6.0\CAPA_DATOS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_DATOS\obj\Debug\net6.0\CAPA_DATOS.AssemblyInfoInputs.cache
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_DATOS\obj\Debug\net6.0\CAPA_DATOS.AssemblyInfo.cs
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_DATOS\obj\Debug\net6.0\CAPA_DATOS.csproj.CoreCompileInputs.cache
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_DATOS\obj\Debug\net6.0\CAPA_DATOS.dll
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_DATOS\obj\Debug\net6.0\refint\CAPA_DATOS.dll
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_DATOS\obj\Debug\net6.0\CAPA_DATOS.pdb
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_DATOS\obj\Debug\net6.0\ref\CAPA_DATOS.dll

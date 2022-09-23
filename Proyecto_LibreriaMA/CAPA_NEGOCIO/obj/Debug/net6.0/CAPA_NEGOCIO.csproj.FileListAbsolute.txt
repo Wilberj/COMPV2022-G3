@@ -1,0 +1,15 @@
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_NEGOCIO\bin\Debug\net6.0\CAPA_NEGOCIO.deps.json
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_NEGOCIO\bin\Debug\net6.0\CAPA_NEGOCIO.dll
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_NEGOCIO\bin\Debug\net6.0\CAPA_NEGOCIO.pdb
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_NEGOCIO\bin\Debug\net6.0\CAPA_DATOS.dll
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_NEGOCIO\bin\Debug\net6.0\CAPA_DATOS.pdb
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_NEGOCIO\obj\Debug\net6.0\CAPA_NEGOCIO.csproj.AssemblyReference.cache
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_NEGOCIO\obj\Debug\net6.0\CAPA_NEGOCIO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_NEGOCIO\obj\Debug\net6.0\CAPA_NEGOCIO.AssemblyInfoInputs.cache
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_NEGOCIO\obj\Debug\net6.0\CAPA_NEGOCIO.AssemblyInfo.cs
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_NEGOCIO\obj\Debug\net6.0\CAPA_NEGOCIO.csproj.CoreCompileInputs.cache
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_NEGOCIO\obj\Debug\net6.0\CAPA_NEGOCIO.csproj.CopyComplete
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_NEGOCIO\obj\Debug\net6.0\CAPA_NEGOCIO.dll
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_NEGOCIO\obj\Debug\net6.0\refint\CAPA_NEGOCIO.dll
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_NEGOCIO\obj\Debug\net6.0\CAPA_NEGOCIO.pdb
+C:\Users\jgabr\OneDrive\Escritorio\UNAN\QUINTO AÑO\SEMESTRE 2\Practicas\LibreriaMariaAux-COMPV2022-G3\Proyecto_LibreriaMA\CAPA_NEGOCIO\obj\Debug\net6.0\ref\CAPA_NEGOCIO.dll
