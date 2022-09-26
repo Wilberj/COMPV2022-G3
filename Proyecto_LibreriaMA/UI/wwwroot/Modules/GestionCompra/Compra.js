@@ -18,6 +18,14 @@ window.onload = async () => {
                     //cargar vists
                     window.location = "./ViewCrearCompra"
                 }
+            },
+            {
+                tagName: 'input', type: 'button',
+                className: 'btn',
+                value: 'Ingresar devolucion', onclick: async () => {
+                    //cargar vists
+                    window.location = "./ViewDevolucionCompra"
+                }
             }
         ]
     }))
