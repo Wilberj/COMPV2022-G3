@@ -175,8 +175,8 @@ class DetalleDevolucionCompra {
         }
     }
     iddetalledevolucioncompra = { type: "number", primary: true };
-    iddevolucioncompra = { type: "number" };
-    idadmimercancias = { type: "number" };
+    iddevolucioncompra = { type: "number", hidden: true };
+    idadmimercancias = { type: "number", hidden: true };
     cantidad = { type: "number" };
     descripciondevolucion = { type: "text" };
 }

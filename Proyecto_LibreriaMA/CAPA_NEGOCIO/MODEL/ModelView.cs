@@ -33,15 +33,22 @@ namespace CAPA_NEGOCIO.MODEL
     }
     public class ViewAdminMercancia : EntityClass
     {
+        public int? existenciasarticulounidad { get; set; }
+        public int? existenciasarticuloorigen { get; set; }
+        public Decimal? precioventa { get; set; }
+        public Decimal? preciocompraunidad { get; set; }
         public string? nombrearticulo { get; set; }
         public string? nombreunidad { get; set; }
+        public int? idadmimercancias { get; set; }
+    }
+    public class ViewDevolucionCompra : EntityClass
+    {
+        public int? idcompra { get; set; }
+        public int? idproveedor { get; set; }
+        public DateTime? fechacompra { get; set; }
+        public string? nombreproveedor { get; set; }
+        public string? nombreusuario { get; set; }
 
-        public int? existenciasarticuloorigen { get; set; }
-        public int? existenciasarticulounidad { get; set; }
-        public Decimal? preciocompraunidad { get; set; }
-        public Decimal? precioventa { get; set; }
-
-   
     }
 
 }

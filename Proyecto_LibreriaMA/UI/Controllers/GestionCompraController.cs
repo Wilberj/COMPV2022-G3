@@ -29,9 +29,18 @@ namespace UI.Controllers
         {
             return new ViewArticuloCompra().Get<ViewArticuloCompra>();
         }
+        public Object ChargeDevCompra(ViewDevolucionCompra ent)
+        {
+           
+            return ent.Get<ViewDevolucionCompra>();
+        }
         public Object SaveCompra(CompraProductos ent)
         {
             return ent.SaveCompra();
+        }
+        public Object SaveDevolucionCompra(DevolucionCompra ent)
+        {
+            return ent.SaveDevolucionCompra();
         }
     }
 }

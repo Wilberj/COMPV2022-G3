@@ -28,26 +28,26 @@ namespace UI.Controllers
         {
             return ent.Update("idcategoria");
         }
-        /* public Object GetCompraProductos(CompraProductos ent)
+         public Object GetCompraProductos(CompraProductos ent)
          {
              return ent.Get<CompraProductos>();
          }
-         public Object SaveCompraProductos(CompraProductos ent)
-         {
+        /*    public Object SaveCompraProductos(CompraProductos ent)
+            {
 
-             ent.Get < DatosUsuarios> (  );
-             ent.Get <Proveedor> (  );
-             ent.Get<Estado> ( );
+                ent.Get < DatosUsuarios> (  );
+                ent.Get <Proveedor> (  );
+                ent.Get<Estado> ( );
 
 
-        ent.idcompra = (Int32)ent.Save();
+           ent.idcompra = (Int32)ent.Save();
 
-            return ent;
-        }
-        public Object UpdateCompraProductos(CompraProductos ent)
-        {
-            return ent.Update("idcompra");
-        }*/
+               return ent;
+           }
+           public Object UpdateCompraProductos(CompraProductos ent)
+           {
+               return ent.Update("idcompra");
+           }*/
         public Object GetMarca(Marca ent)
         {
             return ent.Get<Marca>();

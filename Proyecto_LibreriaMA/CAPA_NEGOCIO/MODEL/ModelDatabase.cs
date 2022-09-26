@@ -237,7 +237,6 @@ namespace CAPA_NEGOCIO.MODEL
 
                     }
 
-                    /*ConvertMedida.idconvertir = this.iddetallecompra;*/
                     AdminMercanciaComp.idadmimercancias = (Int32)AdminMercanciaComp.Save();
                 }
             }
@@ -255,14 +254,6 @@ namespace CAPA_NEGOCIO.MODEL
         public decimal? descuentoventa { get; set; }
     }
 
-    public class DetalleDevolucionCompra : EntityClass
-    {
-        public int? iddetalledevolucioncompra { get; set; }
-        public int? iddevolucioncompra { get; set; }
-        public int? idadmimercancias { get; set; }
-        public int? cantidad { get; set; }
-        public string? descripciondevolucion { get; set; }
-    }
 
     public class DetalleDevolucionVenta : EntityClass
     {
@@ -279,6 +270,44 @@ namespace CAPA_NEGOCIO.MODEL
         public int? idproveedor { get; set; }
         public int? idcompra { get; set; }
         public DateTime? Fechadevolucioncompra { get; set; }
+        public List<DetalleDevolucionCompra> DetalleDevCompra { get; set; }
+        public Object SaveDevolucionCompra()
+        {
+            this.iddevolucioncompra = (Int32)this.Save();
+            if (this.DetalleDevCompra != null)
+            {
+                foreach (var DetalleDevCompra in this.DetalleDevCompra)
+                {
+                    DetalleDevCompra.iddevolucioncompra = this.iddevolucioncompra;
+                    DetalleDevCompra.iddetalledevolucioncompra = (Int32)DetalleDevCompra.Save();
+                    DetalleDevCompra.UpdateAdminMerca();
+                }
+
+            }
+            return true;
+        }
+    }
+    public class DetalleDevolucionCompra : EntityClass
+    {
+        public int? iddetalledevolucioncompra { get; set; }
+        public int? iddevolucioncompra { get; set; }
+        public int? idadmimercancias { get; set; }
+        public int? cantidad { get; set; }
+        public string? descripciondevolucion { get; set; }
+        public List<AdministracionMercancias> AdminMerca { get; set; }
+
+        public Object UpdateAdminMerca()
+        {
+            if (this.AdminMerca != null)
+            {
+                foreach (var AdminMerca in this.AdminMerca)
+                {
+                    AdminMerca.idadmimercancias = this.idadmimercancias;
+                    AdminMerca.Update("idadmimercancias");
+                }
+            }
+            return true;
+        }
     }
 
     public class DevolucionVenta : EntityClass

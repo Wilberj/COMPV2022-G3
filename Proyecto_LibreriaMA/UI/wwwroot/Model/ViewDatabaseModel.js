@@ -39,12 +39,26 @@ class ViewCompra {
       this[prop] = props[prop];
      }
     }
-    existenciasarticulounidad = { type: "number" , primary: true  };
+    existenciasarticulounidad = { type: "number" };
     existenciasarticuloorigen = { type: "number"  };
     precioventa = { type: "number"  };
     preciocompraunidad = { type: "number"  };
     nombrearticulo = { type: "text"  };
-    nombreunidad = { type: "text" };
-
+    nombreunidad = { type: "text"  };
+    idadmimercancias = { type: "number", hidden: true  };
    }
    export{ViewAdminMercancia}
+   
+   class ViewDevolucionCompra {
+    constructor(props) {
+     for (const prop in props) {
+      this[prop] = props[prop];
+     }
+    }
+    nombreproveedor = { type: "text"   };
+    nombreusuario = { type: "text"  };
+    fechacompra = { type: "date"  };
+    idcompra = { type: "number"  };
+    idproveedor = { type: "number"  };
+   }
+   export{ViewDevolucionCompra}
