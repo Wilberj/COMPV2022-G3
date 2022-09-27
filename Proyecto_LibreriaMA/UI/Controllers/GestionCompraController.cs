@@ -34,6 +34,11 @@ namespace UI.Controllers
            
             return ent.Get<ViewDevolucionCompra>();
         }
+        public Object ChargeArticulosDanados(ViewArticulosDanados ent)
+        {
+
+            return ent.Get<ViewArticulosDanados>();
+        }
         public Object SaveCompra(CompraProductos ent)
         {
             return ent.SaveCompra();
@@ -41,6 +46,10 @@ namespace UI.Controllers
         public Object SaveDevolucionCompra(DevolucionCompra ent)
         {
             return ent.SaveDevolucionCompra();
+        }
+        public Object SaveArtidanado(ArticulosDanados ent)
+        {
+            return ent.SaveArtiDanado();
         }
     }
 }

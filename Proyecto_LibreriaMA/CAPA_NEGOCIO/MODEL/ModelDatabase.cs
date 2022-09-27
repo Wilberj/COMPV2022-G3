@@ -39,6 +39,25 @@ namespace CAPA_NEGOCIO.MODEL
         public int? cantidaddanada { get; set; }
         public int? idusuario { get; set; }
         public string? descripcionarticulodanado { get; set; }
+        public List<AdministracionMercancias> AdminMercas { get; set; }
+        public Object SaveArtiDanado()
+        {
+            this.idarticulosdanados = (Int32)this.Save();
+               UpdateAdminMerca();
+           
+            return true;
+        }
+        public Object UpdateAdminMerca()
+        {
+            if (this.AdminMercas != null)
+            {
+                foreach (var AdminMercas in this.AdminMercas)
+                {
+                    AdminMercas.idadmimercancias = this.idtamanoxarticulo;
+                }
+            }
+            return true;
+        }
     }
 
     public class Bodega : EntityClass

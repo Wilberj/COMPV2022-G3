@@ -62,3 +62,20 @@ class ViewCompra {
     idproveedor = { type: "number"  };
    }
    export{ViewDevolucionCompra}
+   /////////////////////
+   class ViewArticulosDanados {
+    constructor(props) {
+     for (const prop in props) {
+      this[prop] = props[prop];
+     }
+    }
+    idtamanoxarticulo = { type: "number"};
+    idusuario = { type: "number"};
+    nombreusuario = { type: "text"  };
+    existenciasarticulounidad = { type: "number"  };
+    idadmimercancias = { type: "number" ,hidden: true };
+    existenciasarticuloorigen = { type: "number"  };
+    nombrearticulo = { type: "text"  };
+    idarticulo = { type: "number", hidden: true  };
+   }
+   export{ViewArticulosDanados}

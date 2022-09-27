@@ -50,5 +50,18 @@ namespace CAPA_NEGOCIO.MODEL
         public string? nombreusuario { get; set; }
 
     }
+    public class ViewArticulosDanados : EntityClass
+    {
+        public int? idtamanoxarticulo { get; set; }
+        public int? idusuario { get; set; }
+        public string? nombreusuario { get; set; }
+        public int? existenciasarticulounidad { get; set; }
+        public int? idadmimercancias { get; set; }
+        public int? existenciasarticuloorigen { get; set; }
+        public string? nombrearticulo { get; set; }
+        public int? idarticulo { get; set; }
+    }
+
+
 
 }
