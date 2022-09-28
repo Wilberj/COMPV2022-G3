@@ -51,7 +51,7 @@ window.onload = async () => {
                                     tagName: "h1",
                                     innerText: "Devolucion Completada",
                                 }),
-
+                                    console.log(NewDevolucionCompra)
                                 // window.location.reload()
                             )
 

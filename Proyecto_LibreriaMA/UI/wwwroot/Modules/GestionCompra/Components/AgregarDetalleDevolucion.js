@@ -13,7 +13,7 @@ class AgregarDetallDevolucion extends HTMLElement {
         super();
         this.Dataset = [];
         this.Dtemporal = [];
-        this.dataAdminMerca = [];
+       // this.dataAdminMerca = [];
 
         this.action = action;
         this.DetalleDevCompra = {};
@@ -89,7 +89,7 @@ class AgregarDetallDevolucion extends HTMLElement {
                         value: "Agregar Informacion Al Detalle",
                         onclick: async () => {
                             this.DetalleDevCompra.idadmimercancias = this.Dataset[0].idadmimercancias;
-                            this.DetalleDevCompra.NombreArticulo = this.Dataset[0].nombrearticulo;
+                            ///this.DetalleDevCompra.NombreArticulo = this.Dataset[0].nombrearticulo;
 
                             if (this.DetalleDevCompra.devolucionUnidad == true) {
                                 this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad - this.DetalleDevCompra.cantidad;

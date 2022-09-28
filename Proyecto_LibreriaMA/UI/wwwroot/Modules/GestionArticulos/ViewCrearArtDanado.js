@@ -12,15 +12,22 @@ import { AgregarAdminDetalleDevCompra } from "../GestionCompra/Components/Agrega
 
 
 window.onload = async () => {
-    const AdminMercas = [];
+     //const AdminMercas = Dataset;
     const Dataset = [];
-    const ArticulosDana = [];
-    //const AdminMercas = this.Dataset
+   // const AdminMercas = [];
+   //const Dataset = AdminMercas;
+  //const AdminMercas =[]
+ // this.DetalleDevCompra = {};
+  //this.DetalleDevCompra.AdminMerca = this.Dataset;
+   const AdminMercas = Dataset;
+    //const AdminMercas = []
     //const  ArtiAdminDanado = [];
-   
+    
     const NuevoArtiDana = {
-        ArticulosDana: ArticulosDana,
-        //AdminMercas: AdminMercas,
+        AdminMercas:Dataset,
+       //AdminMercas:Dataset,
+     //Dataset: AdminMercas
+       //AdminMercas: AdminMercas,
     }
   
     AppMain.append(Render.Create({
@@ -43,7 +50,7 @@ window.onload = async () => {
                                 tagName: "h1",
                                 innerText: "Guardado Correcto",
                             }),
-
+                                    console.log(NuevoArtiDana)
                             // window.location.reload()
                         )
                         
@@ -87,7 +94,7 @@ window.onload = async () => {
         
 })
 const TableArticuloDanado = new TableComponent({
-    ModelObject: new ViewAdminMercancia(),
+    ModelObject: new ViewArticulosDanados(),
     Dataset: Dataset,
     Functions: [
         {
@@ -106,11 +113,13 @@ const TableArticuloDanado = new TableComponent({
     })
 AppMain.append(formArtiDanado);
 TableArticuloDanado.filter.append(Render.Create({
+   
     tagName: 'input', type: 'button',
                 className: 'btn_primary', value: 'Anadir', onclick: async () => {
-                 
+                 //const AdminMercas = Dataset
+                 //const AdminMercas = Dataset
                     const Modal = new ModalComponent(
-                        new AgregarAdminDetalleDevCompra((danado)=>{
+                        new AgregarArticulosDañados((danado)=>{
                             // if (ArticulosDana.filter((x) => x.idarticulo == danado.idarticulo)) {
                             //     alert("El Dato ya se Agrego")
                             //     return;
@@ -118,16 +127,53 @@ TableArticuloDanado.filter.append(Render.Create({
                           
                            
                             Dataset.push(danado);
-                           console.log(NuevoArtiDana);
-                            console.log(Dataset)
+                        //     console.log("incio");
+                        //    console.log(NuevoArtiDana);
+                        //    console.log("incio");
+                        //     console.log(Dataset)
+                        //     console.log("incio");
+                        //     console.log(AdminMercas);
+                          //  console.log(AdminMercas);
                             Modal.Close();
                             TableArticuloDanado.DrawTableComponent();
                             NuevoArtiDana.idtamanoxarticulo = Dataset[0].idtamanoxarticulo
                             NuevoArtiDana.idusuario = Dataset[0].idusuario
-
+                            /////
+                            
+                           //Dataset.existenciasarticulorigen = Dataset[0].existenciasarticulorigen
                             if (NuevoArtiDana.devolucionUnidad == true){
-                                this.AdminMercas[0].existenciasarticulounidad = this.AdminMercas[0].existenciasarticulounidad - NuevoArtiDana.cantidaddanada;
+                                
+                               Dataset.existenciasarticulounidad = Dataset[0].existenciasarticulounidad
+                               //Dataset[0].existenciasarticulounidad = Dataset.existenciasarticulounidad
+                                //
+                               // AdminMercas.existenciasarticulounidad = AdminMercas.existenciasarticulounidad - NuevoArtiDana.cantidaddanada
+                              //  Dataset.existenciasarticulounidad = Dataset.existenciasarticulounidad - NuevoArtiDana.cantidaddanada
+                                //Dataset.existenciasarticulounidad = AdminMercas.existenciasarticulounidad - NuevoArtiDana.cantidaddanada
+                                Dataset[0].existenciasarticulounidad  = Dataset[0].existenciasarticulounidad - NuevoArtiDana.cantidaddanada
+                                
+                                //Dataset[0].existenciasarticulounidad = Dataset[0].existenciasarticulounidad - NuevoArtiDana.cantidaddanada
+                           
+                           
+                                //Dataset[0].existenciasarticulounidad = Dataset[0].existenciasarticulounidad - NuevoArtiDana.cantidaddanada
+
+                          // Dataset[0].existenciasarticulounidad = AdminMercas[0].existenciasarticulounidad - NuevoArtiDana.cantidaddanada
+
+                               // AdminMercas.existenciasarticulounidad = Dataset[0].existenciasarticulounidad - NuevoArtiDana.cantidaddanada;
+                             // AdminMercas[0].existenciasarticulounidad = AdminMercas[0].existenciasarticulounidad - NuevoArtiDana.cantidaddanada;
+                               // this.AdminMercas[0].existenciasarticulounidad = Dataset[0].existenciasarticulounidad - NuevoArtiDana.cantidaddanada;
                             }
+                            if(NuevoArtiDana.devolucionUnidadOrigen == true){
+                                Dataset.existenciasarticuloorigen = Dataset[0].existenciasarticuloorigen
+
+                                Dataset[0].existenciasarticuloorigen = Dataset[0].existenciasarticuloorigen - NuevoArtiDana.cantidaddanada
+                            }
+            
+                            console.log("incio");
+                           console.log(NuevoArtiDana);
+                           console.log("incio");
+                            console.log(Dataset)
+                            console.log("incio");
+                            console.log(AdminMercas);
                     })
                     )
                     AppMain.append(Modal)

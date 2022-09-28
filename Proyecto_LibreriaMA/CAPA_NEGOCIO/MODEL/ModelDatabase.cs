@@ -43,8 +43,12 @@ namespace CAPA_NEGOCIO.MODEL
         public Object SaveArtiDanado()
         {
             this.idarticulosdanados = (Int32)this.Save();
-               UpdateAdminMerca();
-           
+
+            
+            this.UpdateAdminMerca();
+            
+           // UpdateAdminMerca();
+
             return true;
         }
         public Object UpdateAdminMerca()
@@ -53,7 +57,8 @@ namespace CAPA_NEGOCIO.MODEL
             {
                 foreach (var AdminMercas in this.AdminMercas)
                 {
-                    AdminMercas.idadmimercancias = this.idtamanoxarticulo;
+                    AdminMercas.idtamanoxarticulo = this.idtamanoxarticulo;
+                    AdminMercas.Update("idadmimercancias");
                 }
             }
             return true;
