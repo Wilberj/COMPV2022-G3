@@ -28,7 +28,6 @@ class AgregarDetalleArtDanados extends HTMLElement {
             Model: new ArticulosDanados({
                 idtamanoxarticulo: { type: "number", hidden: true },
                 idusuario: { type: "number", hidden: true },
-                descripcionarticulodanado: { type: "number", hidden: true },
                 devolucionUnidad: { type: "checkbox", },
                 devolucionUnidadOrigen: { type: "checkbox", }
             }),
@@ -92,11 +91,11 @@ class AgregarDetalleArtDanados extends HTMLElement {
 
                             if (this.NuevoArtiDana.devolucionUnidad == true) {
 
-                                this.Dataset.existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad
+                                // this.Dataset.existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad
                                 this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad - this.NuevoArtiDana.cantidaddanada
                             }
                             if (this.NuevoArtiDana.devolucionUnidadOrigen == true) {
-                                this.Dataset.existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen
+                                // this.Dataset.existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen
                                 this.Dataset[0].existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen - this.NuevoArtiDana.cantidaddanada
                             }
                             console.log("incio");

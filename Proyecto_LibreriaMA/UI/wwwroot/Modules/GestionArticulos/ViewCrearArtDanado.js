@@ -60,6 +60,7 @@ window.onload = async () => {
             },
             idtamanoxarticulo: { type: "number", hidden: true },
             cantidaddanada: { type: "number", hidden: true },
+            descripcionarticulodanado: { type: "number", hidden: true },
 
             // //idusuario: { type: "number" },
             // devolucionUnidad: { type: "checkbox", },
@@ -95,7 +96,12 @@ window.onload = async () => {
                     Dataset.push(danado);
                     Modal.Close();
                     TableArticuloDanado.DrawTableComponent();
-                    NuevoArtiDana.idtamanoxarticulo = Dataset[0].idtamanoxarticulo
+                    NuevoArtiDana.descripcionarticulodanado = AdminMercas[0].descripcionarticulodanado;
+                    NuevoArtiDana.cantidaddanada = AdminMercas[0].cantidaddanada;
+                    NuevoArtiDana.idtamanoxarticulo = AdminMercas[0].idtamanoxarticulo;
+
+
+                    // NuevoArtiDana.idtamanoxarticulo = Dataset[0].idtamanoxarticulo
                     //NuevoArtiDana.idusuario = Dataset[0].idusuario
 
                     // if (NuevoArtiDana.devolucionUnidad == true) {
@@ -107,7 +113,7 @@ window.onload = async () => {
                     //     Dataset.existenciasarticuloorigen = Dataset[0].existenciasarticuloorigen
                     //     Dataset[0].existenciasarticuloorigen = Dataset[0].existenciasarticuloorigen - NuevoArtiDana.cantidaddanada
                     // }
-
+                    console.log(NuevoArtiDana);
                 })
             )
             AppMain.append(Modal)
