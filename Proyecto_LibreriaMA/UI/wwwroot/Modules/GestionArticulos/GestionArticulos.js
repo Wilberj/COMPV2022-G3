@@ -5,12 +5,16 @@ import { AjaxTools, Render } from "../utility.js";
 
 
 window.onload = async () => {
-    AppMain.append(Render.Create({ tagName: "h1",
-    innerText: "Gestion de Articulos", class: "header1" })
+    AppMain.append(Render.Create({
+        tagName: "h1",
+        innerText: "Gestion de Articulos", class: "header1"
+    })
     );
-    AppMain.append(Render.Create({ tagName: "h4",
-    innerText: "ARTICULOS DAÑADOS", class: "header4" })
-    ); 
+    AppMain.append(Render.Create({
+        tagName: "h4",
+        innerText: "ARTICULOS DAÑADOS", class: "header4"
+    })
+    );
 
     AppMain.append(Render.Create({
         class: "FormContainer2",
@@ -24,14 +28,14 @@ window.onload = async () => {
                 }
             }
         ]
-        
+
     }));
     const ArticulosDana =
-    await AjaxTools.PostRequest("../api/GestionCompra/ChargeArticulosDanados")
- 
- AppMain.append(new TableComponent({
-     Dataset:ArticulosDana,
-     ModelObject: new ViewArticulosDanados()
- }))
- 
-    }
+        await AjaxTools.PostRequest("../api/GestionCompra/ChargeArticulosDanados")
+
+    AppMain.append(new TableComponent({
+        Dataset: ArticulosDana,
+        ModelObject: new ViewArticulosDanados()
+    }))
+
+}

@@ -69,13 +69,13 @@ class ViewCompra {
       this[prop] = props[prop];
      }
     }
-    idtamanoxarticulo = { type: "number"};
-    idusuario = { type: "number"};
-    nombreusuario = { type: "text"  };
-    existenciasarticulounidad = { type: "number"  };
-    idadmimercancias = { type: "number" ,hidden: true };
-    existenciasarticuloorigen = { type: "number"  };
     nombrearticulo = { type: "text"  };
+    idtamanoxarticulo = { type: "number",hidden: true };
+    //idusuario = { type: "number"};
+    //nombreusuario = { type: "text"  };
+    existenciasarticulounidad = { type: "number"  };
+    idadmimercancias = { type: "number"};
+    existenciasarticuloorigen = { type: "number"  };
     idarticulo = { type: "number", hidden: true  };
    }
    export{ViewArticulosDanados}
