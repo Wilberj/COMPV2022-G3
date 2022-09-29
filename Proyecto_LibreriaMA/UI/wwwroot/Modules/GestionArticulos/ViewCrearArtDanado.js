@@ -11,10 +11,9 @@ import { ViewAdminMercancia, ViewArticulosDanados } from "../../Model/ViewDataba
 import { AgregarDetalleArtDanados } from "./DetalleArtDanados.js"
 
 window.onload = async () => {
-    const Dataset = [];
-    const AdminMercas = Dataset;
+    const AdminMercas = []
     const NuevoArtiDana = {
-        AdminMercas: Dataset
+        AdminMercas: AdminMercas
     }
 
     AppMain.append(Render.Create({
@@ -52,7 +51,6 @@ window.onload = async () => {
 
     const dataC = await AjaxTools.PostRequest("../api/MantenimientoCatalogos/GetDatosUsuarios")
     const formArtiDanado = new FormComponet({
-        EditObject: NuevoArtiDana,
         Model: new ArticulosDanados({
             idusuario: {
                 type: "select",
@@ -65,19 +63,21 @@ window.onload = async () => {
             // //idusuario: { type: "number" },
             // devolucionUnidad: { type: "checkbox", },
             // devolucionUnidadOrigen: { type: "checkbox", }
-        },
-        )
+        }
+        ),
+        EditObject: NuevoArtiDana,
+
     })
     const TableArticuloDanado = new TableComponent({
         ModelObject: new ViewArticulosDanados(),
-        Dataset: Dataset,
+        Dataset: AdminMercas,
         Functions: [
             {
                 name: "Remover",
                 action: async (Dato) => {
-                    const Datof = Dataset.find((x) => x.idarticulo == Dato.idarticulo);
+                    const Datof = AdminMercas.find((x) => x.idarticulo == Dato.idarticulo);
                     if (Datof != null) {
-                        Dataset.splice(Dataset.indexOf(Datof), 1);
+                        AdminMercas.splice(AdminMercas.indexOf(Datof), 1);
 
                         TableArticuloDanado.DrawTableComponent();
                     }
@@ -93,24 +93,31 @@ window.onload = async () => {
             const Modal = new ModalComponent(
                 new AgregarDetalleArtDanados((danado) => {
 
-                    Dataset.push(danado);
+                    AdminMercas.push(danado);
                     Modal.Close();
+                    console.log(AdminMercas);
+
                     TableArticuloDanado.DrawTableComponent();
+                    NuevoArtiDana.idtamanoxarticulo = AdminMercas[0].idtamanoxarticulo
+                    NuevoArtiDana.idadmimercancias = AdminMercas[0].idadmimercancias 
+                    AdminMercas[0].idusuario = NuevoArtiDana.idusuario
+
                     NuevoArtiDana.descripcionarticulodanado = AdminMercas[0].descripcionarticulodanado;
                     NuevoArtiDana.cantidaddanada = AdminMercas[0].cantidaddanada;
-                    NuevoArtiDana.idtamanoxarticulo = AdminMercas[0].idtamanoxarticulo;
+
+                    // NuevoArtiDana.existenciasarticulounidad = AdminMercas[0].existenciasarticulounidad
+                    // NuevoArtiDana.existenciasarticuloorigen = AdminMercas[0].existenciasarticuloorigen
 
 
-                    // NuevoArtiDana.idtamanoxarticulo = Dataset[0].idtamanoxarticulo
                     //NuevoArtiDana.idusuario = Dataset[0].idusuario
 
                     // if (NuevoArtiDana.devolucionUnidad == true) {
 
-                    //     Dataset.existenciasarticulounidad = Dataset[0].existenciasarticulounidad
+                    //     //   Dataset.existenciasarticulounidad = Dataset[0].existenciasarticulounidad
                     //     Dataset[0].existenciasarticulounidad = Dataset[0].existenciasarticulounidad - NuevoArtiDana.cantidaddanada
                     // }
                     // if (NuevoArtiDana.devolucionUnidadOrigen == true) {
-                    //     Dataset.existenciasarticuloorigen = Dataset[0].existenciasarticuloorigen
+                    //     // Dataset.existenciasarticuloorigen = Dataset[0].existenciasarticuloorigen
                     //     Dataset[0].existenciasarticuloorigen = Dataset[0].existenciasarticuloorigen - NuevoArtiDana.cantidaddanada
                     // }
                     console.log(NuevoArtiDana);

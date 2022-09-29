@@ -29,7 +29,8 @@ class AgregarDetalleArtDanados extends HTMLElement {
                 idtamanoxarticulo: { type: "number", hidden: true },
                 idusuario: { type: "number", hidden: true },
                 devolucionUnidad: { type: "checkbox", },
-                devolucionUnidadOrigen: { type: "checkbox", }
+                devolucionUnidadOrigen: { type: "checkbox", },
+                idadmimercancias: { type: "number", hidden: true },
             }),
 
             EditObject: this.NuevoArtiDana
@@ -67,7 +68,6 @@ class AgregarDetalleArtDanados extends HTMLElement {
                             // this.DetalleDevCompra.idarticulo = JSON.parse(JSON.stringify(articulo.idarticulo))
                             this.Dataset.push(articulo);
                             Modal.Close();
-                            console.log(this.Dataset);
                             this.Table.DrawTableComponent();
                         }));
                     AppMain.append(Modal)
@@ -87,20 +87,17 @@ class AgregarDetalleArtDanados extends HTMLElement {
                         className: "btn_primary",
                         value: "Agregar Informacion Al Detalle",
                         onclick: async () => {
-                            this.NuevoArtiDana.idtamanoxarticulo = this.Dataset[0].idtamanoxarticulo
+                            this.NuevoArtiDana.idtamanoxarticulo = this.Dataset[0].idtamanoxarticulo 
 
+                            this.NuevoArtiDana.idadmimercancias = this.Dataset[0].idadmimercancias;
                             if (this.NuevoArtiDana.devolucionUnidad == true) {
-
-                                // this.Dataset.existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad
                                 this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad - this.NuevoArtiDana.cantidaddanada
-                            }
-                            if (this.NuevoArtiDana.devolucionUnidadOrigen == true) {
-                                // this.Dataset.existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen
-                                this.Dataset[0].existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen - this.NuevoArtiDana.cantidaddanada
-                            }
-                            console.log("incio");
-                            console.log(this.Dataset);
-                            console.log("incio");
+                             }
+                             if (this.NuevoArtiDana.devolucionUnidadOrigen == true) {
+                                 this.Dataset[0].existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen - this.NuevoArtiDana.cantidaddanada
+                             }
+                             this.NuevoArtiDana.existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad
+                             this.NuevoArtiDana.existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen
                             this.action(this.NuevoArtiDana, this.Dataset, console.log(this.NuevoArtiDana));
                         },
                     },

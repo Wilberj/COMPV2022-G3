@@ -36,11 +36,14 @@ class ArticulosDanados {
             this[prop] = props[prop];
         }
     }
-    idarticulosdanados = { type: "number", primary: true };
-    idtamanoxarticulo = { type: "number" };
+    idarticulosdanados = { type: "number", primary: true, hidden: true  };
+    idtamanoxarticulo = { type: "number", hidden: true  };
+    idusuario = { type: "number", hidden: true };
+    idadmimercancias= { type: "number", hidden: true };
     cantidaddanada = { type: "number" };
-    idusuario = { type: "number" };
+
     descripcionarticulodanado = { type: "text" };
+
 }
 export { ArticulosDanados }
 class Bodega {

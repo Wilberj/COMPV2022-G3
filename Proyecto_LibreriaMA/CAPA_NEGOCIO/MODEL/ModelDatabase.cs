@@ -44,10 +44,9 @@ namespace CAPA_NEGOCIO.MODEL
         {
             this.idarticulosdanados = (Int32)this.Save();
 
-            
             this.UpdateAdminMerca();
-            
-           // UpdateAdminMerca();
+
+            // UpdateAdminMerca();
 
             return true;
         }
@@ -63,6 +62,7 @@ namespace CAPA_NEGOCIO.MODEL
             }
             return true;
         }
+
     }
 
     public class Bodega : EntityClass
