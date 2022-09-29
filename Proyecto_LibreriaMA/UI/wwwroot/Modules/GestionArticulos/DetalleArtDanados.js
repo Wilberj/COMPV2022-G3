@@ -88,15 +88,20 @@ class AgregarDetalleArtDanados extends HTMLElement {
                         className: "btn_primary",
                         value: "Agregar Informacion Al Detalle",
                         onclick: async () => {
-                            if (NuevoArtiDana.devolucionUnidad == true) {
+                            this.NuevoArtiDana.idtamanoxarticulo = this.Dataset[0].idtamanoxarticulo
 
-                                Dataset.existenciasarticulounidad = Dataset[0].existenciasarticulounidad
-                                Dataset[0].existenciasarticulounidad = Dataset[0].existenciasarticulounidad - NuevoArtiDana.cantidaddanada
+                            if (this.NuevoArtiDana.devolucionUnidad == true) {
+
+                                this.Dataset.existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad
+                                this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad - this.NuevoArtiDana.cantidaddanada
                             }
-                            if (NuevoArtiDana.devolucionUnidadOrigen == true) {
-                                Dataset.existenciasarticuloorigen = Dataset[0].existenciasarticuloorigen
-                                Dataset[0].existenciasarticuloorigen = Dataset[0].existenciasarticuloorigen - NuevoArtiDana.cantidaddanada
+                            if (this.NuevoArtiDana.devolucionUnidadOrigen == true) {
+                                this.Dataset.existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen
+                                this.Dataset[0].existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen - this.NuevoArtiDana.cantidaddanada
                             }
+                            console.log("incio");
+                            console.log(this.Dataset);
+                            console.log("incio");
                             this.action(this.NuevoArtiDana, this.Dataset, console.log(this.NuevoArtiDana));
                         },
                     },
