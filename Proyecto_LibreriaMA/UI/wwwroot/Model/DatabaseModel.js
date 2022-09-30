@@ -67,10 +67,10 @@ class BodegaxArticulo {
         }
     }
     idbodegaxarticulo = { type: "number", primary: true };
-    idtamanoxarticulo = { type: "number" };
+    idtamanoxarticulo = { type: "number",hidden:true };
     idbodega = { type: "number" };
-    Cantidadorigen = { type: "number" };
-    Cantidadunidad = { type: "number" };
+    Cantidadorigen = { type: "number",hidden:true };
+    Cantidadunidad = { type: "number" ,hidden:true};
 
 }
 export { BodegaxArticulo }

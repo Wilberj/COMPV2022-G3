@@ -1,4 +1,4 @@
-import { ModalComponent } from "../../../CoreComponents/ModalComponent.js";
+import { ModalComponent } from "../../CoreComponents/ModalComponent.js";
 import { ViewAdminMercancia, ViewArticuloCompra } from "../../../Model/ViewDatabaseModel.js";
 import { FormComponet } from "../../CoreComponents/FormComponent.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";

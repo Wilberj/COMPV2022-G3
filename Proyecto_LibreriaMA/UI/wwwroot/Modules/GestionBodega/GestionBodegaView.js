@@ -1,4 +1,5 @@
 ﻿import { TableComponent } from "../../CoreComponents/TableComponent.js";
+import { ViewArticulosDanados } from "../../Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js";
 
 window.onload = async () => {
@@ -14,9 +15,17 @@ window.onload = async () => {
                 className: 'btn',
                 value: 'Ingresar Existencia', onclick: async () => {
                     //cargar vists
-                   // window.location = ""
+                   window.location = "./ViewCrearBodegaxExistencias"
                 }
             }
         ]
-    }))
+    }));
+
+    const ArticulosDana = 
+        await AjaxTools.PostRequest("../api/GestionCompra/ChargeArticulosDanados")
+
+        AppMain.append(new TableComponent({
+            Dataset:ArticulosDana,
+            ModelObject: new ViewArticulosDanados()
+        }))
     }
