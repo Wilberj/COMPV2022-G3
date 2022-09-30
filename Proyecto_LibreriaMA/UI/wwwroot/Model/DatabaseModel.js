@@ -36,9 +36,9 @@ class ArticulosDanados {
             this[prop] = props[prop];
         }
     }
-    idarticulosdanados = { type: "number", primary: true, hidden: true  };
+    idarticulosdanados = { type: "number", primary: true};
     idtamanoxarticulo = { type: "number", hidden: true  };
-    idusuario = { type: "number", hidden: true };
+    idusuario = { type: "number", hidden: true }; 
     idadmimercancias= { type: "number", hidden: true };
     cantidaddanada = { type: "number" };
 
@@ -54,10 +54,26 @@ class Bodega {
     }
     idbodega = { type: "number", primary: true };
     nombrebodega = { type: "text" };
+    Descripcion = { type: "text" };
     activo = { type: "checkbox" };
-    idarticulo = { type: "number" };
+
 }
 export { Bodega }
+
+class BodegaxArticulo {
+    constructor(props) {
+        for (const prop in props) {
+            this[prop] = props[prop];
+        }
+    }
+    idbodegaxarticulo = { type: "number", primary: true };
+    idtamanoxarticulo = { type: "number" };
+    idbodega = { type: "number" };
+    Cantidadorigen = { type: "number" };
+    Cantidadunidad = { type: "number" };
+
+}
+export { BodegaxArticulo }
 // class BodegaxArticulo {
 //     constructor(props) {
 //         for (const prop in props) {

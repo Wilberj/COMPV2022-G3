@@ -1,7 +1,7 @@
 import { FormComponet } from "./CoreComponents/FormComponent.js";
 import { ModalComponent } from "./CoreComponents/ModalComponent.js";
 import { TableComponent } from "./CoreComponents/TableComponent.js";
-import { Articulos, Bodega, Categoria, CompraProductos, ConvertirMedida, DatosUsuarios, Marca, Proveedor, Tamano, TamanoxArticulo, TipoMaterial, Unidades } from "./Model/DatabaseModel.js";
+import { Articulos, Bodega, BodegaxArticulo, Categoria, CompraProductos, ConvertirMedida, DatosUsuarios, Marca, Proveedor, Tamano, TamanoxArticulo, TipoMaterial, Unidades } from "./Model/DatabaseModel.js";
 import { AjaxTools, Render } from "./Modules/utility.js";
 
 window.onload = async () => {
@@ -16,13 +16,13 @@ window.onload = async () => {
                     ChargeCatalogo(Model)
                 }
             },
-            {
-                tagName: 'label', innerText: 'Compra', onclick: async () => {
-                    const data = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetCompraProductos")
-                    const Model = new CompraProductos()
-                    ChargeCatalogo(Model)
-                }
-            },
+            // {
+            //     tagName: 'label', innerText: 'Compra', onclick: async () => {
+            //         const data = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetCompraProductos")
+            //         const Model = new CompraProductos()
+            //         ChargeCatalogo(Model)
+            //     }
+            // },
             {
                 tagName: 'label', innerText: 'Datos Usuarios', onclick: async () => {
                     const data = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetDatosUsuarios")
@@ -46,13 +46,9 @@ window.onload = async () => {
             {
                 tagName: 'label', innerText: 'Bodega', onclick: async () => {
                     const data = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetBodega")
-                    const dataA = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetArticulos")
+                   // const dataA = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetTamanoxArticulo")
 
                     const Model = new Bodega({
-                        idarticulo: {
-                            type: "select",
-                            Dataset: dataA.map((d) => ({ id: d.idarticulo, desc: d.nombrearticulo }))
-                        }
                     })
                     ChargeCatalogo(Model)
 
@@ -128,6 +124,13 @@ window.onload = async () => {
                 tagName: 'label', innerText: 'Unidades', onclick: async () => {
 
                     const Model = new Unidades()
+                    ChargeCatalogo(Model)
+                }
+            },
+            {
+                tagName: 'label', innerText: 'BodegaxArticulo', onclick: async () => {
+
+                    const Model = new BodegaxArticulo()
                     ChargeCatalogo(Model)
                 }
             },

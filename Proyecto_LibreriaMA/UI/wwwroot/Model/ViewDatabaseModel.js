@@ -71,7 +71,8 @@ class ViewCompra {
     }
     nombrearticulo = { type: "text"  };
     idtamanoxarticulo = { type: "number",hidden: true };
-    //idusuario = { type: "number"};
+    idusuario = { type: "number",hidden: true};
+    idarticulosdanados = { type: "number", hidden: true };
     //nombreusuario = { type: "text"  };
     existenciasarticulounidad = { type: "number"  };
     idadmimercancias = { type: "number"};

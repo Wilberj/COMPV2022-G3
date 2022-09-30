@@ -69,11 +69,17 @@ namespace CAPA_NEGOCIO.MODEL
     {
         public int? idbodega { get; set; }
         public string? nombrebodega { get; set; }
+        public string? Descripcion { get; set; }
         public bool? activo { get; set; }
-        public int? idarticulo { get; set; }
-
     }
-
+    public class BodegaxArticulo : EntityClass
+    {
+        public int? idbodegaxarticulo { get; set; }
+        public int? idtamanoxarticulo { get; set; }
+        public int? idbodega { get; set; }
+        public int? Cantidadorigen { get; set; }
+        public int? Cantidadunidad { get; set; }
+    }
     /*public class BodegaxArticulo : EntityClass
     {
         public int? idbodegaxarticulo { get; set; }
