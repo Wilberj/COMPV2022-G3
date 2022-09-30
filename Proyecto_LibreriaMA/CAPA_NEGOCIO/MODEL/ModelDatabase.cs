@@ -79,6 +79,30 @@ namespace CAPA_NEGOCIO.MODEL
         public int? idbodega { get; set; }
         public int? Cantidadorigen { get; set; }
         public int? Cantidadunidad { get; set; }
+        public List<AdministracionMercancias> AdminMercas { get; set; }
+        public Object SaveBodegaxArticulo()
+        {
+            this.idbodegaxarticulo = (Int32)this.Save();
+
+            this.UpdateAdminMerca();
+
+            // UpdateAdminMerca();
+
+            return true;
+        }
+
+        public Object UpdateAdminMerca()
+        {
+            if (this.AdminMercas != null)
+            {
+                foreach (var AdminMercas in this.AdminMercas)
+                {
+                    AdminMercas.idtamanoxarticulo = this.idtamanoxarticulo;
+                    AdminMercas.Update("idadmimercancias");
+                }
+            }
+            return true;
+        }
     }
     /*public class BodegaxArticulo : EntityClass
     {

@@ -51,5 +51,9 @@ namespace UI.Controllers
         {
             return ent.SaveArtiDanado();
         }
+        public Object SaveBodegaxArticulo(BodegaxArticulo ent)
+        {
+            return ent.SaveBodegaxArticulo();
+        }
     }
 }
