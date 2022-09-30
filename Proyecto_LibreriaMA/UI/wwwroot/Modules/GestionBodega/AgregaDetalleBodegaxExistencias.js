@@ -25,8 +25,10 @@ class  AgregarDetalleBodegaxExistencias extends HTMLElement {
                 idbodegaxarticulo: { type: "number", primary: true },
                 idtamanoxarticulo: { type: "number", hidden: true},
                 idbodega: { type: "number", hidden: true },
-                Cantidadorigen: { type: "checkbox", },
-                Cantidadunidad: { type: "checkbox", },
+                Cantidadorigen: { type: "checkbox" },
+                Cantidadunidad: { type: "checkbox" },
+                  //devolucionUnidad: { type: "number", },
+               // devolucionUnidadOrigen: { type: "number", },
             
             }),
             EditObject: this.NuevoBodegaxExiste

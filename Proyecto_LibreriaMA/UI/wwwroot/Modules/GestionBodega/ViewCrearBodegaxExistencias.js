@@ -8,6 +8,10 @@ import { AgregarDetalleBodegaxExistencias } from "./AgregaDetalleBodegaxExistenc
 
 window.onload = async () =>{
 const Dataset = []
+const NuevoBodeXarti = {
+    AdminMercas:Dataset
+
+}
     AppMain.append(Render.Create({
         tagName: "h1",
         innerText: "Gestion de Bodega-Existencias", class: "header1"
@@ -19,6 +23,21 @@ const Dataset = []
                 tagName: 'input', type: 'button',
                 className: 'btn',
                 value: 'Guardar Datos', onclick: async () => {
+                    const response = await AjaxTools.PostRequest("../api/GestionCompra/SaveBodegaxArticulo", NuevoBodeXarti)
+                    if (response == true) {
+                        AppMain.append(
+                            new ModalComponent(
+                                Render.Create({
+                                    tagName: "h1",
+                                    innerText: "Datos Guardados",
+                                }),
+
+                                // window.location.reload()
+                            )
+                            
+                        );
+                       
+                    }
                 },
             },
         ]
@@ -26,6 +45,7 @@ const Dataset = []
     );
     const data = await AjaxTools.PostRequest("../api/MantenimientoCatalogos/GetBodega")
     const formBodegaxArti = new FormComponet({
+        EditObject:NuevoBodeXarti,
         Model: new BodegaxArticulo({
             idbodega: {
                 type: "select",
