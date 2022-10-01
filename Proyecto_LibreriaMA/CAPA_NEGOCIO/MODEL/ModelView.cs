@@ -31,7 +31,7 @@ namespace CAPA_NEGOCIO.MODEL
         public string? nombremarca { get; set; }
 
     }
-    public class ViewAdminMercancia : EntityClass
+  public class ViewAdminMercancia : EntityClass
     {
         public int? existenciasarticulounidad { get; set; }
         public int? existenciasarticuloorigen { get; set; }
@@ -40,6 +40,8 @@ namespace CAPA_NEGOCIO.MODEL
         public string? nombrearticulo { get; set; }
         public string? nombreunidad { get; set; }
         public int? idadmimercancias { get; set; }
+        public int? idcompra { get; set; }
+        public int? iddetallecompra { get; set; }
     }
     public class ViewDevolucionCompra : EntityClass
     {

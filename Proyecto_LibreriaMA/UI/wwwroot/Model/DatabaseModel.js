@@ -67,11 +67,18 @@ class BodegaxArticulo {
         }
     }
     idbodegaxarticulo = { type: "number", primary: true };
-    idtamanoxarticulo = { type: "number" };
-    idbodega = { type: "number" };
+    idtamanoxarticulo = { type: "number", hidden: true };
+    idbodega = { type: "number", hidden: true };
+    idadmimercancias = { type: "number", hidden: true };
+    existenciasarticuloorigen= { type: "number", hidden: true };
+    existenciasarticulounidad= { type: "number", hidden: true };
+    existenciasaunidadenorigen = {type: "number", hidden: true  };
+    //Loquemuestralatabla
     Cantidadorigen = { type: "number" };
     Cantidadunidad = { type: "number"};
-
+    //
+    GuardarUnidadOrigen =  { hidden: true  };
+    GuardarUnidad =  { hidden: true  };
 }
 export { BodegaxArticulo }
 // class BodegaxArticulo {

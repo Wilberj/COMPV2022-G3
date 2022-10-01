@@ -6,16 +6,16 @@ import { ViewArticulosDanados } from "../../Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js";
 import { AgregarDetalleBodegaxExistencias } from "./AgregaDetalleBodegaxExistencias.js";
 
-window.onload = async () =>{
-const Dataset = []
-const NuevoBodeXarti = {
-    AdminMercas:Dataset
+window.onload = async () => {
+    const Dataset = []
+    const NuevoBodeXarti = {
+        AdminMercas: Dataset
 
-}
+    }
     AppMain.append(Render.Create({
         tagName: "h1",
         innerText: "Gestion de Bodega-Existencias", class: "header1"
-    }) );
+    }));
     AppMain.append(Render.Create({
         class: "FormContainer2",
         children: [
@@ -34,9 +34,9 @@ const NuevoBodeXarti = {
 
                                 // window.location.reload()
                             )
-                            
+
                         );
-                       
+
                     }
                 },
             },
@@ -45,22 +45,28 @@ const NuevoBodeXarti = {
     );
     const data = await AjaxTools.PostRequest("../api/MantenimientoCatalogos/GetBodega")
     const formBodegaxArti = new FormComponet({
-        EditObject:NuevoBodeXarti,
         Model: new BodegaxArticulo({
-            idbodega: {
+            idbodega: { hidden: true },
+            Cantidadunidad: { hidden: true },
+            Cantidadorigen: { hidden: true },
+            existenciasarticuloorigen: { type: "number", hidden: true },
+
+            NombreBodega: {
                 type: "select",
                 Dataset: data.map((d) => ({ id: d.idbodega, desc: d.nombrebodega }))
             }
-        })
+        }),
+        EditObject: NuevoBodeXarti,
+
     });
     const TableBodegaxarticulo = new TableComponent({
-        ModelObject: new ViewArticulosDanados(),
-        Dataset:Dataset,
+        ModelObject: new BodegaxArticulo(),
+        Dataset: Dataset,
         Functions: [
             {
                 name: "Remover",
                 action: async (Dato) => {
-                    const Datof = Dataset.find((x) => x.idarticulo == Dato.idarticulo);
+                    const Datof = Dataset.find((x) => x.idtamanoxarticulo == Dato.idtamanoxarticulo);
                     if (Datof != null) {
                         Dataset.splice(Dataset.indexOf(Datof), 1);
 
@@ -75,11 +81,18 @@ const NuevoBodeXarti = {
         tagName: 'input', type: 'button',
         className: 'btn_primary', value: 'Anadir', onclick: async () => {
             const Modal = new ModalComponent(
-                new AgregarDetalleBodegaxExistencias((bodegaart)=>{
+                new AgregarDetalleBodegaxExistencias((bodegaart) => {
 
                     Dataset.push(bodegaart);
                     Modal.Close();
                     TableBodegaxarticulo.DrawTableComponent();
+                    console.log(NuevoBodeXarti);
+                    NuevoBodeXarti.idbodega = NuevoBodeXarti.NombreBodega;
+                    NuevoBodeXarti.idtamanoxarticulo = Dataset[0].idtamanoxarticulo;
+                    NuevoBodeXarti.idadmimercancias = Dataset[0].idadmimercancias;
+                    NuevoBodeXarti.NombreArticulo = Dataset[0].NombreArticulo
+                    NuevoBodeXarti.Cantidadunidad = Dataset[0].Cantidadunidad;
+                    NuevoBodeXarti.Cantidadorigen = Dataset[0].Cantidadorigen;
                 })
             )
             AppMain.append(Modal)

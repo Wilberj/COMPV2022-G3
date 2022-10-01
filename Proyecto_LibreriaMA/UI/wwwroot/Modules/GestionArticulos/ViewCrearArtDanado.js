@@ -105,21 +105,6 @@ window.onload = async () => {
                     NuevoArtiDana.descripcionarticulodanado = AdminMercas[0].descripcionarticulodanado;
                     NuevoArtiDana.cantidaddanada = AdminMercas[0].cantidaddanada;
 
-                    // NuevoArtiDana.existenciasarticulounidad = AdminMercas[0].existenciasarticulounidad
-                    // NuevoArtiDana.existenciasarticuloorigen = AdminMercas[0].existenciasarticuloorigen
-
-
-                    //NuevoArtiDana.idusuario = Dataset[0].idusuario
-
-                    // if (NuevoArtiDana.devolucionUnidad == true) {
-
-                    //     //   Dataset.existenciasarticulounidad = Dataset[0].existenciasarticulounidad
-                    //     Dataset[0].existenciasarticulounidad = Dataset[0].existenciasarticulounidad - NuevoArtiDana.cantidaddanada
-                    // }
-                    // if (NuevoArtiDana.devolucionUnidadOrigen == true) {
-                    //     // Dataset.existenciasarticuloorigen = Dataset[0].existenciasarticuloorigen
-                    //     Dataset[0].existenciasarticuloorigen = Dataset[0].existenciasarticuloorigen - NuevoArtiDana.cantidaddanada
-                    // }
                     console.log(NuevoArtiDana);
                 })
             )

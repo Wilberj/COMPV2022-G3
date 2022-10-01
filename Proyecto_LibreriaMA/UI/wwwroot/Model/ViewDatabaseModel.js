@@ -46,6 +46,8 @@ class ViewCompra {
     nombrearticulo = { type: "text"  };
     nombreunidad = { type: "text"  };
     idadmimercancias = { type: "number", hidden: true  };
+    idcompra = { type: "number"  };
+    iddetallecompra = { type: "number"  };
    }
    export{ViewAdminMercancia}
    
@@ -75,8 +77,8 @@ class ViewCompra {
     idarticulosdanados = { type: "number", hidden: true };
     //nombreusuario = { type: "text"  };
     existenciasarticulounidad = { type: "number"  };
-    idadmimercancias = { type: "number"};
     existenciasarticuloorigen = { type: "number"  };
+    idadmimercancias = { type: "number"};
     idarticulo = { type: "number", hidden: true  };
    }
    export{ViewArticulosDanados}
