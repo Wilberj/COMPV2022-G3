@@ -11,6 +11,8 @@ import { TableComponent } from "../../CoreComponents/TableComponent.js";
 
 window.onload = async () => {
     const DetalleCompra = []; 
+    const Total = [];
+    var suma = 0;
     const NuevaCompra = {
         DetalleCompra: DetalleCompra
     }
@@ -28,19 +30,17 @@ window.onload = async () => {
                 value: 'Guardar Compra', onclick: async () => {
                     const response =
                         await AjaxTools.PostRequest("../api/GestionCompra/SaveCompra",
-                            NuevaCompra);
-                    // (new AgregarArticuloCompra((articulos) => {
+                            NuevaCompra,
 
-                    //     if (DetalleCompraProductos.filter(x => x.idarticulo == articulos.idarticulo).length > 0) {
-                    //         alert("Ya existe el articulo")
-                    //         return;
-                    //     }
-                    //     DetalleCompraProductos.push(articulos);
-                    //     console.log(DetalleCompraProductos);
-                    //     Modal.Close();
-                    //     TableCompraArticulos.DrawTableComponent();
-                    // }));
-                    // console.log(NuevaCompra);
+                            Total.forEach(function (tot) {
+                                suma += tot; 
+                            }),
+                            console.log(suma),
+                            NuevaCompra.subtotalcompra = suma,
+
+                            NuevaCompra.iva = NuevaCompra.subtotalcompra * 0.15,
+                            NuevaCompra.totalcompra = parseInt(NuevaCompra.subtotalcompra) + parseInt(NuevaCompra.iva) - parseInt(NuevaCompra.descuentocompra)
+                            );
                     if (response == true) {
                         AppMain.append(
                             new ModalComponent(
@@ -149,12 +149,14 @@ window.onload = async () => {
                         }
                         
                         DetalleCompra.push(compra);
+                        Total.push(compra.totaldetalle)
                         // ConvertirMedida.push(DetalleCompra.ConvertirMedida);
-                        console.log(compra);
-                        console.log(DetalleCompra);
+                        console.log(compra.totaldetalle);
+                        console.log(Total);
 
                         Modal.Close();
                         TableDetalleCompra.DrawTableComponent();
+                        console.log(NuevaCompra);
                     }));
                 AppMain.append(Modal)
             }

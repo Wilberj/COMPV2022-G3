@@ -81,7 +81,7 @@ class AgregarDetalleBodegaxExistencias extends HTMLElement {
                         this.NuevoBodegaxExiste.existenciasaunidadenorigen = this.Dataset[0].existenciasarticulounidad / this.Dataset[0].existenciasarticuloorigen;
                         if (this.NuevoBodegaxExiste.GuardarUnidadOrigen == true) {
                             this.Dataset[0].existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen - this.NuevoBodegaxExiste.Cantidadorigen;
-                            this.NuevoBodegaxExiste.Cantidadunidad = this.NuevoBodegaxExiste.existenciasaunidadenorigen * this.Dataset[0].existenciasarticuloorigen;
+                            this.NuevoBodegaxExiste.Cantidadunidad = this.NuevoBodegaxExiste.existenciasaunidadenorigen *  this.NuevoBodegaxExiste.Cantidadorigen;
                             this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad - this.NuevoBodegaxExiste.Cantidadunidad;
                         }
                         if (this.NuevoBodegaxExiste.GuardarUnidad == true) {

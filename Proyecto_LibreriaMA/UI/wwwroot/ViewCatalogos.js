@@ -127,13 +127,13 @@ window.onload = async () => {
                     ChargeCatalogo(Model)
                 }
             },
-            {
-                tagName: 'label', innerText: 'BodegaxArticulo', onclick: async () => {
+            // {
+            //     tagName: 'label', innerText: 'BodegaxArticulo', onclick: async () => {
 
-                    const Model = new BodegaxArticulo()
-                    ChargeCatalogo(Model)
-                }
-            },
+            //         const Model = new BodegaxArticulo()
+            //         ChargeCatalogo(Model)
+            //     }
+            // },
             {
                 tagName: 'label', innerText: 'Convertidor de unidades', onclick: async () => {
                     const data = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetArticulos")

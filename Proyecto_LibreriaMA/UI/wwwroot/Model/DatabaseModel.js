@@ -72,7 +72,6 @@ class BodegaxArticulo {
     idadmimercancias = { type: "number", hidden: true };
     existenciasarticuloorigen= { type: "number", hidden: true };
     existenciasarticulounidad= { type: "number", hidden: true };
-    existenciasaunidadenorigen = {type: "number", hidden: true  };
     //Loquemuestralatabla
     Cantidadorigen = { type: "number" };
     Cantidadunidad = { type: "number"};
