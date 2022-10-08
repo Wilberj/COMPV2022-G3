@@ -351,6 +351,7 @@ namespace CAPA_NEGOCIO.MODEL
         public int? iddevolucioncompra { get; set; }
         public int? idadmimercancias { get; set; }
         public int? cantidad { get; set; }
+        public int? cantidadunidad { get; set; }
         public string? descripciondevolucion { get; set; }
         public List<AdministracionMercancias> AdminMerca { get; set; }
 

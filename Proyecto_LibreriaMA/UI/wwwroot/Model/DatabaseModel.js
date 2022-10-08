@@ -206,6 +206,7 @@ class DetalleDevolucionCompra {
     iddevolucioncompra = { type: "number", hidden: true };
     idadmimercancias = { type: "number", hidden: true };
     cantidad = { type: "number" };
+    cantidadunidad = { type: "number" };
     descripciondevolucion = { type: "text" };
 }
 export { DetalleDevolucionCompra }
