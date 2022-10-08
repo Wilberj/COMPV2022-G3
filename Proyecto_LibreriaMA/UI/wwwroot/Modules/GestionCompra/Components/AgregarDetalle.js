@@ -35,7 +35,7 @@ class AgregarDetalleCompra extends HTMLElement {
     Draw = async () => {
         this.datau = await AjaxTools.PostRequest("../api/MantenimientoCatalogos/GetUnidades")
         this.dataT = await AjaxTools.PostRequest("../api/MantenimientoCatalogos/GetTamano")
-
+        this.datab = await AjaxTools.PostRequest("../api/MantenimientoCatalogos/GetBodega")
         this.Form = new FormComponet({
             Model: new DetalleCompraProductos({
                 TipoUnidad: {
@@ -65,7 +65,7 @@ class AgregarDetalleCompra extends HTMLElement {
             EditObject: this.DetalleCompra.TamanoxArt
         })
 
-
+       
         this.FormAdminMerca = new FormComponet({
             Model: new AdministracionMercancias({
                 idtamanoxarticulo: { type: "number", hidden: true },
@@ -74,7 +74,12 @@ class AgregarDetalleCompra extends HTMLElement {
                 precioventa: { type: "number" },
                 existenciasarticuloorigen: { type: "number", hidden: true },
                 existenciasarticulounidad: { type: "number", hidden: true },
+                idbodega: {
+                    type: "select",
+                    Dataset: this.datab.map((d) => ({ id: d.idbodega, desc: d.nombrebodega }))
+                },
             }),
+           
 
             EditObject: this.DetalleCompra.AdminMercanciaComp
         }),

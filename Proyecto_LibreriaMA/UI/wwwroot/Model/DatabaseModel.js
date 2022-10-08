@@ -11,6 +11,8 @@ class AdministracionMercancias {
     precioventa = { type: "number" };
     existenciasarticuloorigen = { type: "number" };
     existenciasarticulounidad = { type: "number" };
+    idbodega = { type: "number" };
+
 }
 export { AdministracionMercancias }
 class Articulos {
@@ -40,8 +42,9 @@ class ArticulosDanados {
     idtamanoxarticulo = { type: "number", hidden: true  };
     idusuario = { type: "number", hidden: true }; 
     idadmimercancias= { type: "number", hidden: true };
-    cantidaddanada = { type: "number" };
-
+    cantidaddanadaorigen = { type: "number" };
+    cantidaddanadaunidad = { type: "number" };
+    idbodega = { type: "number" };
     descripcionarticulodanado = { type: "text" };
 
 }
@@ -60,26 +63,26 @@ class Bodega {
 }
 export { Bodega }
 
-class BodegaxArticulo {
-    constructor(props) {
-        for (const prop in props) {
-            this[prop] = props[prop];
-        }
-    }
-    idbodegaxarticulo = { type: "number", primary: true };
-    idtamanoxarticulo = { type: "number", hidden: true };
-    idbodega = { type: "number", hidden: true };
-    idadmimercancias = { type: "number", hidden: true };
-    existenciasarticuloorigen= { type: "number", hidden: true };
-    existenciasarticulounidad= { type: "number", hidden: true };
-    //Loquemuestralatabla
-    Cantidadorigen = { type: "number" };
-    Cantidadunidad = { type: "number"};
-    //
-    GuardarUnidadOrigen =  { hidden: true  };
-    GuardarUnidad =  { hidden: true  };
-}
-export { BodegaxArticulo }
+//class BodegaxArticulo {
+//    constructor(props) {
+//        for (const prop in props) {
+//            this[prop] = props[prop];
+//        }
+//    }
+//    idbodegaxarticulo = { type: "number", primary: true };
+//    idtamanoxarticulo = { type: "number", hidden: true };
+//    idbodega = { type: "number", hidden: true };
+//    idadmimercancias = { type: "number", hidden: true };
+//    existenciasarticuloorigen= { type: "number", hidden: true };
+//    existenciasarticulounidad= { type: "number", hidden: true };
+//    //Loquemuestralatabla
+//    Cantidadorigen = { type: "number" };
+//    Cantidadunidad = { type: "number"};
+//    //
+//    GuardarUnidadOrigen =  { hidden: true  };
+//    GuardarUnidad =  { hidden: true  };
+//}
+//export { BodegaxArticulo }
 // class BodegaxArticulo {
 //     constructor(props) {
 //         for (const prop in props) {
@@ -121,18 +124,18 @@ class CompraProductos {
 
 }
 export { CompraProductos }
-class Configuracion {
-    constructor(props) {
-        for (const prop in props) {
-            this[prop] = props[prop];
-        }
-    }
-    idconfiguracion = { type: "number", primary: true };
-    nombre = { type: "text" };
-    direccion = { type: "text" };
-    telefono = { type: "number" };
-}
-export { Configuracion }
+//class Configuracion {
+//    constructor(props) {
+//        for (const prop in props) {
+//            this[prop] = props[prop];
+//        }
+//    }
+//    idconfiguracion = { type: "number", primary: true };
+//    nombre = { type: "text" };
+//    direccion = { type: "text" };
+//    telefono = { type: "number" };
+//}
+//export { Configuracion }
 class ConvertirMedida {
     constructor(props) {
         for (const prop in props) {

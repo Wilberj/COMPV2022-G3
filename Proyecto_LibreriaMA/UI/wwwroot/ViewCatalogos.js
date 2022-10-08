@@ -1,7 +1,7 @@
 import { FormComponet } from "./CoreComponents/FormComponent.js";
 import { ModalComponent } from "./CoreComponents/ModalComponent.js";
 import { TableComponent } from "./CoreComponents/TableComponent.js";
-import { Articulos, Bodega, BodegaxArticulo, Categoria, CompraProductos, ConvertirMedida, DatosUsuarios, Marca, Proveedor, Tamano, TamanoxArticulo, TipoMaterial, Unidades } from "./Model/DatabaseModel.js";
+import { Articulos, Bodega, Categoria, CompraProductos, ConvertirMedida, DatosUsuarios, Marca, Proveedor, Tamano, TamanoxArticulo, TipoMaterial, Unidades } from "./Model/DatabaseModel.js";
 import { AjaxTools, Render } from "./Modules/utility.js";
 
 window.onload = async () => {
@@ -34,15 +34,25 @@ window.onload = async () => {
                     })
                     ChargeCatalogo(Model)
                 }
-            },
-            {
-                tagName: 'label', innerText: 'Proveedores', onclick: async () => {
+            }, 
+             {
+                tagName: 'label', innerText: 'Proveedor', onclick: async () => {
                     const data = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetProveedor")
 
-                    const Model = new Proveedor()
+                    const Model = new Proveedor ({
+                    
+                    })
                     ChargeCatalogo(Model)
                 }
             },
+            // {
+            //     tagName: 'label', innerText: 'Proveedores', onclick: async () => {
+            //         const data = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetProveedor")
+
+            //         const Model = new Proveedor()
+            //         ChargeCatalogo(Model)
+            //     }
+            // },
             {
                 tagName: 'label', innerText: 'Bodega', onclick: async () => {
                     const data = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetBodega")
@@ -88,7 +98,7 @@ window.onload = async () => {
                         },
                         idmaterial: {
                             type: "select",
-                            Dataset: dataTM.map((d) => ({ id: d.idmaterial, desc: d.nombrematerial }))
+                            Dataset: dataTM.map((d) => ({ id: d.idmaterial, desc: d.nombrematerial}))
                         }
                     })
                     ChargeCatalogo(Model)

@@ -90,12 +90,14 @@ class AgregarDetallDevolucion extends HTMLElement {
                         onclick: async () => {
                             this.DetalleDevCompra.idadmimercancias = this.Dataset[0].idadmimercancias;
                             ///this.DetalleDevCompra.NombreArticulo = this.Dataset[0].nombrearticulo;
-
+                            this.DetalleDevCompra.Temporal = this.Dataset[0].existenciasarticulounidad / this.Dataset[0].existenciasarticuloorigen;
+                            this.DetalleDevCompra.Cantidadunidadtotal = this.DetalleDevCompra.Temporal *  this.DetalleDevCompra.cantidad;
                             if (this.DetalleDevCompra.devolucionUnidad == true) {
                                 this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad - this.DetalleDevCompra.cantidad;
                             }
                             if (this.DetalleDevCompra.devolucionUnidadOrigen == true) {
                                 this.Dataset[0].existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen - this.DetalleDevCompra.cantidad;
+                                this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad - this.DetalleDevCompra.Cantidadunidadtotal;
                             }
                             this.action(this.DetalleDevCompra, this.Dataset, console.log(this.DetalleCompra));
 

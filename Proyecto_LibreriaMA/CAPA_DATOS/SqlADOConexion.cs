@@ -4,7 +4,7 @@
     {
         private static string UserSQLConexion = "";
         public static SqlServerGDatos SQLM;
-        public static string DataBaseName = "LibreriaMA1";
+        public static string DataBaseName = "LibreriaMA2";
         static string SQLServer = ".";
 
         static public bool IniciarConexion(string user, string password)

@@ -13,11 +13,13 @@ namespace CAPA_NEGOCIO.MODEL
         public int? idadmimercancias { get; set; }
         public int? idtamanoxarticulo { get; set; }
         public int? idconvertir { get; set; }
-        public decimal? preciocompraunidad { get; set; }
-        public decimal? precioventa { get; set; }
+        public Decimal? preciocompraunidad { get; set; }
+        public Decimal? precioventa { get; set; }
         public int? existenciasarticuloorigen { get; set; }
         public int? existenciasarticulounidad { get; set; }
+        public int? idbodega { get; set; }
     }
+
 
     public class Articulos : EntityClass
     {
@@ -36,9 +38,11 @@ namespace CAPA_NEGOCIO.MODEL
     {
         public int? idarticulosdanados { get; set; }
         public int? idtamanoxarticulo { get; set; }
-        public int? cantidaddanada { get; set; }
+        public int? cantidaddanadaorigen { get; set; }
+        public int? cantidaddanadaunidad { get; set; }
         public int? idusuario { get; set; }
-        public string? descripcionarticulodanado { get; set; }
+        public int? idbodega { get; set; }
+        public string descripcionarticulodanado { get; set; }
         public List<AdministracionMercancias> AdminMercas { get; set; }
         public Object SaveArtiDanado()
         {
@@ -72,38 +76,38 @@ namespace CAPA_NEGOCIO.MODEL
         public string? Descripcion { get; set; }
         public bool? activo { get; set; }
     }
-    public class BodegaxArticulo : EntityClass
-    {
-        public int? idbodegaxarticulo { get; set; }
-        public int? idtamanoxarticulo { get; set; }
-        public int? idbodega { get; set; }
-        public int? Cantidadorigen { get; set; }
-        public int? Cantidadunidad { get; set; }
-        public List<AdministracionMercancias> AdminMercas { get; set; }
-        public Object SaveBodegaxArticulo()
-        {
-            this.idbodegaxarticulo = (Int32)this.Save();
+    //public class BodegaxArticulo : EntityClass
+    //{
+    //    public int? idbodegaxarticulo { get; set; }
+    //    public int? idtamanoxarticulo { get; set; }
+    //    public int? idbodega { get; set; }
+    //    public int? Cantidadorigen { get; set; }
+    //    public int? Cantidadunidad { get; set; }
+    //    public List<AdministracionMercancias> AdminMercas { get; set; }
+    //    public Object SaveBodegaxArticulo()
+    //    {
+    //        this.idbodegaxarticulo = (Int32)this.Save();
 
-            this.UpdateAdminMerca();
+    //        this.UpdateAdminMerca();
 
-            // UpdateAdminMerca();
+    //        // UpdateAdminMerca();
 
-            return true;
-        }
+    //        return true;
+    //    }
 
-        public Object UpdateAdminMerca()
-        {
-            if (this.AdminMercas != null)
-            {
-                foreach (var AdminMercas in this.AdminMercas)
-                {
-                    AdminMercas.idtamanoxarticulo = this.idtamanoxarticulo;
-                    AdminMercas.Update("idadmimercancias");
-                }
-            }
-            return true;
-        }
-    }
+    //    public Object UpdateAdminMerca()
+    //    {
+    //        if (this.AdminMercas != null)
+    //        {
+    //            foreach (var AdminMercas in this.AdminMercas)
+    //            {
+    //                AdminMercas.idtamanoxarticulo = this.idtamanoxarticulo;
+    //                AdminMercas.Update("idadmimercancias");
+    //            }
+    //        }
+    //        return true;
+    //    }
+    //}
     /*public class BodegaxArticulo : EntityClass
     {
         public int? idbodegaxarticulo { get; set; }
@@ -170,13 +174,13 @@ namespace CAPA_NEGOCIO.MODEL
 
     }
 
-    public class Configuracion : EntityClass
-    {
-        public int? idconfiguracion { get; set; }
-        public string? nombre { get; set; }
-        public string? direccion { get; set; }
-        public int? telefono { get; set; }
-    }
+    //public class Configuracion : EntityClass
+    //{
+    //    public int? idconfiguracion { get; set; }
+    //    public string? nombre { get; set; }
+    //    public string? direccion { get; set; }
+    //    public int? telefono { get; set; }
+    //}
 
     public class ConvertirMedida : EntityClass
     {

@@ -153,19 +153,19 @@ namespace UI.Controllers
             return ent.Update("idbodega");
         }
         //bodegaxarticulo
-        public Object GetBodegaxArticulo(BodegaxArticulo ent)
-        {
-            return ent.Get<BodegaxArticulo>();
-        }
-        public Object SaveBodegaxArticulo(BodegaxArticulo ent)
-        {
-            ent.idbodegaxarticulo = (Int32)ent.Save();
-            return ent;
-        }
-        public Object UpdateBodegaxArticulo(BodegaxArticulo ent)
-        {
-            return ent.Update("idbodegaxarticulo");
-        }
+        //public Object GetBodegaxArticulo(BodegaxArticulo ent)
+        //{
+        //    return ent.Get<BodegaxArticulo>();
+        //}
+        //public Object SaveBodegaxArticulo(BodegaxArticulo ent)
+        //{
+        //    ent.idbodegaxarticulo = (Int32)ent.Save();
+        //    return ent;
+        //}
+        //public Object UpdateBodegaxArticulo(BodegaxArticulo ent)
+        //{
+        //    return ent.Update("idbodegaxarticulo");
+        //}
         public Object GetUnidades(Unidades ent)
         {
             return ent.Get<Unidades>();
