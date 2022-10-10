@@ -121,6 +121,8 @@ class CompraProductos {
     iva = { type: "number" };
     descuentocompra = { type: "number" };
     totalcompra = { type: "number" };
+    activo = { type: "checkbox" };
+
 
 }
 export { CompraProductos }

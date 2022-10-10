@@ -111,25 +111,25 @@ window.onload = async () => {
                     ChargeCatalogo(Model)
                 }
             },
-            {
-                tagName: 'label', innerText: 'Tamano Articulos', onclick: async () => {
-                    const data = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetArticulos")
-                    const dataT = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetTamano")
+            // {
+            //     tagName: 'label', innerText: 'Tamano Articulos', onclick: async () => {
+            //         const data = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetArticulos")
+            //         const dataT = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetTamano")
 
-                    const Model = new TamanoxArticulo({
+            //         const Model = new TamanoxArticulo({
 
-                        idtamano: {
-                            type: "select",
-                            Dataset: dataT.map((d) => ({ id: d.idtamano, desc: d.nombretamano }))
-                        },
-                        idarticulo: {
-                            type: "select",
-                            Dataset: data.map((d) => ({ id: d.idarticulo, desc: d.nombrearticulo }))
-                        }
-                    })
-                    ChargeCatalogo(Model)
-                }
-            },
+            //             idtamano: {
+            //                 type: "select",
+            //                 Dataset: dataT.map((d) => ({ id: d.idtamano, desc: d.nombretamano }))
+            //             },
+            //             idarticulo: {
+            //                 type: "select",
+            //                 Dataset: data.map((d) => ({ id: d.idarticulo, desc: d.nombrearticulo }))
+            //             }
+            //         })
+            //         ChargeCatalogo(Model)
+            //     }
+            // },
             {
                 tagName: 'label', innerText: 'Unidades', onclick: async () => {
 
@@ -144,25 +144,25 @@ window.onload = async () => {
             //         ChargeCatalogo(Model)
             //     }
             // },
-            {
-                tagName: 'label', innerText: 'Convertidor de unidades', onclick: async () => {
-                    const data = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetArticulos")
-                    const dataU = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetUnidades")
+            // {
+            //     tagName: 'label', innerText: 'Convertidor de unidades', onclick: async () => {
+            //         const data = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetArticulos")
+            //         const dataU = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetUnidades")
 
-                    const Model = new ConvertirMedida({
+            //         const Model = new ConvertirMedida({
 
-                        idunidadmedida: {
-                            type: "select",
-                            Dataset: dataU.map((d) => ({ id: d.idunidadmedida, desc: d.nombreunidad }))
-                        },
-                        idarticulo: {
-                            type: "select",
-                            Dataset: data.map((d) => ({ id: d.idarticulo, desc: d.nombrearticulo }))
-                        }
-                    })
-                    ChargeCatalogo(Model)
-                }
-            },
+            //             idunidadmedida: {
+            //                 type: "select",
+            //                 Dataset: dataU.map((d) => ({ id: d.idunidadmedida, desc: d.nombreunidad }))
+            //             },
+            //             idarticulo: {
+            //                 type: "select",
+            //                 Dataset: data.map((d) => ({ id: d.idarticulo, desc: d.nombrearticulo }))
+            //             }
+            //         })
+            //         ChargeCatalogo(Model)
+            //     }
+            // },
         ]
     }));
     AppMain.append(Render.Create({ id: "TabContainer" }));
