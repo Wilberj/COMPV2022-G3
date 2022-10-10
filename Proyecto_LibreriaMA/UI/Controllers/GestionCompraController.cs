@@ -34,6 +34,11 @@ namespace UI.Controllers
            
             return ent.Get<ViewDevolucionCompra>();
         }
+        public Object ChargeDetalleDevCompra(ViewDetalleDevolucion ent)
+        {
+
+            return ent.Get<ViewDetalleDevolucion>();
+        }
         public Object ChargeArticulosDanados(ViewArticulosDanados ent)
         {
 

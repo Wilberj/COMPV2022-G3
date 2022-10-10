@@ -1,6 +1,7 @@
 import { TableComponent } from "../../../CoreComponents/TableComponent.js";
-import { ViewAdminMercancia, ViewArticuloCompra, ViewCompra, ViewDevolucionCompra } from "../../../Model/ViewDatabaseModel.js";
+import { ViewDetalleDevolucion } from "../../../Model/ViewDatabaseModel.js";
 import { AjaxTools } from "../../utility.js";
+import { Identificador } from "../ViewDevolucionCompra.js";
 
 class AgregarAdminDetalleDevCompra extends HTMLElement  {
     constructor(action = () =>{}) {  
@@ -11,14 +12,17 @@ class AgregarAdminDetalleDevCompra extends HTMLElement  {
         }
         connectedCallback() { }
         Draw = async () => {
-            this.Dataset = await AjaxTools.PostRequest("../api/GestionCompra/AdminMercancia")
+            this.Dataset = await AjaxTools.PostRequest("../api/GestionCompra/ChargeDetalleDevCompra")
             this.Table = new TableComponent({
-                ModelObject: new ViewAdminMercancia(),
-                Dataset: this.Dataset,
+                ModelObject: new ViewDetalleDevolucion(),
+                Dataset: this.Dataset.filter(compra => {
+                    return compra.idcompra == Identificador.id;
+                }),
                 Functions: [
                     {
                         name: 'Agregar', action: async(Dato) =>{
                             this.action(Dato);
+                            console.log(this.Dataset);
                         }
                     }
                 ]

@@ -10,7 +10,9 @@ import { TableComponent } from "../../CoreComponents/TableComponent.js";
 import { AgregarCompraDevolucion } from "./Components/AgregarCompraDevolucion.js";
 import { AgregarDetallDevolucion } from "./Components/AgregarDetalleDevolucion.js";
 
-
+class Identificador {
+    id;
+}
 window.onload = async () => {
     const Dataset = []
     const DetalleDevCompra = [];
@@ -95,17 +97,22 @@ window.onload = async () => {
 
                 const Modal = new ModalComponent
 
-                    (new AgregarCompraDevolucion((articulo) => {
+                    (new AgregarCompraDevolucion((DetalleDev) => {
 
                         if (Dataset.length > 0) {
                             alert("Solo puede seleccionar una compra")
                             return;
                         }
-                        Dataset.push(articulo);
+                        Dataset.push(DetalleDev);
                         Modal.Close();
                         // console.log(NewDevolucionCompra);
                         Table.DrawTableComponent();
+                        
                         NewDevolucionCompra.idcompra = Dataset[0].idcompra
+                        console.log(DetalleDev.idcompra);
+                        Identificador.id = JSON.parse(JSON.stringify(DetalleDev.idcompra))
+                        console.log(Identificador.id);
+
                         NewDevolucionCompra.idproveedor = Dataset[0].idproveedor
                     }));
                 AppMain.append(Modal)
@@ -165,3 +172,4 @@ window.onload = async () => {
     AppMain.append(TableDetalleDevCompra);
 }
 
+export {Identificador}

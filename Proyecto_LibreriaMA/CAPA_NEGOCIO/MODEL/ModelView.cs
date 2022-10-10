@@ -65,5 +65,17 @@ namespace CAPA_NEGOCIO.MODEL
     }
 
 
+    public class ViewDetalleDevolucion : EntityClass
+    {
+        public string? nombrearticulo { get; set; }
+        public Decimal? preciocompra { get; set; }
+        public Decimal? cantidadcompra { get; set; }
+        public int? idcompra { get; set; }
+        public int? idadmimercancias { get; set; }
+        public Decimal? preciocompraunidad { get; set; }
+        public int? existenciasarticuloorigen { get; set; }
+        public int? existenciasarticulounidad { get; set; }
+    }
+
 
 }

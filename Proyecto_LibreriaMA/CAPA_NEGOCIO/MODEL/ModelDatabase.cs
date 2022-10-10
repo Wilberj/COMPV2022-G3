@@ -272,7 +272,7 @@ namespace CAPA_NEGOCIO.MODEL
             {
                 foreach (var TamanoxArt in this.TamanoxArt)
                 {
-                    /*ConvertMedida.idconvertir = this.iddetallecompra;*/
+                    TamanoxArt.iddetallecompra = this.iddetallecompra;
                     TamanoxArt.idtamanoxarticulo = (Int32)TamanoxArt.Save();
                 }
             }
@@ -424,6 +424,8 @@ namespace CAPA_NEGOCIO.MODEL
         public int? idtamanoxarticulo { get; set; }
         public int? idtamano { get; set; }
         public int? idarticulo { get; set; }
+        public int? iddetallecompra { get; set; }
+
     }
 
     public class TipoMaterial : EntityClass
