@@ -50,15 +50,22 @@ window.onload = async () => {
     );
 
     const dataC = await AjaxTools.PostRequest("../api/MantenimientoCatalogos/GetDatosUsuarios")
+    const dataB = await AjaxTools.PostRequest("../api/MantenimientoCatalogos/GetBodega")
     const formArtiDanado = new FormComponet({
         Model: new ArticulosDanados({
             idusuario: {
                 type: "select",
                 Dataset: dataC.map((d) => ({ id: d.idusuario, desc: d.nombreusuario }))
             },
+            idbodega: {
+                type: "select",
+                Dataset: dataB.map((d) => ({ id: d.idbodega, desc: d.nombrebodega }))
+            },
             idtamanoxarticulo: { type: "number", hidden: true },
             cantidaddanada: { type: "number", hidden: true },
             descripcionarticulodanado: { type: "number", hidden: true },
+            cantidaddanadaorigen: { type: "number", hidden: true },
+            cantidaddanadaunidad: { type: "number", hidden: true },
 
             // //idusuario: { type: "number" },
             // devolucionUnidad: { type: "checkbox", },
@@ -103,9 +110,11 @@ window.onload = async () => {
                     AdminMercas[0].idusuario = NuevoArtiDana.idusuario
 
                     NuevoArtiDana.descripcionarticulodanado = AdminMercas[0].descripcionarticulodanado;
-                    NuevoArtiDana.cantidaddanada = AdminMercas[0].cantidaddanada;
+                    NuevoArtiDana.cantidaddanadaorigen = AdminMercas[0].cantidaddanadaorigen
+                    NuevoArtiDana.cantidaddanadaunidad = AdminMercas[0].cantidaddanadaunidad
 
                     console.log(NuevoArtiDana);
+                    console.log(AdminMercas);
                 })
             )
             AppMain.append(Modal)

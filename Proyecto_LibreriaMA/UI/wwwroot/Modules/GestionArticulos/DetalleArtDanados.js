@@ -31,6 +31,7 @@ class AgregarDetalleArtDanados extends HTMLElement {
                 devolucionUnidad: { type: "checkbox", },
                 devolucionUnidadOrigen: { type: "checkbox", },
                 idadmimercancias: { type: "number", hidden: true },
+                idbodega: { hidden: true },
             }),
 
             EditObject: this.NuevoArtiDana
@@ -89,12 +90,18 @@ class AgregarDetalleArtDanados extends HTMLElement {
                         onclick: async () => {
                             this.NuevoArtiDana.idtamanoxarticulo = this.Dataset[0].idtamanoxarticulo 
 
+                            this.NuevoArtiDana.Temporal = this.Dataset[0].existenciasarticulounidad / this.Dataset[0].existenciasarticuloorigen;
+                            this.NuevoArtiDana.Cantidadunidadtotal = this.NuevoArtiDana.Temporal *  this.NuevoArtiDana.cantidaddanadaorigen;
+
                             this.NuevoArtiDana.idadmimercancias = this.Dataset[0].idadmimercancias;
                             if (this.NuevoArtiDana.devolucionUnidad == true) {
-                                this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad - this.NuevoArtiDana.cantidaddanada
+                                this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad - this.NuevoArtiDana.cantidaddanadaunidad
                              }
                              if (this.NuevoArtiDana.devolucionUnidadOrigen == true) {
-                                 this.Dataset[0].existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen - this.NuevoArtiDana.cantidaddanada
+                                 this.Dataset[0].existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen - this.NuevoArtiDana.cantidaddanadaorigen
+                                 this.NuevoArtiDana.cantidaddanadaunidad = this.NuevoArtiDana.Cantidadunidadtotal
+                                 this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad - this.NuevoArtiDana.Cantidadunidadtotal
+                                 
                              }
                              this.NuevoArtiDana.existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad
                              this.NuevoArtiDana.existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen
