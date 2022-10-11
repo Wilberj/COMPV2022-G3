@@ -1,26 +1,19 @@
+import { FormComponet } from "../../CoreComponents/FormComponent.js";
+import { ModalComponent } from "../../CoreComponents/ModalComponent.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
 import { AdministracionMercancias } from "../../Model/DatabaseModel.js";
+import { ViewAdminMercancia } from "../../Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js";
+import { Update } from "./Update.js";
 
-
+class Admin {
+AdminMerca
+}
 window.onload = async () => {
     AppMain.append(Render.Create({ tagName: "h1",
     innerText: "Administracion Mercancia", class: "header1" })
     );
 
-    // AppMain.append(Render.Create({
-    //     class: "FormContainer2",
-    //     children: [
-    //         {
-    //             tagName: 'input', type: 'button',
-    //             className: 'btn',
-    //             value: 'Ingresar nueva compra', onclick: async () => {
-    //                 //cargar vists
-    //                 window.location = "./ViewCrearCompra"
-    //             }
-    //         }
-    //     ]
-    // }))
     AppMain.append(Render.Create({
         class: "FormContainer2",
         children: [
@@ -30,22 +23,44 @@ window.onload = async () => {
                 value: 'Ingresar Existencias a bodega', onclick: async () => {
                     //cargar vists
                     window.location = "../GestionBodega/GestionBodegaView"
+                    
                 }
             }
         ]
     }))
+
     const MisArticulos =
         await AjaxTools.PostRequest("../api/GestionCompra/AdminMercancia")
-    AppMain.append(new TableComponent({
+
+        const Table = new TableComponent ({
         Dataset: MisArticulos, 
-        ModelObject: new AdministracionMercancias(
+        ModelObject: new ViewAdminMercancia(
         ),
         Functions: [    
-            {
-                name: "Detalles", action: async(Articulos) =>{
-                    //Cargar detalle
+            { 
+                name: "Editar", action: async(AdminMerca) =>{
+
+                    Admin = AdminMerca
+                    console.log(Admin);
+                    console.log(MisArticulos);
+
+                    const Modal = new ModalComponent(
+                        new Update(() => {
+                            // Admin.AdminMerca = JSON.parse(JSON.stringify(AdminMerca))
+                            // console.log(Admin);
+                            MisArticulos.push();
+                            Modal.Close();
+                            Table.DrawTableComponent();
+
+                        })
+                    )
+                    AppMain.append(Modal)
                 }
             }
         ]
-    }))    
+        
+    }    
+    )   
+    AppMain.append(Table)
 }
+export {Admin}

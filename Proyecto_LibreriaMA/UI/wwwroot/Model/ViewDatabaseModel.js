@@ -38,16 +38,21 @@ class ViewAdminMercancia {
         for (const prop in props) {
             this[prop] = props[prop];
         }
-    }
+    }    
+    idtamanoxarticulo = { type: "number", hidden: true };
+    Seleccionar_Bodega = { type: "number", hidden: true };
+    idconvertir = { type: "number", hidden: true };
+    nombrearticulo = { type: "text" };
+    nombrebodega = { type: "text" };
     existenciasarticulounidad = { type: "number" };
     existenciasarticuloorigen = { type: "number" };
     precioventa = { type: "number" };
     preciocompraunidad = { type: "number" };
-    nombrearticulo = { type: "text" };
     nombreunidad = { type: "text" };
     idadmimercancias = { type: "number", hidden: true };
-    idcompra = { type: "number" };
+    idcompra = { type: "number", hidden: true };
     iddetallecompra = { type: "number", hidden: true };
+    idbodega = { type: "number", hidden: true };
 }
 export { ViewAdminMercancia }
 

@@ -5,13 +5,13 @@ class AdministracionMercancias {
         }
     }
     idadmimercancias = { type: "number", primary: true };
-    idtamanoxarticulo = { type: "number" };
-    idconvertir = { type: "number" };
-    preciocompraunidad = { type: "number" };
+    idtamanoxarticulo = { type: "number", hidden: true };
+    idconvertir = { type: "number", hidden: true };
+    preciocompraunidad = { type: "number", hidden: true };
     precioventa = { type: "number" };
-    existenciasarticuloorigen = { type: "number" };
-    existenciasarticulounidad = { type: "number" };
-    idbodega = { type: "number" };
+    existenciasarticuloorigen = { type: "number", hidden: true };
+    existenciasarticulounidad = { type: "number",hidden: true };
+    idbodega = { type: "number", hidden: true };
 
 }
 export { AdministracionMercancias }
