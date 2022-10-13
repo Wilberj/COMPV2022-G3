@@ -14,7 +14,10 @@ namespace UI.Controllers
             AuthNetCore.loginIN("sa", "1234");
         }
         [HttpPost]
-
+        public Object UpdateAdministracionMercancias(AdministracionMercancias ent)
+        {
+            return ent.Update("idadmimercancias");
+        }
         public Object SaveAdministracionMercancias(AdministracionMercancias ent)
         {
             ent.idadmimercancias = (Int32)ent.Save();
@@ -24,9 +27,6 @@ namespace UI.Controllers
         {
             return ent.Get<AdministracionMercancias>();
         }
-        public Object UpdateAdministracionMercancias(AdministracionMercancias ent)
-        {
-            return ent.Update("idadmimercancias");
-        }
+        
     }
 }

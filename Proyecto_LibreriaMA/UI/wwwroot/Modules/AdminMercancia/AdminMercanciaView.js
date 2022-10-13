@@ -2,16 +2,19 @@ import { FormComponet } from "../../CoreComponents/FormComponent.js";
 import { ModalComponent } from "../../CoreComponents/ModalComponent.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
 import { AdministracionMercancias } from "../../Model/DatabaseModel.js";
-import { ViewAdminMercancia } from "../../Model/ViewDatabaseModel.js";
+import { Vieadminbodega, ViewAdminMercancia } from "../../Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js";
+import { NewExistenciaBodega } from "./NewExistenciaBodega.js";
 import { Update } from "./Update.js";
 
 class Admin {
-AdminMerca
+    AdminMerca
 }
 window.onload = async () => {
-    AppMain.append(Render.Create({ tagName: "h1",
-    innerText: "Administracion Mercancia", class: "header1" })
+    AppMain.append(Render.Create({
+        tagName: "h1",
+        innerText: "Administracion Mercancia", class: "header1"
+    })
     );
 
     AppMain.append(Render.Create({
@@ -23,24 +26,25 @@ window.onload = async () => {
                 value: 'Ingresar Existencias a bodega', onclick: async () => {
                     //cargar vists
                     window.location = "../GestionBodega/GestionBodegaView"
-                    
+
                 }
             }
         ]
     }))
 
     const MisArticulos =
-        await AjaxTools.PostRequest("../api/GestionCompra/AdminMercancia")
+        await AjaxTools.PostRequest("../api/GestionCompra/AdminbodegaMercancia")
 
-        const Table = new TableComponent ({
-        Dataset: MisArticulos, 
-        ModelObject: new ViewAdminMercancia(
+    const Table = new TableComponent({
+        Dataset: MisArticulos,
+        ModelObject: new Vieadminbodega(
         ),
-        Functions: [    
-            { 
-                name: "Editar", action: async(AdminMerca) =>{
+        Functions: [
+            {
+                name: "Editar", action: async (AdminMerca) => {
 
                     Admin = AdminMerca
+
                     console.log(Admin);
                     console.log(MisArticulos);
 
@@ -56,11 +60,31 @@ window.onload = async () => {
                     )
                     AppMain.append(Modal)
                 }
+            },
+            //lo de nueva existencia y restar existenca
+            {
+                name: "Mover", action: async (AdminMerca) => {
+                    Admin = AdminMerca
+                    //AdminMerca.idadmimercancias = null
+                    console.log(Admin);
+                    console.log(MisArticulos);
+                    const Modal = new ModalComponent(
+                        new NewExistenciaBodega(() => {
+                            MisArticulos.push();
+                            Modal.Close();
+                            Table.DrawTableComponent();
+
+                        })
+                    )
+                    AppMain.append(Modal)
+                }
             }
-        ]
-        
-    }    
-    )   
+
+        ],
+
+
+    }
+    )
     AppMain.append(Table)
 }
-export {Admin}
+export { Admin }

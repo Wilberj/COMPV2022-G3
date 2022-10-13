@@ -78,6 +78,21 @@ namespace CAPA_NEGOCIO.MODEL
         public int? existenciasarticuloorigen { get; set; }
         public int? existenciasarticulounidad { get; set; }
     }
-
+    public class Vieadminbodega : EntityClass
+    {
+        public int? idadmimercancias { get; set; }
+        public Decimal? preciocompraunidad { get; set; }
+        public Decimal? precioventa { get; set; }
+        public int? existenciasarticuloorigen { get; set; }
+        public int? existenciasarticulounidad { get; set; }
+        public string? nombrearticulo { get; set; }
+        public int? idbodega { get; set; }
+        public string? nombrebodega { get; set; }
+        public int? idcompra { get; set; }
+        public int? idconvertir { get; set; }
+        public string? nombreunidad { get; set; }
+        public int? idtamanoxarticulo { get; set; }
+        public int? iddetallecompra { get; set; }
+    }
 
 }

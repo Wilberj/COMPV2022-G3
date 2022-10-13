@@ -4,6 +4,7 @@ class TableComponent extends HTMLElement {
     constructor(config = {
         Dataset: [],
         Functions: [],
+        
         ModelObject: {}
     }) {
         super();
