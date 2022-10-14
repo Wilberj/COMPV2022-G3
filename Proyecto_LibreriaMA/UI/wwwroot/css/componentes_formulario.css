@@ -26,6 +26,9 @@
     font-weight: bold;
     cursor: pointer;
 }
+.btn{
+    margin-bottom: 2.5px;
+}
 
 .btn_primary {
     background-color: var(--color-primary);
