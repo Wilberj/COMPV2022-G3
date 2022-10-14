@@ -14,15 +14,16 @@ namespace UI.Controllers
             AuthNetCore.loginIN("sa", "1234");
         }
         [HttpPost]
-        public Object UpdateAdministracionMercancias(AdministracionMercancias ent)
-        {
-            return ent.Update("idadmimercancias");
-        }
         public Object SaveAdministracionMercancias(AdministracionMercancias ent)
         {
             ent.idadmimercancias = (Int32)ent.Save();
             return ent;
         }
+        public Object UpdateAdministracionMercancias(AdministracionMercancias ent)
+        {
+            return ent.Update("idadmimercancias");
+        }
+       
         public Object GetAdministracionMercancias(AdministracionMercancias ent)
         {
             return ent.Get<AdministracionMercancias>();

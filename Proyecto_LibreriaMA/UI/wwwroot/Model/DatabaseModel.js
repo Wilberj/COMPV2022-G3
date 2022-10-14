@@ -10,7 +10,7 @@ class AdministracionMercancias {
     preciocompraunidad = { type: "number", hidden: true };
     precioventa = { type: "number" };
     existenciasarticuloorigen = { type: "number", hidden: true };
-    existenciasarticulounidad = { type: "number",hidden: true };
+    existenciasarticulounidad = { type: "number", hidden: true };
     idbodega = { type: "number", hidden: true };
 
 }

@@ -1,41 +1,38 @@
 import { FormComponet } from "../../CoreComponents/FormComponent.js";
 import { ModalComponent } from "../../CoreComponents/ModalComponent.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
-import { AdministracionMercancias, Articulos } from "../../Model/DatabaseModel.js";
-import { Vieadminbodega } from "../../Model/ViewDatabaseModel.js";
-import { Render,AjaxTools } from "../utility.js";
+import { AdministracionMercancias, } from "../../Model/DatabaseModel.js";
+import { ViewAdminMercancia } from "../../Model/ViewDatabaseModel.js";
+import { Render, AjaxTools } from "../utility.js";
 import { Admin } from "./AdminMercanciaView.js";
-import { AgregarExistenciaBodega } from "./AgregarExistenciaBodega.js";
+import { Update } from "./Update.js";
 
 
 
 class NewExistenciaBodega extends HTMLElement {
-    constructor(action =() =>{}){
+    constructor(action = () => { }) {
         super();
         this.Dataset = [];
         this.action = action;
-        this.Bodega =[];
-       // this.Nuevoexisbodega = {}
-       
+        this.Bodega = [];
+
         this.Nuevoexisbodega = Admin
-        //this.Nuevoexisbodega = this.AdminMercas
-       //this.AdminMercas = this.AdminMercas
-        //this.Nuevoexisbodega = {}
-        this.Nuevoexisbodega.AdminMercas = this.Dataset;
-        this.Draw(); 
- 
+
+        this.Nuevoexisbodega.NuevaMercancia = {};
+        this.Draw();
+
     }
-    
+
     connectedCallback() { }
-    Draw = async () =>{
+    Draw = async () => {
         this.Bodega = await AjaxTools.PostRequest("../api/MantenimientoCatalogos/GetBodega")
 
         this.FormexisBodega = new FormComponet({
             Model: new AdministracionMercancias({
                 GuardarUnidadOrigen: { type: "checkbox" },
                 GuardarUnidad: { type: "checkbox" },
-                idtamanoxarticulo: { type: "number",hidden:true},
-                idconvertir: { type: "number",hidden:true},
+                idtamanoxarticulo: { type: "number", hidden: true },
+                idconvertir: { type: "number", hidden: true },
                 preciocompraunidad: { type: "number", hidden: true },
                 precioventa: { type: "number" },
                 existenciasarticuloorigen: { type: "number" },
@@ -47,91 +44,105 @@ class NewExistenciaBodega extends HTMLElement {
             }),
             EditObject: this.Nuevoexisbodega
         }),
-        //tabla que trae los datos de eexistencia
-        this.Table = new TableComponent({
-            ModelObject: new Vieadminbodega(),
-            Dataset: this.Dataset,
-        })
-        this.Table.filter.append(
-            Render.Create({
-                tagName: 'input', type: 'button',
-            className: 'btn_primary', value: 'Anadir Nueva existencia',
-             onclick: async () => {
-                const Modal = new ModalComponent(
-                    new AgregarExistenciaBodega((articulo) =>{
-                        if(this.Dataset.length > 0){
+            //tabla que trae los datos de eexistencia
+            // this.Table = new TableComponent({
+            //     ModelObject: new ViewAdminMercancia(),
+            //     Dataset: this.Dataset,
+            // })
+            // this.Table.filter.append(
+            //     Render.Create({
+            //         tagName: 'input', type: 'button',
+            //     className: 'btn_primary', value: 'Anadir Nueva existencia',
+            //      onclick: async () => {
+            //         const Modal = new ModalComponent(
+            //             new Update((articulo) =>{
+            //                 if(this.Dataset.length > 0){
 
-                            alert("Ya existe el Dato")
-                            return;
-                        }
-                        this.Dataset.push(articulo)
-                        Modal.Close();
-                        this.Table.DrawTableComponent();
-                        console.log(articulo);
-                    }));
-                    AppMain.append(Modal)
-                  
-             }
-             
-            })
-                //code
-        )
-        this.append(this.FormexisBodega,this.Table);
-        //console.log(this.Nuevoexisbodega);
-        //console.log(Admin);
-     ////////////
+            //                     alert("Ya existe el Dato")
+            //                     return;
+            //                 }
+            //                 this.Dataset.push(articulo)
+            //                 Modal.Close();
+            //                 this.Table.DrawTableComponent();
+            //                 console.log(articulo);
+            //             }));
+            //             AppMain.append(Modal)
+
+            //      }
+
+            //     })
+            //         //code
+            // )
+
+        this.Nuevoexisbodega.NuevaMercancia.idtamanoxarticulo = this.Nuevoexisbodega.idtamanoxarticulo
+        this.Nuevoexisbodega.NuevaMercancia.idconvertir = this.Nuevoexisbodega.idconvertir
+        this.Nuevoexisbodega.NuevaMercancia.preciocompraunidad = this.Nuevoexisbodega.preciocompraunidad
+        this.Nuevoexisbodega.NuevaMercancia.idadmimercancias = undefined
+        this.Nuevoexisbodega.temporal = this.Nuevoexisbodega.existenciasarticulounidad / this.Nuevoexisbodega.existenciasarticuloorigen;
+        this.Nuevoexisbodega.existenciaorigentemporal = this.Nuevoexisbodega.existenciasarticuloorigen
+        this.Nuevoexisbodega.existenciaunidadtemporal = this.Nuevoexisbodega.existenciasarticulounidad
+        this.Nuevoexisbodega.precioventatemporal = this.Nuevoexisbodega.precioventa
+
+        this.append(this.FormexisBodega);
+
         this.append(Render.Create({
             className: "FormContainer2",
             children: [{
                 tagName: "input",
-                        type: "button",
-                        className: "btn_primary",
-                        value: "Agregar Informacion Al Detalle",
-                        onclick: async () => {
-                            //this.Nuevoexisbodega.idadmimercancias = this.Dataset[0].idadmimercancias
-                           this.Dataset[0].idadmimercancias = this.Nuevoexisbodega.idadmimercancias
-                                this.Nuevoexisbodega.Temporal = this.Dataset[0].existenciasarticulounidad / this.Dataset[0].existenciasarticuloorigen;
-                                this.Nuevoexisbodega.Cantidadunidadtotal = this.Nuevoexisbodega.Temporal * this.Nuevoexisbodega.existenciasarticuloorigen
-                            if(this.Nuevoexisbodega.GuardarUnidad){
-                                this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad - this.Nuevoexisbodega.existenciasarticulounidad
-                            }
-                            if(this.Nuevoexisbodega.GuardarUnidadOrigen){
+                type: "button",
+                className: "btn_primary",
+                value: "Agregar Informacion Al Detalle",
+                onclick: async () => {
 
-                            }
-                            this.Dataset[0].existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen
-                        this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad
-                           // this.Nuevoexisbodega.idtamanoxarticulo = this.Nuevoexisbodega[0].idtamanoxarticulo
-                           // this.AdminMerca.idtamanoxarticulo= this.AdminMerca.idtamanoxarticulo
-                          
-                           const response = await AjaxTools.PostRequest("../api/AdminMercancia/UpdateAdministracionMercancias",
-                           "../api/AdminMercancia/SaveAdministracionMercancias",this.Nuevoexisbodega.idadmimercancias=null,
-                            this.Nuevoexisbodega
-                            );
-                            if (response == true) {
-                                AppMain.append(
-                                    new ModalComponent(
-                                        Render.Create({
-                                            tagName: "h1",
-                                            innerText: " Guardado Completo",
-                                            
-                                        }),
+                    this.Nuevoexisbodega.idbodega = this.Nuevoexisbodega.Seleccionar_Bodega
+                    this.Nuevoexisbodega.nombrebodega = this.Bodega[0].nombrebodega
+                    this.Nuevoexisbodega.NuevaMercancia.idbodega = this.Nuevoexisbodega.idbodega
+                    this.Nuevoexisbodega.NuevaMercancia.precioventa = this.Nuevoexisbodega.precioventa
+                    this.Nuevoexisbodega.precioventa = this.Nuevoexisbodega.precioventatemporal
 
-                                       // window.location.reload()
-                                    )
-                                        
-                                );
-                                           // console.log(this.Nuevoexisbodega);
-                            }
-                           
-                          
-                            this.action(this.Nuevoexisbodega,this.Dataset,console.log(this.Nuevoexisbodega))
-                            
-                        }
-                        
+                    if (this.Nuevoexisbodega.GuardarUnidad == true) {
+                        this.Nuevoexisbodega.existenciaunidadtemporal = this.Nuevoexisbodega.existenciaunidadtemporal - this.Nuevoexisbodega.existenciasarticulounidad
+                        this.Nuevoexisbodega.newexistenciaunidadtemporal = this.Nuevoexisbodega.existenciasarticulounidad
+                        this.Nuevoexisbodega.NuevaMercancia.existenciasarticulounidad = this.Nuevoexisbodega.newexistenciaunidadtemporal
+                        this.Nuevoexisbodega.existenciasarticulounidad = this.Nuevoexisbodega.existenciaunidadtemporal
+                        this.Nuevoexisbodega.NuevaMercancia.existenciasarticuloorigen = this.Nuevoexisbodega.existenciaorigentemporal
+                    }
+
+                    if (this.Nuevoexisbodega.GuardarUnidadOrigen == true) {
+                        this.Nuevoexisbodega.existenciaorigentemporal = this.Nuevoexisbodega.existenciaorigentemporal - this.Nuevoexisbodega.existenciasarticuloorigen
+                        this.Nuevoexisbodega.newexistenciaorigentemporal = this.Nuevoexisbodega.existenciasarticuloorigen
+                        this.Nuevoexisbodega.NuevaMercancia.existenciasarticuloorigen = this.Nuevoexisbodega.newexistenciaorigentemporal
+                        this.Nuevoexisbodega.existenciasarticuloorigen = this.Nuevoexisbodega.existenciaorigentemporal
+                        this.Nuevoexisbodega.NuevaMercancia.existenciasarticulounidad = this.Nuevoexisbodega.newexistenciaorigentemporal * this.Nuevoexisbodega.temporal
+                        this.Nuevoexisbodega.existenciasarticulounidad = this.Nuevoexisbodega.existenciaunidadtemporal
+                        this.Nuevoexisbodega.existenciasarticulounidad = this.Nuevoexisbodega.existenciasarticulounidad - this.Nuevoexisbodega.NuevaMercancia.existenciasarticulounidad
+                    }
+                    
+                    const response = await AjaxTools.PostRequest("../api/AdminMercancia/UpdateAdministracionMercancias", this.Nuevoexisbodega,
+                        await AjaxTools.PostRequest("../api/AdminMercancia/SaveAdministracionMercancias", this.Nuevoexisbodega.NuevaMercancia
+                        ));
+                    console.log(this.Nuevoexisbodega);
+                    if (response == true) {
+                        AppMain.append(
+                            new ModalComponent(
+                                Render.Create({
+                                    tagName: "h1",
+                                    innerText: " Guardado Completo",
+
+                                }),
+                            )
+                        );
+                    }
+
+
+                    this.action(this.Nuevoexisbodega, this.Nuevoexisbodega.NuevaMercancia, console.log(this.Nuevoexisbodega))
+
+                }
+
             }]
-            
+
         }))
     }
 }
-customElements.define('w-nuevoeexis',NewExistenciaBodega)
-export {NewExistenciaBodega};
+customElements.define('w-nuevoeexis', NewExistenciaBodega)
+export { NewExistenciaBodega };

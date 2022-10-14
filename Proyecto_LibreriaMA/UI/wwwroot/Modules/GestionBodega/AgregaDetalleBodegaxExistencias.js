@@ -1,7 +1,6 @@
 import { FormComponet } from "../../CoreComponents/FormComponent.js";
 import { ModalComponent } from "../../CoreComponents/ModalComponent.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
-import { BodegaxArticulo } from "../../Model/DatabaseModel.js";
 import { ViewArticulosDanados } from "../../Model/ViewDatabaseModel.js";
 import { AgregarArticulosDañados } from "../GestionArticulos/AgregarArticulosDañados.js";
 import { Render } from "../utility.js";

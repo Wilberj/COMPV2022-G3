@@ -38,9 +38,19 @@ class ViewAdminMercancia {
         for (const prop in props) {
             this[prop] = props[prop];
         }
-    }    
+    }
+    precioventatemporal= { hidden: true };
+    NuevaMercancia= { hidden: true };
+    temporal = { hidden: true };
+    existenciaorigentemporal = { hidden: true };
+    newexistenciaorigentemporal = { hidden: true };
+    GuardarUnidad = { hidden: true };
+    GuardarUnidadOrigen = { hidden: true };
+    existenciaunidadtemporal = { hidden: true };
+    newexistenciaunidadtemporal = { hidden: true };
     idtamanoxarticulo = { type: "number", hidden: true };
     Seleccionar_Bodega = { type: "number", hidden: true };
+    existenciasarticulounidades = { type: "number", hidden: true };
     idconvertir = { type: "number", hidden: true };
     nombrearticulo = { type: "text" };
     nombrebodega = { type: "text" };
@@ -53,6 +63,8 @@ class ViewAdminMercancia {
     idcompra = { type: "number", hidden: true };
     iddetallecompra = { type: "number", hidden: true };
     idbodega = { type: "number", hidden: true };
+    idconvertir = { type: "number", hidden: true };
+    idtamanoxarticulo = { type: "number", hidden: true };
 }
 export { ViewAdminMercancia }
 
@@ -90,18 +102,18 @@ export { ViewArticulosDanados }
 
 class ViewDetalleDevolucion {
     constructor(props) {
-     for (const prop in props) {
-      this[prop] = props[prop];
-     }
+        for (const prop in props) {
+            this[prop] = props[prop];
+        }
     }
     idadmimercancias = { type: "number", hidden: true };
-    nombrearticulo = { type: "text"  };
-    preciocompra = { type: "number" };  
-    cantidadcompra = { type: "number"  };
-    idcompra = { type: "number"  };
-    preciocompraunidad = { type: "number", hidden: true   };
-    existenciasarticuloorigen = { type: "number"  };
-    existenciasarticulounidad = { type: "number"  };
-    
-   }
-   export { ViewDetalleDevolucion }
+    nombrearticulo = { type: "text" };
+    preciocompra = { type: "number" };
+    cantidadcompra = { type: "number" };
+    idcompra = { type: "number" };
+    preciocompraunidad = { type: "number", hidden: true };
+    existenciasarticuloorigen = { type: "number" };
+    existenciasarticulounidad = { type: "number" };
+
+}
+export { ViewDetalleDevolucion }

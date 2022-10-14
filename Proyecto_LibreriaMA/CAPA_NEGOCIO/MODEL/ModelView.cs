@@ -44,6 +44,9 @@ namespace CAPA_NEGOCIO.MODEL
         public int? idcompra { get; set; }
         public int? iddetallecompra { get; set; }
         public int? idbodega { get; set; }
+        public int? idconvertir { get; set; }
+        public int? idtamanoxarticulo { get; set; }
+
     }
     public class ViewDevolucionCompra : EntityClass
     {
@@ -90,8 +93,9 @@ namespace CAPA_NEGOCIO.MODEL
         public string? nombrebodega { get; set; }
         public int? idcompra { get; set; }
         public int? idconvertir { get; set; }
-        public string? nombreunidad { get; set; }
         public int? idtamanoxarticulo { get; set; }
+
+        public string? nombreunidad { get; set; }
         public int? iddetallecompra { get; set; }
     }
 

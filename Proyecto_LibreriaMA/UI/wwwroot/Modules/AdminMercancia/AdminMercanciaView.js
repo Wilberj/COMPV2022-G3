@@ -1,8 +1,7 @@
 import { FormComponet } from "../../CoreComponents/FormComponent.js";
 import { ModalComponent } from "../../CoreComponents/ModalComponent.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
-import { AdministracionMercancias } from "../../Model/DatabaseModel.js";
-import { Vieadminbodega, ViewAdminMercancia } from "../../Model/ViewDatabaseModel.js";
+import { ViewAdminMercancia } from "../../Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js";
 import { NewExistenciaBodega } from "./NewExistenciaBodega.js";
 import { Update } from "./Update.js";
@@ -33,18 +32,17 @@ window.onload = async () => {
     }))
 
     const MisArticulos =
-        await AjaxTools.PostRequest("../api/GestionCompra/AdminbodegaMercancia")
+        await AjaxTools.PostRequest("../api/GestionCompra/AdminMercancia")
 
     const Table = new TableComponent({
         Dataset: MisArticulos,
-        ModelObject: new Vieadminbodega(
+        ModelObject: new ViewAdminMercancia(
         ),
         Functions: [
             {
                 name: "Editar", action: async (AdminMerca) => {
 
                     Admin = AdminMerca
-
                     console.log(Admin);
                     console.log(MisArticulos);
 
@@ -65,13 +63,17 @@ window.onload = async () => {
             {
                 name: "Mover", action: async (AdminMerca) => {
                     Admin = AdminMerca
-                    //AdminMerca.idadmimercancias = null
+
+                   
+
+                    console.log(AdminMerca);
                     console.log(Admin);
                     console.log(MisArticulos);
                     const Modal = new ModalComponent(
                         new NewExistenciaBodega(() => {
                             MisArticulos.push();
                             Modal.Close();
+                            
                             Table.DrawTableComponent();
 
                         })
