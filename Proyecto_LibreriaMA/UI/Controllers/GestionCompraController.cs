@@ -58,15 +58,18 @@ namespace UI.Controllers
         {
             return ent.SaveArtiDanado();
         }
-
-      //  public Object GetAdministracionMercancias(AdministracionMercancias ent)
-       // {
-       //     return ent.Get<AdministracionMercancias>();
-       // }
-      //  public Object UpdateAdministracionMercancias(AdministracionMercancias ent)
-       // {
-       //     return ent.Update("idadmimercancias");
-       // }
+        public Object SaveFactura(Factura ent)
+        {
+            return ent.SaveFactura();
+        }
+        //  public Object GetAdministracionMercancias(AdministracionMercancias ent)
+        // {
+        //     return ent.Get<AdministracionMercancias>();
+        // }
+        //  public Object UpdateAdministracionMercancias(AdministracionMercancias ent)
+        // {
+        //     return ent.Update("idadmimercancias");
+        // }
         //public Object SaveBodegaxArticulo(BodegaxArticulo ent)
         //{
         //    return ent.SaveBodegaxArticulo();

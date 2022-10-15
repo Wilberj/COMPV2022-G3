@@ -433,7 +433,40 @@ namespace CAPA_NEGOCIO.MODEL
         public int? idusuario { get; set; }
         public int? idestado { get; set; }
         public decimal? descuentofactura { get; set; }
-    }
+
+        public List<DetalleFactura> DetallVenta { get; set; }
+        public Object SaveFactura()
+        {
+            this.idfactura = (Int32)this.Save();
+            if (this.DetallVenta != null)
+            {
+                foreach (var DetallVenta in this.DetallVenta)
+                {
+                    DetallVenta.idfactura = this.idfactura;
+                    DetallVenta.idfactura = (Int32)DetallVenta.Save();
+                    
+                }
+
+            }
+
+            /* if (this.Usuario == null)
+             {
+                 this.Usuario = new List<DatosUsuarios>();
+            }
+             if (AuthNetCore.User.Roles.Find(r => r == "VENDEDOR") != null)
+             {
+                 Usuario.Add(new DatosUsuarios() { idcompra = this.idcompra, idusuario = AuthNetCore.User.UserId }); 
+             }
+             foreach (var Usuario in this.Usuario)
+             {
+                 Usuario.idcompra = this.idcompra;
+                 Usuario.Save();
+             }*/
+            return true;
+        }
+
+    
+}
 
     public class Marca : EntityClass
     {
