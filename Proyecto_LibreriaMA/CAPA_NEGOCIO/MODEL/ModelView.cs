@@ -55,6 +55,8 @@ namespace CAPA_NEGOCIO.MODEL
         public DateTime? fechacompra { get; set; }
         public string? nombreproveedor { get; set; }
         public string? nombreusuario { get; set; }
+        public bool? activo { get; set; }
+
 
     }
     public class ViewArticulosDanados : EntityClass
@@ -76,6 +78,7 @@ namespace CAPA_NEGOCIO.MODEL
         public Decimal? preciocompra { get; set; }
         public Decimal? cantidadcompra { get; set; }
         public int? idcompra { get; set; }
+        public int? iddetallecompra { get; set; }
         public int? idadmimercancias { get; set; }
         public Decimal? preciocompraunidad { get; set; }
         public int? existenciasarticuloorigen { get; set; }

@@ -64,7 +64,7 @@ window.onload = async () => {
                 name: "Mover", action: async (AdminMerca) => {
                     Admin = AdminMerca
 
-                   
+
 
                     console.log(AdminMerca);
                     console.log(Admin);
@@ -73,7 +73,7 @@ window.onload = async () => {
                         new NewExistenciaBodega(() => {
                             MisArticulos.push();
                             Modal.Close();
-                            
+
                             Table.DrawTableComponent();
 
                         })

@@ -26,7 +26,7 @@ class ViewArticuloCompra {
     }
     nombrearticulo = { type: "text" };
     idarticulo = { type: "number", hidden: true };
-    activo = { type: "checkbox", hidden: true };
+    activo = { type: "checkbox"};
     descripcionarticulo = { type: "text" };
     nombrecategoria = { type: "text" };
     nombremarca = { type: "text" };
@@ -79,6 +79,8 @@ class ViewDevolucionCompra {
     fechacompra = { type: "date" };
     idcompra = { type: "number" };
     idproveedor = { type: "number" };
+    activo = { type: "checkbox" };
+
 }
 export { ViewDevolucionCompra }
 /////////////////////
@@ -111,6 +113,7 @@ class ViewDetalleDevolucion {
     preciocompra = { type: "number" };
     cantidadcompra = { type: "number" };
     idcompra = { type: "number" };
+    iddetallecompra = { type: "number", hidden: true };
     preciocompraunidad = { type: "number", hidden: true };
     existenciasarticuloorigen = { type: "number" };
     existenciasarticulounidad = { type: "number" };

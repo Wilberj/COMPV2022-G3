@@ -39,6 +39,8 @@ namespace UI.Controllers
 
             return ent.Get<ViewDetalleDevolucion>();
         }
+
+
         public Object ChargeArticulosDanados(ViewArticulosDanados ent)
         {
 

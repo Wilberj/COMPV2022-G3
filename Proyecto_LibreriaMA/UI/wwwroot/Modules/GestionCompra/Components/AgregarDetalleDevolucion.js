@@ -13,12 +13,10 @@ class AgregarDetallDevolucion extends HTMLElement {
         super();
         this.Dataset = [];
         this.Dtemporal = [];
-       // this.dataAdminMerca = [];
 
         this.action = action;
         this.DetalleDevCompra = {};
         this.DetalleDevCompra.AdminMerca = this.Dataset;
-
         this.Draw();
     }
     connectedCallback() { }
@@ -75,6 +73,7 @@ class AgregarDetallDevolucion extends HTMLElement {
                 }
             })
         )
+
         this.append(
             this.FormAdminMerca,
             this.Table,);

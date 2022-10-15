@@ -359,6 +359,8 @@ namespace CAPA_NEGOCIO.MODEL
         public int? idcompra { get; set; }
         public DateTime? Fechadevolucioncompra { get; set; }
         public List<DetalleDevolucionCompra> DetalleDevCompra { get; set; }
+        public List<CompraProductos> UpdateCompra { get; set; }
+
         public Object SaveDevolucionCompra()
         {
             this.iddevolucioncompra = (Int32)this.Save();
@@ -368,10 +370,15 @@ namespace CAPA_NEGOCIO.MODEL
                 {
                     DetalleDevCompra.iddevolucioncompra = this.iddevolucioncompra;
                     DetalleDevCompra.iddetalledevolucioncompra = (Int32)DetalleDevCompra.Save();
-                    DetalleDevCompra.UpdateAdminMerca();
+                }
+                foreach (var UpdateCompra in this.UpdateCompra)
+                {
+                    UpdateCompra.idcompra = this.idcompra;
+                    UpdateCompra.Update("idcompra");
                 }
 
             }
+
             return true;
         }
     }
@@ -385,6 +392,7 @@ namespace CAPA_NEGOCIO.MODEL
         public string? descripciondevolucion { get; set; }
         public List<AdministracionMercancias> AdminMerca { get; set; }
 
+
         public Object UpdateAdminMerca()
         {
             if (this.AdminMerca != null)
@@ -395,6 +403,7 @@ namespace CAPA_NEGOCIO.MODEL
                     AdminMerca.Update("idadmimercancias");
                 }
             }
+           
             return true;
         }
     }

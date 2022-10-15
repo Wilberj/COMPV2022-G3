@@ -2,22 +2,32 @@ import { FormComponet } from "../../CoreComponents/FormComponent.js";
 import { ModalComponent } from "../../CoreComponents/ModalComponent.js";
 import { TableComponentCompra } from "./Components/TableComponentCompra.js";
 import { Articulos, CompraProductos, DetalleCompraProductos, DetalleDevolucionCompra, DevolucionCompra } from "../../Model/DatabaseModel.js";
-import { ViewArticuloCompra } from "../../Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js";
 import { AgregarArticuloCompra } from "./Components/AgregarArticuloCompra.js";
 import { AgregarDetalleCompra } from "./Components/AgregarDetalle.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
 import { AgregarCompraDevolucion } from "./Components/AgregarCompraDevolucion.js";
 import { AgregarDetallDevolucion } from "./Components/AgregarDetalleDevolucion.js";
+import { ViewArticuloCompra } from "../../Model/ViewDatabaseModel.js";
 
 class Identificador {
     id;
 }
+// class UpdateCompra {
+//     id;
+// }
+
+
 window.onload = async () => {
     const Dataset = []
     const DetalleDevCompra = [];
+
+    const UpdateCompra = [];
+
     const NewDevolucionCompra = {
-        DetalleDevCompra: DetalleDevCompra
+        DetalleDevCompra: DetalleDevCompra,
+        UpdateCompra: UpdateCompra
+
     }
     AppMain.append(Render.Create({
         tagName: "h1",
@@ -33,7 +43,8 @@ window.onload = async () => {
                 value: 'Guardar registro', onclick: async () => {
                     const response =
                         await AjaxTools.PostRequest("../api/GestionCompra/SaveDevolucionCompra",
-                            NewDevolucionCompra);
+                            NewDevolucionCompra, UpdateCompra);
+                    console.log(NewDevolucionCompra);
                     // (new AgregarArticuloCompra((articulos) => {
 
                     //     if (DetalleCompraProductos.filter(x => x.idarticulo == articulos.idarticulo).length > 0) {
@@ -53,7 +64,7 @@ window.onload = async () => {
                                     tagName: "h1",
                                     innerText: "Devolucion Completada",
                                 }),
-                                    console.log(NewDevolucionCompra)
+                                console.log(NewDevolucionCompra)
                                 // window.location.reload()
                             )
 
@@ -75,14 +86,15 @@ window.onload = async () => {
     })
     const Table = new TableComponent({
         ModelObject: new ViewArticuloCompra(),
-        Dataset: Dataset,
+        Dataset: UpdateCompra,
+
         Functions: [
             {
                 name: "Remover",
                 action: async (Dato) => {
-                    const Datof = Dataset.find((x) => x.idproveedor == Dato.idproveedor);
+                    const Datof = UpdateCompra.find((x) => x.idproveedor == Dato.idproveedor);
                     if (Datof != null) {
-                        Dataset.splice(Dataset.indexOf(Datof), 1);
+                        UpdateCompra.splice(UpdateCompra.indexOf(Datof), 1);
                         Table.DrawTableComponent();
                     }
                 },
@@ -96,25 +108,31 @@ window.onload = async () => {
                 //code
 
                 const Modal = new ModalComponent
-
                     (new AgregarCompraDevolucion((DetalleDev) => {
 
-                        if (Dataset.length > 0) {
+                        if (UpdateCompra.length > 0) {
                             alert("Solo puede seleccionar una compra")
                             return;
                         }
-                        Dataset.push(DetalleDev);
+                        UpdateCompra.push(DetalleDev);
+
                         Modal.Close();
                         // console.log(NewDevolucionCompra);
                         Table.DrawTableComponent();
-                        
-                        NewDevolucionCompra.idcompra = Dataset[0].idcompra
-                        console.log(DetalleDev.idcompra);
+
+                        NewDevolucionCompra.idcompra = UpdateCompra[0].idcompra
+                        console.log(DetalleDev);
                         Identificador.id = JSON.parse(JSON.stringify(DetalleDev.idcompra))
                         console.log(Identificador.id);
 
-                        NewDevolucionCompra.idproveedor = Dataset[0].idproveedor
+                        NewDevolucionCompra.idproveedor = UpdateCompra[0].idproveedor
+
+                        console.log("Dataset");
+
+                        console.log(UpdateCompra);
+
                     }));
+
                 AppMain.append(Modal)
 
 
@@ -172,4 +190,4 @@ window.onload = async () => {
     AppMain.append(TableDetalleDevCompra);
 }
 
-export {Identificador}
+export { Identificador }

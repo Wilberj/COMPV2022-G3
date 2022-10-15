@@ -10,33 +10,34 @@ import { Admin } from "./AdminMercanciaView.js";
 class Update extends HTMLElement {
     constructor(action = () => { }) {
         super();
-        this.Dataset = []; 
+        this.Dataset = [];
         this.Bodega = [];
         // this.dataAdminMerca = [];
         this.action = action;
-        
+
         this.AdminMerca = Admin;
-      
+
         this.Draw();
     }
     connectedCallback() { }
     Draw = async () => {
-this.Bodega = await AjaxTools.PostRequest("../api/MantenimientoCatalogos/GetBodega")
+        this.Bodega = await AjaxTools.PostRequest("../api/MantenimientoCatalogos/GetBodega")
 
         this.Form = new FormComponet({
-            Model: new AdministracionMercancias({  
+            Model: new AdministracionMercancias({
                 Seleccionar_Bodega: {
-                type: "select",
-                Dataset: this.Bodega.map((d) => ({ id: d.idbodega, desc: d.nombrebodega }))
-            },}),
-        EditObject: this.AdminMerca,
+                    type: "select",
+                    Dataset: this.Bodega.map((d) => ({ id: d.idbodega, desc: d.nombrebodega }))
+                },
+            }),
+            EditObject: this.AdminMerca,
 
         }),
             this.append(this.Form);
-            
-            console.log(Admin);
 
-            console.log(this.AdminMerca);
+        console.log(Admin);
+
+        console.log(this.AdminMerca);
         this.append(
             Render.Create({
                 className: "FormContainer2",
@@ -48,7 +49,7 @@ this.Bodega = await AjaxTools.PostRequest("../api/MantenimientoCatalogos/GetBode
                         value: "Agregar Informacion Al Detalle",
                         onclick: async () => {
                             console.log(this.Bodega);
-                            this.AdminMerca.idbodega = this.AdminMerca.Seleccionar_Bodega 
+                            this.AdminMerca.idbodega = this.AdminMerca.Seleccionar_Bodega
                             this.AdminMerca.nombrebodega = this.Bodega[0].nombrebodega
                             const response = await AjaxTools.PostRequest("../api/AdminMercancia/UpdateAdministracionMercancias",
                                 this.AdminMerca
