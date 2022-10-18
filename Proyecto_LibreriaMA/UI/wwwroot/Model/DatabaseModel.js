@@ -223,7 +223,7 @@ class DetalleDevolucionVenta {
         }
     }
     iddetalledevolucion = { type: "number", primary: true };
-    iddevolucion = { type: "number" };
+    iddevolucionventa = { type: "number" };
     idadmimercancias = { type: "number" };
     cantidad = { type: "number" };
     descripciondevolucion = { type: "text" };
@@ -247,9 +247,9 @@ class DevolucionVenta {
             this[prop] = props[prop];
         }
     }
-    iddevolucion = { type: "number", primary: true };
+    iddevolucionventa = { type: "number", primary: true };
     idfactura = { type: "number" };
-    Fechadevolucionventa = { type: "date" };
+    Fechadevolucion = { type: "date" };
 }
 export { DevolucionVenta }
 class Estado {

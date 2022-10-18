@@ -23,8 +23,8 @@ class AgregarFacturaDevolucion extends HTMLElement {
     Draw = async () =>{
         this.formdevFactura = new FormComponet({
             Model: new DetalleDevolucionVenta({
-                iddevolucion: { type: "number" },
-                idadmimercancias: { type: "number" },
+                iddevolucionventa : { type: "number",hidden:true },
+                idadmimercancias: { type: "number",hidden:true },
                 devolucionUnidad: { type: "checkbox", },
                 devolucionUnidadOrigen: { type: "checkbox", }
             }),
@@ -49,9 +49,8 @@ class AgregarFacturaDevolucion extends HTMLElement {
         });
         this.Table.filter.append(Render.Create({
             tagName: 'input', type: 'button',
-            className: 'btn_primary', value: 'Anadir Articulo a devolver', onclick: async () => {
+            className: 'btn_primary', value: 'Anadir Articulo a ingresar nuevamente', onclick: async () => {
                 const Modal = new ModalComponent
-                //cambiar , puse la misma de compra por el momento
                 (new AgregarAdminDetalleDevVenta((articulo) =>{
                     if (this.Dataset.length > 0) {
                         alert("Ya existe el articulo")
@@ -76,6 +75,7 @@ class AgregarFacturaDevolucion extends HTMLElement {
                         value: "Agregar Informacion Al Detalle",
                         onclick: async () => {
 
+                                this.DetalleDevFactura.idadmimercancias = this.Dataset[0].idadmimercancias
                             this.action(this.DetalleDevFactura,this.Dataset,console.log(this.DetalleDevFactura))
                         }
                     }

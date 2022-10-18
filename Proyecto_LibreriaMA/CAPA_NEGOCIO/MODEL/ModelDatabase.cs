@@ -359,7 +359,7 @@ namespace CAPA_NEGOCIO.MODEL
     public class DetalleDevolucionVenta : EntityClass
     {
         public int? iddetalledevolucion { get; set; }
-        public int? iddevolucion { get; set; }
+        public int? iddevolucionventa { get; set; }
         public int? idadmimercancias { get; set; }
         public int? cantidad { get; set; }
         public string? descripciondevolucion { get; set; }
@@ -423,9 +423,28 @@ namespace CAPA_NEGOCIO.MODEL
 
     public class DevolucionVenta : EntityClass
     {
-        public int? iddevolucion { get; set; }
+        public int? iddevolucionventa { get; set; }
         public int? idfactura { get; set; }
-        public DateTime? Fechadevolucionventa { get; set; }
+        public DateTime? Fechadevolucion { get; set; }
+        public List<DetalleDevolucionVenta> DetalleDevventa { get; set; }
+     
+
+        public Object SaveDevolucionventa()
+        {
+            this.iddevolucionventa = (Int32)this.Save();
+            if (this.DetalleDevventa != null)
+            {
+                foreach (var DetalleDevventa in this.DetalleDevventa)
+                {
+                    DetalleDevventa.iddevolucionventa = this.iddevolucionventa;
+                    DetalleDevventa.iddetalledevolucion = (Int32)DetalleDevventa.Save();
+                }
+              
+
+            }
+
+            return true;
+        }
     }
 
     public class Estado : EntityClass

@@ -18,11 +18,11 @@ import { AgregarVentaDevolucion } from "./Components/AgregarVentaDevolucion.js";
 window.onload = async () => {
     const Dataset = []
     const DetalleDevFactura = [];
-    const Updateventa = [];
+    const Updateventa = [];//necesaria para actualziar admin
     const NewDevolucionVenta = {
-       // DetalleDevventa: DetalleDevFactura
-        //aqui iria el DetalleDevFactura
-       // y el Updateventa paara guardarlo e actualizar
+        DetalleDevventa:DetalleDevFactura,
+       //
+       // y el Updateventa paara actualizar
     }
     AppMain.append(Render.Create({
         tagName: "h1",
@@ -36,14 +36,38 @@ window.onload = async () => {
                 tagName: 'input', type: 'button',
                 className: 'btn',
                 value: 'Guardar registro', onclick: async () => {
-                   
+                    console.log( NewDevolucionVenta);
+                    const response =
+                        await AjaxTools.PostRequest("../api/GestionVenta/SaveDevolucionventa",
+                            NewDevolucionVenta,
+
+                           
+                           
+                        );
+                    if (response == true) {
+                        AppMain.append(
+                            new ModalComponent(
+                                Render.Create({
+                                    tagName: "h1",
+                                    innerText: "devolucion guardada",
+                                }),
+
+                                // //                 // window.location.reload()
+                            )
+
+                        );
+
+                    }
                 },
             },
         ]
     })
     );
     const FormDevolucionFactura = new FormComponet({
-        Model: new DevolucionVenta()
+        EditObject: NewDevolucionVenta,
+        Model: new DevolucionVenta({
+            idfactura : { type: "number",hidden : true }
+        })
     });
     const Table = new TableComponent({
         //cambiar vista
@@ -77,6 +101,7 @@ window.onload = async () => {
                     Modal.Close();
                     console.log(Dataset);
                     Table.DrawTableComponent();
+                    NewDevolucionVenta.idfactura = Dataset[0].idfactura
                 }))
                 AppMain.append(Modal)
         }
@@ -113,6 +138,7 @@ window.onload = async () => {
                     console.log(DetalleDevFactura);
                     Modal.Close();
                     TableDetalleDevFactura.DrawTableComponent();
+
 
 
                 }))
