@@ -6,7 +6,7 @@ import { AjaxTools, Render } from "../utility.js";
 //import { AgregarArticuloCompra } from "./Components/AgregarArticuloCompra.js";
 //import { AgregarDetalleCompra } from "./Components/AgregarDetalle.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
-import { ViewArticuloCompra } from "../../Model/ViewDatabaseModel.js";
+import { ViewArticuloCompra, ViewListArticuloVenta } from "../../Model/ViewDatabaseModel.js";
 import { AgregarCompraDevolucion } from "../GestionCompra/Components/AgregarCompraDevolucion.js";
 import { AgregarFacturaDevolucion } from "./Components/AgregarFacturaDevolucion.js";
 import { AgregarVentaDevolucion } from "./Components/AgregarVentaDevolucion.js";
@@ -21,6 +21,7 @@ window.onload = async () => {
     const Updateventa = [];//necesaria para actualziar admin
     const NewDevolucionVenta = {
         DetalleDevventa:DetalleDevFactura,
+        Updateventa: Updateventa
        //
        // y el Updateventa paara actualizar
     }
@@ -39,7 +40,7 @@ window.onload = async () => {
                     console.log( NewDevolucionVenta);
                     const response =
                         await AjaxTools.PostRequest("../api/GestionVenta/SaveDevolucionventa",
-                            NewDevolucionVenta,
+                            NewDevolucionVenta, Updateventa
 
                            
                            
@@ -71,15 +72,15 @@ window.onload = async () => {
     });
     const Table = new TableComponent({
         //cambiar vista
-        ModelObject: new ViewArticuloCompra(),
-        Dataset: Dataset,
+        ModelObject: new ViewListArticuloVenta(),
+        Dataset: Updateventa,
         Functions: [
             {
                 name: "Remover",
                 action: async (Dato) => {
-                    const Datof = Dataset.find((x) => x.idproveedor == Dato.idproveedor);
+                    const Datof = Updateventa.find((x) => x.idproveedor == Dato.idproveedor);
                     if (Datof != null) {
-                        Dataset.splice(Dataset.indexOf(Datof), 1);
+                        Updateventa.splice(Updateventa.indexOf(Datof), 1);
                         Table.DrawTableComponent();
                     }
                 },
@@ -91,17 +92,19 @@ window.onload = async () => {
         className: 'btn_primary', value: 'Anadir ', onclick: async () => {
             const Modal = new ModalComponent
                 ( new AgregarVentaDevolucion((DetalleDev) => {
-                    if (Dataset.length > 0) {
+                    if (Updateventa.length > 0) {
                         alert("Solo puede seleccionar una compra")
                         return;
                     }
-                    Dataset.push(DetalleDev);
+                    Updateventa.push(DetalleDev);
                     //NewDevolucionVenta.idcompra = Updateventa[0].idcompra
                   //  Identificador.id = JSON.parse(JSON.stringify(DetalleDev.idcompra))
                     Modal.Close();
-                    console.log(Dataset);
+                    console.log(Updateventa);
                     Table.DrawTableComponent();
-                    NewDevolucionVenta.idfactura = Dataset[0].idfactura
+                    NewDevolucionVenta.idfactura = Updateventa[0].idfactura
+                    console.log(DetalleDev);
+                    
                 }))
                 AppMain.append(Modal)
         }

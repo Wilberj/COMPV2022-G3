@@ -13,9 +13,10 @@ class AgregarFacturaDevolucion extends HTMLElement {
     constructor (action = () =>{}){
        super();
        this.Dataset = [];
+       this.Dtemporal = [];
        this.DetalleDevFactura = {};
        //con adminsracion 
-       //this.DetalleDevFactura.AdminMercas = this.Dataset;
+       this.DetalleDevFactura.AdminMercas = this.Dataset;
        this.action = action;
        this.Draw(); 
     }
@@ -64,6 +65,7 @@ class AgregarFacturaDevolucion extends HTMLElement {
                 AppMain.append(Modal)
             }
         }))
+
         this.append(this.formdevFactura,this.Table)
         this.append(Render.Create({
             className: "FormContainer2",
@@ -75,8 +77,26 @@ class AgregarFacturaDevolucion extends HTMLElement {
                         value: "Agregar Informacion Al Detalle",
                         onclick: async () => {
 
-                                this.DetalleDevFactura.idadmimercancias = this.Dataset[0].idadmimercancias
-                            this.action(this.DetalleDevFactura,this.Dataset,console.log(this.DetalleDevFactura))
+                            this.DetalleDevFactura.idadmimercancias = this.Dataset[0].idadmimercancias;
+                            ///this.DetalleDevFactura.NombreArticulo = this.Dataset[0].nombrearticulo;
+                            this.DetalleDevFactura.Temporal = this.Dataset[0].existenciasarticulounidad / this.Dataset[0].existenciasarticuloorigen;
+                            this.DetalleDevFactura.Cantidadunidadtotal = this.DetalleDevFactura.Temporal *  this.DetalleDevFactura.cantidad;
+                            if (this.DetalleDevFactura.devolucionUnidad == true) {
+                                this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad + this.DetalleDevFactura.cantidad;
+
+                            }
+                            if (this.DetalleDevFactura.devolucionUnidadOrigen == true) {
+                                this.Dataset[0].existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen + this.DetalleDevFactura.cantidad;
+                                this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad + this.DetalleDevFactura.Cantidadunidadtotal;
+                                this.DetalleDevFactura.cantidadunidad = this.DetalleDevFactura.Cantidadunidadtotal
+                            
+                            }
+                            //this.NuevoBodegaxExiste.existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen
+                        //this.DetalleDevFactura.existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad
+                            this.action(this.DetalleDevFactura, this.Dataset, console.log(this.DetalleDevolucionVenta));
+
+
+                            //console.log(this.DetalleDevFactura.IdArticulo = JSON.parse(JSON.stringify(articulo.IdArticulo)));
                         }
                     }
                 ]
