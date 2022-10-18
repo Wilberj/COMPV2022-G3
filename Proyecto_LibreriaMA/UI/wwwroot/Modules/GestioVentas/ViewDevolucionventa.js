@@ -20,7 +20,7 @@ window.onload = async () => {
     const DetalleDevFactura = [];
     const Updateventa = [];
     const NewDevolucionVenta = {
-        DetalleDevventa: DetalleDevFactura
+       // DetalleDevventa: DetalleDevFactura
         //aqui iria el DetalleDevFactura
        // y el Updateventa paara guardarlo e actualizar
     }
@@ -36,21 +36,7 @@ window.onload = async () => {
                 tagName: 'input', type: 'button',
                 className: 'btn',
                 value: 'Guardar registro', onclick: async () => {
-                    const response = await AjaxTools.PostRequest("../api/GestionCompra/SaveDevolucionVenta", NewDevolucionVenta)
-                    if (response == true) {
-                        AppMain.append(
-                            new ModalComponent(
-                                Render.Create({
-                                    tagName: "h1",
-                                    innerText: "Datos Guardados",
-                                }),
-
-                                // window.location.reload()
-                            )
-
-                        );
-
-                    }
+                   
                 },
             },
         ]
