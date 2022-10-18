@@ -137,3 +137,30 @@ class ViewListArticuloVenta {
     
    }
    export{ViewListArticuloVenta}
+class viewdevolventa {
+    constructor(props) {
+        for (const prop in props) {
+            this[prop] = props[prop];
+        }
+    }
+    idfactura = { type: "number", primary: true };
+    nombrearticulo = { type: "text" };
+
+}
+export { viewdevolventa }
+class viewDetalleDevolucionVenta {
+    constructor(props) {
+        for (const prop in props) {
+            this[prop] = props[prop];
+        }
+    }
+    idadmimercancias = { type: "number", primary: true };
+    nombrearticulo = { type: "text" };
+    idtamanoxarticulo = { type: "number" };
+    idfactura = { type: "number" };
+    existenciasarticuloorigen = { type: "number" };
+    existenciasarticulounidad = { type: "number" };
+    precioventa = { type: "number" };
+
+}
+export { viewDetalleDevolucionVenta }

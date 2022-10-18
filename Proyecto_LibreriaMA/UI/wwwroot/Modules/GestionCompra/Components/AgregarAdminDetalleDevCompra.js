@@ -12,7 +12,7 @@ class AgregarAdminDetalleDevCompra extends HTMLElement  {
         }
         connectedCallback() { }
         Draw = async () => {
-            this.Dataset = await AjaxTools.PostRequest("../api/GestionCompra/ChargeDetalleDevCompra")
+            this.Dataset = await AjaxTools.PostRequest("../api/GestionCompra/ChargeArticulosDanados")
             this.Table = new TableComponent({
                 ModelObject: new ViewDetalleDevolucion(),
                 Dataset: this.Dataset.filter(compra => {
