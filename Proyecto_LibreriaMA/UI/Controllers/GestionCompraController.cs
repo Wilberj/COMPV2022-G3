@@ -58,10 +58,7 @@ namespace UI.Controllers
         {
             return ent.SaveArtiDanado();
         }
-        public Object SaveFactura(Factura ent)
-        {
-            return ent.SaveFactura();
-        }
+
         //  public Object GetAdministracionMercancias(AdministracionMercancias ent)
         // {
         //     return ent.Get<AdministracionMercancias>();

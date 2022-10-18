@@ -1,16 +1,17 @@
 ﻿import { FormComponet } from "../../CoreComponents/FormComponent.js";
 import { ModalComponent } from "../../CoreComponents/ModalComponent.js";
-//import { TableComponentCompra } from "./Components/TableComponentCompra.js";
-import { Articulos, CompraProductos, DetalleCompraProductos, DetalleFactura, Factura } from "../../Model/DatabaseModel.js";
-//import { ViewArticuloCompra } from "../../Model/ViewDatabaseModel.js";
+import { DetalleFactura, Factura } from "../../Model/DatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js";
-//import { AgregarArticuloCompra } from "./Components/AgregarArticuloCompra.js";
-/////import { AgregarDetalleCompra } from "./Components/AgregarDetalle.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
 import { AgregarDetalleVenta } from "./AgregarDetalleVenta.js";
 
 window.onload = async () => {
-        const DetallevenFact = [];
+    const DetallVenta = [];
+    const Total = [];
+    var suma = 0;
+    const NuevaFactura = {
+        DetallVenta: DetallVenta
+    }
     AppMain.append(Render.Create({
         tagName: "h1",
         innerText: "Gestion de ventas-Ingreso", class: "header1"
@@ -23,7 +24,34 @@ window.onload = async () => {
                 tagName: 'input', type: 'button',
                 className: 'btn',
                 value: 'Guardar Venta', onclick: async () => {
-                 
+                    console.log(NuevaFactura);
+                    const response =
+                        await AjaxTools.PostRequest("../api/GestionVenta/SaveFactura",
+                            NuevaFactura,
+
+                            Total.forEach(function (tot) {
+                                suma += tot;
+                            }),
+                            console.log(suma),
+                            NuevaFactura.subtotalventa = suma,
+                            NuevaFactura.iva = NuevaFactura.subtotalventa * 0.15,
+                            NuevaFactura.totalventa = parseInt(NuevaFactura.subtotalventa) + parseInt(NuevaFactura.iva) - parseInt(NuevaFactura.descuentofactura)
+                        );
+                    if (response == true) {
+                        AppMain.append(
+                            new ModalComponent(
+                                Render.Create({
+                                    tagName: "h1",
+                                    innerText: "Factura",
+                                }),
+
+                                // //                 // window.location.reload()
+                            )
+
+                        );
+
+                    }
+
                 },
             },
         ]
@@ -31,6 +59,7 @@ window.onload = async () => {
     );
     const dataC = await AjaxTools.PostRequest("../api/MantenimientoCatalogos/GetDatosUsuarios")
     const FormVentaProduutos = new FormComponet({
+        EditObject: NuevaFactura,
         Model: new Factura({
             idusuario: {
                 type: "select",
@@ -42,15 +71,15 @@ window.onload = async () => {
 
     const TableDetalleVenta = new TableComponent({
         ModelObject: new DetalleFactura(),
-        Dataset: DetallevenFact,
-        Functions:[
+        Dataset: DetallVenta,
+        Functions: [
             {
-                name: "eliminar", action: async(detaeli)=>{
-                    const detalleelimina = DetallevenFact.find(x=>x.idarticulo == detaeli.idarticulo )
-                    if(detalleelimina != null){
-                        DetallevenFact.splice(
-                            DetallevenFact.indexOf(detaeli),1);
-                       TableDetalleVenta.DrawTableComponent();
+                name: "eliminar", action: async (detaeli) => {
+                    const detalleelimina = DetallVenta.find(x => x.idtamanoxarticulo == detaeli.idtamanoxarticulo)
+                    if (detalleelimina != null) {
+                        DetallVenta.splice(
+                            DetallVenta.indexOf(detaeli), 1);
+                        TableDetalleVenta.DrawTableComponent();
                     }
                 }
             }
@@ -60,15 +89,19 @@ window.onload = async () => {
         tagName: 'input', type: 'button',
         className: 'btn_primary', value: 'Anadir', onclick: async () => {
             const Modal = new ModalComponent
-            (new AgregarDetalleVenta((venta)=>{
-                if (DetallevenFact.filter((x) => x.idarticulo == compra.idarticulo).length > 0) {
-                    alert("El Detalle ya existe")
-                    return;
-                }
-                DetallevenFact.push(venta);
-                Modal.Close();
-                TableDetalleVenta.DrawTableComponent();
-            }))
+                (new AgregarDetalleVenta((venta) => {
+                    if (DetallVenta.filter((x) => x.idtamanoxarticulo == venta.idtamanoxarticulo).length > 0) {
+                        alert("El Detalle ya existe")
+                        return;
+                    }
+                    DetallVenta.push(venta);
+                    Total.push(venta.totaldetalle)
+                    // ConvertirMedida.push(DetalleCompra.ConvertirMedida);
+                    console.log(venta.totaldetalle);
+                    console.log(Total);
+                    Modal.Close();
+                    TableDetalleVenta.DrawTableComponent();
+                }))
             AppMain.append(Modal);
         }
     }))

@@ -340,6 +340,19 @@ namespace CAPA_NEGOCIO.MODEL
         public decimal? precioventa { get; set; }
         public decimal? cantidadventa { get; set; }
         public decimal? descuentoventa { get; set; }
+        public List<AdministracionMercancias> AdminMercaVenta { get; set; }
+        public Object UpdateAdminMerca()
+        {
+            if (this.AdminMercaVenta != null)
+            {
+                foreach (var AdminMercaVenta in this.AdminMercaVenta)
+                {
+                    AdminMercaVenta.idtamanoxarticulo = this.idtamanoxarticulo;
+                    AdminMercaVenta.Update("idadmimercancias");
+                }
+            }
+            return true;
+        }
     }
 
 
@@ -433,7 +446,6 @@ namespace CAPA_NEGOCIO.MODEL
         public int? idusuario { get; set; }
         public int? idestado { get; set; }
         public decimal? descuentofactura { get; set; }
-
         public List<DetalleFactura> DetallVenta { get; set; }
         public Object SaveFactura()
         {
@@ -444,7 +456,7 @@ namespace CAPA_NEGOCIO.MODEL
                 {
                     DetallVenta.idfactura = this.idfactura;
                     DetallVenta.idfactura = (Int32)DetallVenta.Save();
-                    
+                    DetallVenta.UpdateAdminMerca();
                 }
 
             }

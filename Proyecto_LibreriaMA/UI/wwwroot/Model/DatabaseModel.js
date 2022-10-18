@@ -190,12 +190,16 @@ class DetalleFactura {
             this[prop] = props[prop];
         }
     }
+    cantidaddanadaunidad  = {hidden: true}
+    Temporal = {hidden: true}
     iddetallefactura = { type: "number", primary: true };
-    idfactura = { type: "number" };
-    idtamanoxarticulo = { type: "number" };
+    idfactura = { type: "number", hidden: true };
+    idtamanoxarticulo = { type: "number", hidden: true };
     precioventa = { type: "number" };
     cantidadventa = { type: "number" };
     descuentoventa = { type: "number" };
+    Unidad= { hidden: true  };
+    UnidadOrigen= {  hidden: true };
 }
 export { DetalleFactura }
 class DetalleDevolucionCompra {

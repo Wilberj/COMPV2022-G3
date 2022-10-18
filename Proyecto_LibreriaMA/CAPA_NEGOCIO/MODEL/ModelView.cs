@@ -101,5 +101,14 @@ namespace CAPA_NEGOCIO.MODEL
         public string? nombreunidad { get; set; }
         public int? iddetallecompra { get; set; }
     }
+    public class ViewListArticuloVenta : EntityClass
+    {
+        public int? idadmimercancias { get; set; }
+        public int? idtamanoxarticulo { get; set; }
+        public Decimal? precioventa { get; set; }
+        public int? existenciasarticuloorigen { get; set; }
+        public int? existenciasarticulounidad { get; set; }
+        public string? nombrearticulo { get; set; }
+    }
 
 }

@@ -120,3 +120,20 @@ class ViewDetalleDevolucion {
 
 }
 export { ViewDetalleDevolucion }
+
+class ViewListArticuloVenta {
+    constructor(props) {
+     for (const prop in props) {
+      this[prop] = props[prop];
+     }
+    }
+
+    idadmimercancias = { type: "number" ,  hidden: true };
+    idtamanoxarticulo = { type: "number",  hidden: true  };
+    precioventa = { type: "number"  };
+    existenciasarticuloorigen = { type: "number"  };
+    existenciasarticulounidad = { type: "number"  };
+    nombrearticulo = { type: "text"  };
+    
+   }
+   export{ViewListArticuloVenta}
