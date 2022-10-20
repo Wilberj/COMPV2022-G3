@@ -363,6 +363,22 @@ namespace CAPA_NEGOCIO.MODEL
         public int? idadmimercancias { get; set; }
         public int? cantidad { get; set; }
         public string? descripciondevolucion { get; set; }
+        public List<AdministracionMercancias> AdminMercas { get; set; }
+
+
+        public Object UpdateAdminMerca()
+        {
+            if (this.AdminMercas != null)
+            {
+                foreach (var AdminMercas in this.AdminMercas)
+                {
+                    AdminMercas.idadmimercancias = this.idadmimercancias;
+                    AdminMercas.Update("idadmimercancias");
+                }
+            }
+
+            return true;
+        }
     }
 
     public class DevolucionCompra : EntityClass
@@ -438,6 +454,7 @@ namespace CAPA_NEGOCIO.MODEL
                 {
                     DetalleDevventa.iddevolucionventa = this.iddevolucionventa;
                     DetalleDevventa.iddetalledevolucion = (Int32)DetalleDevventa.Save();
+                    DetalleDevventa.UpdateAdminMerca();
                 }
               
 
