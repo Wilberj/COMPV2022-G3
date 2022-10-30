@@ -87,6 +87,21 @@ class AgregarDetallDevolucion extends HTMLElement {
                         className: "btn_primary",
                         value: "Agregar Informacion Al Detalle",
                         onclick: async () => {
+
+                            if (this.DetalleDevCompra.cantidad == null || 
+                                this.DetalleDevCompra.descripciondevolucion == null || 
+                                this.DetalleDevCompra.cantidadunidad == null)  {
+                                alert("Falta rellenar campos")
+                                console.log("pjo a esto");
+                                return;
+                            }else{
+                                if(this.Dataset[0] == null){
+                                    alert("Escoge antes el articulo")
+                                    console.log("pjo a esto");
+                                    return;
+                                }
+                            }
+
                             this.DetalleDevCompra.idadmimercancias = this.Dataset[0].idadmimercancias;
                             ///this.DetalleDevCompra.NombreArticulo = this.Dataset[0].nombrearticulo;
                             this.DetalleDevCompra.Temporal = this.Dataset[0].existenciasarticulounidad / this.Dataset[0].existenciasarticuloorigen;

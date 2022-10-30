@@ -28,6 +28,29 @@ window.onload = async () => {
                 tagName: 'input', type: 'button',
                 className: 'btn',
                 value: 'Guardar Compra', onclick: async () => {
+
+                    if (NuevaCompra.descuentocompra == null || NuevaCompra.idestado == null) {
+                        alert("Falta rellenar campos")
+                        console.log("pjo a esto");
+                        return;
+                    } else {
+                        if (DetalleCompra[0] == null) {
+                            alert("Debe agregar articulos a la compra")
+                            console.log("detalle eeehh");
+                            return;
+                        }
+                    }
+
+
+                    // if (DetalleCompra < 1) {
+                    //     alert("Agregue articulos a la compra")
+                    //     return;
+                    // }
+                    // if (this.NuevaCompra.totalcompra == ""){
+                    //     alert("El check tiene que estar activo")
+                    //     return;
+                    // }
+
                     const response =
                         await AjaxTools.PostRequest("../api/GestionCompra/SaveCompra",
                             NuevaCompra,

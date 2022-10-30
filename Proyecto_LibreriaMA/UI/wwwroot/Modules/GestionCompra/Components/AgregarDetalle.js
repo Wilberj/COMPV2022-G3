@@ -137,6 +137,46 @@ class AgregarDetalleCompra extends HTMLElement {
                         className: "btn_primary",
                         value: "Agregar Informacion Al Detalle",
                         onclick: async () => {
+
+                            if (this.DetalleCompra.cantidadcompra == null ||
+
+                                //  this.DetalleCompra.Cantidad_unidades == null ||
+                                //  this.DetalleCompra.precioventa == null ||
+
+                                
+                                this.DetalleCompra.preciocompra == null) {
+                            alert("Tiene que rellenar los campos")
+                            console.log("pjo a esto");
+                            return;
+
+                        } else {
+                            if (this.Dataset[0] == null) {
+                                alert("Tiene que añadir el articulo que se comprará")
+                                console.log("pjo a esto");
+                                return;
+                            }
+                        }
+                        //     } else {
+                        //         if (this.DetalleVenta.cantidadventa > this.Dataset[0].existenciasarticulounidad ||
+                        //             this.DetalleVenta.cantidadventa > this.Dataset[0].existenciasarticuloorigen) {
+                        //             alert("La cantidad que vendes supera la cantidad del Stock Disponible")
+                        //             console.log("excedistes");
+                        //             return;
+                        //         }
+                        //     }
+
+                        // }
+
+                            // if ((this.DetalleCompra.preciocompra == null) || 
+                            // (this.DetalleCompra.cantidadcompra == null) || 
+                            // (this.DetalleCompra.descuentocompra == null) || 
+                            // (this.DetalleCompra.Cantidad_unidades == null) || 
+                            // (this.DetalleCompra.precioventa == null) ) 
+                            // {  //COMPRUEBA CAMPOS VACIOS
+                            //     alert("Los campos no pueden quedar vacios");
+                            //     return;
+                            // }
+
                             //Unidad
                             this.DetalleCompra.idunidadmedida = this.DetalleCompra.TipoUnidad;
                             this.DetalleCompra.ConvertMedida.idunidadmedida = this.datau.find((x) => x.idunidadmedida == this.DetalleCompra.TipoUnidad).idunidadmedida;

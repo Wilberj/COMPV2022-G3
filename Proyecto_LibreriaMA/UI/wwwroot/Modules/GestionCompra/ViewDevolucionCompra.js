@@ -41,6 +41,19 @@ window.onload = async () => {
                 tagName: 'input', type: 'button',
                 className: 'btn',
                 value: 'Guardar registro', onclick: async () => {
+
+                    if(DetalleDevCompra[0] == null){
+                        alert("Debe tener un Detalle Devolucion")
+                        console.log("detalle eeehh");
+                        return;
+                       }else{
+                        if(UpdateCompra[0] == null){
+                            alert("Debe tener una compra")
+                            console.log("detalle eeehh");
+                            return;
+                        }
+                       }
+
                     const response =
                         await AjaxTools.PostRequest("../api/GestionCompra/SaveDevolucionCompra",
                             NewDevolucionCompra, UpdateCompra);
@@ -161,6 +174,18 @@ window.onload = async () => {
         Render.Create({
             tagName: 'input', type: 'button',
             className: 'btn_primary', value: 'Anadir detalle', onclick: async () => {
+
+                if(UpdateCompra[0] == null){
+                    alert("Primero se debe seleccionar una compra")
+                    console.log("detalle eeehh");
+                    return;
+                }
+
+                // if (UpdateCompra.length < 1) {
+                //     alert("Primero debe seleccionar una compra")
+                //     return;
+                // }
+
                 const Modal = new ModalComponent
 
                     (new AgregarDetallDevolucion((compra) => {
