@@ -88,6 +88,20 @@ class AgregarDetalleArtDanados extends HTMLElement {
                         className: "btn_primary",
                         value: "Agregar Informacion Al Detalle",
                         onclick: async () => {
+                            if(/*this.NuevoArtiDana.cantidaddanadaorigen == null || this.NuevoArtiDana.cantidaddanadaunidad == null
+                                ||*/ this.NuevoArtiDana.descripcionarticulodanado == null){
+                                    alert("Falta rellenar descripcion , recuerde escoger origen o unidad")
+                                    console.log("pjo a esto");
+                                    return;
+                                }else {
+                                    if (this.Dataset[0] == null){
+                                        alert("Por favor , añadir articulo dañado")
+                                        console.log("articulo dañado");
+                                        return;
+                                    }
+                                }
+
+
                             this.NuevoArtiDana.idtamanoxarticulo = this.Dataset[0].idtamanoxarticulo 
 
                             this.NuevoArtiDana.Temporal = this.Dataset[0].existenciasarticulounidad / this.Dataset[0].existenciasarticuloorigen;

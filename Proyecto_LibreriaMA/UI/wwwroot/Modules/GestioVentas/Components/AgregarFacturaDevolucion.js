@@ -10,103 +10,113 @@ import { AgregarAdminDetalleDevVenta } from "./AgregaradminDetalleDevVenta.js";
 
 //este es el detalle devolucion
 class AgregarFacturaDevolucion extends HTMLElement {
-    constructor (action = () =>{}){
-       super();
-       this.Dataset = [];
-       this.Dtemporal = [];
-       this.DetalleDevFactura = {};
-       //con adminsracion 
-       this.DetalleDevFactura.AdminMercas = this.Dataset;
-       this.action = action;
-       this.Draw(); 
+    constructor(action = () => { }) {
+        super();
+        this.Dataset = [];
+        this.Dtemporal = [];
+        this.DetalleDevFactura = {};
+        //con adminsracion 
+        this.DetalleDevFactura.AdminMercas = this.Dataset;
+        this.action = action;
+        this.Draw();
     }
     connectedCallback() { }
-    Draw = async () =>{
+    Draw = async () => {
         this.formdevFactura = new FormComponet({
             Model: new DetalleDevolucionVenta({
-                iddevolucionventa : { type: "number",hidden:true },
-                idadmimercancias: { type: "number",hidden:true },
+                iddevolucionventa: { type: "number", hidden: true },
+                idadmimercancias: { type: "number", hidden: true },
                 devolucionUnidad: { type: "checkbox", },
                 devolucionUnidadOrigen: { type: "checkbox", }
             }),
             EditObject: this.DetalleDevFactura
         }),
-        this.Table = new TableComponent({
-            ModelObject: new ViewAdminMercancia(),
-            Dataset: this.Dataset,
-            Functions: [
-                {
-                    name: "Remover",
-                    action: async (Dato) => {
-                        const Datof = this.Dataset.find((x) => x.idadmimercancias == Dato.idadmimercancias);
-                        if (Datof != null) {
-                            this.Dataset.splice(this.Dataset.indexOf(Datof), 1);
-                            this.Table.DrawTableComponent();
-                        }
+            this.Table = new TableComponent({
+                ModelObject: new ViewAdminMercancia(),
+                Dataset: this.Dataset,
+                Functions: [
+                    {
+                        name: "Remover",
+                        action: async (Dato) => {
+                            const Datof = this.Dataset.find((x) => x.idadmimercancias == Dato.idadmimercancias);
+                            if (Datof != null) {
+                                this.Dataset.splice(this.Dataset.indexOf(Datof), 1);
+                                this.Table.DrawTableComponent();
+                            }
+                        },
                     },
-                },
-            ],
+                ],
 
-        });
+            });
         this.Table.filter.append(Render.Create({
             tagName: 'input', type: 'button',
             className: 'btn_primary', value: 'Anadir Articulo a ingresar nuevamente', onclick: async () => {
                 const Modal = new ModalComponent
-                (new AgregarAdminDetalleDevVenta((articulo) =>{
-                    if (this.Dataset.length > 0) {
-                        alert("Ya existe el articulo")
-                        return;
-                    }
-                    this.Dataset.push(articulo);
-                    Modal.Close();
-                    console.log(this.Dataset);
-                    this.Table.DrawTableComponent();
-                }));
+                    (new AgregarAdminDetalleDevVenta((articulo) => {
+                        if (this.Dataset.length > 0) {
+                            alert("Ya existe el articulo")
+                            return;
+                        }
+                        this.Dataset.push(articulo);
+                        Modal.Close();
+                        console.log(this.Dataset);
+                        this.Table.DrawTableComponent();
+                    }));
                 AppMain.append(Modal)
             }
         }))
 
-        this.append(this.formdevFactura,this.Table)
+        this.append(this.formdevFactura, this.Table)
         this.append(Render.Create({
             className: "FormContainer2",
-                children: [
-                    {
-                        tagName: "input",
-                        type: "button",
-                        className: "btn_primary",
-                        value: "Agregar Informacion Al Detalle",
-                        onclick: async () => {
-
-                            this.DetalleDevFactura.idadmimercancias = this.Dataset[0].idadmimercancias;
-                            ///this.DetalleDevFactura.NombreArticulo = this.Dataset[0].nombrearticulo;
-                            this.DetalleDevFactura.Temporal = this.Dataset[0].existenciasarticulounidad / this.Dataset[0].existenciasarticuloorigen;
-                            this.DetalleDevFactura.Cantidadunidadtotal = this.DetalleDevFactura.Temporal *  this.DetalleDevFactura.cantidad;
-                           // this.DetalleDevFactura.cantidadingresad = this.DetalleDevFactura.cantidad
-                            this.DetalleDevFactura.suma = this.Dataset[0].existenciasarticulounidad + this.DetalleDevFactura.cantidad
-                            if (this.DetalleDevFactura.devolucionUnidad == true) {
-                               // this.Dataset[0].existenciasarticulounidad = this.DetalleDevFactura.cantidad + this.Dataset[0].existenciasarticulounidad;
-                               // NuevaFactura.totalventa = parseInt(NuevaFactura.subtotalventa) + parseInt(NuevaFactura.iva) - parseInt(NuevaFactura.descuentofactura)
-                               this.Dataset[0].existenciasarticulounidad= parseInt(this.Dataset[0].existenciasarticulounidad) + parseInt(this.DetalleDevFactura.cantidad)
+            children: [
+                {
+                    tagName: "input",
+                    type: "button",
+                    className: "btn_primary",
+                    value: "Agregar Informacion Al Detalle",
+                    onclick: async () => {
+                        if (this.DetalleDevFactura.cantidad == null || this.DetalleDevFactura.descripciondevolucion == null) {
+                            alert("Falta rellenar campos")
+                            console.log("pjo a esto");
+                            return;
+                        }else{
+                            if(this.Dataset[0] == null){
+                                alert("Escoge antes el articulo")
+                                console.log("pjo a esto");
+                                return;
                             }
-                            if (this.DetalleDevFactura.devolucionUnidadOrigen == true) {
-                                this.Dataset[0].existenciasarticuloorigen =  parseInt(this.Dataset[0].existenciasarticuloorigen) + parseInt(this.DetalleDevFactura.cantidad);
-                                this.Dataset[0].existenciasarticulounidad = parseInt(this.Dataset[0].existenciasarticulounidad) + parseInt(this.DetalleDevFactura.Cantidadunidadtotal);
-                                this.DetalleDevFactura.cantidadunidad = this.DetalleDevFactura.Cantidadunidadtotal
-                            
-                            }
-                             console.log(this.DetalleDevolucionVenta)
-                            //this.NuevoBodegaxExiste.existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen
-                        //this.DetalleDevFactura.existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad
-                            this.action(this.DetalleDevFactura, this.Dataset,this.AdminMercas);
-
-
-                            //console.log(this.DetalleDevFactura.IdArticulo = JSON.parse(JSON.stringify(articulo.IdArticulo)));
                         }
+                        this.DetalleDevFactura.idadmimercancias = this.Dataset[0].idadmimercancias;
+                        ///this.DetalleDevFactura.NombreArticulo = this.Dataset[0].nombrearticulo;
+                        this.DetalleDevFactura.Temporal = this.Dataset[0].existenciasarticulounidad / this.Dataset[0].existenciasarticuloorigen;
+                        this.DetalleDevFactura.Cantidadunidadtotal = this.DetalleDevFactura.Temporal * this.DetalleDevFactura.cantidad;
+                        // this.DetalleDevFactura.cantidadingresad = this.DetalleDevFactura.cantidad
+                        this.DetalleDevFactura.suma = this.Dataset[0].existenciasarticulounidad + this.DetalleDevFactura.cantidad
+                        if (this.DetalleDevFactura.devolucionUnidad == true) {
+                            // this.Dataset[0].existenciasarticulounidad = this.DetalleDevFactura.cantidad + this.Dataset[0].existenciasarticulounidad;
+                            // NuevaFactura.totalventa = parseInt(NuevaFactura.subtotalventa) + parseInt(NuevaFactura.iva) - parseInt(NuevaFactura.descuentofactura)
+                            this.Dataset[0].existenciasarticulounidad = parseInt(this.Dataset[0].existenciasarticulounidad) + parseInt(this.DetalleDevFactura.cantidad)
+                        }
+                        if (this.DetalleDevFactura.devolucionUnidadOrigen == true) {
+                            this.Dataset[0].existenciasarticuloorigen = parseInt(this.Dataset[0].existenciasarticuloorigen) + parseInt(this.DetalleDevFactura.cantidad);
+                            this.Dataset[0].existenciasarticulounidad = parseInt(this.Dataset[0].existenciasarticulounidad) + parseInt(this.DetalleDevFactura.Cantidadunidadtotal);
+                            this.DetalleDevFactura.cantidadunidad = this.DetalleDevFactura.Cantidadunidadtotal
+
+                        }
+                        console.log(this.DetalleDevolucionVenta)
+                        //this.NuevoBodegaxExiste.existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen
+                        //this.DetalleDevFactura.existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad
+                        this.action(this.DetalleDevFactura, this.Dataset, this.AdminMercas);
+
+
+                        //console.log(this.DetalleDevFactura.IdArticulo = JSON.parse(JSON.stringify(articulo.IdArticulo)));
                     }
-                ]
+                }
+            ]
         }))
     }
-       
+
 }
 customElements.define('w-agregardevolucionfactura', AgregarFacturaDevolucion)
-export {AgregarFacturaDevolucion};
+export { AgregarFacturaDevolucion };

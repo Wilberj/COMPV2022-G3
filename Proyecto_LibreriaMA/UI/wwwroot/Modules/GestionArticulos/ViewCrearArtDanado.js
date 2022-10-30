@@ -28,6 +28,13 @@ window.onload = async () => {
                 tagName: 'input', type: 'button',
                 className: 'btn',
                 value: 'Guardar', onclick: async () => {
+                   
+                    if (AdminMercas[[0]] == null) {
+                        alert("Debe tener un Detalle para guardar")
+                        console.log("detalle eeehh");
+                        return;
+                    }
+
                     const response = await AjaxTools.PostRequest("../api/GestionCompra/SaveArtidanado", NuevoArtiDana)
                     if (response == true) {
                         AppMain.append(
@@ -97,6 +104,7 @@ window.onload = async () => {
 
         tagName: 'input', type: 'button',
         className: 'btn_primary', value: 'Anadir', onclick: async () => {
+            
             const Modal = new ModalComponent(
                 new AgregarDetalleArtDanados((danado) => {
 

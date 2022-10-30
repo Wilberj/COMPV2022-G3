@@ -24,6 +24,18 @@ window.onload = async () => {
                 tagName: 'input', type: 'button',
                 className: 'btn',
                 value: 'Guardar Venta', onclick: async () => {
+                    if (NuevaFactura.descuentofactura == null || NuevaFactura.idestado == null) {
+                        alert("Falta rellenar campos")
+                        console.log("pjo a esto");
+                        return;
+                    } else {
+                        if (DetallVenta[0] == null) {
+                            alert("Debe tener un Detalle Venta")
+                            console.log("detalle eeehh");
+                            return;
+                        }
+                    }
+
                     console.log(NuevaFactura);
                     const response =
                         await AjaxTools.PostRequest("../api/GestionVenta/SaveFactura",

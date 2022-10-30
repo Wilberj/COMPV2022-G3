@@ -37,12 +37,12 @@ window.onload = async () => {
         Dataset: MisArticulos, 
         ModelObject: new ViewAdminMercancia(
         ),
-        Functions: [    
-            {
-                name: "Detalles", action: async(Articulos) =>{
-                    //Cargar detalle
-                }
-            }
-        ]
+        // Functions: [    
+        //     {
+        //         name: "Detalles", action: async(Articulos) =>{
+        //             //Cargar detalle
+        //         }
+        //     }
+        // ]
     }))    
 }

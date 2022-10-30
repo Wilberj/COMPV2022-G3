@@ -3,6 +3,7 @@
     padding: 15px;
     grid-template-columns: calc(50% - 20px) calc(50% - 20px);
     grid-gap: 10px;
+    
     margin-bottom: 15px;
     border-radius: 0.4cm;
     box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -72,8 +73,8 @@
     color: var(--color-font-main);
     border: none;
     border-bottom: 1px solid #9ea7af;
-    font-size: 14px;
     font-weight: bold;
+    font-size: 20px;
     text-transform: uppercase;
     padding: 10px;
     text-align: left;
@@ -112,11 +113,12 @@
 
 .TabMenu label{
     margin-left: 10px;
-    font-size: 17px;
+    font-size: 22px;
     font-weight: 550;
-    color: var(--color-cuarto);
+    color: black;
     border-bottom: var(--color-cuarto) solid 2px;
     padding: 10px;
     cursor: pointer;
     transition: all 0.5s;
 }
+

@@ -47,7 +47,7 @@ class AgregarDetalleVenta extends HTMLElement {
             });
         this.Table.filter.append(Render.Create({
             tagName: 'input', type: 'button',
-            className: 'btn_primary', value: 'Anadir Articulo', onclick: async () => {
+            className: 'btn_primary', value: 'Anadir Articulo a Vender', onclick: async () => {
                 //code
 
                 const Modal = new ModalComponent
@@ -61,6 +61,7 @@ class AgregarDetalleVenta extends HTMLElement {
                         // this.DetalleVenta.idarticulo = JSON.parse(JSON.stringify(articulo.idarticulo))
                         this.Dataset.push(articulo);
                         Modal.Close();
+                        console.log("este es");
                         console.log(this.Dataset);
                         this.Table.DrawTableComponent();
                     }));
@@ -76,8 +77,30 @@ class AgregarDetalleVenta extends HTMLElement {
                     tagName: "input",
                     type: "button",
                     className: "btn_primary",
-                    value: "Agregar Informacion Al Detalle",
+                    value: "Agregar Informacion Al Detalle venta",
                     onclick: async () => {
+
+                        if (this.DetalleVenta.cantidadventa == null /*||this.DetalleVenta.descuentoventa == null*/ ||
+                            this.DetalleVenta.precioventa == null) {
+                            alert("Falta rellenar campos")
+                            console.log("pjo a esto");
+                            return;
+
+                        } else {
+                            if (this.Dataset[0] == null) {
+                                alert("Escoge el articulo que se vendera")
+                                console.log("pjo a esto");
+                                return;
+                            } else {
+                                if (this.DetalleVenta.cantidadventa > this.Dataset[0].existenciasarticulounidad ||
+                                    this.DetalleVenta.cantidadventa > this.Dataset[0].existenciasarticuloorigen) {
+                                    alert("La cantidad que vendes supera la cantidad del Stock Disponible")
+                                    console.log("excedistes");
+                                    return;
+                                }
+                            }
+
+                        }
                         this.DetalleVenta.idtamanoxarticulo = this.Dataset[0].idtamanoxarticulo
                         this.DetalleVenta.Temporal = this.Dataset[0].existenciasarticulounidad / this.Dataset[0].existenciasarticuloorigen;
                         this.DetalleVenta.Articulo = this.Dataset[0].nombrearticulo
@@ -86,8 +109,9 @@ class AgregarDetalleVenta extends HTMLElement {
                             this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad - this.DetalleVenta.cantidadventa
                         }
                         if (this.DetalleVenta.UnidadOrigen == true) {
+
                             this.Dataset[0].existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen - this.DetalleVenta.cantidadventa
-                            this.DetalleVenta.Cantidadunidadtotal = this.DetalleVenta.Temporal *  this.DetalleVenta.cantidadventa;
+                            this.DetalleVenta.Cantidadunidadtotal = this.DetalleVenta.Temporal * this.DetalleVenta.cantidadventa;
                             this.DetalleVenta.cantidaddanadaunidad = this.DetalleVenta.Cantidadunidadtotal
                             this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad - this.DetalleVenta.Cantidadunidadtotal
                         }

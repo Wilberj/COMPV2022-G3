@@ -67,7 +67,7 @@ class FormComponet extends HTMLElement {
     DefineInputType(prop, val, ObjectF, InputControl) {
         switch (this.Model[prop].type.toUpperCase()) {
             case "DATE":
-                let date_val = val == " " ? (new Date()).toISO() : ObjectF[prop];
+                let date_val = val == "" ? (new Date()).toISO() : ObjectF[prop];
                 InputControl = Render.Create({
                     tagName: "input", className: "text", type: this.Model[prop].type
                 });

@@ -37,6 +37,19 @@ window.onload = async () => {
                 tagName: 'input', type: 'button',
                 className: 'btn',
                 value: 'Guardar registro', onclick: async () => {
+                   if(DetalleDevFactura[0] == null){
+                    alert("Debe tener un Detalle Devolucion")
+                    console.log("detalle eeehh");
+                    return;
+                   }else{
+                    if(Updateventa[0] == null){
+                        alert("Debe tener una factura")
+                        console.log("detalle eeehh");
+                        return;
+                    }
+                   }
+                   
+                   
                     console.log( NewDevolucionVenta);
                     const response =
                         await AjaxTools.PostRequest("../api/GestionVenta/SaveDevolucionventa",
@@ -130,6 +143,11 @@ window.onload = async () => {
     TableDetalleDevFactura.filter.append(Render.Create({
         tagName: 'input', type: 'button',
         className: 'btn_primary', value: 'Anadir detalle', onclick: async () => {
+            if(Updateventa[0] == null){
+                alert("Debe tener una factura")
+                console.log("detalle eeehh");
+                return;
+            }
             const Modal = new ModalComponent
                 (new AgregarFacturaDevolucion((venta) => {
                     if (DetalleDevFactura.filter((x) => x.idadmimercancias == compra.idadmimercancias).length > 0) {

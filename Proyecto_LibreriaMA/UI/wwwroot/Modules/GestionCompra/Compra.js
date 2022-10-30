@@ -36,12 +36,12 @@ window.onload = async () => {
         Dataset: MisArticulos, 
         ModelObject: new ViewCompra(
         ),
-        Functions: [    
-            {
-                name: "Detalles", action: async(Articulos) =>{
-                    //Cargar detalle
-                }
-            }
-        ]
+        // Functions: [    
+        //     {
+        //         name: "Detalles", action: async(Articulos) =>{
+        //             //Cargar detalle
+        //         }
+        //     }
+        // ]
     }))    
 }
