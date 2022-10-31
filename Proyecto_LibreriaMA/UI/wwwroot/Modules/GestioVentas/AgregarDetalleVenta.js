@@ -91,14 +91,7 @@ class AgregarDetalleVenta extends HTMLElement {
                                 alert("Escoge el articulo que se vendera")
                                 console.log("pjo a esto");
                                 return;
-                            } else {
-                                if (this.DetalleVenta.cantidadventa > this.Dataset[0].existenciasarticulounidad ||
-                                    this.DetalleVenta.cantidadventa > this.Dataset[0].existenciasarticuloorigen) {
-                                    alert("La cantidad que vendes supera la cantidad del Stock Disponible")
-                                    console.log("excedistes");
-                                    return;
-                                }
-                            }
+                            } 
 
                         }
                         this.DetalleVenta.idtamanoxarticulo = this.Dataset[0].idtamanoxarticulo
@@ -106,9 +99,19 @@ class AgregarDetalleVenta extends HTMLElement {
                         this.DetalleVenta.Articulo = this.Dataset[0].nombrearticulo
 
                         if (this.DetalleVenta.Unidad == true) {
+                            if (this.DetalleVenta.cantidadventa > this.Dataset[0].existenciasarticulounidad) {
+                                alert("La cantidad que vendes supera la cantidad del Stock Disponible")
+                                console.log("excedistes");
+                                return;
+                            }
                             this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad - this.DetalleVenta.cantidadventa
                         }
                         if (this.DetalleVenta.UnidadOrigen == true) {
+                            if (this.DetalleVenta.cantidadventa > this.Dataset[0].existenciasarticuloorigen) {
+                                alert("La cantidad que vendes supera la cantidad del Stock Disponible")
+                                console.log("excedistes");
+                                return;
+                            }
 
                             this.Dataset[0].existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen - this.DetalleVenta.cantidadventa
                             this.DetalleVenta.Cantidadunidadtotal = this.DetalleVenta.Temporal * this.DetalleVenta.cantidadventa;
