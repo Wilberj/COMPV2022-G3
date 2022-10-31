@@ -137,30 +137,34 @@ class ViewListArticuloVenta {
     
    }
    export{ViewListArticuloVenta}
-class viewdevolventa {
+   class viewdevolventa {
     constructor(props) {
-        for (const prop in props) {
-            this[prop] = props[prop];
-        }
+     for (const prop in props) {
+      this[prop] = props[prop];
+     }
     }
-    idfactura = { type: "number", primary: true };
-    nombrearticulo = { type: "text" };
-
-}
-export { viewdevolventa }
-class viewDetalleDevolucionVenta {
+    idfactura = { type: "number" , primary: true  };
+    fechafactura = { type: "date"  };
+    nombrecliente = { type: "text"  };
+    idusuario = { type: "number"  };
+    nombreusuario = { type: "text"  };
+   }
+   export{viewdevolventa}
+   class viewDetalleDevolucionVenta {
     constructor(props) {
-        for (const prop in props) {
-            this[prop] = props[prop];
-        }
+     for (const prop in props) {
+      this[prop] = props[prop];
+     }
     }
-    idadmimercancias = { type: "number", primary: true };
-    nombrearticulo = { type: "text" };
-    idtamanoxarticulo = { type: "number" };
-    idfactura = { type: "number" };
-    existenciasarticuloorigen = { type: "number" };
-    existenciasarticulounidad = { type: "number" };
-    precioventa = { type: "number" };
-
-}
-export { viewDetalleDevolucionVenta }
+    idadmimercancias = { type: "number" , primary: true  };
+    nombrearticulo = { type: "text"  };
+    idtamanoxarticulo = { type: "number"  };
+    idfactura = { type: "number"  };
+    existenciasarticuloorigen = { type: "number"  };
+    existenciasarticulounidad = { type: "number"  };
+    precioventa = { type: "number",hidden:true  };
+    iddetallefactura = { type: "number",hidden:true  };
+    cantidadventa = { type: "number"  };
+    
+   }
+   export{viewDetalleDevolucionVenta}

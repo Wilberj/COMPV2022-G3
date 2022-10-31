@@ -6,16 +6,16 @@
     
     margin-bottom: 15px;
     border-radius: 0.4cm;
-    box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0px 2px 3px rgba(6, 6, 6, 0.2);
 }
 
 .FormContainer2 {
     grid-template-columns: calc(33% - 10px) calc(33% - 10px) calc(33% - 10px);
 }
 
-.btn, .btn_primary,
+.btn_primary,
 .btn_secundary {
-    padding: 7px;
+    padding: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,8 +28,37 @@
     cursor: pointer;
 }
 .btn{
-    margin-bottom: 3px;
+    padding: 4px;
+    background-color: var(--color-cinco);
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 50px;
+    transition: transform 0.3s ease,box-shadow 0.3s ease;
+
 }
+.btn::after{
+content: "";
+position: absolute;
+opacity: 0.3;
+border-radius: inherit;
+width: 100%;
+height: 100%;
+left: 0;
+bottom: 0;
+z-index: -1;
+transition:transform 0.5s ease;
+
+}
+.btn:hover{
+    transform: translate(0,-6px);
+    
+}
+.btn:hover::after{
+    transform: rotate(150deg);
+}
+
+/**************************************/
 
 .btn_primary {
     background-color: var(--color-primary);
@@ -61,7 +90,7 @@
 
 .tableClass1 {
     width: 100%;
-    box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0px 3px 5px rgba(6, 6, 6, 0.2);
     padding: 0px;
     overflow: hidden;
     border-radius: 0.3cm;
@@ -72,7 +101,7 @@
 .tableClass1 th {
     color: var(--color-font-main);
     border: none;
-    border-bottom: 1px solid #9ea7af;
+    border-bottom: 1px solid #3b3535;
     font-weight: bold;
     font-size: 20px;
     text-transform: uppercase;

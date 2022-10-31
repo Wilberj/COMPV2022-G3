@@ -14,7 +14,7 @@ class AgregarVentaDevolucion extends HTMLElement {
     Draw = async () => {
         this.Dataset = await AjaxTools.PostRequest("../api/GestionVenta/ChargeDevVentas")
         this.Table = new TableComponent({
-            ModelObject : new viewdevolventa(),
+           ModelObject : new viewdevolventa(),
             Dataset: this.Dataset,
             Functions: [
                 {

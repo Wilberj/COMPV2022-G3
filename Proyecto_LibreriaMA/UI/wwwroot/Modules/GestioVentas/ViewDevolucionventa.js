@@ -6,7 +6,7 @@ import { AjaxTools, Render } from "../utility.js";
 //import { AgregarArticuloCompra } from "./Components/AgregarArticuloCompra.js";
 //import { AgregarDetalleCompra } from "./Components/AgregarDetalle.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
-import { ViewArticuloCompra, ViewListArticuloVenta } from "../../Model/ViewDatabaseModel.js";
+import { ViewArticuloCompra, viewdevolventa, ViewListArticuloVenta } from "../../Model/ViewDatabaseModel.js";
 import { AgregarCompraDevolucion } from "../GestionCompra/Components/AgregarCompraDevolucion.js";
 import { AgregarFacturaDevolucion } from "./Components/AgregarFacturaDevolucion.js";
 import { AgregarVentaDevolucion } from "./Components/AgregarVentaDevolucion.js";
@@ -85,13 +85,13 @@ window.onload = async () => {
     });
     const Table = new TableComponent({
         //cambiar vista
-        ModelObject: new ViewListArticuloVenta(),
+       ModelObject: new viewdevolventa(),
         Dataset: Updateventa,
         Functions: [
             {
                 name: "Remover",
                 action: async (Dato) => {
-                    const Datof = Updateventa.find((x) => x.idproveedor == Dato.idproveedor);
+                    const Datof = Updateventa.find((x) => x.idfactura == Dato.idfactura);
                     if (Datof != null) {
                         Updateventa.splice(Updateventa.indexOf(Datof), 1);
                         Table.DrawTableComponent();
@@ -106,7 +106,7 @@ window.onload = async () => {
             const Modal = new ModalComponent
                 ( new AgregarVentaDevolucion((DetalleDev) => {
                     if (Updateventa.length > 0) {
-                        alert("Solo puede seleccionar una compra")
+                        alert("Solo puede seleccionar una venta")
                         return;
                     }
                     Updateventa.push(DetalleDev);
