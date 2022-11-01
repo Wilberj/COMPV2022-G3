@@ -16,7 +16,6 @@ class AgregarDetalleCompra extends HTMLElement {
         this.dataC = [];
         this.dataTxA = [];
         this.dataAdminMerca = [];
-
         this.action = action;
         this.DetalleCompra = {};
         this.DetalleCompra.Articulos = this.Dataset;
@@ -28,6 +27,7 @@ class AgregarDetalleCompra extends HTMLElement {
         this.DetalleCompra.TamanoxArt = {};
         //AdminMerca
         this.DetalleCompra.AdminMercanciaComp = {};
+
 
         this.Draw();
     }
@@ -209,8 +209,10 @@ class AgregarDetalleCompra extends HTMLElement {
                             //
                             this.DetalleCompra.nombre = this.Dataset[0].nombrearticulo;
                             this.DetalleCompra.totaldetalle = this.DetalleCompra.cantidadcompra * this.DetalleCompra.preciocompra - this.DetalleCompra.descuentocompra;
+
                             console.log("INI")
-                            console.log(this.DetalleCompra.TamanoxArt);
+                            console.log(this.DetalleCompra);
+
                             console.log("lll")
                             this.action(this.DetalleCompra, this.Dataset, console.log(this.DetalleCompra));
 

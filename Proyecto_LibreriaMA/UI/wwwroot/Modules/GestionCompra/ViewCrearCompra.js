@@ -8,11 +8,14 @@ import { AgregarArticuloCompra } from "./Components/AgregarArticuloCompra.js";
 import { AgregarDetalleCompra } from "./Components/AgregarDetalle.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
 
+// class TotalSuma {insaast = 0}
 
 window.onload = async () => {
-    const DetalleCompra = []; 
+    const DetalleCompra = [];
     const Total = [];
-    var suma = 0;
+    // TotalSuma = Total
+    let TotalSuma, iva, totalcompra
+    // var suma = 0;
     const NuevaCompra = {
         DetalleCompra: DetalleCompra
     }
@@ -55,15 +58,14 @@ window.onload = async () => {
                         await AjaxTools.PostRequest("../api/GestionCompra/SaveCompra",
                             NuevaCompra,
 
-                            Total.forEach(function (tot) {
-                                suma += tot; 
-                            }),
-                            console.log(suma),
-                            NuevaCompra.subtotalcompra = suma,
-
-                            NuevaCompra.iva = NuevaCompra.subtotalcompra * 0.15,
-                            NuevaCompra.totalcompra = parseInt(NuevaCompra.subtotalcompra) + parseInt(NuevaCompra.iva) - parseInt(NuevaCompra.descuentocompra)
-                            );
+                            // Total.forEach(function (tot) {
+                            //     suma += tot;
+                            // }),
+                            // console.log(suma),
+                            NuevaCompra.subtotalcompra = TotalSuma,
+                            NuevaCompra.iva = iva,
+                            NuevaCompra.totalcompra = totalcompra - parseInt(NuevaCompra.descuentocompra)
+                        );
                     if (response == true) {
                         AppMain.append(
                             new ModalComponent(
@@ -74,9 +76,9 @@ window.onload = async () => {
 
                                 // window.location.reload()
                             )
-                            
+
                         );
-                       
+
                     }
 
                 },
@@ -88,7 +90,7 @@ window.onload = async () => {
     const dataC = await AjaxTools.PostRequest("../api/MantenimientoCatalogos/GetDatosUsuarios")
 
     const FormCompraProductos = new FormComponet({
-        EditObject: NuevaCompra,    
+        EditObject: NuevaCompra,
         Model: new CompraProductos({
             idproveedor: {
                 type: "select",
@@ -97,60 +99,26 @@ window.onload = async () => {
             idusuario: {
                 type: "select",
                 Dataset: dataC.map((d) => ({ id: d.idusuario, desc: d.nombreusuario }))
-            }
+            },
+            subtotalcompra: {hidden: true},
+            iva: {hidden: true},
+            totalcompra: {hidden: true}
+
         })
     })
     AppMain.append(FormCompraProductos);
-
-    //Articulos
-    // const TableCompraArticulos = new TableComponentCompra({
-    //     ModelObject: new Articulos(),
-    //     Dataset: ArticulosComp, Functions: [
-    //         {
-    //             name: "Remover", action: async (articulos) => {
-    //                 const articulosf = Articulos.find(x => x.idarticulo == articulos.idarticulo)
-    //                 if (articulosf != null) {
-    //                     Articulos.splice(Articulos.indexOf(articulosf), 1);
-    //                     TableCompraArticulos.DrawTableComponent();
-    //                 }
-    //             }
-    //         }
-    //     ]
-    // });
-
-    // TableCompraArticulos.filter.append(
-    //     Render.Create({
-    //         tagName: 'input', type: 'button',
-    //         className: 'btn_primary', value: 'Anadir', onclick: async () => {
-    //             const Modal = new ModalComponent
-
-    //                 (new AgregarArticuloCompra((Articulos) => {
-
-    //                     if (Articulos.filter(x => x.idarticulo == Articulos.idarticulo).length > 0) {
-    //                         alert("Ya existe el articulo")
-    //                         return;
-    //                     }
-    //                     Articulos.push(Articulos);
-    //                     console.log(Articulos);
-    //                     Modal.Close();
-    //                     TableCompraArticulos.DrawTableComponent();
-    //                 }));
-    //             AppMain.append(Modal)
-    //         }
-    //     })
-    // )
 
 
     //Detalle
     const TableDetalleCompra = new TableComponent({
         ModelObject: new DetalleCompraProductos(),
         Dataset: DetalleCompra,
-        Functions:[
+        Functions: [
             {
-                name: "eliminar", action: async(detaeli)=>{
-                    const detalleelimina = DetalleCompra.find(x=>x.idarticulo == detaeli.idarticulo )
-                    if(detalleelimina != null){
-                        DetalleCompra.splice(DetalleCompra.indexOf(detaeli),1);
+                name: "eliminar", action: async (detaeli) => {
+                    const detalleelimina = DetalleCompra.find(x => x.idarticulo == detaeli.idarticulo)
+                    if (detalleelimina != null) {
+                        DetalleCompra.splice(DetalleCompra.indexOf(detaeli), 1);
                         TableDetalleCompra.DrawTableComponent();
                     }
                 }
@@ -170,21 +138,60 @@ window.onload = async () => {
                             alert("El Detalle ya existe")
                             return;
                         }
-                        
+
                         DetalleCompra.push(compra);
                         Total.push(compra.totaldetalle)
-                        // ConvertirMedida.push(DetalleCompra.ConvertirMedida);
+                        TotalSuma = Total.reduce((a, b) => Number(a) + Number(b), 0);
+                        iva = TotalSuma * 0.15;
+                        totalcompra = TotalSuma + iva
+                        console.log(TotalSuma)
                         console.log(compra.totaldetalle);
                         console.log(Total);
+                        if (TableDetalleCompra != null) {
+                            document.getElementById("Subtotal").innerHTML = TotalSuma;
+                            document.getElementById("IVA").innerHTML = iva;
+                            document.getElementById("Total").innerHTML = totalcompra;
 
+                        }
                         Modal.Close();
                         TableDetalleCompra.DrawTableComponent();
                         console.log(NuevaCompra);
+
                     }));
                 AppMain.append(Modal)
             }
         })
-    )   
+    )
+    // AppMain.append(Render.Create({
+    //     tagName: "h3",
+    //     innerText: "Costos", class: "header1"
+    // })
+    // );
+
+    AppMain.append(Render.Create({
+        tagName: "div",
+        innerHTML:
+            `<table id="tabla_producto" border="1" class="tableClass1">
+            <thead>
+            <tr>
+            <th>Subtotal</th>
+            <th>IVA</th>
+            <th>Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td id="Subtotal"></td>
+            <td id="IVA"></td>
+            <td id="Total"></td>
+            </tr>
+            </tbody>
+            </table>
+            `
+
+    })
+    );
+
     AppMain.append(Render.Create({
         tagName: "h3",
         innerText: "Agregar articulos a la compra", class: "header1"
@@ -195,3 +202,4 @@ window.onload = async () => {
 
 }
 
+// export {TotalSuma}

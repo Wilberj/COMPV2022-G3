@@ -8,7 +8,9 @@ import { AgregarDetalleVenta } from "./AgregarDetalleVenta.js";
 window.onload = async () => {
     const DetallVenta = [];
     const Total = [];
-    var suma = 0;
+    // var suma = 0;
+    let TotalSuma, iva, totalventa
+
     const NuevaFactura = {
         DetallVenta: DetallVenta
     }
@@ -41,13 +43,9 @@ window.onload = async () => {
                         await AjaxTools.PostRequest("../api/GestionVenta/SaveFactura",
                             NuevaFactura,
 
-                            Total.forEach(function (tot) {
-                                suma += tot;
-                            }),
-                            console.log(suma),
-                            NuevaFactura.subtotalventa = suma,
-                            NuevaFactura.iva = NuevaFactura.subtotalventa * 0.15,
-                            NuevaFactura.totalventa = parseInt(NuevaFactura.subtotalventa) + parseInt(NuevaFactura.iva) - parseInt(NuevaFactura.descuentofactura)
+                            NuevaFactura.subtotalventa = TotalSuma,
+                            NuevaFactura.iva = iva,
+                            NuevaFactura.totalventa = totalventa - parseInt(NuevaFactura.descuentofactura)
                         );
                     if (response == true) {
                         AppMain.append(
@@ -57,7 +55,7 @@ window.onload = async () => {
                                     innerText: "Factura",
                                 }),
 
-                                // //                 // window.location.reload()
+                              // window.location.reload()
                             )
 
                         );
@@ -76,7 +74,10 @@ window.onload = async () => {
             idusuario: {
                 type: "select",
                 Dataset: dataC.map((d) => ({ id: d.idusuario, desc: d.nombreusuario }))
-            }
+            },
+            subtotalventa: {hidden: true},
+            iva: {hidden: true},
+            totalventa: {hidden: true}
         })
     })
     AppMain.append(FormVentaProduutos);
@@ -108,15 +109,47 @@ window.onload = async () => {
                     }
                     DetallVenta.push(venta);
                     Total.push(venta.totaldetalle)
+                    TotalSuma = Total.reduce((a, b) => Number(a) + Number(b), 0);
+                    iva = TotalSuma * 0.15;
+                    totalventa = TotalSuma + iva
                     // ConvertirMedida.push(DetalleCompra.ConvertirMedida);
                     console.log(venta.totaldetalle);
                     console.log(Total);
+                    if (TableDetalleVenta != null) {
+                        document.getElementById("Subtotal").innerHTML = TotalSuma;
+                        document.getElementById("IVA").innerHTML = iva;
+                        document.getElementById("Total").innerHTML = totalventa;
+
+                    }
                     Modal.Close();
                     TableDetalleVenta.DrawTableComponent();
                 }))
             AppMain.append(Modal);
         }
     }))
+    AppMain.append(Render.Create({
+        tagName: "div",
+        innerHTML:
+            `<table id="tabla_producto" border="1" class="tableClass1">
+            <thead>
+            <tr>
+            <th>Subtotal</th>
+            <th>IVA</th>
+            <th>Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td id="Subtotal"></td>
+            <td id="IVA"></td>
+            <td id="Total"></td>
+            </tr>
+            </tbody>
+            </table>
+            `
+
+    })
+    );
     AppMain.append(Render.Create({
         tagName: "h3",
         innerText: "Agregar detalle a la venta", class: "header1"

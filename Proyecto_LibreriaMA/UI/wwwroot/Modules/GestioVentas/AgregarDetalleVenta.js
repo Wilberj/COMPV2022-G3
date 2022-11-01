@@ -21,11 +21,11 @@ class AgregarDetalleVenta extends HTMLElement {
     connectedCallback() { }
     Draw = async () => {
         this.Form = new FormComponet({
-            //aqui oculrar el tamanoxarticulo y el idfactura lo podes traer en una nueva vista
-            //y referenciarlo como se ha hecho anteriormente
             Model: new DetalleFactura({
-                Unidad: { type: "checkbox", },
-                UnidadOrigen: { type: "checkbox", },
+                Unidad: { type: "checkbox" },
+                UnidadOrigen: { type: "checkbox" },
+                precioventa: { hidden: true },
+
             }),
             EditObject: this.DetalleVenta
         }),
@@ -80,8 +80,8 @@ class AgregarDetalleVenta extends HTMLElement {
                     value: "Agregar Informacion Al Detalle venta",
                     onclick: async () => {
 
-                        if (this.DetalleVenta.cantidadventa == null /*||this.DetalleVenta.descuentoventa == null*/ ||
-                            this.DetalleVenta.precioventa == null) {
+                        if (this.DetalleVenta.cantidadventa == null /*||this.DetalleVenta.descuentoventa == null*/ 
+                           /*this.DetalleVenta.precioventa == null*/) {
                             alert("Falta rellenar campos")
                             console.log("pjo a esto");
                             return;
@@ -97,7 +97,8 @@ class AgregarDetalleVenta extends HTMLElement {
                         this.DetalleVenta.idtamanoxarticulo = this.Dataset[0].idtamanoxarticulo
                         this.DetalleVenta.Temporal = this.Dataset[0].existenciasarticulounidad / this.Dataset[0].existenciasarticuloorigen;
                         this.DetalleVenta.Articulo = this.Dataset[0].nombrearticulo
-
+                        this.DetalleVenta.precioventa = this.Dataset[0].precioventa
+                        
                         if (this.DetalleVenta.Unidad == true) {
                             if (this.DetalleVenta.cantidadventa > this.Dataset[0].existenciasarticulounidad) {
                                 alert("La cantidad que vendes supera la cantidad del Stock Disponible")

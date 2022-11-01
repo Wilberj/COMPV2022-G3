@@ -33,7 +33,7 @@ class ModalComponent extends HTMLElement {
                     className: 'btn_secundary', value: 'X',
                     onclick:() => {
                         this.Close();
-                        window.location.reload()
+                       // window.location.reload()
                     }
                 }
             ]
