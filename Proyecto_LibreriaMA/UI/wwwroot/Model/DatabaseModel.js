@@ -38,10 +38,10 @@ class ArticulosDanados {
             this[prop] = props[prop];
         }
     }
-    idarticulosdanados = { type: "number", primary: true};
-    idtamanoxarticulo = { type: "number", hidden: true  };
-    idusuario = { type: "number", hidden: true }; 
-    idadmimercancias= { type: "number", hidden: true };
+    idarticulosdanados = { type: "number", primary: true };
+    idtamanoxarticulo = { type: "number", hidden: true };
+    idusuario = { type: "number", hidden: true };
+    idadmimercancias = { type: "number", hidden: true };
     cantidaddanadaorigen = { type: "number" };
     cantidaddanadaunidad = { type: "number" };
     idbodega = { type: "number" };
@@ -114,8 +114,8 @@ class CompraProductos {
     }
     idcompra = { type: "number", primary: true };
     fechacompra = { type: "date" };
-    idusuario = { type: "number"};
-    idproveedor = { type: "number",  };
+    idusuario = { type: "number" };
+    idproveedor = { type: "number", };
     idestado = { type: "number", };
     subtotalcompra = { type: "number" };
     iva = { type: "number" };
@@ -147,7 +147,7 @@ class ConvertirMedida {
     idconvertir = { type: "number", primary: true };
     idunidadmedida = { type: "number" };
     idarticulo = { type: "number" };
-    cantidad = { type: "number",hidden: true };
+    cantidad = { type: "number", hidden: true };
 }
 export { ConvertirMedida }
 class DatosUsuarios {
@@ -174,14 +174,14 @@ class DetalleCompraProductos {
         }
     }
     iddetallecompra = { type: "number", primary: true };
-    idcompra = { type: "number", hidden: true  };
-    idarticulo = { type: "number", hidden: true  };
-    idunidadmedida = { type: "number", hidden: true  };
-    idtamano = { type: "number", hidden: true  };
+    idcompra = { type: "number", hidden: true };
+    idarticulo = { type: "number", hidden: true };
+    idunidadmedida = { type: "number", hidden: true };
+    idtamano = { type: "number", hidden: true };
     preciocompra = { type: "number" };
     cantidadcompra = { type: "number" };
     descuentocompra = { type: "number" };
-    
+
 }
 export { DetalleCompraProductos }
 class DetalleFactura {
@@ -190,16 +190,16 @@ class DetalleFactura {
             this[prop] = props[prop];
         }
     }
-    cantidaddanadaunidad  = {hidden: true}
-    Temporal = {hidden: true}
+    cantidaddanadaunidad = { hidden: true }
+    Temporal = { hidden: true }
     iddetallefactura = { type: "number", primary: true };
     idfactura = { type: "number", hidden: true };
     idtamanoxarticulo = { type: "number", hidden: true };
     precioventa = { type: "number" };
     cantidadventa = { type: "number" };
     descuentoventa = { type: "number" };
-    Unidad= { hidden: true  };
-    UnidadOrigen= {  hidden: true };
+    Unidad = { hidden: true };
+    UnidadOrigen = { hidden: true };
 }
 export { DetalleFactura }
 class DetalleDevolucionCompra {
@@ -278,6 +278,8 @@ class Factura {
     idusuario = { type: "number" };
     idestado = { type: "number" };
     descuentofactura = { type: "number" };
+    pagototal = { type: "number",hidden:true };
+    cambio = { type: "number",hidden: true };
 }
 export { Factura }
 class Marca {

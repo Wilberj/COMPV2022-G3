@@ -110,12 +110,16 @@ namespace CAPA_NEGOCIO.MODEL
         public int? existenciasarticulounidad { get; set; }
         public string? nombrearticulo { get; set; }
     }
-    
+
     public class viewdevolventa : EntityClass
     {
         public int? idfactura { get; set; }
-        public string? nombrearticulo { get; set; }
+        public DateTime? fechafactura { get; set; }
+        public string? nombrecliente { get; set; }
+        public string? nombreusuario { get; set; }
+        public int? idusuario { get; set; }
     }
+
 
     public class viewDetalleDevolucionVenta : EntityClass
     {
@@ -126,6 +130,8 @@ namespace CAPA_NEGOCIO.MODEL
         public int? existenciasarticuloorigen { get; set; }
         public int? existenciasarticulounidad { get; set; }
         public Decimal? precioventa { get; set; }
+        public int? iddetallefactura { get; set; }
+        public Decimal? cantidadventa { get; set; }
     }
 
 }

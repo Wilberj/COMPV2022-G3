@@ -29,7 +29,7 @@ window.onload = async () => {
         children: [
             {
                 tagName: 'input', type: 'button',
-                className: 'btn',
+                className: 'btn_cuarto',
                 value: 'Guardar Compra', onclick: async () => {
 
                     if (NuevaCompra.descuentocompra == null || NuevaCompra.idestado == null) {

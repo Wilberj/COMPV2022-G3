@@ -16,20 +16,20 @@ window.onload = async () => {
     })
     );
 
-    AppMain.append(Render.Create({
-        class: "FormContainer2",
-        children: [
-            {
-                tagName: 'input', type: 'button',
-                className: 'btn',
-                value: 'Ingresar Existencias a bodega', onclick: async () => {
-                    //cargar vists
-                    window.location = "../GestionBodega/GestionBodegaView"
+    // AppMain.append(Render.Create({
+    //     class: "FormContainer2",
+    //     children: [
+    //         {
+    //             tagName: 'input', type: 'button',
+    //             className: 'btn',
+    //             value: 'Ingresar Existencias a bodega', onclick: async () => {
+    //                 //cargar vists
+    //                 window.location = "../GestionBodega/GestionBodegaView"
 
-                }
-            }
-        ]
-    }))
+    //             }
+    //         }
+    //     ]
+    // }))
 
     const MisArticulos =
         await AjaxTools.PostRequest("../api/GestionCompra/AdminMercancia")

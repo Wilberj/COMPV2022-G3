@@ -482,6 +482,8 @@ namespace CAPA_NEGOCIO.MODEL
         public int? idusuario { get; set; }
         public int? idestado { get; set; }
         public decimal? descuentofactura { get; set; }
+        public Decimal? pagototal { get; set; }
+        public Decimal? cambio { get; set; }
         public List<DetalleFactura> DetallVenta { get; set; }
         public Object SaveFactura()
         {

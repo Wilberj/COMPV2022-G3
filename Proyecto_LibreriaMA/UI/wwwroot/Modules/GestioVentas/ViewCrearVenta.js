@@ -24,7 +24,7 @@ window.onload = async () => {
         children: [
             {
                 tagName: 'input', type: 'button',
-                className: 'btn',
+                className: 'btn_cuarto',
                 value: 'Guardar Venta', onclick: async () => {
                     if (NuevaFactura.descuentofactura == null || NuevaFactura.idestado == null) {
                         alert("Falta rellenar campos")
@@ -46,6 +46,7 @@ window.onload = async () => {
                             NuevaFactura.subtotalventa = TotalSuma,
                             NuevaFactura.iva = iva,
                             NuevaFactura.totalventa = totalventa - parseInt(NuevaFactura.descuentofactura)
+                           
                         );
                     if (response == true) {
                         AppMain.append(
@@ -75,11 +76,18 @@ window.onload = async () => {
                 type: "select",
                 Dataset: dataC.map((d) => ({ id: d.idusuario, desc: d.nombreusuario }))
             },
+            pagototal : { type: "number" },
+            cambio : { type: "number" },
             subtotalventa: {hidden: true},
             iva: {hidden: true},
-            totalventa: {hidden: true}
-        })
+            totalventa: {hidden: true},
+            
+        }),
+      
+        
+        
     })
+    
     AppMain.append(FormVentaProduutos);
 
     const TableDetalleVenta = new TableComponent({
