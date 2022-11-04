@@ -241,6 +241,7 @@ namespace CAPA_NEGOCIO.MODEL
         public decimal? preciocompra { get; set; }
         public decimal? cantidadcompra { get; set; }
         public decimal? descuentocompra { get; set; }
+        public bool? activo { get; set; }
         public List<Articulos> Articulos { get; set; }
         public List<Unidades> Unidades { get; set; }
         public List<ConvertirMedida> ConvertMedida { get; set; }
@@ -340,6 +341,8 @@ namespace CAPA_NEGOCIO.MODEL
         public decimal? precioventa { get; set; }
         public decimal? cantidadventa { get; set; }
         public decimal? descuentoventa { get; set; }
+        public bool? activo { get; set; }
+
         public List<AdministracionMercancias> AdminMercaVenta { get; set; }
         public Object UpdateAdminMerca()
         {
@@ -386,26 +389,41 @@ namespace CAPA_NEGOCIO.MODEL
         public int? iddevolucioncompra { get; set; }
         public int? idproveedor { get; set; }
         public int? idcompra { get; set; }
+        public int? idadmimercancias { get; set; }
+
         public DateTime? Fechadevolucioncompra { get; set; }
-        public List<DetalleDevolucionCompra> DetalleDevCompra { get; set; }
+        /*public List<DetalleDevolucionCompra> DetalleDevCompra { get; set; }*/
         public List<CompraProductos> UpdateCompra { get; set; }
+        public List<DetalleCompraProductos> UpdateDetalleCompra { get; set; }
+
+        public List<AdministracionMercancias> AdminMerca { get; set; }
+
 
         public Object SaveDevolucionCompra()
         {
             this.iddevolucioncompra = (Int32)this.Save();
-            if (this.DetalleDevCompra != null)
+            if (this != null)
             {
-                foreach (var DetalleDevCompra in this.DetalleDevCompra)
+                /*foreach (var DetalleDevCompra in this.DetalleDevCompra)
                 {
                     DetalleDevCompra.iddevolucioncompra = this.iddevolucioncompra;
                     DetalleDevCompra.iddetalledevolucioncompra = (Int32)DetalleDevCompra.Save();
-                }
+                }*/
                 foreach (var UpdateCompra in this.UpdateCompra)
                 {
                     UpdateCompra.idcompra = this.idcompra;
                     UpdateCompra.Update("idcompra");
                 }
-
+                foreach (var UpdateDevCompra in this.UpdateDetalleCompra)
+                {
+                    UpdateDevCompra.iddetallecompra = this.idcompra;
+                    UpdateDevCompra.Update("iddetallecompra");
+                }
+                foreach (var AdminMerca in this.AdminMerca)
+                {
+                    AdminMerca.idadmimercancias = this.idadmimercancias;
+                    AdminMerca.Update("idadmimercancias");
+                }
             }
 
             return true;
@@ -484,6 +502,8 @@ namespace CAPA_NEGOCIO.MODEL
         public decimal? descuentofactura { get; set; }
         public Decimal? pagototal { get; set; }
         public Decimal? cambio { get; set; }
+        public bool? activo { get; set; }
+
         public List<DetalleFactura> DetallVenta { get; set; }
         public Object SaveFactura()
         {

@@ -181,7 +181,7 @@ class DetalleCompraProductos {
     preciocompra = { type: "number" };
     cantidadcompra = { type: "number" };
     descuentocompra = { type: "number" };
-
+    activo = { type: "checkbox" };
 }
 export { DetalleCompraProductos }
 class DetalleFactura {
@@ -198,6 +198,7 @@ class DetalleFactura {
     precioventa = { type: "number" };
     cantidadventa = { type: "number" };
     descuentoventa = { type: "number" };
+    activo = { type: "checkbox" };
     Unidad = { hidden: true };
     UnidadOrigen = { hidden: true };
 }
@@ -239,6 +240,8 @@ class DevolucionCompra {
     idproveedor = { type: "number" };
     idcompra = { type: "number" };
     Fechadevolucioncompra = { type: "date" };
+    idadmimercancias = { type: "number" };
+
 }
 export { DevolucionCompra }
 class DevolucionVenta {
@@ -280,6 +283,8 @@ class Factura {
     descuentofactura = { type: "number" };
     pagototal = { type: "number",hidden:true };
     cambio = { type: "number",hidden: true };
+    activo = { type: "checkbox" };
+
 }
 export { Factura }
 class Marca {

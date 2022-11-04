@@ -112,11 +112,11 @@ class ViewDetalleDevolucion {
     nombrearticulo = { type: "text" };
     preciocompra = { type: "number" };
     cantidadcompra = { type: "number" };
-    idcompra = { type: "number" };
+    idcompra = { type: "number", hidden: true };
     iddetallecompra = { type: "number", hidden: true };
     preciocompraunidad = { type: "number", hidden: true };
-    existenciasarticuloorigen = { type: "number" };
-    existenciasarticulounidad = { type: "number" };
+    existenciasarticuloorigen = { type: "number", hidden: true };
+    existenciasarticulounidad = { type: "number" , hidden: true };
 
 }
 export { ViewDetalleDevolucion }
