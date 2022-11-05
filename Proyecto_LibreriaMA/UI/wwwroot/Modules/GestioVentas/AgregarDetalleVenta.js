@@ -98,16 +98,35 @@ class AgregarDetalleVenta extends HTMLElement {
                         this.DetalleVenta.Temporal = this.Dataset[0].existenciasarticulounidad / this.Dataset[0].existenciasarticuloorigen;
                         this.DetalleVenta.Articulo = this.Dataset[0].nombrearticulo
                         this.DetalleVenta.precioventa = this.Dataset[0].precioventa
-                        
+                        this.DetalleVenta.sacarorigen = this.DetalleVenta.cantidadventa / this.DetalleVenta.Temporal
+
+
+
                         if (this.DetalleVenta.Unidad == true) {
+                            
+                            
                             if (this.DetalleVenta.cantidadventa > this.Dataset[0].existenciasarticulounidad) {
                                 alert("La cantidad que vendes supera la cantidad del Stock Disponible")
                                 console.log("excedistes");
                                 return;
                             }
+                            // if (this.DetalleVenta.cantidadventa >= this.DetalleVenta.Temporal) {
+                            //     this.Dataset[0].existenciasarticuloorigen = this.DetalleVenta.cantidadventa / this.DetalleVenta.Temporal
+                            //     return;
+                            //    }
                             this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad - this.DetalleVenta.cantidadventa
+                            this.Dataset[0].existenciasarticuloorigen = parseInt(this.Dataset[0].existenciasarticuloorigen) - parseInt(this.DetalleVenta.sacarorigen)
+                           
+                            
                         }
                         if (this.DetalleVenta.UnidadOrigen == true) {
+
+                            // if (this.Dataset[0].existenciasarticulounidad < this.DetalleVenta.Temporal) {
+                            //     alert("No hay una caja completa disponible para poder vender")
+                            //     console.log("excedistes");
+                            //     return;
+                            // }
+
                             if (this.DetalleVenta.cantidadventa > this.Dataset[0].existenciasarticuloorigen) {
                                 alert("La cantidad que vendes supera la cantidad del Stock Disponible")
                                 console.log("excedistes");
@@ -119,7 +138,9 @@ class AgregarDetalleVenta extends HTMLElement {
                             this.DetalleVenta.cantidaddanadaunidad = this.DetalleVenta.Cantidadunidadtotal
                             this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad - this.DetalleVenta.Cantidadunidadtotal
                         }
+
                         this.DetalleVenta.totaldetalle = this.DetalleVenta.cantidadventa * this.DetalleVenta.precioventa - this.DetalleVenta.descuentoventa;
+                        
 
                         console.log(this.DetalleVenta);
                         //  this.DetalleVenta.existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad
