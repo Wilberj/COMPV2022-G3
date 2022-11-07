@@ -8,25 +8,28 @@ import { AgregarDetalleCompra } from "./Components/AgregarDetalle.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
 import { AgregarCompraDevolucion } from "./Components/AgregarCompraDevolucion.js";
 import { AgregarDetallDevolucion } from "./Components/AgregarDetalleDevolucion.js";
-import { ViewArticuloCompra } from "../../Model/ViewDatabaseModel.js";
+import { ViewAdminMercancia, ViewArticuloCompra } from "../../Model/ViewDatabaseModel.js";
+import { AgregarAdminDetalleDevCompra } from "./Components/AgregarAdminDetalleDevCompra.js";
 
 class Identificador {
     id;
 }
-// class UpdateCompra {
-//     id;
-// }
+ class lolaso {
+     id;
+ }
 
 
 window.onload = async () => {
-    const Dataset = []
+    const Dataset = [];
     const DetalleDevCompra = [];
 
     const UpdateCompra = [];
+    const AdminMerca = [];
 
     const NewDevolucionCompra = {
-        DetalleDevCompra: DetalleDevCompra,
-        UpdateCompra: UpdateCompra
+        UpdateCompra: UpdateCompra,
+        DetalleDevCompra: UpdateCompra,
+        // AdminMerca: AdminMerca,
 
     }
     AppMain.append(Render.Create({
@@ -56,7 +59,7 @@ window.onload = async () => {
 
                     const response =
                         await AjaxTools.PostRequest("../api/GestionCompra/SaveDevolucionCompra",
-                            NewDevolucionCompra, UpdateCompra);
+                            NewDevolucionCompra);
                     console.log(NewDevolucionCompra);
                     // (new AgregarArticuloCompra((articulos) => {
 
@@ -94,7 +97,9 @@ window.onload = async () => {
         EditObject: NewDevolucionCompra,
         Model: new DevolucionCompra({
             idcompra: { type: "number", hidden: true },
-            idproveedor: { type: "number", hidden: true }
+            idproveedor: { type: "number", hidden: true },
+            idadmimercancias: { type: "number", hidden: true }
+
         })
     })
     const Table = new TableComponent({
@@ -119,7 +124,7 @@ window.onload = async () => {
             tagName: 'input', type: 'button',
             className: 'btn_primary', value: 'Anadir ', onclick: async () => {
                 //code
-
+                
                 const Modal = new ModalComponent
                     (new AgregarCompraDevolucion((DetalleDev) => {
 
@@ -155,64 +160,68 @@ window.onload = async () => {
     AppMain.append(FormDevolucionCompra, Table);
 
     const TableDetalleDevCompra = new TableComponent({
-        ModelObject: new DetalleDevolucionCompra(),
+        ModelObject: new ViewAdminMercancia(),
         Dataset: DetalleDevCompra,
-        Functions: [
-            {
-                name: "eliminar", action: async (detaeli) => {
-                    const detalleelimina = DetalleDevCompra.find(x => x.idarticulo == detaeli.idarticulo)
-                    if (detalleelimina != null) {
-                        DetalleDevCompra.splice(DetalleDevCompra.indexOf(detaeli), 1);
-                        TableDetalleDevCompra.DrawTableComponent();
-                    }
-                }
-            }
-        ]
+         Functions: [
+             {
+                  name: "Remover",
+                  action: async (Dato) => {
+                      const Datof = Dataset.find((x) => x.idadmimercancias == Dato.idadmimercancias);
+                     if (Datof != null) {
+                          Dataset.splice(Dataset.indexOf(Datof), 1);
+                          Table.DrawTableComponent();
+                      }
+                  },
+             },
+         ],
     });
 
-    TableDetalleDevCompra.filter.append(
-        Render.Create({
-            tagName: 'input', type: 'button',
-            className: 'btn_primary', value: 'Anadir detalle', onclick: async () => {
+     TableDetalleDevCompra.filter.append(
+         Render.Create({
+             tagName: 'input', type: 'button',
+             className: 'btn_primary', value: 'Anadir detalle', onclick: async () => {
 
-                if(UpdateCompra[0] == null){
-                    alert("Primero se debe seleccionar una compra")
-                    console.log("detalle eeehh");
-                    return;
-                }
+                 if(UpdateCompra[0] == null){
+                     alert("Primero se debe seleccionar una compra")
+                     return;
+                 }
+                 console.log("llllll");
+                 console.log(DetalleDevCompra);
+                  const Modal = new ModalComponent
+                  (new AgregarAdminDetalleDevCompra((Detalledev) => {
+                    const tempo = Detalledev
 
-                // if (UpdateCompra.length < 1) {
-                //     alert("Primero debe seleccionar una compra")
-                //     return;
-                // }
+                    console.log(tempo);
+                    DetalleDevCompra.push(Detalledev);
 
-                const Modal = new ModalComponent
+                    // DetalleDevCompra === tempo ;
 
-                    (new AgregarDetallDevolucion((compra) => {
 
-                        if (DetalleDevCompra.filter((x) => x.idadmimercancias == compra.idadmimercancias).length > 0) {
-                            alert("El Detalle ya existes")
-                            return;
-                        }
+                      Modal.Close();
+                      // console.log(NewDevolucionCompra);
+                      NewDevolucionCompra.idadmimercancias = DetalleDevCompra[0].idadmimercancias
 
-                        DetalleDevCompra.push(compra);
-                        // ConvertirMedida.push(DetalleCompra.ConvertirMedida);
-                        console.log(compra);
-                        console.log(DetalleDevCompra);
+                      TableDetalleDevCompra.DrawTableComponent();
+                   
+                      console.log(NewDevolucionCompra);
 
-                        Modal.Close();
-                        TableDetalleDevCompra.DrawTableComponent();
-                    }));
-                AppMain.append(Modal)
-            }
-        })
-    )
-    AppMain.append(Render.Create({
-        tagName: "h3",
-        innerText: "Agregar detalles", class: "header1"
-    })
-    );
-    AppMain.append(TableDetalleDevCompra);
+
+                      console.log("Dataset");
+
+                      console.log(DetalleDevCompra);
+
+                  }));
+
+              AppMain.append(Modal)
+             }
+         })
+     )
+     AppMain.append(Render.Create({
+         tagName: "h3",
+         innerText: "Agregar detalles", class: "header1"
+     })
+     );
+     AppMain.append(TableDetalleDevCompra);
 }
 
-export { Identificador }
+export { Identificador,lolaso }

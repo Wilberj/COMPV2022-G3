@@ -229,6 +229,9 @@ namespace CAPA_DATOS
         {
             switch (EntityProp.DATA_TYPE)
             {
+                case "bit":
+                    Values = Values + AtributeName + "= " + (AtributeValue.ToString() == "True" ? "1" : "0") + ",";
+                    break;
                 case "nvarchar":
                 case "varchar":
                 case "char":
@@ -240,9 +243,11 @@ namespace CAPA_DATOS
                 case "decimal":
                 case "bigint":
                 case "money":
+
                 case "smallint":
                     Values = Values + AtributeName + "= " + AtributeValue.ToString() + ",";
                     break;
+
                 case "datetime":
                 case "date":
                     Values = Values + AtributeName + "= '" + ((DateTime)AtributeValue).ToString("yyyy/MM/dd HH:mm:ss") + "',";
