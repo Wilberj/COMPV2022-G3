@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using System.Data.SqlClient;
 
 namespace CAPA_DATOS
 {
@@ -94,6 +95,34 @@ namespace CAPA_DATOS
             DataSet ObjDS = new DataSet();
             CrearDataAdapterSql(Command).Fill(ObjDS);
             return ObjDS.Tables[0].Copy();
+        }
+        public List<T> TakeListWithProcedure<T>(string ProcedureName, Object Inst,List<Object> Params)
+        {
+            try
+            {
+                SQLMCon.Open();
+                var Command = ComandoSql(ProcedureName, SQLMCon);
+                Command.CommandType = CommandType.StoredProcedure;
+                SqlCommandBuilder.DeriveParameters((SqlCommand)Command);
+                SQLMCon.Close();
+                if (Params.Count !=0)
+                {
+                    int i = 0;
+                    foreach (var param in Params)
+                    {
+                        var p =(SqlParameter)Command.Parameters[i + 1];
+                        p.Value = param;
+                        i++;
+                    }
+                }
+                DataTable Table = TraerDatosSQL(Command);
+                List<T> ListD = ConvertDataTable<T>(Table, Inst);
+                    return ListD;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         public List<T> TakeList<T>(Object Inst, string CondSQL = "")
         {

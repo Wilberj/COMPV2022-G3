@@ -8,7 +8,7 @@ import { AgregarDetalleVenta } from "./AgregarDetalleVenta.js";
 window.onload = async () => {
     const DetallVenta = [];
     const Total = [];
-    // var suma = 0;
+    var suma = 0;
     let TotalSuma, iva, totalventa
 
     const NuevaFactura = {
@@ -44,7 +44,7 @@ window.onload = async () => {
                             NuevaFactura,
 
                             NuevaFactura.subtotalventa = TotalSuma,
-                            NuevaFactura.iva = iva,
+                           // NuevaFactura.iva = iva,
                             NuevaFactura.totalventa = totalventa - parseInt(NuevaFactura.descuentofactura)
                            
                         );
@@ -100,8 +100,60 @@ window.onload = async () => {
                     if (detalleelimina != null) {
                         DetallVenta.splice(
                             DetallVenta.indexOf(detaeli), 1);
-                        TableDetalleVenta.DrawTableComponent();
+                            Total.splice(DetallVenta.indexOf(detaeli.totaldetalle),1);
+                            Total.forEach(function(total){
+                                var sum2=0
+                                suma +=total
+                               suma = suma + Total
+                                TotalSuma = Total.reduce((a, b) => Number(a) + Number(b), 0);
+                                iva = TotalSuma * 0.15;
+                                sum2 =TotalSuma
+                               totalventa = TotalSuma + iva
+                               ///
+                              NuevaFactura.totalventa = totalventa
+                                NuevaFactura.subtotalventa = sum2
+                                NuevaFactura.iva = iva
+                                    console.log("Tottal suma",TotalSuma);
+                                    console.log("sum2" ,sum2);
+                                    console.log("Tottal subventa",NuevaFactura.subtotalventa);
+                              // console.log("este variable suma0",suma);
+                                if (TableDetalleVenta != null) {
+                                    document.getElementById("Subtotal").innerHTML = NuevaFactura.subtotalventa;
+                                   document.getElementById("IVA").innerHTML = NuevaFactura.iva;
+                                    document.getElementById("Total").innerHTML = NuevaFactura.totalventa;
+                                    suma = 0;
+                                }
+                            })
+                            // Total.forEach(function(total){
+                            //     suma += total;
+                            //     //NuevaFactura.totalventa = Total
+                            //   //  NuevaFactura.subtotalventa = NuevaFactura.totalventa 
+                            //   NuevaFactura.subtotalventa = suma
+                            //   NuevaFactura.totalventa = NuevaFactura.subtotalventa
+                            //     console.log("totalventa",NuevaFactura.totalventa);
+                            //     console.log("subtotal",NuevaFactura.subtotalventa);
+                            //     console.log("suma",suma);
+                               
+                               
+                           // })
+                           if(DetallVenta[0] == null){
+                            console.log("este vacio 0");
+                            NuevaFactura.totalventa = 0
+                            NuevaFactura.subtotalventa = 0
+                            NuevaFactura.iva = 0
+                            console.log(NuevaFactura.totalventa);
+                            if (TableDetalleVenta != null) {
+                                document.getElementById("Subtotal").innerHTML = NuevaFactura.subtotalventa;
+                               document.getElementById("IVA").innerHTML = NuevaFactura.iva;
+                                document.getElementById("Total").innerHTML = NuevaFactura.totalventa;
+                                suma = 0;
+        
+                            }
+                        }
+                        
                     }
+                    TableDetalleVenta.DrawTableComponent();
+                    
                 }
             }
         ]
@@ -116,7 +168,7 @@ window.onload = async () => {
                         return;
                     }
                     DetallVenta.push(venta);
-                    Total.push(venta.totaldetalle)
+                    Total.push(venta.totaldetalle) //cada detalle
                     TotalSuma = Total.reduce((a, b) => Number(a) + Number(b), 0);
                     iva = TotalSuma * 0.15;
                     totalventa = TotalSuma + iva
@@ -125,7 +177,7 @@ window.onload = async () => {
                     console.log(Total);
                     if (TableDetalleVenta != null) {
                         document.getElementById("Subtotal").innerHTML = TotalSuma;
-                        document.getElementById("IVA").innerHTML = iva;
+                       document.getElementById("IVA").innerHTML = iva;
                         document.getElementById("Total").innerHTML = totalventa;
 
                     }

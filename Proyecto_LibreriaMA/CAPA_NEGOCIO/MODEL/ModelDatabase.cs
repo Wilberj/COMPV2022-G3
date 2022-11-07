@@ -584,5 +584,39 @@ namespace CAPA_NEGOCIO.MODEL
         public string? descripcionunidad { get; set; }
         public bool? activo { get; set; }
     }
+    public class InformeEjemplo1
+    {
+        // public int? idfactura { get; set; }
+        //  public DateTime? fechafactura { get; set; }
+        public string? nombrecliente { get; set; }
+        public string? nombrearticulo { get; set; }
+        public string? descripcionarticulo { get; set; }
+
+        // public int? iddetallefactura { get; set; }
+
+        //public int? idarticulo { get; set; }
+
+        // public int? idtamanoxarticulo { get; set; }
+        public Decimal? cantidadventa { get; set; }
+        public Decimal? totalventa { get; set; }
+        public List<String> Params { get; set; }
+
+        public Object TakeInforme(InformeEjemplo1 Inst)
+        {
+            try
+            {
+                List<Object> SqlParams = new List<Object>();
+                SqlParams.Add(Convert.ToDateTime(Params[0]));
+                SqlParams.Add(Convert.ToDateTime(Params[1]));
+                var Informe = SqlADOConexion.SQLM.TakeListWithProcedure<InformeEjemplo1>(
+                    "usp_informeVentas", Inst, SqlParams);
+                return Informe;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+    }
 
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - UI</title>
     <link rel="stylesheet" href="~/css/theme.css"/>
+    <script src="https://kit.fontawesome.com/6e53552836.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -14,15 +15,72 @@
     <nav class="nav1">
     </nav>
     <aside class="AppAside">
-        <nav class="nav2">
-            <a href="~/Index">Inicio</a>
-            <a href="~/ViewCatalogos"> Mantenimiento de Catalogos</a>
-            <a href="~/GestionCompras/Compra"> Gestion Compra</a>
-            <a href="~/AdminMercancia/AdminMercanciaView"> Administracion Mercancia</a>
-            <a href="~/GestionArticulos/GestionArticulos">Gestion de Articulos</a>
-            <a href="~/GestionVentas/Ventas">Gestion Ventas</a>
-        </nav>
+        <ul class="list">
+           <li class="list-item">
+               <div class="list__button">
+                   <i class="fa-solid fa-house"></i>
+                  <a href="~/Index" class="nav__link">Inicio</a>
+               </div>
+               </li>
+
+           <li class="list-item">
+               <div class="list__button">
+                   <i class="fa-solid fa-rectangle-list"></i>
+                    <a href="~/ViewCatalogos"  class="nav__link"> Mantenimiento de Catalogos</a>
+               </div>
+           </li>
+
+           <li class="list-item">
+                   <div class="list__button">
+                             <i class="fa-solid fa-bag-shopping"></i>
+                          <a href="~/GestionCompras/Compra"  class="nav__link"> Gestion Compra</a>
+               </div>
+
+           </li>
+
+            <li class="list-item">
+
+               <div class="list__button">
+                         <i class="fa-solid fa-cart-shopping"></i>
+                       <a href="~/AdminMercancia/AdminMercanciaView"  class="nav__link"> Administracion Mercancia</a>
+               </div>
+
+           </li>
+           <li  class="list-item">
+
+              <div class="list__button">
+                  <i class="fa-solid fa-list-check"></i>
+                  <a href="~/GestionArticulos/GestionArticulos"  class="nav__link">Gestion Articulos</a></div> 
+
+            </li>
+
+               <li class="list-item">  
+                   <div class="list__button">
+                       <i class="fa-solid fa-store"></i>
+                  <a href="~/GestionVentas/Ventas"  class="nav__link">Gestion Ventas</a>
+               </div>
+
+            </li>
+
+           <li class="list-item list__item--click">
+               <div class="list__button list__button--click">
+                   <i class="fa-regular fa-file"></i>
+                    <a href="#" class="nav__link">Gestion reportes </a>
+                   @* <img src="../image/Arrow.png" class="list__arrow"/>*@
+                   <i class=" list__arrow fa-solid fa-chevron-right"></i>
+               </div>
+                <ul class="list__show"> 
+                   <li class="list__inside">
+                       <a href="~/GestionInformes/ViewInforme1"  class="nav__link nav__link--inside">Reporte Venta</a> 
+                       </li>
+                   <li class="list__inside">
+                       <a href="~/GestionInformes/ViewInforme1"  class="nav__link nav__link--inside">Reporte compra</a> 
+                       </li>
+                </ul>         
+           </li>
+        </ul>
     </aside>
+    <script src="~/CoreComponents/utilidades.js"> </script>
     <main role="main" class="AppMain">
             @RenderBody()
         </main>
