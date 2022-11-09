@@ -6,8 +6,8 @@ body {
     grid-template-columns: 200px calc(100% - 200px);
     font-family: Arial;
    
-    background-image: linear-gradient(
-        #cbad6d,#cbad6d,#9bafc3,#cbad6d);
+    background-image: linear-gradient(135deg, #cbad6d,#398BDC,#cbad6d);
+
     background-size: 200% 200%;
     /*animation: fanimado 4s linear infinite alternate;*/
 }

@@ -42,7 +42,7 @@ namespace CAPA_NEGOCIO.MODEL
         public Decimal? precioventa { get; set; }
         public int? idadmimercancias { get; set; }
         public int? idcompra { get; set; }
-        public int? iddetallecompra { get; set; }
+        /*public int? iddetallecompra { get; set; }*/
         public int? idbodega { get; set; }
         public int? idconvertir { get; set; }
         public int? idtamanoxarticulo { get; set; }

@@ -12,6 +12,7 @@ class AdministracionMercancias {
     existenciasarticuloorigen = { type: "number", hidden: true };
     existenciasarticulounidad = { type: "number", hidden: true };
     idbodega = { type: "number", hidden: true };
+    idcompra = { type: "number", hidden: true };
 
 }
 export { AdministracionMercancias }
@@ -203,6 +204,7 @@ class DetalleFactura {
     UnidadOrigen = { hidden: true };
 }
 export { DetalleFactura }
+
 class DetalleDevolucionCompra {
     constructor(props) {
         for (const prop in props) {
@@ -210,11 +212,10 @@ class DetalleDevolucionCompra {
         }
     }
     iddetalledevolucioncompra = { type: "number", primary: true };
-    iddevolucioncompra = { type: "number", hidden: true };
-    idadmimercancias = { type: "number", hidden: true };
+    iddevolucioncompra = { type: "number" };
+    idadmimercancias = { type: "number" };
     cantidad = { type: "number" };
     cantidadunidad = { type: "number" };
-    descripciondevolucion = { type: "text" };
 }
 export { DetalleDevolucionCompra }
 class DetalleDevolucionVenta {
@@ -240,7 +241,7 @@ class DevolucionCompra {
     idproveedor = { type: "number" };
     idcompra = { type: "number" };
     Fechadevolucioncompra = { type: "date" };
-    idadmimercancias = { type: "number" };
+    descripciondevolucion = { type: "text" };
 
 }
 export { DevolucionCompra }
@@ -281,8 +282,8 @@ class Factura {
     idusuario = { type: "number" };
     idestado = { type: "number" };
     descuentofactura = { type: "number" };
-    pagototal = { type: "number",hidden:true };
-    cambio = { type: "number",hidden: true };
+    pagototal = { type: "number", hidden: true };
+    cambio = { type: "number", hidden: true };
     activo = { type: "checkbox" };
 
 }

@@ -60,8 +60,8 @@ class ViewAdminMercancia {
     preciocompraunidad = { type: "number" };
     nombreunidad = { type: "text" };
     idadmimercancias = { type: "number", hidden: true };
-    idcompra = { type: "number", hidden: true };
-    iddetallecompra = { type: "number", hidden: true };
+    // idcompra = { type: "number", hidden: true };
+    // iddetallecompra = { type: "number", hidden: true };
     idbodega = { type: "number", hidden: true };
     idconvertir = { type: "number", hidden: true };
     idtamanoxarticulo = { type: "number", hidden: true };

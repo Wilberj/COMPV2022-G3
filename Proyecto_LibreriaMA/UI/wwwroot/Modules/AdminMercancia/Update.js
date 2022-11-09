@@ -46,7 +46,7 @@ class Update extends HTMLElement {
                         tagName: "input",
                         type: "button",
                         className: "btn_primary",
-                        value: "Agregar Informacion Al Detalle",
+                        value: "Guardar Cambios",
                         onclick: async () => {
                             console.log(this.Bodega);
                             this.AdminMerca.idbodega = this.AdminMerca.Seleccionar_Bodega

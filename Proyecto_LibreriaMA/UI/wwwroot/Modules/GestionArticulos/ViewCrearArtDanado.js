@@ -26,7 +26,7 @@ window.onload = async () => {
         children: [
             {
                 tagName: 'input', type: 'button',
-                className: 'btn_cuarto',
+                className: 'btn',
                 value: 'Guardar', onclick: async () => {
                    
                     if (AdminMercas[[0]] == null) {

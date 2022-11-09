@@ -29,7 +29,7 @@ window.onload = async () => {
         children: [
             {
                 tagName: 'input', type: 'button',
-                className: 'btn_cuarto',
+                className: 'btn',
                 value: 'Guardar Compra', onclick: async () => {
 
                     if (NuevaCompra.descuentocompra == null || NuevaCompra.idestado == null) {
@@ -73,8 +73,7 @@ window.onload = async () => {
                                     tagName: "h1",
                                     innerText: "Compra Guardada",
                                 }),
-
-                                // window.location.reload()
+                               
                             )
 
                         );
@@ -119,6 +118,7 @@ window.onload = async () => {
                     const detalleelimina = DetalleCompra.find(x => x.idarticulo == detaeli.idarticulo)
                     if (detalleelimina != null) {
                         DetalleCompra.splice(DetalleCompra.indexOf(detaeli), 1);
+                        
                         TableDetalleCompra.DrawTableComponent();
                     }
                 }

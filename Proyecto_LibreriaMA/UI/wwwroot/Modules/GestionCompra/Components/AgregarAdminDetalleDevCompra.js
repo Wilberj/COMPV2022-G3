@@ -22,8 +22,10 @@ class AgregarAdminDetalleDevCompra extends HTMLElement {
              Functions: [
                  {
                      name: 'Agregar', action: async (Dato) => {
+                        Dato.activo = false
                          this.action(Dato);
-                         console.log(this.Dataset);
+                         console.log("lolsaso");
+                         console.log(Dato);
                      }
                  }
              ]

@@ -14,7 +14,7 @@ window.onload = async () => {
         children: [
             {
                 tagName: 'input', type: 'button',
-                className: 'btn_cuarto',
+                className: 'btn',
                 value: 'Ingresar nueva compra', onclick: async () => {
                     //cargar vists
                     window.location = "./ViewCrearCompra"
@@ -22,7 +22,7 @@ window.onload = async () => {
             },
             {
                 tagName: 'input', type: 'button',
-                className: 'btn_tercero',
+                className: 'btn',
                 value: 'Ingresar devolucion', onclick: async () => {
                     //cargar vists
                     window.location = "./ViewDevolucionCompra"

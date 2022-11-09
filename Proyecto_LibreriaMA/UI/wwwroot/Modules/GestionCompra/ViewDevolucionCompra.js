@@ -21,16 +21,16 @@ class Identificador {
 
 window.onload = async () => {
     const Dataset = [];
-    const DetalleDevCompra = [];
+    const DetalleDevolucion = [];
 
     const UpdateCompra = [];
     const AdminMerca = [];
 
     const NewDevolucionCompra = {
         UpdateCompra: UpdateCompra,
-        DetalleDevCompra: UpdateCompra,
-        // AdminMerca: AdminMerca,
-
+        DetalleDevolucion: DetalleDevolucion,
+        UpdateDetalleCompra: UpdateCompra,
+        AdminMerca: UpdateCompra,
     }
     AppMain.append(Render.Create({
         tagName: "h1",
@@ -45,7 +45,7 @@ window.onload = async () => {
                 className: 'btn',
                 value: 'Guardar registro', onclick: async () => {
 
-                    if(DetalleDevCompra[0] == null){
+                    if(DetalleDevolucion[0] == null){
                         alert("Debe tener un Detalle Devolucion")
                         console.log("detalle eeehh");
                         return;
@@ -161,7 +161,7 @@ window.onload = async () => {
 
     const TableDetalleDevCompra = new TableComponent({
         ModelObject: new ViewAdminMercancia(),
-        Dataset: DetalleDevCompra,
+        Dataset: DetalleDevolucion,
          Functions: [
              {
                   name: "Remover",
@@ -186,20 +186,20 @@ window.onload = async () => {
                      return;
                  }
                  console.log("llllll");
-                 console.log(DetalleDevCompra);
+                 console.log(DetalleDevolucion);
                   const Modal = new ModalComponent
                   (new AgregarAdminDetalleDevCompra((Detalledev) => {
                     const tempo = Detalledev
 
                     console.log(tempo);
-                    DetalleDevCompra.push(Detalledev);
+                    DetalleDevolucion.push(Detalledev);
 
                     // DetalleDevCompra === tempo ;
 
 
                       Modal.Close();
                       // console.log(NewDevolucionCompra);
-                      NewDevolucionCompra.idadmimercancias = DetalleDevCompra[0].idadmimercancias
+                      NewDevolucionCompra.idadmimercancias = DetalleDevolucion[0].idadmimercancias
 
                       TableDetalleDevCompra.DrawTableComponent();
                    
@@ -208,7 +208,7 @@ window.onload = async () => {
 
                       console.log("Dataset");
 
-                      console.log(DetalleDevCompra);
+                      console.log(DetalleDevolucion);
 
                   }));
 

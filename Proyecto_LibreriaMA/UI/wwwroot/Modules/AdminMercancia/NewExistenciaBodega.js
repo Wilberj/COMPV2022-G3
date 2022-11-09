@@ -75,6 +75,7 @@ class NewExistenciaBodega extends HTMLElement {
             // )
 
         this.Nuevoexisbodega.NuevaMercancia.idtamanoxarticulo = this.Nuevoexisbodega.idtamanoxarticulo
+        this.Nuevoexisbodega.NuevaMercancia.idcompra = this.Nuevoexisbodega.idcompra
         this.Nuevoexisbodega.NuevaMercancia.idconvertir = this.Nuevoexisbodega.idconvertir
         this.Nuevoexisbodega.NuevaMercancia.preciocompraunidad = this.Nuevoexisbodega.preciocompraunidad
         this.Nuevoexisbodega.NuevaMercancia.idadmimercancias = undefined
@@ -91,7 +92,7 @@ class NewExistenciaBodega extends HTMLElement {
                 tagName: "input",
                 type: "button",
                 className: "btn_primary",
-                value: "Agregar Informacion Al Detalle",
+                value: "Guardar Cambios",
                 onclick: async () => {
 
                     this.Nuevoexisbodega.idbodega = this.Nuevoexisbodega.Seleccionar_Bodega
