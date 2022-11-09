@@ -81,8 +81,19 @@ namespace CAPA_DATOS
         }
         public Object Delete(Object Inst)
         {
-            string strQuery = BuildDeleteQuery(Inst);
-            return ExecuteSqlQuery(strQuery);
+            try
+            {
+                SQLMCon.Open();
+                string strQuery = BuildDeleteQuery(Inst);
+                return ExecuteSqlQuery(strQuery);
+            }
+            catch (Exception)
+            {
+                SQLMCon.Close();
+                throw;
+            }
+
+
         }
         public DataTable TraerDatosSQL(string queryString)
         {
