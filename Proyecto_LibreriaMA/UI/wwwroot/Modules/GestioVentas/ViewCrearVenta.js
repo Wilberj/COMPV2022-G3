@@ -64,7 +64,7 @@ window.onload = async () => {
                     const response =
                         await AjaxTools.PostRequest("../api/GestionVenta/SaveFactura",
                             NuevaFactura,
-                           
+                            NuevaFactura.pagototal = cantidad_dolar
                            
                         );
                     if (response == true) {
