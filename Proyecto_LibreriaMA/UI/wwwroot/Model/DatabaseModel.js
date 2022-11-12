@@ -284,7 +284,7 @@ class Factura {
     descuentofactura = { type: "number" };
     pagototal = { type: "number", hidden: true };
     cambio = { type: "number", hidden: true };
-    activo = { type: "checkbox" };
+    activo = { type: "checkbox",hidden:true };
 
 }
 export { Factura }

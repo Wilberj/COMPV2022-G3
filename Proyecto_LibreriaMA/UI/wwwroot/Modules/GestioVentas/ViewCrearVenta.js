@@ -4,11 +4,14 @@ import { DetalleFactura, Factura } from "../../Model/DatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
 import { AgregarDetalleVenta } from "./AgregarDetalleVenta.js";
+import { ModalFactura } from "../../CoreComponents/FacturaComponent.js";
 
 window.onload = async () => {
     const DetallVenta = [];
     const Total = [];
     var suma = 0;
+    var  dolarito = 0;
+    var cantidad_dolar = 0;
     let TotalSuma, iva, totalventa
 
     const NuevaFactura = {
@@ -37,15 +40,31 @@ window.onload = async () => {
                             return;
                         }
                     }
+                    if (NuevaFactura.Cordoba == true ) {
+                        NuevaFactura.subtotalventa = TotalSuma,
+                        NuevaFactura.iva = iva,
+                         NuevaFactura.totalventa = totalventa - parseInt(NuevaFactura.descuentofactura)
+                         NuevaFactura.cambio =  NuevaFactura.pagototal -NuevaFactura.totalventa 
+                     
+                    }else{
+                       if (NuevaFactura.Dolares == true){ 
+                            dolarito= NuevaFactura.CambioDolar //35 cs vale el dolar
+                            console.log(dolarito);
+                            cantidad_dolar = NuevaFactura.pagototal * dolarito //aqui tengo 35*20 = 700 pot ejemplo
+                            console.log("35 * el pago del cliente",cantidad_dolar );
+
+                            NuevaFactura.subtotalventa = TotalSuma,
+                            NuevaFactura.iva = iva,
+                            NuevaFactura.totalventa = totalventa - parseInt(NuevaFactura.descuentofactura)
+                             NuevaFactura.cambio =  cantidad_dolar -NuevaFactura.totalventa     
+                        }
+                    }
 
                     console.log(NuevaFactura);
                     const response =
                         await AjaxTools.PostRequest("../api/GestionVenta/SaveFactura",
                             NuevaFactura,
-
-                            NuevaFactura.subtotalventa = TotalSuma,
-                           // NuevaFactura.iva = iva,
-                            NuevaFactura.totalventa = totalventa - parseInt(NuevaFactura.descuentofactura)
+                           
                            
                         );
                     if (response == true) {
@@ -53,7 +72,17 @@ window.onload = async () => {
                             new ModalComponent(
                                 Render.Create({
                                     tagName: "h1",
-                                    innerText: "Factura",
+                                    innerText: "Factura Realizada",
+                                    children: [
+                                        {
+                                            tagName: 'input', type: 'button',
+                                            className: 'btn_quinto',
+                                            value: 'Generar Factura', onclick: async () => {
+                                                window.location = "./viewFactura1"
+                                            
+                                            }
+                                        }
+                                    ]
                                 }),
 
                               // window.location.reload()
@@ -77,17 +106,20 @@ window.onload = async () => {
                 Dataset: dataC.map((d) => ({ id: d.idusuario, desc: d.nombreusuario }))
             },
             pagototal : { type: "number" },
-            cambio : { type: "number" },
+            cambio : { type: "number",hidden:true },
             subtotalventa: {hidden: true},
             iva: {hidden: true},
-            totalventa: {hidden: true},
+             totalventa: {hidden: true},
+            activo :{ type: "checkbox" },
+            Cordoba: {type:"checkbox"},
+            Dolares: {type:"checkbox"},
+            CambioDolar: {type:"Number"},
             
         }),
       
         
         
     })
-    
     AppMain.append(FormVentaProduutos);
 
     const TableDetalleVenta = new TableComponent({
@@ -187,10 +219,12 @@ window.onload = async () => {
             AppMain.append(Modal);
         }
     }))
+   
     AppMain.append(Render.Create({
         tagName: "div",
         innerHTML:
-            `<table id="tabla_producto" border="1" class="tableClass1">
+            `  
+            <table id="tabla_producto" border="1" class="tableClass1">
             <thead>
             <tr>
             <th>Subtotal</th>
@@ -202,7 +236,7 @@ window.onload = async () => {
             <tr>
             <td id="Subtotal"></td>
             <td id="IVA"></td>
-            <td id="Total"></td>
+            <td id="Total"</td>
             </tr>
             </tbody>
             </table>

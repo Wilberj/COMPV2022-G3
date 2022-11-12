@@ -40,12 +40,27 @@
     background-size: 300px;
     transition: 0.4s;
 }
+.btn_quinto{
+    border: 3px solid rgb(100, 100, 100,0.1);
+    padding: 10px;
+    width: 250px;
+    margin-left: 75%;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(242, 233, 233);
+    cursor: pointer;
+    border-radius: 20px;
+    background-size: 300px;
+    transition: 0.4s;
+}
 .btn_cuarto:hover,
 .btn_tercero:hover {
     background-position: right;
 }
 .btn_tercero,
-.btn_cuarto{
+.btn_cuarto,
+.btn_quinto
+{
     background-image: linear-gradient(to left, #00b7da,
     #161569,#0087da);
 }

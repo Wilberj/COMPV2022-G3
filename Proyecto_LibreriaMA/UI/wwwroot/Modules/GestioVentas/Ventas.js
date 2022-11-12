@@ -28,6 +28,7 @@ window.onload = async () => {
                     window.location = "./ViewDevolucionVenta"
                 }
             }
+       
         ]
     }))
     //esta vista es de lo de adminstracion ..se podria cambiar luego vemos

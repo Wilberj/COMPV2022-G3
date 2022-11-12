@@ -1,0 +1,292 @@
+﻿@page
+@model UI.Pages.GestionFactura.viewFactura1Model
+@{
+}
+
+
+<script type="module">
+    import TableInforme from "../CoreComponents/InformeComponent.js"
+    const CargarDatos = async () =>{
+        let UrlP = "../api/FacturaVenta/TakeFacturaventa";
+        const ObjInst ={
+          //  Params: [Fecha1.value, Fecha2.value]
+        }
+        let response = await fetch(UrlP,{
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json; charset=utf-8",
+                'Accept': "*/*"
+            },
+            body: JSON.stringify(ObjInst)
+        });
+        response = await response.json();
+        console.log(response);
+        //labelSubtitle.innerText = `Libreria Maria Auxiliadora 
+        //Informe de Ventas por Fecha`;
+        TableInforme(response, TableData, ["cantidadventa","nombrearticulo"]);
+        let sum = 0;
+        let nombre = "";
+        let fecha = "";
+        let subtot = 0;
+        let ivas =0;
+        let tota=0;
+        let camb =0;
+        let pag =0;
+        let id =0;
+         response.forEach(element =>{
+           sum = sum + element.cantidadventa;
+           nombre = element.nombrecliente;
+           fecha = element.fechafactura;
+           subtot = element.subtotalventa
+           ivas = element.iva;
+           tota = element.totalventa;
+           camb = element.cambio;
+           pag = element.pagototal;
+           id = element.idfactura;
+        })
+      
+        LabelCantidad.append(" " + sum)
+        labelNombre.append(nombre)
+        labelfecha.append(fecha)
+        labelsubtota.append(subtot)
+        labeltotal.append(tota)
+        labeliva.append(ivas)
+        labelcamb.append(camb)
+        labelpag.append(pag)
+        labelid.append(id)
+    }
+    window.onload = async () =>{
+        CargarDatos();
+        //BtnUpdate.onclick = () =>{
+        //    CargarDatos();
+        //}
+        BtnPrint.onclick = () =>{
+             const PrintNode = Page.innerHTML;
+            const ventimp = window.open(' ', 'popimpr');
+            ventimp.document.write(PrintNode);
+            ventimp.document.close();
+            ventimp.print();
+            ventimp.close();
+        }
+        Salir.onclick = ()=>{
+           window.location = "./ViewCrearVenta"
+        }
+    }
+
+</script>
+<div class="FrmContainer">
+    <input class="BTN BTNOK2" type="button" id="Salir" value= "Regresar"/>
+</div>
+<div class="FrmContainer">
+    <input class="BTN BTNOK2" type="button" id="BtnPrint" value= "Inprimir"/>
+   
+</div>
+<div class="InformeContainer">
+    <div class="page" id="Page">
+        <style>
+            .Fech{
+                color:black;
+                margin-bottom: 10px;
+                 border-radius: 8px;
+                 width: 150px;
+                 height: 25px;
+                font-weight: bold;
+            }
+            .InformeContainer {
+                background-color: #b9b9b9;
+                padding: 10px;
+                height: 800px;
+                overflow: auto;
+                border: solid 2px #888;
+            }
+            .page {
+                background-color: #fff;
+                width: 20cm;
+                height: 25.7cm;
+                display: block;
+                margin: 0 auto;
+                margin-bottom: 0.5cm;
+                box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+                padding: 1cm 2cm;
+            }
+           
+            .BTN{
+                padding: 10px;
+                width: 150px;
+                align-content:center;
+                justify-content:center;
+                margin-bottom: 10px;
+                border-radius: 10px;
+                border: none;
+                color:white;
+                cursor:pointer;
+                background-image: linear-gradient(to left, #00b7da,
+                     #161569,#0087da);
+                     background-size: 300px;
+            }
+         
+            .TableInforme {
+                width: 100%;
+               
+                margin-bottom: 30px;
+            }
+                .TableInforme td, .TableInforme th {
+                    border-bottom: solid 1px #b9b9b9;
+                
+                }
+                 .titulo{
+                color: black;
+                font-size: 35px;
+         
+                margin-left:300px;
+            }
+              .titulo1{
+                   font-size: 25px;
+              }
+              .factura th {
+               border-top: solid 3px #000;
+                border-bottom: 3px solid #000;
+              
+                }
+             
+             .factura tr{
+                     text-align: center;
+
+             }
+             .food p{
+                 text-align: center;
+             }
+          ..factura > tbody > tr > td:nth-child(n+3) {
+                text-align: right;
+            }
+
+            .factura > tfoot > tr > th, .factura > tfoot > tr > th:nth-child(n+3) {
+                   font-size: 24px;
+                  text-align: right;
+                }
+             
+                .row{
+                    display:flex;
+                       
+                }
+                .row2{
+                       display:flex;
+                        border-top: solid 3px #000;
+                         border-bottom: 3px solid #000;
+                     
+                     
+                }
+                .col-3{
+                  padding-left: 20px;
+                  
+                }
+                .col-4{
+                    padding-left:280px;
+                    text-align:center;
+                  
+                }
+                .col-5{
+                 margin-top: 10px;
+                    text-align:center;
+                    margin-left: 10px;
+                }
+                .col-6{
+                     padding-left:-50px;
+                    text-align:center;
+                }
+                .col-7{
+
+                     padding-left:420px;
+                }
+                .labelfecha1{
+                        
+                     font-weight:normal;
+                     margin-top:18px;
+                }
+                .labeln{
+                 
+                    text-align:initial;
+                    
+                }
+                .label{
+                   
+                    font-weight:normal;
+                        margin-top: -20px;
+                }
+                 h5{
+                   font-weight: bold;
+                 
+                 }
+                 span{
+                     color:red;
+                 }
+        </style>
+        <div class="sectionprincipal">
+              <div class="row my-3">
+      <div class="col-10">
+               <h2 class="titulo">Factura</h2>
+        <h2 class="titulo1">Libreria "Maria Auxiliadora"</h2>
+     
+        <p>Direccion: Cementerio</p>
+        <p>Correo: LibreriaAuxi@gmail.com</p>
+      </div>
+     
+    </div>
+        </div>
+        <div class="row fact-info mt-3">
+      <div class="col-3">
+        <h5>Facturar a:</h5>
+        <p id="labelNombre" class="label">
+        
+        </p>
+      </div>
+      <div class="col-4">
+        <h5>N° de factura:</h5>
+        <h5>Fecha de venta: </h5>
+      </div>
+      <div class="col-5">
+        <p id="labelid" class="labeln"></p>
+        <p id=labelfecha class="labelfecha1"></p>
+        
+      </div>
+    </div>
+  
+        <table id="TableData" class="TableInforme table-borderless factura">
+            <thead>
+            </thead>
+            <tbody>
+             
+            </tbody>
+         
+           <tfoot>
+          <tr>
+              <td></td>
+          
+              <td id="LabelCantidad" class="label"></td>
+          </tr>
+
+        </tfoot>
+
+        </table>
+     
+        <div class="row2 fact-info mt-3">
+      <div class="col-6">
+        <p>PAGO:C$ <span id="labelpag"></span></p>
+        <p>CAMBIO:C$ <span id="labelcamb"></span></p>
+      </div>
+      <div class="col-7">
+        <p>SUB TOTAL:C$ <span id="labelsubtota"></span></p>
+        <p>IVA:C$ <span id="labeliva"></span> </p>
+         <p>TOTAL:C$ <span id="labeltotal"></span></p>
+      </div>
+    </div>
+      
+      <div class="food">
+        
+        <p>
+         "Gracias Por Su Compra"
+       
+        </p>
+      </div>
+     </div>
+</div>
