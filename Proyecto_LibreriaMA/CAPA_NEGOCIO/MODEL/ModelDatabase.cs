@@ -18,6 +18,7 @@ namespace CAPA_NEGOCIO.MODEL
         public int? existenciasarticuloorigen { get; set; }
         public int? existenciasarticulounidad { get; set; }
         public int? idbodega { get; set; }
+        public int? UnidadxOrigen { get; set; }
         public int? idcompra { get; set; }
     
 

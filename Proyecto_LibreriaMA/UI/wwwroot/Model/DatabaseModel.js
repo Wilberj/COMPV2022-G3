@@ -12,6 +12,7 @@ class AdministracionMercancias {
     existenciasarticuloorigen = { type: "number", hidden: true };
     existenciasarticulounidad = { type: "number", hidden: true };
     idbodega = { type: "number", hidden: true };
+    UnidadxOrigen = { type: "number", hidden: true };
     idcompra = { type: "number", hidden: true };
 
 }
@@ -193,6 +194,9 @@ class DetalleFactura {
     }
     cantidaddanadaunidad = { hidden: true }
     Temporal = { hidden: true }
+    nuevo = { hidden: true }
+    calculo = { hidden: true }
+    sacarunidad = { hidden: true }
     iddetallefactura = { type: "number", primary: true };
     idfactura = { type: "number", hidden: true };
     idtamanoxarticulo = { type: "number", hidden: true };

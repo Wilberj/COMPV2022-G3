@@ -98,8 +98,10 @@ class AgregarDetalleVenta extends HTMLElement {
                         this.DetalleVenta.Temporal = this.Dataset[0].existenciasarticulounidad / this.Dataset[0].existenciasarticuloorigen;
                         this.DetalleVenta.Articulo = this.Dataset[0].nombrearticulo
                         this.DetalleVenta.precioventa = this.Dataset[0].precioventa
-                        this.DetalleVenta.sacarorigen = this.DetalleVenta.cantidadventa / this.DetalleVenta.Temporal
-
+                        // this.DetalleVenta.sacarorigen = this.DetalleVenta.cantidadventa / this.DetalleVenta.Temporal
+                        this.DetalleVenta.nuevo = this.Dataset[0].existenciasarticulounidad - this.DetalleVenta.cantidadventa
+                        this.DetalleVenta.calculo = this.Dataset[0].existenciasarticuloorigen - this.DetalleVenta.cantidadventa
+                        
 
 
                         if (this.DetalleVenta.Unidad == true) {
@@ -115,7 +117,12 @@ class AgregarDetalleVenta extends HTMLElement {
                             //     return;
                             //    }
                             this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad - this.DetalleVenta.cantidadventa
-                            this.Dataset[0].existenciasarticuloorigen = parseInt(this.Dataset[0].existenciasarticuloorigen) - parseInt(this.DetalleVenta.sacarorigen)
+                            
+                            this.DetalleVenta.variable = this.Dataset[0].existenciasarticuloorigen
+                            this.DetalleVenta.variable = parseInt(this.DetalleVenta.nuevo / this.Dataset[0].UnidadxOrigen);
+                            this.Dataset[0].existenciasarticuloorigen = this.DetalleVenta.variable
+                            
+
                            
                             
                         }
@@ -134,15 +141,20 @@ class AgregarDetalleVenta extends HTMLElement {
                             }
 
                             this.Dataset[0].existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen - this.DetalleVenta.cantidadventa
-                            this.DetalleVenta.Cantidadunidadtotal = this.DetalleVenta.Temporal * this.DetalleVenta.cantidadventa;
-                            this.DetalleVenta.cantidaddanadaunidad = this.DetalleVenta.Cantidadunidadtotal
-                            this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad - this.DetalleVenta.Cantidadunidadtotal
+                            // this.DetalleVenta.Cantidadunidadtotal = this.DetalleVenta.UnidadxOrigen * this.DetalleVenta.cantidadventa;
+                            // this.DetalleVenta.cantidaddanadaunidad = this.DetalleVenta.Cantidadunidadtotal
+                            // this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad - this.DetalleVenta.Cantidadunidadtotal
+                            this.DetalleVenta.sacarunidad = this.Dataset[0].existenciasarticulounidad
+                            this.DetalleVenta.sacarunidad = parseInt(this.DetalleVenta.calculo * this.Dataset[0].UnidadxOrigen);
+                            this.Dataset[0].existenciasarticulounidad = this.DetalleVenta.sacarunidad
+
                         }
 
                         this.DetalleVenta.totaldetalle = this.DetalleVenta.cantidadventa * this.DetalleVenta.precioventa - this.DetalleVenta.descuentoventa;
                         
 
                         console.log(this.DetalleVenta);
+                        console.log(this.Dataset);
                         //  this.DetalleVenta.existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad
                         //  this.DetalleVenta.existenciasarticuloorigen = this.Dataset[0].existenciasarticuloorigen
                         this.action(this.DetalleVenta, this.DetalleVenta.AdminMercaVenta, this.Dataset);

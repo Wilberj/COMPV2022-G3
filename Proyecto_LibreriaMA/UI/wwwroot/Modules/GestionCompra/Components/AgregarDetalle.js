@@ -50,6 +50,9 @@ class AgregarDetalleCompra extends HTMLElement {
                     type: "select",
                     Dataset: this.dataT.map((d) => ({ id: d.idtamano, desc: d.nombretamano }))
                 },
+                Cantidad_UnidadesxOrigen: {
+                    type: "number",
+                },
             }),
 
             EditObject: this.DetalleCompra
@@ -73,6 +76,7 @@ class AgregarDetalleCompra extends HTMLElement {
                 preciocompraunidad: { type: "number", hidden: true },
                 precioventa: { type: "number" },
                 existenciasarticuloorigen: { type: "number", hidden: true },
+                UnidadesxOrigen: { type: "number", hidden: true },
                 existenciasarticulounidad: { type: "number", hidden: true },
                 idbodega: {
                     type: "select",
@@ -200,6 +204,8 @@ class AgregarDetalleCompra extends HTMLElement {
                             this.DetalleCompra.TamanoxArt = [this.dataTxA]
 
                             //inven
+                            this.DetalleCompra.AdminMercanciaComp.UnidadesxOrigen = this.DetalleCompra.Cantidad_UnidadesxOrigen
+
                             this.DetalleCompra.AdminMercanciaComp.existenciasarticuloorigen = this.DetalleCompra.cantidadcompra
                             this.DetalleCompra.AdminMercanciaComp.existenciasarticulounidad = this.DetalleCompra.Cantidad_unidades * this.DetalleCompra.cantidadcompra 
                             this.DetalleCompra.AdminMercanciaComp.preciocompraunidad = this.DetalleCompra.preciocompra / this.DetalleCompra.Cantidad_unidades 

@@ -132,6 +132,7 @@ class ViewListArticuloVenta {
     idtamanoxarticulo = { type: "number",  hidden: true  };
     precioventa = { type: "number"  };
     existenciasarticuloorigen = { type: "number"  };
+    UnidadxOrigen = { type: "number", hidden: true };
     existenciasarticulounidad = { type: "number"  };
     nombrearticulo = { type: "text"  };
     
