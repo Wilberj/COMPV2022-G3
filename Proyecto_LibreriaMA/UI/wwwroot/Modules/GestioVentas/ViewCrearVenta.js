@@ -4,7 +4,7 @@ import { DetalleFactura, Factura } from "../../Model/DatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
 import { AgregarDetalleVenta } from "./AgregarDetalleVenta.js";
-import { ModalFactura } from "../../CoreComponents/FacturaComponent.js";
+
 
 window.onload = async () => {
     const DetallVenta = [];
