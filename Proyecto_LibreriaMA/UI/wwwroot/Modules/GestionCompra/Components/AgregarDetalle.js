@@ -49,10 +49,10 @@ class AgregarDetalleCompra extends HTMLElement {
                 Tamano: {
                     type: "select",
                     Dataset: this.dataT.map((d) => ({ id: d.idtamano, desc: d.nombretamano }))
-                },
-                Cantidad_UnidadesxOrigen: {
-                    type: "number",
-                },
+                }
+                // Cantidad_UnidadesxOrigen: {
+                //     type: "number",
+                // },
             }),
 
             EditObject: this.DetalleCompra
@@ -76,7 +76,7 @@ class AgregarDetalleCompra extends HTMLElement {
                 preciocompraunidad: { type: "number", hidden: true },
                 precioventa: { type: "number" },
                 existenciasarticuloorigen: { type: "number", hidden: true },
-                UnidadesxOrigen: { type: "number", hidden: true },
+                UnidadxOrigen: { type: "number", hidden: true},
                 existenciasarticulounidad: { type: "number", hidden: true },
                 idbodega: {
                     type: "select",
@@ -203,8 +203,9 @@ class AgregarDetalleCompra extends HTMLElement {
                             this.dataTxA = this.DetalleCompra.TamanoxArt
                             this.DetalleCompra.TamanoxArt = [this.dataTxA]
 
-                            //inven
-                            this.DetalleCompra.AdminMercanciaComp.UnidadesxOrigen = this.DetalleCompra.Cantidad_UnidadesxOrigen
+                            //invenUnidadxOrigen
+
+                            this.DetalleCompra.AdminMercanciaComp.UnidadxOrigen = this.DetalleCompra.Cantidad_unidades
 
                             this.DetalleCompra.AdminMercanciaComp.existenciasarticuloorigen = this.DetalleCompra.cantidadcompra
                             this.DetalleCompra.AdminMercanciaComp.existenciasarticulounidad = this.DetalleCompra.Cantidad_unidades * this.DetalleCompra.cantidadcompra 
