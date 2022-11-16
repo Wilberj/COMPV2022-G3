@@ -25,6 +25,8 @@ namespace CAPA_NEGOCIO.MODEL
     {
         public string? nombrearticulo { get; set; }
         public int? idarticulo { get; set; }
+        public int? idtamanoxarticulo { get; set; }
+        public string? nombretamano { get; set; }
         public bool? activo { get; set; }
         public string? descripcionarticulo { get; set; }
         public string? nombrecategoria { get; set; }

@@ -29,9 +29,9 @@ class Articulos {
     activo = { type: "checkbox" };
     fechadeingreso = { type: "date" };
     color = { type: "text" };
-    idcategoria = { type: "number" };
-    idmarca = { type: "number" };
-    idmaterial = { type: "number" };
+    idcategoria = { type: "number", hidden: true };
+    idmarca = { type: "number", hidden: true  };
+    idmaterial = { type: "number", hidden: true   };
 }
 export { Articulos }
 class ArticulosDanados {

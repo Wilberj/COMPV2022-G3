@@ -80,30 +80,30 @@ window.onload = async () => {
                     ChargeCatalogo(Model)
                 }
             },
-            {
-                tagName: 'label', innerText: 'Articulos', onclick: async () => {
-                    const data = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetArticulos")
-                    const dataC = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetCategoria")
-                    const dataM = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetMarca")
-                    const dataTM = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetTipoMaterial")
+            // {
+            //     tagName: 'label', innerText: 'Articulos', onclick: async () => {
+            //         const data = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetArticulos")
+            //         const dataC = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetCategoria")
+            //         const dataM = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetMarca")
+            //         const dataTM = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetTipoMaterial")
 
-                    const Model = new Articulos({
-                        idcategoria: {
-                            type: "select",
-                            Dataset: dataC.map((d) => ({ id: d.idcategoria, desc: d.nombrecategoria }))
-                        },
-                        idmarca: {
-                            type: "select",
-                            Dataset: dataM.map((d) => ({ id: d.idmarca, desc: d.nombremarca }))
-                        },
-                        idmaterial: {
-                            type: "select",
-                            Dataset: dataTM.map((d) => ({ id: d.idmaterial, desc: d.nombrematerial}))
-                        }
-                    })
-                    ChargeCatalogo(Model)
-                }
-            },
+            //         const Model = new Articulos({
+            //             idcategoria: {
+            //                 type: "select",
+            //                 Dataset: dataC.map((d) => ({ id: d.idcategoria, desc: d.nombrecategoria }))
+            //             },
+            //             idmarca: {
+            //                 type: "select",
+            //                 Dataset: dataM.map((d) => ({ id: d.idmarca, desc: d.nombremarca }))
+            //             },
+            //             idmaterial: {
+            //                 type: "select",
+            //                 Dataset: dataTM.map((d) => ({ id: d.idmaterial, desc: d.nombrematerial}))
+            //             }
+            //         })
+            //         ChargeCatalogo(Model)
+            //     }
+            // },
             {
                 tagName: 'label', innerText: 'Tamano', onclick: async () => {
 

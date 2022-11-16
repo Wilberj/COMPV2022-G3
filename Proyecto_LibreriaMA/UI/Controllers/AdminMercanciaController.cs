@@ -28,6 +28,14 @@ namespace UI.Controllers
         {
             return ent.Get<AdministracionMercancias>();
         }
-        
+        public Object SaveArticulos(Articulos ent)
+        {
+            return ent.SaveTamanoxArt();
+        }
+        public Object UpdateArticulos(Articulos ent)
+        {
+            return ent.Update("idarticulo");
+        }
+
     }
 }

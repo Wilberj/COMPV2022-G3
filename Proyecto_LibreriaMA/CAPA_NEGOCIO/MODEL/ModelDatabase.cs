@@ -63,7 +63,21 @@ namespace CAPA_NEGOCIO.MODEL
         public int? idcategoria { get; set; }
         public int? idmarca { get; set; }
         public int? idmaterial { get; set; }
-    }
+        public List<TamanoxArticulo>? TamanoxArt { get; set; }
+            public Object SaveTamanoxArt()
+            {
+            this.idarticulo = (Int32)this.Save();
+                if (this.TamanoxArt != null)
+                {
+                    foreach (var TamanoxArt in this.TamanoxArt)
+                    {
+                        TamanoxArt.idarticulo = this.idarticulo;
+                        TamanoxArt.idtamanoxarticulo = (Int32)TamanoxArt.Save();
+                    }
+                }
+                return true;
+            }
+        }
 
     public class ArticulosDanados : EntityClass
     {
@@ -183,7 +197,6 @@ namespace CAPA_NEGOCIO.MODEL
                     DetalleCompra.idcompra = this.idcompra;
                     DetalleCompra.iddetallecompra = (Int32)DetalleCompra.Save();   
                     DetalleCompra.SaveConvertMedida();
-                    DetalleCompra.SaveTamanoxArt();
                     DetalleCompra.SaveAdminMercanciaComp();
                 }
 
@@ -249,7 +262,6 @@ namespace CAPA_NEGOCIO.MODEL
         public List<Unidades>? Unidades { get; set; }
         public List<ConvertirMedida>? ConvertMedida { get; set; }
         public List<Tamano>? Tamanos { get; set; }
-        public List<TamanoxArticulo>? TamanoxArt { get; set; }
         public List<AdministracionMercancias>? AdminMercanciaComp { get; set; }
 
         public Object SaveArticulos()
@@ -300,18 +312,7 @@ namespace CAPA_NEGOCIO.MODEL
             }
             return true;
         }
-        public Object SaveTamanoxArt()
-        {
-            if (this.TamanoxArt != null)
-            {
-                foreach (var TamanoxArt in this.TamanoxArt)
-                {
-                    TamanoxArt.iddetallecompra = this.iddetallecompra;
-                    TamanoxArt.idtamanoxarticulo = (Int32)TamanoxArt.Save();
-                }
-            }
-            return true;
-        }
+           
         public Object SaveAdminMercanciaComp()
         {
             if (this.AdminMercanciaComp != null)
@@ -322,10 +323,7 @@ namespace CAPA_NEGOCIO.MODEL
                     {
                         AdminMercanciaComp.idconvertir = ConvertMedida.idconvertir;
                     }
-                    foreach (var TamanoxArt in this.TamanoxArt)
-                    {
-                         AdminMercanciaComp.idtamanoxarticulo = TamanoxArt.idtamanoxarticulo;
-                    }
+                    
                     AdminMercanciaComp.idcompra = this.idcompra;
                     
                     AdminMercanciaComp.idadmimercancias = (Int32)AdminMercanciaComp.Save();
@@ -565,7 +563,6 @@ namespace CAPA_NEGOCIO.MODEL
         public int? idtamanoxarticulo { get; set; }
         public int? idtamano { get; set; }
         public int? idarticulo { get; set; }
-        public int? iddetallecompra { get; set; }
 
     }
 

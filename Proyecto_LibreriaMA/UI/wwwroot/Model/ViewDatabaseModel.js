@@ -26,8 +26,10 @@ class ViewArticuloCompra {
     }
     nombrearticulo = { type: "text" };
     idarticulo = { type: "number", hidden: true };
-    activo = { type: "checkbox"};
+    activo = { type: "checkbox", hidden: true };
+    idtamanoxarticulo = { type: "number",hidden: true };
     descripcionarticulo = { type: "text" };
+    nombretamano = { type: "text" };
     nombrecategoria = { type: "text" };
     nombremarca = { type: "text" };
 

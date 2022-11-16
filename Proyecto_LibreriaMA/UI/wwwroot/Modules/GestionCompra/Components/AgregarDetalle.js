@@ -12,9 +12,9 @@ class AgregarDetalleCompra extends HTMLElement {
         this.Dataset = [];
         this.Dtemporal = [];
         this.datau = [];
-        this.dataT = [];
+        // this.dataT = [];
         this.dataC = [];
-        this.dataTxA = [];
+        // this.dataTxA = [];
         this.dataAdminMerca = [];
         this.action = action;
         this.DetalleCompra = {};
@@ -24,7 +24,7 @@ class AgregarDetalleCompra extends HTMLElement {
         this.DetalleCompra.ConvertMedida = {};
         //TamanoxArticulo
         this.DetalleCompra.Tamanos = [];
-        this.DetalleCompra.TamanoxArt = {};
+        // this.DetalleCompra.TamanoxArt = {};
         //AdminMerca
         this.DetalleCompra.AdminMercanciaComp = {};
 
@@ -34,7 +34,7 @@ class AgregarDetalleCompra extends HTMLElement {
     connectedCallback() { }
     Draw = async () => {
         this.datau = await AjaxTools.PostRequest("../api/MantenimientoCatalogos/GetUnidades")
-        this.dataT = await AjaxTools.PostRequest("../api/MantenimientoCatalogos/GetTamano")
+        // this.dataT = await AjaxTools.PostRequest("../api/MantenimientoCatalogos/GetTamano")
         this.datab = await AjaxTools.PostRequest("../api/MantenimientoCatalogos/GetBodega")
         this.Form = new FormComponet({
             Model: new DetalleCompraProductos({
@@ -46,10 +46,10 @@ class AgregarDetalleCompra extends HTMLElement {
                     type: "number",
                     Dataset: this.dataC.cantidad
                 },
-                Tamano: {
-                    type: "select",
-                    Dataset: this.dataT.map((d) => ({ id: d.idtamano, desc: d.nombretamano }))
-                }
+                // Tamano: {
+                //     type: "select",
+                //     Dataset: this.dataT.map((d) => ({ id: d.idtamano, desc: d.nombretamano }))
+                // }
                 // Cantidad_UnidadesxOrigen: {
                 //     type: "number",
                 // },
@@ -194,14 +194,14 @@ class AgregarDetalleCompra extends HTMLElement {
                             this.DetalleCompra.ConvertMedida = [this.dataC];
                             //Tamanos
                             this.DetalleCompra.idtamano = this.DetalleCompra.Tamano;
-                            this.DetalleCompra.TamanoxArt.idtamano = this.dataT.find((x) => x.idtamano == this.DetalleCompra.Tamano).idtamano;
+                            // this.DetalleCompra.TamanoxArt.idtamano = this.dataT.find((x) => x.idtamano == this.DetalleCompra.Tamano).idtamano;
 
-                            this.DetalleCompra.Tamanos = [this.dataT.find((x) => x.idtamano == this.DetalleCompra.Tamano)];
-                            this.DetalleCompra.Tamano = this.dataT.find((x) => x.idtamano == this.DetalleCompra.Tamano).nombretamano;
+                            // this.DetalleCompra.Tamanos = [this.dataT.find((x) => x.idtamano == this.DetalleCompra.Tamano)];
+                            // this.DetalleCompra.Tamano = this.dataT.find((x) => x.idtamano == this.DetalleCompra.Tamano).nombretamano;
                             //TamanoXart
-                            this.DetalleCompra.TamanoxArt.idarticulo = this.Dataset[0].idarticulo;
-                            this.dataTxA = this.DetalleCompra.TamanoxArt
-                            this.DetalleCompra.TamanoxArt = [this.dataTxA]
+                            this.DetalleCompra.AdminMercanciaComp.idtamanoxarticulo = this.Dataset[0].idtamanoxarticulo;
+                            // this.dataTxA = this.DetalleCompra.TamanoxArt
+                            // this.DetalleCompra.TamanoxArt = [this.dataTxA]
 
                             //invenUnidadxOrigen
 

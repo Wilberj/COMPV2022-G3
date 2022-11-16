@@ -117,15 +117,7 @@ namespace UI.Controllers
         {
             return ent.Get<Articulos>();
         }
-        public Object SaveArticulos(Articulos ent)
-        {
-            ent.idarticulo = (Int32)ent.Save();
-            return ent;
-        }
-        public Object UpdateArticulos(Articulos ent)
-        {
-            return ent.Update("idarticulo");
-        }
+
         public Object GetTipoMaterial(TipoMaterial ent)
         {
             return ent.Get<TipoMaterial>();
@@ -209,11 +201,11 @@ namespace UI.Controllers
         {
             return ent.Get<TamanoxArticulo>();
         }
-        public Object SaveTamanoxArticulo(TamanoxArticulo ent)
+       /* public Object SaveTamanoxArticulo(TamanoxArticulo ent)
         {
             ent.idtamanoxarticulo = (Int32)ent.Save();
             return ent;
-        }
+        }*/
         public Object UpdateTamanoxArticulo(TamanoxArticulo ent)
         {
             return ent.Update("idtamanoxarticulo");

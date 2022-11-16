@@ -10,11 +10,6 @@ window.onload = async () => {
         innerText: "Gestion de Articulos", class: "header1"
     })
     );
-    AppMain.append(Render.Create({
-        tagName: "h4",
-        innerText: "ARTICULOS DAÑADOS", class: "header4"
-    })
-    );
 
     AppMain.append(Render.Create({
         class: "FormContainer2",
@@ -22,7 +17,15 @@ window.onload = async () => {
             {
                 tagName: 'input', type: 'button',
                 className: 'btn',
-                value: 'Ingresar Nuevo Articulo Dañado', onclick: async () => {
+                value: 'Ingresar Nuevo Articulo', onclick: async () => {
+                    //cargar vists
+                    window.location = "./ViewCrearArticulos"
+                }
+            },
+            {
+                tagName: 'input', type: 'button',
+                className: 'btn',
+                value: 'Ingresar Articulo Dañado', onclick: async () => {
                     //cargar vists
                     window.location = "./ViewCrearArticulosDanados"
                 }
@@ -30,6 +33,7 @@ window.onload = async () => {
         ]
 
     }));
+    
     const ArticulosDana =
         await AjaxTools.PostRequest("../api/GestionCompra/ChargeArticulosDanados")
 
