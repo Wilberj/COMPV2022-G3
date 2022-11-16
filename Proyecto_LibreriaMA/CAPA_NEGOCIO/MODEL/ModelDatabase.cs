@@ -582,18 +582,22 @@ namespace CAPA_NEGOCIO.MODEL
     }
     public class InformeEjemplo1
     {
-        // public int? idfactura { get; set; }
-        //  public DateTime? fechafactura { get; set; }
+        public int? idfactura { get; set; }
+        public DateTime? fechafactura { get; set; }
         public string? nombrecliente { get; set; }
-        public string? nombrearticulo { get; set; }
-        public string? descripcionarticulo { get; set; }
+        public string? nombreusuario { get; set; }
+        // public string? nombrearticulo { get; set; }
+        //public string? descripcionarticulo { get; set; }
 
         // public int? iddetallefactura { get; set; }
 
         //public int? idarticulo { get; set; }
 
         // public int? idtamanoxarticulo { get; set; }
-        public Decimal? cantidadventa { get; set; }
+        //public Decimal? cantidadventa { get; set; }
+        public Decimal? subtotalventa { get; set; }
+        public Decimal? iva { get; set; }
+
         public Decimal? totalventa { get; set; }
         public List<String> Params { get; set; }
 

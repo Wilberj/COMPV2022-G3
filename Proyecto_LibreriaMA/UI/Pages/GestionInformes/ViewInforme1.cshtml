@@ -23,18 +23,18 @@
         labelSubtitle.innerText = `Libreria Maria Auxiliadora 
         Informe de Ventas por Fecha
         Del ${Fecha1.value} al ${Fecha2.value}`;
-        TableInforme(response, TableData, ["cantidadventa","nombrecliente","nombrearticulo","descripcionarticulo","totalventa"]);
+        TableInforme(response, TableData, ["idfactura","fechafactura","nombrecliente","subtotalventa","iva","totalventa"]);
         let sum = 0;
         let sum1 = 0;
         response.forEach(element =>{
-            sum1 = sum1 + element.cantidadventa;
+            sum1 = sum1 + element.subtotalventa;
             sum = sum + element.totalventa;
         })
         LabelTotal.append(" " + sum)
         LabelCantidad.append(" " + sum1)
     }
     window.onload = async () =>{
-        CargarDatos();
+       // CargarDatos();
         BtnUpdate.onclick = () =>{
             CargarDatos();
         }
@@ -114,6 +114,7 @@
             }
                 .TableInforme td, .TableInforme th {
                     border-bottom: solid 1px #b9b9b9;
+                    text-align: center
                 
                 }
         </style>
@@ -129,7 +130,7 @@
             </tbody>
         </table>
         <hr />
-          <label id="LabelCantidad"> Cantidad Venta: </label>
-        <label id="LabelTotal"> Total Venta: </label>
+          <label id="LabelCantidad"> Sub Total Venta C$: </label> <br />
+        <label id="LabelTotal"> Total Venta C$: </label>
     </div>
 </div>

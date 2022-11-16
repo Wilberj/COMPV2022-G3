@@ -56,7 +56,8 @@ window.onload = async () => {
                             NuevaFactura.subtotalventa = TotalSuma,
                             NuevaFactura.iva = iva,
                             NuevaFactura.totalventa = totalventa - parseInt(NuevaFactura.descuentofactura)
-                             NuevaFactura.cambio =  cantidad_dolar -NuevaFactura.totalventa     
+                             NuevaFactura.cambio =  cantidad_dolar -NuevaFactura.totalventa
+                             NuevaFactura.pagototal = cantidad_dolar     
                         }
                     }
 
@@ -64,7 +65,7 @@ window.onload = async () => {
                     const response =
                         await AjaxTools.PostRequest("../api/GestionVenta/SaveFactura",
                             NuevaFactura,
-                            NuevaFactura.pagototal = cantidad_dolar
+                           
                            
                         );
                     if (response == true) {

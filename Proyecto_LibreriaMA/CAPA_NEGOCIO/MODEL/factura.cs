@@ -10,6 +10,9 @@ namespace CAPA_NEGOCIO.MODEL
     public class facturaejemplo1
     {
         public string? nombrecliente { get; set; }
+        public string? nombreusuario { get; set;}
+        public Decimal? precioventa { get; set; }
+        public Decimal? descuentoventa { get; set; }
         public string? nombrearticulo { get; set; }
         public DateTime? fechafactura { get; set;}
         //  public string? descripcionarticulo { get; set; }
