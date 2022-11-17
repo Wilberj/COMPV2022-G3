@@ -137,5 +137,14 @@ namespace CAPA_NEGOCIO.MODEL
         public int? iddetallefactura { get; set; }
         public Decimal? cantidadventa { get; set; }
     }
+    public class ViewGestionArticulos : EntityClass
+    {
+        public string? nombrearticulo { get; set; }
+        public string? nombretamano { get; set; }
+        public string? descripcionarticulo { get; set; }
+        public int? idtamano { get; set; }
+        public int? idarticulo { get; set; }
+        public int? idtamanoxarticulo { get; set; }
+    }
 
 }

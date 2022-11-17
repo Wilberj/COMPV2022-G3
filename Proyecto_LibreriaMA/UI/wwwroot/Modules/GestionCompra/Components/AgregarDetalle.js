@@ -46,6 +46,7 @@ class AgregarDetalleCompra extends HTMLElement {
                     type: "number",
                     Dataset: this.dataC.cantidad
                 },
+                activo : { type: "checkbox", hidden: true  }
                 // Tamano: {
                 //     type: "select",
                 //     Dataset: this.dataT.map((d) => ({ id: d.idtamano, desc: d.nombretamano }))
@@ -180,7 +181,7 @@ class AgregarDetalleCompra extends HTMLElement {
                             //     alert("Los campos no pueden quedar vacios");
                             //     return;
                             // }
-
+                            this.DetalleCompra.activo = true;
                             //Unidad
                             this.DetalleCompra.idunidadmedida = this.DetalleCompra.TipoUnidad;
                             this.DetalleCompra.ConvertMedida.idunidadmedida = this.datau.find((x) => x.idunidadmedida == this.DetalleCompra.TipoUnidad).idunidadmedida;

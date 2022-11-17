@@ -183,7 +183,7 @@ class DetalleCompraProductos {
     preciocompra = { type: "number" };
     cantidadcompra = { type: "number" };
     descuentocompra = { type: "number" };
-    activo = { type: "checkbox" };
+    activo = { type: "checkbox", hidden: true };
 }
 export { DetalleCompraProductos }
 class DetalleFactura {

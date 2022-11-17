@@ -36,6 +36,10 @@ namespace UI.Controllers
         {
             return ent.Update("idarticulo");
         }
+        public Object ChargeArticulos(ViewGestionArticulos ent)
+        {
+            return new ViewGestionArticulos().Get<ViewGestionArticulos>();
+        }
 
     }
 }

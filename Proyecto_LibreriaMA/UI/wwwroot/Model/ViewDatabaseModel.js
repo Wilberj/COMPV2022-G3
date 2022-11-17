@@ -28,7 +28,7 @@ class ViewArticuloCompra {
     idarticulo = { type: "number", hidden: true };
     activo = { type: "checkbox", hidden: true };
     idtamanoxarticulo = { type: "number",hidden: true };
-    descripcionarticulo = { type: "text" };
+    descripcionarticulo = { type: "text",hidden: true  };
     nombretamano = { type: "text" };
     nombrecategoria = { type: "text" };
     nombremarca = { type: "text" };
@@ -67,6 +67,10 @@ class ViewAdminMercancia {
     idbodega = { type: "number", hidden: true };
     idconvertir = { type: "number", hidden: true };
     idtamanoxarticulo = { type: "number", hidden: true };
+    idcompra = { type: "number", hidden: true };
+    UnidadxOrigen = { type: "number"};
+
+
 }
 export { ViewAdminMercancia }
 
@@ -171,3 +175,19 @@ class ViewListArticuloVenta {
     
    }
    export{viewDetalleDevolucionVenta}
+
+   class ViewGestionArticulos {
+    constructor(props) {
+     for (const prop in props) {
+      this[prop] = props[prop];
+     }
+    }
+    nombrearticulo = { type: "text" };
+    descripcionarticulo = { type: "text"  };
+    nombretamano = { type: "text"  };
+    idtamano = { type: "number", hidden:true };
+    idarticulo = { type: "number", hidden:true };
+    idtamanoxarticulo = { type: "number", hidden:true };
+    
+   }
+   export{ViewGestionArticulos}

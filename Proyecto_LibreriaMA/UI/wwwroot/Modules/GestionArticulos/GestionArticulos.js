@@ -1,5 +1,5 @@
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
-import { ViewArticulosDanados, ViewCompra } from "../../Model/ViewDatabaseModel.js";
+import { ViewArticulosDanados, ViewCompra, ViewGestionArticulos } from "../../Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js";
 //import {ArticulosDanados} from "../../Model/DatabaseModel.js";
 
@@ -35,11 +35,11 @@ window.onload = async () => {
     }));
     
     const ArticulosDana =
-        await AjaxTools.PostRequest("../api/GestionCompra/ChargeArticulosDanados")
+        await AjaxTools.PostRequest("../api/AdminMercancia/ChargeArticulos")
 
     AppMain.append(new TableComponent({
         Dataset: ArticulosDana,
-        ModelObject: new ViewArticulosDanados()
+        ModelObject: new ViewGestionArticulos()
     }))
 
 }
