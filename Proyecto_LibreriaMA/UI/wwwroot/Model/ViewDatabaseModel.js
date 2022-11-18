@@ -155,6 +155,8 @@ class ViewListArticuloVenta {
     nombrecliente = { type: "text"  };
     idusuario = { type: "number"  };
     nombreusuario = { type: "text"  };
+    activo = { type: "checkbox" };
+
    }
    export{viewdevolventa}
    class viewDetalleDevolucionVenta {
@@ -165,10 +167,10 @@ class ViewListArticuloVenta {
     }
     idadmimercancias = { type: "number" , primary: true  };
     nombrearticulo = { type: "text"  };
-    idtamanoxarticulo = { type: "number"  };
-    idfactura = { type: "number"  };
-    existenciasarticuloorigen = { type: "number"  };
-    existenciasarticulounidad = { type: "number"  };
+    idtamanoxarticulo = { type: "number",hidden:true   };
+    idfactura = { type: "number" };
+    existenciasarticuloorigen = { type: "number",hidden:true  };
+    existenciasarticulounidad = { type: "number",hidden:true  };
     precioventa = { type: "number",hidden:true  };
     iddetallefactura = { type: "number",hidden:true  };
     cantidadventa = { type: "number"  };

@@ -1,6 +1,7 @@
 import { TableComponent } from "../../../CoreComponents/TableComponent.js";
 import { ViewArticulosDanados, ViewDetalleDevolucion, viewDetalleDevolucionVenta } from "../../../Model/ViewDatabaseModel.js";
 import { AjaxTools } from "../../utility.js";
+import { IdentificadorFactura } from "../ViewDevolucionventa.js";
 
 class AgregarAdminDetalleDevVenta extends HTMLElement {
     constructor(action = ()=>{}){
@@ -14,7 +15,9 @@ class AgregarAdminDetalleDevVenta extends HTMLElement {
         this.Dataset = await AjaxTools.PostRequest("../api/GestionVenta/ChargeDetaDevVenta")
         this.Table = new TableComponent({
            ModelObject: new viewDetalleDevolucionVenta(),
-           Dataset: this.Dataset,
+           Dataset: this.Dataset.filter(factura => {
+            return factura.idfactura == IdentificadorFactura.id;
+        }),
             Functions: [
                 {
                     name: 'Agregar', action: async(Dato) =>{

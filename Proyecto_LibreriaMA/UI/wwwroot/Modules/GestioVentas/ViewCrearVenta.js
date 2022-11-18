@@ -27,7 +27,7 @@ window.onload = async () => {
         children: [
             {
                 tagName: 'input', type: 'button',
-                className: 'btn_cuarto',
+                className: 'button_top',
                 value: 'Guardar Venta', onclick: async () => {
                     if (NuevaFactura.descuentofactura == null || NuevaFactura.idestado == null) {
                         alert("Falta rellenar campos")

@@ -404,30 +404,6 @@ namespace CAPA_NEGOCIO.MODEL
             return true;
         }
     }
-    public class DetalleDevolucionVenta : EntityClass
-    {
-        public int? iddetalledevolucion { get; set; }
-        public int? iddevolucionventa { get; set; }
-        public int? idadmimercancias { get; set; }
-        public int? cantidad { get; set; }
-        public string? descripciondevolucion { get; set; }
-        public List<AdministracionMercancias>? AdminMercas { get; set; }
-
-
-        public Object UpdateAdminMerca()
-        {
-            if (this.AdminMercas != null)
-            {
-                foreach (var AdminMercas in this.AdminMercas)
-                {
-                    AdminMercas.idadmimercancias = this.idadmimercancias;
-                    AdminMercas.Update("idadmimercancias");
-                }
-            }
-
-            return true;
-        }
-    }
 
     public class DetalleDevolucionCompra : EntityClass
     {
@@ -457,14 +433,31 @@ namespace CAPA_NEGOCIO.MODEL
         public int? iddevolucionventa { get; set; }
         public int? idfactura { get; set; }
         public DateTime? Fechadevolucion { get; set; }
-        public List<DetalleDevolucionVenta> DetalleDevventa { get; set; }
-     
+        public string? descripciondevolucion { get; set; }
+
+        public List<DetalleDevolucionVenta>? DetalleDevventa { get; set; }
+        public List<Factura>? Updateventa { get; set; }
+        public List<DetalleFactura>? DetalleFactura { get; set; }
+
 
         public Object SaveDevolucionventa()
         {
             this.iddevolucionventa = (Int32)this.Save();
             if (this.DetalleDevventa != null)
             {
+               
+
+                foreach (var FacturaAnulada in this.Updateventa)
+                {
+                    FacturaAnulada.idfactura = this.idfactura;
+                    FacturaAnulada.Update("idfactura");
+
+                    foreach (var DetalleFactura in this.DetalleFactura)
+                    {
+                        DetalleFactura.iddetallefactura = FacturaAnulada.idfactura;
+                        DetalleFactura.Update("iddetallefactura");
+                    }
+                }
                 foreach (var DetalleDevventa in this.DetalleDevventa)
                 {
                     DetalleDevventa.iddevolucionventa = this.iddevolucionventa;
@@ -478,7 +471,29 @@ namespace CAPA_NEGOCIO.MODEL
             return true;
         }
     }
+    public class DetalleDevolucionVenta : EntityClass
+    {
+        public int? iddetalledevolucion { get; set; }
+        public int? iddevolucionventa { get; set; }
+        public int? idadmimercancias { get; set; }
+        public int? cantidad { get; set; }
+        public List<AdministracionMercancias>? AdminMercas { get; set; }
 
+
+        public Object UpdateAdminMerca()
+        {
+            if (this.AdminMercas != null)
+            {
+                foreach (var AdminMercas in this.AdminMercas)
+                {
+                    AdminMercas.idadmimercancias = this.idadmimercancias;
+                    AdminMercas.Update("idadmimercancias");
+                }
+            }
+
+            return true;
+        }
+    }
     public class Estado : EntityClass
     {
         public int? idestado { get; set; }
@@ -501,7 +516,7 @@ namespace CAPA_NEGOCIO.MODEL
         public Decimal? cambio { get; set; }
         public bool? activo { get; set; }
 
-        public List<DetalleFactura> DetallVenta { get; set; }
+        public List<DetalleFactura>? DetallVenta { get; set; }
         public Object SaveFactura()
         {
             this.idfactura = (Int32)this.Save();

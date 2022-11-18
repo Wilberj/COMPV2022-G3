@@ -88,11 +88,8 @@ class AgregarFacturaDevolucion extends HTMLElement {
                             }
                         }
                         this.DetalleDevFactura.idadmimercancias = this.Dataset[0].idadmimercancias;
-                        ///this.DetalleDevFactura.NombreArticulo = this.Dataset[0].nombrearticulo;
-                        this.DetalleDevFactura.Temporal = this.Dataset[0].existenciasarticulounidad / this.Dataset[0].existenciasarticuloorigen;
-                        this.DetalleDevFactura.Cantidadunidadtotal = this.DetalleDevFactura.Temporal * this.DetalleDevFactura.cantidad;
-                        // this.DetalleDevFactura.cantidadingresad = this.DetalleDevFactura.cantidad
-                        this.DetalleDevFactura.suma = this.Dataset[0].existenciasarticulounidad + this.DetalleDevFactura.cantidad
+                        this.DetalleDevFactura.iddetallefactura = this.Dataset[0].iddetallefactura;
+                        this.DetalleDevFactura.activo = false
                         if (this.DetalleDevFactura.devolucionUnidad == true) {
                             // this.Dataset[0].existenciasarticulounidad = this.DetalleDevFactura.cantidad + this.Dataset[0].existenciasarticulounidad;
                             // NuevaFactura.totalventa = parseInt(NuevaFactura.subtotalventa) + parseInt(NuevaFactura.iva) - parseInt(NuevaFactura.descuentofactura)

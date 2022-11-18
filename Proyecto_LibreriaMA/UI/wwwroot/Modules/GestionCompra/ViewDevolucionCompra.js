@@ -14,10 +14,6 @@ import { AgregarAdminDetalleDevCompra } from "./Components/AgregarAdminDetalleDe
 class Identificador {
     id;
 }
- class lolaso {
-     id;
- }
-
 
 window.onload = async () => {
     const Dataset = [];
@@ -224,4 +220,4 @@ window.onload = async () => {
      AppMain.append(TableDetalleDevCompra);
 }
 
-export { Identificador,lolaso }
+export { Identificador }

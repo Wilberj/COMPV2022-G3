@@ -122,6 +122,8 @@ namespace CAPA_NEGOCIO.MODEL
         public string? nombrecliente { get; set; }
         public string? nombreusuario { get; set; }
         public int? idusuario { get; set; }
+        public bool? activo { get; set; }
+
     }
 
 

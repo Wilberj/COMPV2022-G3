@@ -67,6 +67,38 @@
 .btn_tercero{
     margin-left: -140px;
 }
+/**************************************/
+/****AQUI PRUEBEN BOTONES EN GESTION VENTA****/
+/**************************************/
+
+
+.button_top {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+  
+.button_top:hover {
+    background-color: #62819f;
+    box-shadow: 0px 15px 20px rgba(26, 115, 79, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
+  
+.button_top:active {
+    transform: translateY(-1px);
+  }
+
 
 /**************************************/
 
@@ -105,7 +137,7 @@
     overflow: hidden;
     border-radius: 0.3cm;
     border-collapse: collapse;
-
+    margin-bottom: 15px;
 }
 
 .tableClass1 th {

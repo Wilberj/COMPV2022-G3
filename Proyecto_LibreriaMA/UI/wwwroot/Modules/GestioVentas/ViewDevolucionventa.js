@@ -1,29 +1,28 @@
 ﻿import { FormComponet } from "../../CoreComponents/FormComponent.js";
 import { ModalComponent } from "../../CoreComponents/ModalComponent.js";
-//import { TableComponentCompra } from "./Components/TableComponentCompra.js";
-import { Articulos, CompraProductos, DetalleCompraProductos, DetalleDevolucionCompra, DetalleDevolucionVenta, DevolucionCompra, DevolucionVenta } from "../../Model/DatabaseModel.js";
+import { DetalleDevolucionVenta, DevolucionVenta } from "../../Model/DatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js";
-//import { AgregarArticuloCompra } from "./Components/AgregarArticuloCompra.js";
-//import { AgregarDetalleCompra } from "./Components/AgregarDetalle.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
-import { ViewArticuloCompra, viewdevolventa, ViewListArticuloVenta } from "../../Model/ViewDatabaseModel.js";
-import { AgregarCompraDevolucion } from "../GestionCompra/Components/AgregarCompraDevolucion.js";
+import { viewdevolventa } from "../../Model/ViewDatabaseModel.js";
 import { AgregarFacturaDevolucion } from "./Components/AgregarFacturaDevolucion.js";
 import { AgregarVentaDevolucion } from "./Components/AgregarVentaDevolucion.js";
-//import { AgregarCompraDevolucion } from "./Components/AgregarCompraDevolucion.js";
-//import { AgregarDetallDevolucion } from "./Components/AgregarDetalleDevolucion.js";
-//import { ViewArticuloCompra } from "../../Model/ViewDatabaseModel.js";
+
+class IdentificadorFactura {
+    id;
+}
 
 
 window.onload = async () => {
-    const Dataset = []
+    const Dataset = {}
     const DetalleDevFactura = [];
+    const DetalleFactura = [];
     const Updateventa = [];//necesaria para actualziar admin
     const NewDevolucionVenta = {
-        DetalleDevventa:DetalleDevFactura,
+        DetalleDevventa: DetalleDevFactura,
+        DetalleFactura: DetalleFactura,
+
         Updateventa: Updateventa
-       //
-       // y el Updateventa paara actualizar
+
     }
     AppMain.append(Render.Create({
         tagName: "h1",
@@ -35,28 +34,28 @@ window.onload = async () => {
         children: [
             {
                 tagName: 'input', type: 'button',
-                className: 'btn',
+                className: 'button_top',
                 value: 'Guardar registro', onclick: async () => {
-                   if(DetalleDevFactura[0] == null){
-                    alert("Debe tener un Detalle Devolucion")
-                    console.log("detalle eeehh");
-                    return;
-                   }else{
-                    if(Updateventa[0] == null){
-                        alert("Debe tener una factura")
+                    if (DetalleDevFactura[0] == null) {
+                        alert("Debe tener un Detalle Devolucion")
                         console.log("detalle eeehh");
                         return;
+                    } else {
+                        if (Updateventa[0] == null) {
+                            alert("Debe tener una factura")
+                            console.log("detalle eeehh");
+                            return;
+                        }
                     }
-                   }
-                   
-                   
-                    console.log( NewDevolucionVenta);
+
+
+                    console.log(NewDevolucionVenta);
                     const response =
                         await AjaxTools.PostRequest("../api/GestionVenta/SaveDevolucionventa",
                             NewDevolucionVenta, Updateventa
 
-                           
-                           
+
+
                         );
                     if (response == true) {
                         AppMain.append(
@@ -66,7 +65,6 @@ window.onload = async () => {
                                     innerText: "devolucion guardada",
                                 }),
 
-                                // //                 // window.location.reload()
                             )
 
                         );
@@ -80,12 +78,12 @@ window.onload = async () => {
     const FormDevolucionFactura = new FormComponet({
         EditObject: NewDevolucionVenta,
         Model: new DevolucionVenta({
-            idfactura : { type: "number",hidden : true }
+            idfactura: { type: "number", hidden: true }
         })
     });
     const Table = new TableComponent({
         //cambiar vista
-       ModelObject: new viewdevolventa(),
+        ModelObject: new viewdevolventa(),
         Dataset: Updateventa,
         Functions: [
             {
@@ -104,26 +102,29 @@ window.onload = async () => {
         tagName: 'input', type: 'button',
         className: 'btn_primary', value: 'Anadir ', onclick: async () => {
             const Modal = new ModalComponent
-                ( new AgregarVentaDevolucion((DetalleDev) => {
+                (new AgregarVentaDevolucion((DetalleDev) => {
                     if (Updateventa.length > 0) {
                         alert("Solo puede seleccionar una venta")
                         return;
                     }
                     Updateventa.push(DetalleDev);
                     //NewDevolucionVenta.idcompra = Updateventa[0].idcompra
-                  //  Identificador.id = JSON.parse(JSON.stringify(DetalleDev.idcompra))
+                    //  Identificador.id = JSON.parse(JSON.stringify(DetalleDev.idcompra))
                     Modal.Close();
                     console.log(Updateventa);
                     Table.DrawTableComponent();
                     NewDevolucionVenta.idfactura = Updateventa[0].idfactura
+                    IdentificadorFactura.id = JSON.parse(JSON.stringify(DetalleDev.idfactura))
+                    console.log(IdentificadorFactura.id);
                     console.log(DetalleDev);
-                    
+
                 }))
-                AppMain.append(Modal)
+            AppMain.append(Modal)
         }
     })
     )
     AppMain.append(FormDevolucionFactura, Table)
+    
     const TableDetalleDevFactura = new TableComponent({
         ModelObject: new DetalleDevolucionVenta(),
         Dataset: DetalleDevFactura,
@@ -143,7 +144,7 @@ window.onload = async () => {
     TableDetalleDevFactura.filter.append(Render.Create({
         tagName: 'input', type: 'button',
         className: 'btn_primary', value: 'Anadir detalle', onclick: async () => {
-            if(Updateventa[0] == null){
+            if (Updateventa[0] == null) {
                 alert("Debe tener una factura")
                 console.log("detalle eeehh");
                 return;
@@ -157,13 +158,18 @@ window.onload = async () => {
                     DetalleDevFactura.push(venta);
                     console.log(venta);
                     console.log(DetalleDevFactura);
+                    Dataset.activo = DetalleDevFactura[0].activo
+                    Dataset.iddetallefactura = DetalleDevFactura[0].iddetallefactura
+                    DetalleFactura.push(Dataset);
+
+                    console.log(Dataset);
                     Modal.Close();
                     TableDetalleDevFactura.DrawTableComponent();
 
 
 
                 }))
-                AppMain.append(Modal)
+            AppMain.append(Modal)
 
         }
     }))
@@ -175,3 +181,4 @@ window.onload = async () => {
     AppMain.append(TableDetalleDevFactura);
 
 }
+export { IdentificadorFactura }
