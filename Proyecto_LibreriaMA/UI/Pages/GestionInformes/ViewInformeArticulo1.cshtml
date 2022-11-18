@@ -1,0 +1,128 @@
+﻿@page
+@model UI.Pages.GestionInformes.ViewInformeArticulo1Model
+@{
+}
+
+<script type="module">
+    import TableInforme from "../CoreComponents/InformeComponent.js"
+    const CargarDatos = async () =>{
+        let UrlP = "../api/InformesArticulo/TakeInformeArticuloEjemplo1";
+        const ObjInst ={
+            Params: [Fecha1.value, Fecha2.value]
+        }
+        let response = await fetch(UrlP,{
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json; charset=utf-8",
+                'Accept': "*/*"
+            },
+            body: JSON.stringify(ObjInst)
+        });
+        response = await response.json();
+        console.log(response);
+        labelSubtitle.innerText = `Libreria Maria Auxiliadora 
+        Informe de Ventas por Fecha
+        Del ${Fecha1.value} al ${Fecha2.value}`;
+        TableInforme(response, TableData, ["nombrearticulo","fechafactura","idtamanoxarticulo","CantidadVenta"]);
+        
+    }
+    window.onload = async () =>{
+       // CargarDatos();
+        BtnUpdate.onclick = () =>{
+            CargarDatos();
+        }
+        BtnPrint.onclick = () =>{
+             const PrintNode = Page.innerHTML;
+            const ventimp = window.open(' ', 'popimpr');
+            ventimp.document.write(PrintNode);
+            ventimp.document.close();
+            ventimp.print();
+            ventimp.close();
+        }
+    }
+
+</script>
+<div class="FrmContainer">
+    <input class="Fech" type="date" id="Fecha1" value="2022-01-01"/>
+      <input class="Fech" type="date" id="Fecha2" value="2022-11-04"/>
+</div>
+
+<div class="FrmContainer">
+    <input class="BTN BTNOK2" type="button" id="BtnPrint" value= "Inprimir"/>
+    <input class="BTN BTNOK2" type="button" id="BtnUpdate" value= "Actualizar"/>
+</div>
+<div class="InformeContainer">
+    <div class="page" id="Page">
+        <style>
+            .Fech{
+                color:black;
+                margin-bottom: 10px;
+                 border-radius: 8px;
+                 width: 150px;
+                 height: 25px;
+                font-weight: bold;
+            }
+            .InformeContainer {
+                background-color: #b9b9b9;
+                padding: 10px;
+                height: 800px;
+                overflow: auto;
+                border: solid 2px #888;
+            }
+            .page {
+                background-color: #fff;
+                width: 20cm;
+                height: 25.7cm;
+                display: block;
+                margin: 0 auto;
+                margin-bottom: 0.5cm;
+                box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+                padding: 1cm 2cm;
+            }
+             h4 {
+                color:black;
+                text-align: center;
+                font-size:30px;
+        
+            }
+            .BTN{
+                padding: 10px;
+                width: 150px;
+                align-content:center;
+                justify-content:center;
+                margin-bottom: 10px;
+                border-radius: 10px;
+                border: none;
+                color:white;
+                cursor:pointer;
+                background-image: linear-gradient(to left, #00b7da,
+                     #161569,#0087da);
+                     background-size: 300px;
+            }
+         
+            .TableInforme {
+                width: 100%;
+               
+                margin-bottom: 30px;
+            }
+                .TableInforme td, .TableInforme th {
+                    border-bottom: solid 1px #b9b9b9;
+                    text-align: center
+                
+                }
+        </style>
+        <section>
+          
+         
+            <h4 id="labelSubtitle">INFORME DE ARTICULOSS MAS VENDIDOS POR FECHA</h4>
+        </section>
+        <table id="TableData" class="TableInforme">
+            <thead>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <hr />
+     
+    </div>
+</div>
