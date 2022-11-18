@@ -174,6 +174,8 @@ class ViewListArticuloVenta {
     precioventa = { type: "number",hidden:true  };
     iddetallefactura = { type: "number",hidden:true  };
     cantidadventa = { type: "number"  };
+    activo = { type: "checkbox",hidden:true };
+
     
    }
    export{viewDetalleDevolucionVenta}

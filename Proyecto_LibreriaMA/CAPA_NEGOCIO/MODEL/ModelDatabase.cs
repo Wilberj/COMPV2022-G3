@@ -437,7 +437,7 @@ namespace CAPA_NEGOCIO.MODEL
 
         public List<DetalleDevolucionVenta>? DetalleDevventa { get; set; }
         public List<Factura>? Updateventa { get; set; }
-        public List<DetalleFactura>? DetalleFactura { get; set; }
+        public List<DetalleFactura>? DetalleFacturas { get; set; }
 
 
         public Object SaveDevolucionventa()
@@ -452,9 +452,9 @@ namespace CAPA_NEGOCIO.MODEL
                     FacturaAnulada.idfactura = this.idfactura;
                     FacturaAnulada.Update("idfactura");
 
-                    foreach (var DetalleFactura in this.DetalleFactura)
+                    foreach (var DetalleFactura in this.DetalleFacturas)
                     {
-                        DetalleFactura.iddetallefactura = FacturaAnulada.idfactura;
+                        DetalleFactura.idfactura = FacturaAnulada.idfactura;
                         DetalleFactura.Update("iddetallefactura");
                     }
                 }

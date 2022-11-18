@@ -138,6 +138,8 @@ namespace CAPA_NEGOCIO.MODEL
         public Decimal? precioventa { get; set; }
         public int? iddetallefactura { get; set; }
         public Decimal? cantidadventa { get; set; }
+        public bool? activo { get; set; }
+
     }
     public class ViewGestionArticulos : EntityClass
     {

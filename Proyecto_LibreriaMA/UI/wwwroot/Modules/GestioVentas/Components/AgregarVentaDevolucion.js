@@ -1,12 +1,14 @@
 import { TableComponent } from "../../../CoreComponents/TableComponent.js";
-import { ViewArticuloCompra, ViewCompra, ViewDevolucionCompra, viewdevolventa } from "../../../Model/ViewDatabaseModel.js";
-import { AjaxTools } from "../../utility.js";
+import { DetalleFactura } from "../../../Model/DatabaseModel.js";
+import { ViewArticuloCompra, ViewCompra, viewDetalleDevolucionVenta, ViewDevolucionCompra, viewdevolventa } from "../../../Model/ViewDatabaseModel.js";
+import { AjaxTools, Render } from "../../utility.js";
 import { IdentificadorFactura } from "../ViewDevolucionventa.js";
 
 
 class AgregarVentaDevolucion extends HTMLElement {
     constructor(action = () => { }) {
         super();
+       
         this.Dataset = [];
         this.action = action;
         this.Draw();
@@ -23,10 +25,12 @@ class AgregarVentaDevolucion extends HTMLElement {
                         Dato.activo = false
                         this.action(Dato);
                         console.log(Dato);
+                  
                     }
                 }
             ]
         });
+
         this.append(this.Table);
     }
 }
