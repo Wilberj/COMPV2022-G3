@@ -435,7 +435,7 @@ namespace CAPA_NEGOCIO.MODEL
         public DateTime? Fechadevolucion { get; set; }
         public string? descripciondevolucion { get; set; }
 
-        public List<DetalleDevolucionVenta>? DetalleDevventa { get; set; }
+        public List<DetalleDevolucionVenta>? DetalleDevventas { get; set; }
         public List<Factura>? Updateventa { get; set; }
         public List<DetalleFactura>? DetalleFacturas { get; set; }
 
@@ -443,7 +443,7 @@ namespace CAPA_NEGOCIO.MODEL
         public Object SaveDevolucionventa()
         {
             this.iddevolucionventa = (Int32)this.Save();
-            if (this.DetalleDevventa != null)
+            if (this.DetalleDevventas != null)
             {
                
 
@@ -458,15 +458,24 @@ namespace CAPA_NEGOCIO.MODEL
                         DetalleFactura.Update("iddetallefactura");
                     }
                 }
-                foreach (var DetalleDevventa in this.DetalleDevventa)
-                {
-                    DetalleDevventa.iddevolucionventa = this.iddevolucionventa;
-                    DetalleDevventa.iddetalledevolucion = (Int32)DetalleDevventa.Save();
-                    DetalleDevventa.UpdateAdminMerca();
-                }
+                
               
 
             }
+
+            return true;
+        }
+        public Object SaveDetalleDevolucionventa()
+        {
+
+                foreach (var DetalleDevventas in this.DetalleDevventas)
+                {
+                    DetalleDevventas.iddetalledevolucion = (Int32)DetalleDevventas.Save();
+                    DetalleDevventas.UpdateAdminMerca();
+                }
+
+
+            
 
             return true;
         }

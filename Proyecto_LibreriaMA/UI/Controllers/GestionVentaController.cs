@@ -41,6 +41,11 @@ namespace UI.Controllers
         {
             return ent.SaveDevolucionventa();
         }
+        public Object SaveDetalleDevolucionventa(DevolucionVenta ent)
+        {
+            return ent.SaveDetalleDevolucionventa();
+        }
+
         public Object DevolucionVentaList(DevolucionVenta ent)
         {
             return ent.Get<DevolucionVenta>();

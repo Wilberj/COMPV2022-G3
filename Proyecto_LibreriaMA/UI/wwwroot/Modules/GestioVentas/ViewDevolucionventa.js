@@ -24,7 +24,7 @@ window.onload = async () => {
     const DetalleFacturas = [];
     const Updateventa = [];//necesaria para actualziar admin
     const NewDevolucionVenta = {
-        DetalleDevventa: DetalleDevFactura,
+        DetalleDevventas: DetalleDevFactura,
         DetalleFacturas: Datosprueba,
         Updateventa: Updateventa
 
@@ -52,10 +52,10 @@ window.onload = async () => {
                             return;
                         }
                     }
-                    const response = true
-                        // await AjaxTools.PostRequest("../api/GestionVenta/SaveDevolucionventa",
-                        //     NewDevolucionVenta
-                        // );
+                    const response = 
+                           await AjaxTools.PostRequest("../api/GestionVenta/SaveDevolucionventa",
+                               NewDevolucionVenta
+                           );
                     if (response == true) {
                         console.log(NewDevolucionVenta);
                         AppMain.append(

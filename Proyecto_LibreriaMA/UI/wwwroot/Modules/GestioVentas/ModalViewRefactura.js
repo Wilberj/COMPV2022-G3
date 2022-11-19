@@ -12,7 +12,6 @@ class Agregar extends HTMLElement {
     constructor(action = () => { }) {
         super();
         this.Dataset =[];
-        this.DetalleDevventa=[]
         this.Devolucionventalist = [];
 
         this.action = action;
@@ -20,13 +19,15 @@ class Agregar extends HTMLElement {
         this.Facturas = FacturaDevolucion;
         this.Detalles = [];
         this.NewDevolucionVenta = {};
-        this.NewDevolucionVenta.Updateventa = this.Facturas;
-        this.NewDevolucionVenta.DetalleDevventa = []
+        this.NewDevolucionVenta.Updateventa = [this.Facturas];
+        this.DetalleDevventa = {}
+        this.NewDevolucionVenta.DetalleDevventas = []
+
+
 
         this.NuevaFactura = [];
 
         this.DetallVenta = [];
-        this.DetalleDevventa = [];
 
 
 
@@ -47,7 +48,7 @@ class Agregar extends HTMLElement {
         console.log(this.Facturas);
         this.NuevaFactura.nombrecliente = this.Facturas.nombrecliente 
         this.NuevaFactura.idusuario = this.Facturas.idusuario 
-        this.NewDevolucionVenta.DetalleDevventa.iddevolucionventa = this.last.iddevolucionventa
+        this.DetalleDevventa.iddevolucionventa = this.last.iddevolucionventa
         console.log(this.Facturas);
         this.Form = new FormComponet({
             Model: new Factura({
@@ -59,7 +60,7 @@ class Agregar extends HTMLElement {
             Model: new DetalleDevolucionVenta({
 
             }),
-            EditObject: this.NewDevolucionVenta.DetalleDevventa
+            EditObject: this.DetalleDevventa
         }),
         
             this.Table = new TableComponent({
@@ -79,10 +80,14 @@ class Agregar extends HTMLElement {
                         name: "Remover",
                         action: async (Dato) => {
                             console.log(Dato);
-                            this.NewDevolucionVenta.DetalleDevventa.push(Dato)
-                            this.NewDevolucionVenta.DetalleDevventa.cantidad = this.NewDevolucionVenta.DetalleDevventa[0].cantidadventa 
-                            this.NewDevolucionVenta.DetalleDevventa.idadmimercancias = this.NewDevolucionVenta.DetalleDevventa[0].idadmimercancias 
-                            console.log(this.NewDevolucionVenta.DetalleDevventa);
+                            this.DetalleDevventa.AdminMercas = []
+
+                            this.DetalleDevventa.AdminMercas.push(Dato)
+                            this.DetalleDevventa.cantidad = this.DetalleDevventa.AdminMercas[0].cantidadventa 
+                            this.DetalleDevventa.idadmimercancias = this.DetalleDevventa.AdminMercas[0].idadmimercancias
+                            this.DetalleDevventa.AdminMercas[0].existenciasarticulounidad =  parseInt(this.DetalleDevventa.cantidad + this.DetalleDevventa.AdminMercas[0].existenciasarticulounidad )
+                            console.log(this.NewDevolucionVenta);
+                            this.NewDevolucionVenta.DetalleDevventas.push(this.DetalleDevventa)
                             const Datof = this.Detalles.find((x) => x.iddetallefactura == Dato.iddetallefactura);
                             if (Datof != null) {
                                 this.Detalles.splice(this.Detalles.indexOf(Datof), 1);
@@ -226,9 +231,10 @@ class Agregar extends HTMLElement {
                     className: "btn_primary",
                             value: "Guardar",
                     onclick: async () => {
-                        // await AjaxTools.PostRequest("../api/GestionVenta/SaveDevolucionventa",
-                        // this.NewDevolucionVenta
-                        //  );
+                        console.log(this.DetalleDevventa);
+                            await AjaxTools.PostRequest("../api/GestionVenta/SaveDetalleDevolucionventa",
+                            this.NewDevolucionVenta
+                             );
                         console.log(this.NewDevolucionVenta);
 
                     }
