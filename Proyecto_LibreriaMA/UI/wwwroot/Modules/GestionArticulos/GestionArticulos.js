@@ -16,7 +16,7 @@ window.onload = async () => {
         children: [
             {
                 tagName: 'input', type: 'button',
-                className: 'btn',
+                className: 'button_top',
                 value: 'Ingresar Nuevo Articulo', onclick: async () => {
                     //cargar vists
                     window.location = "./ViewCrearArticulos"
@@ -24,7 +24,7 @@ window.onload = async () => {
             },
             {
                 tagName: 'input', type: 'button',
-                className: 'btn',
+                className: 'button_top',
                 value: 'Ingresar Articulo Dañado', onclick: async () => {
                     //cargar vists
                     window.location = "./ViewCrearArticulosDanados"

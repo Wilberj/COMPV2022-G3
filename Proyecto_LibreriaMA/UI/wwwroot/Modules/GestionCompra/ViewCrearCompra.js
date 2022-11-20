@@ -29,7 +29,7 @@ window.onload = async () => {
         children: [
             {
                 tagName: 'input', type: 'button',
-                className: 'btn',
+                className: 'button_topp',
                 value: 'Guardar Compra', onclick: async () => {
 
                     if (NuevaCompra.descuentocompra == null || NuevaCompra.idestado == null) {
@@ -129,7 +129,7 @@ window.onload = async () => {
     TableDetalleCompra.filter.append(
         Render.Create({
             tagName: 'input', type: 'button',
-            className: 'btn_primary', value: 'Anadir', onclick: async () => {
+            className: 'btnagregar', value: 'Anadir', onclick: async () => {
                 const Modal = new ModalComponent
 
                     (new AgregarDetalleCompra((compra) => {

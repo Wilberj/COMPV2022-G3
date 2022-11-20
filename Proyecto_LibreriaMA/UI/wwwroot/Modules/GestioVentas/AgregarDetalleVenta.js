@@ -47,7 +47,7 @@ class AgregarDetalleVenta extends HTMLElement {
             });
         this.Table.filter.append(Render.Create({
             tagName: 'input', type: 'button',
-            className: 'btn_primary', value: 'Anadir Articulo a Vender', onclick: async () => {
+            className: 'btnagregar', value: 'Anadir Articulo a Vender', onclick: async () => {
                 //code
 
                 const Modal = new ModalComponent
@@ -76,7 +76,7 @@ class AgregarDetalleVenta extends HTMLElement {
                 {
                     tagName: "input",
                     type: "button",
-                    className: "btn_primary",
+                    className: "btnagregar",
                     value: "Agregar Informacion Al Detalle venta",
                     onclick: async () => {
 

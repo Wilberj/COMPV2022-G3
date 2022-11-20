@@ -124,7 +124,7 @@ window.onload = async () => {
     });
     Table.filter.append(Render.Create({
         tagName: 'input', type: 'button',
-        className: 'btn_primary', value: 'Anadir ', onclick: async () => {
+        className: 'btnagregar', value: 'Anadir ', onclick: async () => {
 
             const Modal = new ModalComponent
 

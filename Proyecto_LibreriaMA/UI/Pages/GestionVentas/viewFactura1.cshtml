@@ -76,8 +76,7 @@
 </script>
 <div class="FrmContainer">
     <input class="BTN BTNOK2" type="button" id="Salir" value= "Regresar"/>
-</div>
-<div class="FrmContainer">
+
     <input class="BTN BTNOK2" type="button" id="BtnPrint" value= "Inprimir"/>
    
 </div>
@@ -92,13 +91,13 @@
                  height: 25px;
                 font-weight: bold;
             }
-            .InformeContainer {
+            @* .InformeContainer {
                 background-color: #b9b9b9;
                 padding: 10px;
                 height: 800px;
                 overflow: auto;
                 border: solid 2px #888;
-            }
+            } *@
             .page {
                 background-color: #fff;
                 width: 20cm;
@@ -110,19 +109,31 @@
                 padding: 1cm 2cm;
             }
            
-            .BTN{
-                padding: 10px;
-                width: 150px;
-                align-content:center;
-                justify-content:center;
-                margin-bottom: 10px;
-                border-radius: 10px;
+              .BTN {
+                padding: 1.3em 3em;
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 2.5px;
+                font-weight: 500;
+                color: #000;
+                background-color: #fff;
                 border: none;
-                color:white;
-                cursor:pointer;
-                background-image: linear-gradient(to left, #00b7da,
-                     #161569,#0087da);
-                     background-size: 300px;
+                border-radius: 45px;
+                box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease 0s;
+                cursor: pointer;
+                outline: none;
+            }
+  
+            .BTN:hover {
+                background-color: #288bee;
+                box-shadow: 0px 15px 20px rgba(26, 115, 79, 0.4);
+                color: #fff;
+                transform: translateY(-7px);
+            }
+            
+            .BTN:active {
+                transform: translateY(-1px);
             }
          
             .TableInforme {
@@ -130,8 +141,16 @@
                
                 margin-bottom: 30px;
             }
-                .TableInforme td, .TableInforme th {
+                .TableInforme th {
                     border-bottom: solid 1px #b9b9b9;
+                    text-align: center;
+                    background-color: #05e4fc;
+                
+                }
+                .TableInforme td {
+                    border-bottom: solid 1px #b9b9b9;
+                    text-align: center;
+                    background-color: #b8f8ff;
                 
                 }
                  .titulo{

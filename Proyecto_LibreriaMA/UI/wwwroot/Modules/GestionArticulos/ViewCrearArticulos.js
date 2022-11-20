@@ -25,7 +25,7 @@ window.onload = async () => {
         children: [
             {
                 tagName: 'input', type: 'button',
-                className: 'btn',
+                className: 'button_topp',
                 value: 'Guardar', onclick: async () => {
                     console.log(NuevoArticulo)
                     console.log(Tamanox)

@@ -55,7 +55,7 @@ class AgregarDetalleArtDanados extends HTMLElement {
         this.Table.filter.append(
             Render.Create({
                 tagName: 'input', type: 'button',
-                className: 'btn_primary', value: 'Anadir Articulo a devolver', onclick: async () => {
+                className: 'btnagregar', value: 'Anadir Articulo a devolver', onclick: async () => {
                     //code
 
                     const Modal = new ModalComponent
@@ -85,7 +85,7 @@ class AgregarDetalleArtDanados extends HTMLElement {
                     {
                         tagName: "input",
                         type: "button",
-                        className: "btn_primary",
+                        className: "btnagregar",
                         value: "Agregar Informacion Al Detalle",
                         onclick: async () => {
                             if(/*this.NuevoArtiDana.cantidaddanadaorigen == null || this.NuevoArtiDana.cantidaddanadaunidad == null

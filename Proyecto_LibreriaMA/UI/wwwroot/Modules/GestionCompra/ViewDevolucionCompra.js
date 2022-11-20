@@ -38,7 +38,7 @@ window.onload = async () => {
         children: [
             {
                 tagName: 'input', type: 'button',
-                className: 'btn',
+                className: 'button_topp',
                 value: 'Guardar registro', onclick: async () => {
 
                     if(DetalleDevolucion[0] == null){
@@ -118,7 +118,7 @@ window.onload = async () => {
     Table.filter.append(
         Render.Create({
             tagName: 'input', type: 'button',
-            className: 'btn_primary', value: 'Anadir ', onclick: async () => {
+            className: 'btnagregar', value: 'Anadir ', onclick: async () => {
                 //code
                 
                 const Modal = new ModalComponent
@@ -175,7 +175,7 @@ window.onload = async () => {
      TableDetalleDevCompra.filter.append(
          Render.Create({
              tagName: 'input', type: 'button',
-             className: 'btn_primary', value: 'Anadir detalle', onclick: async () => {
+             className: 'btnagregar', value: 'Anadir detalle', onclick: async () => {
 
                  if(UpdateCompra[0] == null){
                      alert("Primero se debe seleccionar una compra")

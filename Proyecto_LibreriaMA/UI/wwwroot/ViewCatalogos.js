@@ -228,7 +228,7 @@ async function ChargeCatalogo(Model) {
     })
     const NewBtn = {
         tagName: "input",
-        type: 'button', className: 'btn',
+        type: 'button', className: 'button_top',
         value: 'Nuevo registro', onclick: async () => {
             ChargeForm({}, table, "Save", Model);
         }

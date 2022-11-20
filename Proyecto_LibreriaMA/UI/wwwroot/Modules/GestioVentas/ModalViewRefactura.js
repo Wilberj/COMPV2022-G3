@@ -194,7 +194,7 @@ class Agregar extends HTMLElement {
     });
     this.TableDetalleVenta.filter.append(Render.Create({
         tagName: 'input', type: 'button',
-        className: 'btn_primary', value: 'Anadir', onclick: async () => {
+        className: 'btnagregar', value: 'Anadir', onclick: async () => {
             const Modal = new ModalComponent
                 (new AgregarDetalleVenta((venta) => {
                     if (this.DetallVenta.filter((x) => x.idtamanoxarticulo == venta.idtamanoxarticulo).length > 0) {

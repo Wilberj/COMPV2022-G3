@@ -20,6 +20,7 @@ namespace CAPA_NEGOCIO.MODEL
         public int? idfactura { get; set; }
         public int? idarticulo { get; set; }
         public Decimal? CantidadVenta { get; set; }
+        public Decimal? TotalVenta { get; set; }
 
         public int? idtamanoxarticulo { get; set; }
         //public Decimal? cantidadventa { get; set; }

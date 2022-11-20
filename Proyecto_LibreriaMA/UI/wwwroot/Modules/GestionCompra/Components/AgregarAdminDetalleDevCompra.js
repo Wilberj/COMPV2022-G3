@@ -34,7 +34,7 @@ class AgregarAdminDetalleDevCompra extends HTMLElement {
      this.Table.filter.append(
          Render.Create({
              tagName: 'input', type: 'button',
-             className: 'btn_primary', value: 'Anadir detalle', onclick: async (data) => {
+             className: 'btnagregar', value: 'Anadir detalle', onclick: async (data) => {
 
 
             data = this.Dataset.filter(compra => {

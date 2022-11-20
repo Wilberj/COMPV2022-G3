@@ -27,7 +27,7 @@ window.onload = async () => {
         children: [
             {
                 tagName: 'input', type: 'button',
-                className: 'button_top',
+                className: 'button_topp',
                 value: 'Guardar Venta', onclick: async () => {
                     if (NuevaFactura.descuentofactura == null || NuevaFactura.idestado == null) {
                         alert("Falta rellenar campos")
@@ -193,7 +193,7 @@ window.onload = async () => {
     });
     TableDetalleVenta.filter.append(Render.Create({
         tagName: 'input', type: 'button',
-        className: 'btn_primary', value: 'Anadir', onclick: async () => {
+        className: 'btnagregar', value: 'Anadir', onclick: async () => {
             const Modal = new ModalComponent
                 (new AgregarDetalleVenta((venta) => {
                     if (DetallVenta.filter((x) => x.idtamanoxarticulo == venta.idtamanoxarticulo).length > 0) {

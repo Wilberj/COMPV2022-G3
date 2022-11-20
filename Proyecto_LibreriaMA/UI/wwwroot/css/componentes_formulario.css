@@ -68,7 +68,7 @@
     margin-left: -140px;
 }
 /**************************************/
-/****AQUI PRUEBEN BOTONES EN GESTION VENTA****/
+/****AQUI PRUEBEN BOTONES EN GESTION VENTA (generales)****/
 /**************************************/
 
 
@@ -89,7 +89,7 @@
   }
   
 .button_top:hover {
-    background-color: #62819f;
+    background-color: #288bee;
     box-shadow: 0px 15px 20px rgba(26, 115, 79, 0.4);
     color: #fff;
     transform: translateY(-7px);
@@ -99,6 +99,67 @@
     transform: translateY(-1px);
   }
 
+  .button_topp {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+  
+.button_topp:hover {
+    background-color: #13fc6c;
+    box-shadow: 0px 15px 20px rgba(26, 115, 79, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
+  
+.button_topp:active {
+    transform: translateY(-1px);
+  }
+
+  
+
+
+  /******* BOTONES DE AGREGAR AQUI **********/
+
+  .btnagregar {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #11575c;
+    color: #fff;
+    border: none;
+    border-radius: 45px;
+    transition: all .2s;
+   }
+   
+   .btnagregar:hover {
+    border-radius: 45px;
+    transform: translateY(-10px);
+    box-shadow: 0 7px 0 -2px #05ff65,
+     0 15px 0 -4px #0267ff,
+     0 16px 10px -3px #0267ff;
+   }
+   
+   /* .btnagregar:active {
+    transition: all 0.2s;
+    transform: translateY(-5px);
+    box-shadow: 0 2px 0 -2px #05ff65,
+     0 8px 0 -4px #0267ff,
+     0 12px 10px -3px #0267ff;
+   } */
 
 /**************************************/
 
