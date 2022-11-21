@@ -10,7 +10,7 @@ window.onload = async () => {
     const DetallVenta = [];
     const Total = [];
     var suma = 0;
-    var  dolarito = 0;
+    var dolarito = 0;
     var cantidad_dolar = 0;
     let TotalSuma, iva, totalventa
 
@@ -40,24 +40,24 @@ window.onload = async () => {
                             return;
                         }
                     }
-                    if (NuevaFactura.Cordoba == true ) {
+                    if (NuevaFactura.Cordoba == true) {
                         NuevaFactura.subtotalventa = TotalSuma,
-                        NuevaFactura.iva = iva,
-                         NuevaFactura.totalventa = totalventa - parseInt(NuevaFactura.descuentofactura)
-                         NuevaFactura.cambio =  NuevaFactura.pagototal -NuevaFactura.totalventa 
-                     
-                    }else{
-                       if (NuevaFactura.Dolares == true){ 
-                            dolarito= NuevaFactura.CambioDolar //35 cs vale el dolar
+                            NuevaFactura.iva = iva,
+                            NuevaFactura.totalventa = totalventa - parseInt(NuevaFactura.descuentofactura)
+                        NuevaFactura.cambio = NuevaFactura.pagototal - NuevaFactura.totalventa
+
+                    } else {
+                        if (NuevaFactura.Dolares == true) {
+                            dolarito = NuevaFactura.CambioDolar //35 cs vale el dolar
                             console.log(dolarito);
                             cantidad_dolar = NuevaFactura.pagototal * dolarito //aqui tengo 35*20 = 700 pot ejemplo
-                            console.log("35 * el pago del cliente",cantidad_dolar );
+                            console.log("35 * el pago del cliente", cantidad_dolar);
 
                             NuevaFactura.subtotalventa = TotalSuma,
                             NuevaFactura.iva = iva,
                             NuevaFactura.totalventa = totalventa - parseInt(NuevaFactura.descuentofactura)
-                             NuevaFactura.cambio =  cantidad_dolar -NuevaFactura.totalventa
-                             NuevaFactura.pagototal = cantidad_dolar     
+                            NuevaFactura.cambio = cantidad_dolar - NuevaFactura.totalventa
+                            NuevaFactura.pagototal = cantidad_dolar
                         }
                     }
 
@@ -65,8 +65,8 @@ window.onload = async () => {
                     const response =
                         await AjaxTools.PostRequest("../api/GestionVenta/SaveFactura",
                             NuevaFactura,
-                           
-                           
+
+
                         );
                     if (response == true) {
                         AppMain.append(
@@ -80,13 +80,13 @@ window.onload = async () => {
                                             className: 'btn_quinto',
                                             value: 'Generar Factura', onclick: async () => {
                                                 window.location = "./viewFactura1"
-                                            
+
                                             }
                                         }
                                     ]
                                 }),
 
-                              // window.location.reload()
+                                // window.location.reload()
                             )
 
                         );
@@ -106,20 +106,20 @@ window.onload = async () => {
                 type: "select",
                 Dataset: dataC.map((d) => ({ id: d.idusuario, desc: d.nombreusuario }))
             },
-            pagototal : { type: "number" },
-            cambio : { type: "number",hidden:true },
-            subtotalventa: {hidden: true},
-            iva: {hidden: true},
-             totalventa: {hidden: true},
-            activo :{ type: "checkbox" },
-            Cordoba: {type:"checkbox"},
-            Dolares: {type:"checkbox"},
-            CambioDolar: {type:"Number"},
-            
+            pagototal: { type: "number" },
+            cambio: { type: "number", hidden: true },
+            subtotalventa: { hidden: true },
+            iva: { hidden: true },
+            totalventa: { hidden: true },
+            activo: { type: "checkbox" },
+            Cordoba: { type: "checkbox" },
+            Dolares: { type: "checkbox" },
+            CambioDolar: { type: "Number" },
+
         }),
-      
-        
-        
+
+
+
     })
     AppMain.append(FormVentaProduutos);
 
@@ -133,43 +133,43 @@ window.onload = async () => {
                     if (detalleelimina != null) {
                         DetallVenta.splice(
                             DetallVenta.indexOf(detaeli), 1);
-                            Total.splice(DetallVenta.indexOf(detaeli.totaldetalle),1);
-                            Total.forEach(function(total){
-                                var sum2=0
-                                suma +=total
-                               suma = suma + Total
-                                TotalSuma = Total.reduce((a, b) => Number(a) + Number(b), 0);
-                                iva = TotalSuma * 0.15;
-                                sum2 =TotalSuma
-                               totalventa = TotalSuma + iva
-                               ///
-                              NuevaFactura.totalventa = totalventa
-                                NuevaFactura.subtotalventa = sum2
-                                NuevaFactura.iva = iva
-                                    console.log("Tottal suma",TotalSuma);
-                                    console.log("sum2" ,sum2);
-                                    console.log("Tottal subventa",NuevaFactura.subtotalventa);
-                              // console.log("este variable suma0",suma);
-                                if (TableDetalleVenta != null) {
-                                    document.getElementById("Subtotal").innerHTML = NuevaFactura.subtotalventa;
-                                   document.getElementById("IVA").innerHTML = NuevaFactura.iva;
-                                    document.getElementById("Total").innerHTML = NuevaFactura.totalventa;
-                                    suma = 0;
-                                }
-                            })
-                            // Total.forEach(function(total){
-                            //     suma += total;
-                            //     //NuevaFactura.totalventa = Total
-                            //   //  NuevaFactura.subtotalventa = NuevaFactura.totalventa 
-                            //   NuevaFactura.subtotalventa = suma
-                            //   NuevaFactura.totalventa = NuevaFactura.subtotalventa
-                            //     console.log("totalventa",NuevaFactura.totalventa);
-                            //     console.log("subtotal",NuevaFactura.subtotalventa);
-                            //     console.log("suma",suma);
-                               
-                               
-                           // })
-                           if(DetallVenta[0] == null){
+                        Total.splice(DetallVenta.indexOf(detaeli.totaldetalle), 1);
+                        Total.forEach(function (total) {
+                            var sum2 = 0
+                            suma += total
+                            suma = suma + Total
+                            TotalSuma = Total.reduce((a, b) => Number(a) + Number(b), 0);
+                            iva = TotalSuma * 0.15;
+                            sum2 = TotalSuma
+                            totalventa = TotalSuma + iva
+                            ///
+                            NuevaFactura.totalventa = totalventa
+                            NuevaFactura.subtotalventa = sum2
+                            NuevaFactura.iva = iva
+                            console.log("Tottal suma", TotalSuma);
+                            console.log("sum2", sum2);
+                            console.log("Tottal subventa", NuevaFactura.subtotalventa);
+                            // console.log("este variable suma0",suma);
+                            if (TableDetalleVenta != null) {
+                                document.getElementById("Subtotal").innerHTML = NuevaFactura.subtotalventa;
+                                document.getElementById("IVA").innerHTML = NuevaFactura.iva;
+                                document.getElementById("Total").innerHTML = NuevaFactura.totalventa;
+                                suma = 0;
+                            }
+                        })
+                        // Total.forEach(function(total){
+                        //     suma += total;
+                        //     //NuevaFactura.totalventa = Total
+                        //   //  NuevaFactura.subtotalventa = NuevaFactura.totalventa 
+                        //   NuevaFactura.subtotalventa = suma
+                        //   NuevaFactura.totalventa = NuevaFactura.subtotalventa
+                        //     console.log("totalventa",NuevaFactura.totalventa);
+                        //     console.log("subtotal",NuevaFactura.subtotalventa);
+                        //     console.log("suma",suma);
+
+
+                        // })
+                        if (DetallVenta[0] == null) {
                             console.log("este vacio 0");
                             NuevaFactura.totalventa = 0
                             NuevaFactura.subtotalventa = 0
@@ -177,16 +177,16 @@ window.onload = async () => {
                             console.log(NuevaFactura.totalventa);
                             if (TableDetalleVenta != null) {
                                 document.getElementById("Subtotal").innerHTML = NuevaFactura.subtotalventa;
-                               document.getElementById("IVA").innerHTML = NuevaFactura.iva;
+                                document.getElementById("IVA").innerHTML = NuevaFactura.iva;
                                 document.getElementById("Total").innerHTML = NuevaFactura.totalventa;
                                 suma = 0;
-        
+
                             }
                         }
-                        
+
                     }
                     TableDetalleVenta.DrawTableComponent();
-                    
+
                 }
             }
         ]
@@ -210,7 +210,7 @@ window.onload = async () => {
                     console.log(Total);
                     if (TableDetalleVenta != null) {
                         document.getElementById("Subtotal").innerHTML = TotalSuma;
-                       document.getElementById("IVA").innerHTML = iva;
+                        document.getElementById("IVA").innerHTML = iva;
                         document.getElementById("Total").innerHTML = totalventa;
 
                     }
@@ -220,7 +220,7 @@ window.onload = async () => {
             AppMain.append(Modal);
         }
     }))
-   
+
     AppMain.append(Render.Create({
         tagName: "div",
         innerHTML:

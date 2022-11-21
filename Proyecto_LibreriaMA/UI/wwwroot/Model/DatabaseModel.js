@@ -287,7 +287,7 @@ class Factura {
     idusuario = { type: "number" };
     idestado = { type: "number" };
     descuentofactura = { type: "number" };
-    pagototal = { type: "number", hidden: true };
+    pagototal = { type: "number"};
     cambio = { type: "number", hidden: true };
     activo = { type: "checkbox",hidden:true };
 

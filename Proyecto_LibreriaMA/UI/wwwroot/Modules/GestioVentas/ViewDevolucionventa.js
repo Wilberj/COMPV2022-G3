@@ -53,9 +53,9 @@ window.onload = async () => {
                         }
                     }
                     const response = true
-                        //    await AjaxTools.PostRequest("../api/GestionVenta/SaveDevolucionventa",
-                        //        NewDevolucionVenta
-                        //    );
+                            // await AjaxTools.PostRequest("../api/GestionVenta/SaveDevolucionventa",
+                            //    NewDevolucionVenta
+                            // );
                     if (response == true) {
                         console.log(NewDevolucionVenta);
                         AppMain.append(
@@ -72,7 +72,8 @@ window.onload = async () => {
                                                 const Modal = new ModalComponent
 
                                                     (new Agregar((articulo) => {
-
+                                                        
+                                                        console.log(articulo);
                                                         if (this.Dataset.length > 0) {
                                                             alert("Ya existe el articulo")
                                                             return;
