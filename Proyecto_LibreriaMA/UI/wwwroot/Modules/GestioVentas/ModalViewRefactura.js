@@ -81,30 +81,32 @@ class Agregar extends HTMLElement {
                         name: "Remover",
                         action: async (Dato) => {
                             console.log(Dato);
-                            this.DetalleDevventa.AdminMercas = []
-
-                            this.DetalleDevventa.AdminMercas.push(Dato)
-                            this.DetalleDevventa.cantidad = this.DetalleDevventa.AdminMercas[0].cantidadventa
-                            this.DetalleDevventa.idadmimercancias = this.DetalleDevventa.AdminMercas[0].idadmimercancias
-                            // this.DetalleDevventa.AdminMercas[0].idadmimercancias= this.DetalleDevventa.idadmimercancias 
-                            this.DetalleDevventa.AdminMercas[0].existenciasarticulounidad = parseInt(this.DetalleDevventa.cantidad + this.DetalleDevventa.AdminMercas[0].existenciasarticulounidad)
-                            console.log(this.NewDevolucionVenta);
+                           
                             // this.NewDevolucionVenta.DetalleDevventas.pushthis.DetalleDevventa(this.DetalleDevventa)
-
-                            
+                           
 
                             var resultado = window.confirm('Estas seguro?');
                             if (resultado === true) {
-                                await AjaxTools.PostRequest("../api/GestionVenta/SaveDetalleDevolucionventa",
-                                    this.NewDevolucionVenta
-                                );
+                                this.DetalleDevventa.AdminMercas = []
+
+                                this.DetalleDevventa.AdminMercas.push(Dato)
+                                this.DetalleDevventa.cantidad = this.DetalleDevventa.AdminMercas[0].cantidadventa
+                                this.DetalleDevventa.idadmimercancias = this.DetalleDevventa.AdminMercas[0].idadmimercancias
+                                // this.DetalleDevventa.AdminMercas[0].idadmimercancias= this.DetalleDevventa.idadmimercancias 
+                                this.DetalleDevventa.AdminMercas[0].existenciasarticulounidad = parseInt(this.DetalleDevventa.cantidad + this.DetalleDevventa.AdminMercas[0].existenciasarticulounidad)
+                                console.log(this.NewDevolucionVenta);
+                                
+                                //await AjaxTools.PostRequest("../api/GestionVenta/SaveDetalleDevolucionventa",
+                                   // this.NewDevolucionVenta
+                               // );
                                 const Datof = this.Detalles.find((x) => x.iddetallefactura == Dato.iddetallefactura);
                             if (Datof != null) {
                                 this.Detalles.splice(this.Detalles.indexOf(Datof), 1);
                                 this.Table.DrawTableComponent(this.Detalles);
                             }
                             } else {
-                                this.Table.DrawTableComponent(this.Detalles);
+                                return;
+                                //this.Table.DrawTableComponent(this.Detalles);
 
                             }
                             //console.log(this.DetalleDevventa);
