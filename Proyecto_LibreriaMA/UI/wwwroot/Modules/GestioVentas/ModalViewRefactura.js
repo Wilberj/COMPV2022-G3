@@ -21,7 +21,7 @@ class Agregar extends HTMLElement {
         this.NewDevolucionVenta = {};
         this.NewDevolucionVenta.Updateventa = [this.Facturas];
         this.DetalleDevventa = {}
-        this.NewDevolucionVenta.DetalleDevventas = []
+        this.NewDevolucionVenta.DetalleDevventas = [this.DetalleDevventa]
 
 
 
@@ -81,18 +81,26 @@ class Agregar extends HTMLElement {
                         action: async (Dato) => {
                             console.log(Dato);
                             this.DetalleDevventa.AdminMercas = []
-
-                            this.DetalleDevventa.AdminMercas.push(Dato)
+                                
+                           this.DetalleDevventa.AdminMercas.push(Dato)
                             this.DetalleDevventa.cantidad = this.DetalleDevventa.AdminMercas[0].cantidadventa 
-                            this.DetalleDevventa.idadmimercancias = this.DetalleDevventa.AdminMercas[0].idadmimercancias
+                            this.DetalleDevventa.idadmimercancias =this.DetalleDevventa.AdminMercas[0].idadmimercancias
+                           // this.DetalleDevventa.AdminMercas[0].idadmimercancias= this.DetalleDevventa.idadmimercancias 
                             this.DetalleDevventa.AdminMercas[0].existenciasarticulounidad =  parseInt(this.DetalleDevventa.cantidad + this.DetalleDevventa.AdminMercas[0].existenciasarticulounidad )
                             console.log(this.NewDevolucionVenta);
-                            this.NewDevolucionVenta.DetalleDevventas.push(this.DetalleDevventa)
+                           // this.NewDevolucionVenta.DetalleDevventas.pushthis.DetalleDevventa(this.DetalleDevventa)
+                            
                             const Datof = this.Detalles.find((x) => x.iddetallefactura == Dato.iddetallefactura);
                             if (Datof != null) {
                                 this.Detalles.splice(this.Detalles.indexOf(Datof), 1);
                                 this.Table.DrawTableComponent(this.Detalles);
                             }
+                            
+                           //console.log(this.DetalleDevventa);
+                            await AjaxTools.PostRequest("../api/GestionVenta/SaveDetalleDevolucionventa",
+                            this.NewDevolucionVenta
+                             );
+                           console.log(this.NewDevolucionVenta);
                         },
                     },
                 ],
