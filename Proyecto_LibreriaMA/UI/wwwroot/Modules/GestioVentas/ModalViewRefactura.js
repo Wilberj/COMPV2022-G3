@@ -62,6 +62,7 @@ class Agregar extends HTMLElement {
             }),
             EditObject: this.DetalleDevventa
         }),
+
         
             this.Table = new TableComponent({
                 ModelObject: new DetalleFactura(),
@@ -200,6 +201,7 @@ class Agregar extends HTMLElement {
             }
         ]
     });
+
     this.TableDetalleVenta.filter.append(Render.Create({
         tagName: 'input', type: 'button',
         className: 'btnagregar', value: 'Anadir', onclick: async () => {
@@ -228,8 +230,32 @@ class Agregar extends HTMLElement {
                 }))
             AppMain.append(Modal);
         }
+        
     }))
-        this.append(this.Form, this.Table, this.TableDetalleVenta);
+        this.append(this.Form,        (Render.Create({
+            tagName: "div",
+            innerHTML:
+                `  
+                <table id="tabla_producto" border="1" class="tableClass1">
+                <thead>
+                <tr>
+                <th>Subtotal</th>
+                <th>IVA</th>
+                <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td id="Subtotal"></td>
+                <td id="IVA"></td>
+                <td id="Total"</td>
+                </tr>
+                </tbody>
+                </table>
+                `
+    
+        })),
+        this.Table, this.TableDetalleVenta);
         this.append(Render.Create({
             className: "FormContainer2",
             children: [
@@ -240,9 +266,9 @@ class Agregar extends HTMLElement {
                             value: "Guardar",
                     onclick: async () => {
                         console.log(this.DetalleDevventa);
-                            await AjaxTools.PostRequest("../api/GestionVenta/SaveDetalleDevolucionventa",
-                            this.NewDevolucionVenta
-                             );
+                            // await AjaxTools.PostRequest("../api/GestionVenta/SaveDetalleDevolucionventa",
+                            // this.NewDevolucionVenta
+                            //  );
                         console.log(this.NewDevolucionVenta);
 
                     }

@@ -52,10 +52,10 @@ window.onload = async () => {
                             return;
                         }
                     }
-                    const response = 
-                           await AjaxTools.PostRequest("../api/GestionVenta/SaveDevolucionventa",
-                               NewDevolucionVenta
-                           );
+                    const response = true
+                        //    await AjaxTools.PostRequest("../api/GestionVenta/SaveDevolucionventa",
+                        //        NewDevolucionVenta
+                        //    );
                     if (response == true) {
                         console.log(NewDevolucionVenta);
                         AppMain.append(
