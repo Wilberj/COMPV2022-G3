@@ -22,23 +22,24 @@ class Agregar extends HTMLElement {
         this.NewDevolucionVenta.Updateventa = [this.Facturas];
         this.DetalleDevventa = {}
         this.NewDevolucionVenta.DetalleDevventas = [this.DetalleDevventa]
-///////////////////////////////////////////
+        /////////////////////////////////////////////
         this.Total = [];
-         this.TotalSuma = 0; 
-         this.iva = 0; 
-         this.totalventa = 0
-
+        this.TotalSuma = 0;
+        this.iva = 0;
+        this.totalventa = 0
+        //////
+        this.DetallVenta = {};
         this.NuevaFactura = {};
-        this.NuevaFactura.DetallVenta = [];
+        this.NuevaFactura.DetallVenta = [this.DetallVenta];
 
 
-
+      
 
         this.Draw();
 
     }
 
-    connectedCallback() { }
+    connectedCallback() {}
     Draw = async () => {
         console.log(this.NewDevolucionVenta.Updateventa);
         this.Dataset = await AjaxTools.PostRequest("../api/GestionVenta/ChargeDetaDevVenta");
@@ -51,33 +52,40 @@ class Agregar extends HTMLElement {
         console.log(this.Facturas);
         this.NuevaFactura.nombrecliente = this.Facturas.nombrecliente
         this.NuevaFactura.idusuario = this.Facturas.idusuario
+        //this.DetallVenta.cantidadventa = this.Facturas.cantidadventa 
+        // this.DetallVenta.idtamanoxarticulo = this.Detalles.idtamanoxarticulo
+        // this.DetallVenta.precioventa = this.Detalles.precioventa
+        // this.NuevaFactura.subtotal = this.
         this.DetalleDevventa.iddevolucionventa = this.last.iddevolucionventa
         console.log(this.Facturas);
         this.Form = new FormComponet({
             Model: new Factura({
-                idusuario: { hidden: true }
+                idusuario: { hidden: true },
+                activo: { type: "checkbox" },
+                // totalventa: { type: "number"}
             }),
             EditObject: this.NuevaFactura
         }),
-        this.Form1 = new FormComponet({
-            Model: new DetalleFactura({
-                idusuario: { hidden: true }
-            }),
-            EditObject:  this.NuevaFactura.DetallVenta
-        }),
-        console.log("LOLOLOLOL",this.NuevaFactura);
-            this.Form12 = new FormComponet({
-                Model: new DetalleDevolucionVenta({
-
+            this.Form1 = new FormComponet({
+                Model: new DetalleFactura({
+                    idusuario: { hidden: true },
+                    activo: { type: "checkbox" },
                 }),
-                EditObject: this.DetalleDevventa
+                EditObject: this.DetallVenta
             }),
+            console.log("LOLOLOLOL", this.NuevaFactura);
+        this.Form12 = new FormComponet({
+            Model: new DetalleDevolucionVenta({
+
+            }),
+            EditObject: this.DetalleDevventa
+        }),
             this.append(this.Form, this.Form1);
 
-            this.append(Render.Create({
-                tagName: "div",
-                innerHTML:
-                    `  
+        this.append(Render.Create({
+            tagName: "div",
+            innerHTML:
+                `  
                     <table id="tabla_producto" border="1" class="tableClass1">
                     <thead>
                     <tr>
@@ -95,80 +103,82 @@ class Agregar extends HTMLElement {
                     </tbody>
                     </table>
                     `
-    
-            }))
-         
-            this.Table = new TableComponent({
-                ModelObject: new DetalleFactura(),
-                Dataset: this.Dataset.filter((factura) => {
-                    factura.activo = false
-                    if (factura.idfactura == this.Facturas.idfactura) {
-                        console.log(factura);
-                        this.Detalles.push(factura)
-                        console.log("DATOS CALCULADOS");
-                        this.Total.push(factura.precioventa * factura.cantidadventa) //cada detalle
-                        console.log(this.Total);
-                        this.TotalSuma = this.Total.reduce((a, b) => Number(a) + Number(b), 0);
-                         this.iva = this.TotalSuma * 0.15;
-                         this.totalventa = this.TotalSuma + this.iva
-                        // // ConvertirMedida.push(DetalleCompra.ConvertirMedida);
-                         console.log(this.TotalSuma);
-                         console.log(this.totalventa);
-                         if (this.Table == null) {
-                            document.getElementById("Subtotal").innerHTML = this.TotalSuma;
-                            document.getElementById("IVA").innerHTML = this.iva;
-                            document.getElementById("Total").innerHTML = this.totalventa;
-    
-                        }
-                        
+
+        }))
+
+        this.Table = new TableComponent({
+            ModelObject: new DetalleFactura(),
+            Dataset: this.Dataset.filter((factura) => {
+                factura.activo = false
+                if (factura.idfactura == this.Facturas.idfactura) {
+                    console.log(factura);
+                    this.Detalles.push(factura)
+                    console.log("Hola tengo los detalles creo xs", this.Detalles);
+                    console.log("DATOS CALCULADOS");
+                    this.Total.push(factura.precioventa * factura.cantidadventa) //cada detalle
+                    console.log(this.Total);
+                    this.TotalSuma = this.Total.reduce((a, b) => Number(a) + Number(b), 0);
+                    this.iva = this.TotalSuma * 0.15;
+                    this.totalventa = this.TotalSuma + this.iva
+                    // // ConvertirMedida.push(DetalleCompra.ConvertirMedida);
+                    console.log(this.TotalSuma);
+                    console.log(this.totalventa);
+                    if (this.Table == null) {
+                        document.getElementById("Subtotal").innerHTML = this.TotalSuma;
+                        document.getElementById("IVA").innerHTML = this.iva;
+                        document.getElementById("Total").innerHTML = this.totalventa;
+
                     }
-                    return factura.idfactura == this.Facturas.idfactura
 
-                }),
+                }
+                return factura.idfactura == this.Facturas.idfactura
 
-                Functions: [
-                    {
-                        name: "Remover",
-                        action: async (Dato) => {
-                            console.log(Dato);
+            }),
 
-                            // this.NewDevolucionVenta.DetalleDevventas.pushthis.DetalleDevventa(this.DetalleDevventa)
+            Functions: [
+                {
+                    name: "Remover",
+                    action: async (Dato) => {
+                        console.log(Dato);
+
+                        // this.NewDevolucionVenta.DetalleDevventas.pushthis.DetalleDevventa(this.DetalleDevventa)
 
 
-                            var resultado = window.confirm('Estas seguro?');
-                            if (resultado === true) {
-                                this.DetalleDevventa.AdminMercas = []
+                        var resultado = window.confirm('Estas seguro?');
+                        if (resultado === true) {
+                            this.DetalleDevventa.AdminMercas = []
 
-                                this.DetalleDevventa.AdminMercas.push(Dato)
-                                this.DetalleDevventa.cantidad = this.DetalleDevventa.AdminMercas[0].cantidadventa
-                                this.DetalleDevventa.idadmimercancias = this.DetalleDevventa.AdminMercas[0].idadmimercancias
-                                // this.DetalleDevventa.AdminMercas[0].idadmimercancias= this.DetalleDevventa.idadmimercancias 
-                                this.DetalleDevventa.AdminMercas[0].existenciasarticulounidad = parseInt(this.DetalleDevventa.cantidad + this.DetalleDevventa.AdminMercas[0].existenciasarticulounidad)
-                                console.log(this.NewDevolucionVenta);
-
-                                //await AjaxTools.PostRequest("../api/GestionVenta/SaveDetalleDevolucionventa",
-                                // this.NewDevolucionVenta
-                                // );
-                                const Datof = this.Detalles.find((x) => x.iddetallefactura == Dato.iddetallefactura);
-                                if (Datof != null) {
-                                    this.Detalles.splice(this.Detalles.indexOf(Datof), 1);
-                                    this.Table.DrawTableComponent(this.Detalles);
-                                }
-                                console.log(this.Detalles);
-                            } else {
-                                return;
-                                //this.Table.DrawTableComponent(this.Detalles);
-
-                            }
-                            //console.log(this.DetalleDevventa);
-                            // await AjaxTools.PostRequest("../api/GestionVenta/SaveDetalleDevolucionventa",
-                            // this.NewDevolucionVenta
-                            //  );
+                            this.DetalleDevventa.AdminMercas.push(Dato)
+                            console.log("este es el adminmercas", this.DetalleDevventa.AdminMercas);
+                            this.DetalleDevventa.cantidad = this.DetalleDevventa.AdminMercas[0].cantidadventa
+                            this.DetalleDevventa.idadmimercancias = this.DetalleDevventa.AdminMercas[0].idadmimercancias
+                            // this.DetalleDevventa.AdminMercas[0].idadmimercancias= this.DetalleDevventa.idadmimercancias 
+                            this.DetalleDevventa.AdminMercas[0].existenciasarticulounidad = parseInt(this.DetalleDevventa.cantidad + this.DetalleDevventa.AdminMercas[0].existenciasarticulounidad)
                             console.log(this.NewDevolucionVenta);
-                        },
+
+                            //await AjaxTools.PostRequest("../api/GestionVenta/SaveDetalleDevolucionventa",
+                            // this.NewDevolucionVenta
+                            // );
+                            const Datof = this.Detalles.find((x) => x.iddetallefactura == Dato.iddetallefactura);
+                            if (Datof != null) {
+                                this.Detalles.splice(this.Detalles.indexOf(Datof), 1);
+                                this.Table.DrawTableComponent(this.Detalles);
+                            }
+                            console.log(this.Detalles);
+                        } else {
+                            return;
+                            //this.Table.DrawTableComponent(this.Detalles);
+
+                        }
+                        //console.log(this.DetalleDevventa);
+                        // await AjaxTools.PostRequest("../api/GestionVenta/SaveDetalleDevolucionventa",
+                        // this.NewDevolucionVenta
+                        //  );
+                        console.log(this.NewDevolucionVenta);
                     },
-                ],
-            });
+                },
+            ],
+        });
         // this.Table.filter.append(Render.Create({
         //     tagName: 'input', type: 'button',
         //     className: 'btn_primary', value: 'Anadir Articulo a Vender', onclick: async () => {
@@ -303,40 +313,63 @@ class Agregar extends HTMLElement {
                     tagName: "input",
                     type: "button",
                     className: "btn_primary",
-                    value: "Guardar",
+                    value: "Guardar Refactura",
                     onclick: async () => {
-                        console.log(this.DetalleDevventa);
-                        const response = true
-                        // await AjaxTools.PostRequest("../api/GestionVenta/SaveFactura",
-                        //     NuevaFactura,
+                    this.lolaso = []
+                     //   this.lolaso.push(this.de)
+                      //  console.log("lolasorp",this.lolaso);
+                        console.log(this.NuevaFactura);
+                        console.log(this.NuevaFactura.DetallVenta);
+                        console.log("ojo  a este ", this.Detalles);
+                        
+                        this.NuevaFactura.subtotalventa = this.TotalSuma
+                        this.NuevaFactura.iva = this.iva
+                        this.NuevaFactura.totalventa = this.totalventa
+                        this.NuevaFactura.cambio = this.NuevaFactura.pagototal - this.NuevaFactura.totalventa
+                       /// for (i = 0; i < this.Detalles.length; i++) {
+                           // console.log(numeros[i]);
+                           this.DetallVenta.cantidadventa = this.Detalles[i].cantidadventa
+                           this.DetallVenta.idtamanoxarticulo = this.Detalles[i].idtamanoxarticulo
+                           this.DetallVenta.precioventa = this.Detalles[i].precioventa
+                         // } 
+               
+                        //this.Detalles[0].activo =true
+
+                        console.log("este es detallventa,", this.DetallVenta);
+                        //    const response = true
+                        //   await AjaxTools.PostRequest("../api/GestionVenta/SaveFactura",
+                        //       this.NuevaFactura
 
 
                         // );
-                    if (response == true) {
-                        AppMain.append(
-                            new ModalComponent(
-                                Render.Create({
-                                    tagName: "h1",
-                                    innerText: "Factura Realizada",
-                                    children: [
-                                        {
-                                            tagName: 'input', type: 'button',
-                                            className: 'btn_quinto',
-                                            value: 'Generar Factura', onclick: async () => {
-                                                window.location = "./viewFactura1"
 
-                                            }
-                                        }
-                                    ]
-                                }),
+                        // if (response == true) {
+                        //     AppMain.append(
+                        //         new ModalComponent(
+                        //             Render.Create({
+                        //                 tagName: "h1",
+                        //                 innerText: "Factura Realizada",
+                        //                 children: [
+                        //                     {
+                        //                         tagName: 'input', type: 'button',
+                        //                         className: 'btn_quinto',
+                        //                         value: 'Generar Factura', onclick: async () => {
+                        //                             //window.location = "./viewFactura1"
 
-                                // window.location.reload()
-                            )
+                        //                         }
+                        //                     }
+                        //                 ]
+                        //             }),
 
-                        );
+                        //             // window.location.reload()
+                        //         )
 
-                    }
-                        console.log(this.NewDevolucionVenta);
+                        //     );
+
+                        // }
+                        console.log(this.NuevaFactura);
+                        //console.log(this.NuevaFactura.DetallVenta );
+                        //  console.log(this.NewDevolucionVenta);
 
                     }
                 }
