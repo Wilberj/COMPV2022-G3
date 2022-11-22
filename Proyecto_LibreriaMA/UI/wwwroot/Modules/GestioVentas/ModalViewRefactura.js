@@ -28,9 +28,9 @@ class Agregar extends HTMLElement {
         this.iva = 0;
         this.totalventa = 0
         //////
-        this.DetallVenta = {};
+        // this.DetallVenta = {};
         this.NuevaFactura = {};
-        this.NuevaFactura.DetallVenta = [this.DetallVenta];
+        this.NuevaFactura.DetallVenta = [];
 
 
       
@@ -112,8 +112,12 @@ class Agregar extends HTMLElement {
                 factura.activo = false
                 if (factura.idfactura == this.Facturas.idfactura) {
                     console.log(factura);
-                    this.Detalles.push(factura)
+                    this.Detalles.push(factura)                    
+
+                    
                     console.log("Hola tengo los detalles creo xs", this.Detalles);
+                    console.log("PRUEBAAAAAAAAAA",  this.NuevaFactura.DetallVenta);
+
                     console.log("DATOS CALCULADOS");
                     this.Total.push(factura.precioventa * factura.cantidadventa) //cada detalle
                     console.log(this.Total);
@@ -127,7 +131,13 @@ class Agregar extends HTMLElement {
                         document.getElementById("Subtotal").innerHTML = this.TotalSuma;
                         document.getElementById("IVA").innerHTML = this.iva;
                         document.getElementById("Total").innerHTML = this.totalventa;
-
+                        this.NuevaFactura.DetallVenta.push(factura)   
+                        for (var i = 0; i < this.NuevaFactura.DetallVenta.length; i++) {
+                              this.NuevaFactura.DetallVenta[i].activo = true                 
+                              this.NuevaFactura.DetallVenta[i].idfactura = undefined
+                              this.NuevaFactura.DetallVenta[i].iddetallefactura = undefined                 
+  
+                            } 
                     }
 
                 }
@@ -328,15 +338,15 @@ class Agregar extends HTMLElement {
                         this.NuevaFactura.cambio = this.NuevaFactura.pagototal - this.NuevaFactura.totalventa
                        /// for (i = 0; i < this.Detalles.length; i++) {
                            // console.log(numeros[i]);
-                           this.DetallVenta.cantidadventa = this.Detalles[i].cantidadventa
-                           this.DetallVenta.idtamanoxarticulo = this.Detalles[i].idtamanoxarticulo
-                           this.DetallVenta.precioventa = this.Detalles[i].precioventa
+                        //    this.DetallVenta.cantidadventa = this.Detalles[i].cantidadventa
+                        //    this.DetallVenta.idtamanoxarticulo = this.Detalles[i].idtamanoxarticulo
+                        //    this.DetallVenta.precioventa = this.Detalles[i].precioventa
                          // } 
                
                         //this.Detalles[0].activo =true
 
                         console.log("este es detallventa,", this.DetallVenta);
-                        //    const response = true
+                        //    const response = 
                         //   await AjaxTools.PostRequest("../api/GestionVenta/SaveFactura",
                         //       this.NuevaFactura
 
