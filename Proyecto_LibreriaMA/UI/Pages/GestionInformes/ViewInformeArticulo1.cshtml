@@ -20,8 +20,12 @@
         });
         response = await response.json();
         console.log(response);
-        labelSubtitle.innerText = `Libreria Maria Auxiliadora 
-        Informe de articulos mas vendidos
+        labelSubtitle.innerText = `LIBRERÍA MARIA AUXILIADORA
+
+        Informe de artículos más vendidos ordenados
+        de forma decendente, con el nombre, la cantidad
+        y el total de venta sobre cada articulo,
+        comprendidos en el período seleccionado
 
         Del ${Fecha1.value} al ${Fecha2.value}`;
         TableInforme(response, TableData, ["nombrearticulo","CantidadVenta","TotalVenta"]);
@@ -85,7 +89,7 @@
              h4 {
                 color:black;
                 text-align: center;
-                font-size:30px;
+                font-size: 25px;
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         
             }

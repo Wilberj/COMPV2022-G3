@@ -13,6 +13,7 @@ import { TableComponent } from "../../CoreComponents/TableComponent.js";
 window.onload = async () => {
     const DetalleCompra = [];
     const Total = [];
+    var suma = 0;
     // TotalSuma = Total
     let TotalSuma, iva, totalcompra
     // var suma = 0;
@@ -118,9 +119,61 @@ window.onload = async () => {
                     const detalleelimina = DetalleCompra.find(x => x.idarticulo == detaeli.idarticulo)
                     if (detalleelimina != null) {
                         DetalleCompra.splice(DetalleCompra.indexOf(detaeli), 1);
+                        ///////////////////////////
                         
-                        TableDetalleCompra.DrawTableComponent();
+                        Total.splice(DetalleCompra.indexOf(detaeli.totaldetalle), 1);
+                        Total.forEach(function (total) {
+                            var sum2 = 0
+                            suma += total
+                            suma = suma + Total
+                            TotalSuma = Total.reduce((a, b) => Number(a) + Number(b), 0);
+                            iva = TotalSuma * 0.15;
+                            sum2 = TotalSuma
+                            totalcompra = TotalSuma + iva
+                            ///
+                            NuevaCompra.totalcompra = totalcompra
+                            NuevaCompra.subtotalcompra = sum2
+                            NuevaCompra.iva = iva
+                            console.log("Tottal suma", TotalSuma);
+                            console.log("sum2", sum2);
+                            console.log("Tottal subventa", NuevaCompra.subtotalcompra);
+                            // console.log("este variable suma0",suma);
+                            if (TableDetalleCompra != null) {
+                                document.getElementById("Subtotal").innerHTML = NuevaCompra.subtotalcompra;
+                                document.getElementById("IVA").innerHTML = NuevaCompra.iva;
+                                document.getElementById("Total").innerHTML = NuevaCompra.totalcompra;
+                                suma = 0;
+                            }
+                        })
+                        // Total.forEach(function(total){
+                        //     suma += total;
+                        //     //NuevaFactura.totalventa = Total
+                        //   //  NuevaFactura.subtotalventa = NuevaFactura.totalventa 
+                        //   NuevaFactura.subtotalventa = suma
+                        //   NuevaFactura.totalventa = NuevaFactura.subtotalventa
+                        //     console.log("totalventa",NuevaFactura.totalventa);
+                        //     console.log("subtotal",NuevaFactura.subtotalventa);
+                        //     console.log("suma",suma);
+
+
+                        // })
+                        if (DetalleCompra[0] == null) {
+                            console.log("este vacio 0");
+                            NuevaCompra.totalcompra = 0
+                            NuevaCompra.subtotalcompra = 0
+                            NuevaCompra.iva = 0
+                            console.log(NuevaCompra.totalcompra);
+                            if (TableDetalleCompra != null) {
+                                document.getElementById("Subtotal").innerHTML = NuevaCompra.subtotalcompra;
+                                document.getElementById("IVA").innerHTML = NuevaCompra.iva;
+                                document.getElementById("Total").innerHTML = NuevaCompra.totalcompra;
+                                suma = 0;
+
+                            }
+                        }
+
                     }
+                    TableDetalleCompra.DrawTableComponent();
                 }
             }
         ]

@@ -27,6 +27,13 @@ window.onload = async () => {
                 tagName: 'input', type: 'button',
                 className: 'button_topp',
                 value: 'Guardar', onclick: async () => {
+                    if (NuevoArticulo.descripcionarticulo == null || 
+                        NuevoArticulo.nombrearticulo == null || 
+                        NuevoArticulo.color == null) {
+                        alert("Falta rellenar campos")
+                        console.log("pjo a esto");
+                        return;
+                    }
                     console.log(NuevoArticulo)
                     console.log(Tamanox)
 

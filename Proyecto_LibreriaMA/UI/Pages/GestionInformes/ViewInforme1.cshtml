@@ -20,8 +20,11 @@
         });
         response = await response.json();
         console.log(response);
-        labelSubtitle.innerText = `Libreria Maria Auxiliadora 
-        Informe de Ventas por Fecha
+        labelSubtitle.innerText = `LIBRERÍA MARIA AUXILIADORA
+
+        Informe de ventas realizadas,
+        comprendidas en el período seleccionado
+
         Del ${Fecha1.value} al ${Fecha2.value}`;
         TableInforme(response, TableData, ["idfactura","fechafactura","nombrecliente","subtotalventa","iva","totalventa"]);
         let sum = 0;
@@ -89,7 +92,7 @@
              h4 {
                 color:black;
                 text-align: center;
-                font-size:30px;
+                font-size: 25px;
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         
             }
