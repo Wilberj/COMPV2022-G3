@@ -13,19 +13,21 @@
         MENU
     </header>
     <nav class="nav1">
+
+        <input type="button" class="button_topp" id="cerrar" value="Cerrar Sesion"/>
     </nav>
     <aside class="AppAside">
         <ul class="list">
-            <li class="list-item">
+         @*   <li class="list-item">
                 <div class="list__button">
                     <i class="fa-solid fa-user"></i>
                     <a href="~/login" class="nav__link">Login</a>
                 </div>
-            </li>
+            </li>*@
            <li class="list-item">
                <div class="list__button">
                    <i class="fa-solid fa-house"></i>
-                  <a href="~/Index" class="nav__link">Inicio</a>
+                  <a href="#" class="nav__link">Inicio</a>
                </div>
                </li>
 
@@ -90,6 +92,8 @@
         </ul>
     </aside>
     <script src="~/CoreComponents/utilidades.js"> </script>
+     <script src="~/CoreComponents/CerrarSesion.js"> </script>
+   
     <main role="main" class="AppMain">
             @RenderBody()
         </main>

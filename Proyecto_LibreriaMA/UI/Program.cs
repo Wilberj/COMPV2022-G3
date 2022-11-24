@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +24,13 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapControllerRoute(
+      name: "default",
+     pattern: "{controller=Acceso}/{action=Index}"
+     );
 
 app.MapRazorPages();
 app.MapControllers();

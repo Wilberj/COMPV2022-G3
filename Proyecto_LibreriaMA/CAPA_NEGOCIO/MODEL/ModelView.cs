@@ -39,7 +39,7 @@ namespace CAPA_NEGOCIO.MODEL
         public int? existenciasarticuloorigen { get; set; }
         public string? nombrearticulo { get; set; }
         public int? existenciasarticulounidad { get; set; }
-        public int? UnidadxOrigen { get; set; }
+       // public int? UnidadxOrigen { get; set; }
         public string? nombrebodega { get; set; }
         public Decimal? preciocompraunidad { get; set; }
         public Decimal? precioventa { get; set; }

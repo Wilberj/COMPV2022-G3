@@ -2,6 +2,8 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    Layout = null;
+
 }
 <script>
    /*window.onload = async ()=>{
@@ -39,8 +41,9 @@
         })
     }*/
 </script>
-<script src="~/App.js" type="module"></script>
+@*<script src="~/App.js" type="module"></script>*@
+      <link rel="stylesheet" href="~/css/login.css" />
 <div id="AppMain">
-    <section class="Titulo"> <h1>LIBRERIA MARIA AUXILIADORA</h1></section>
+    <partial name = "~/Views/Acceso/Index.cshtml" />
   
 </div>

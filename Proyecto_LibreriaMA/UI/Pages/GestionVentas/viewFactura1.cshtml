@@ -23,7 +23,7 @@
         console.log(response);
         //labelSubtitle.innerText = `Libreria Maria Auxiliadora 
         //Informe de Ventas por Fecha`;
-        TableInforme(response, TableData, ["cantidadventa","nombrearticulo","nombreusuario","precioventa","descuentoventa"]);
+        TableInforme(response, TableData, ["cantidadventa","nombrearticulo","precioventa","descuentoventa"]);
         let sum = 0;
         let nombre = "";
         let fecha = "";
@@ -33,6 +33,7 @@
         let camb =0;
         let pag =0;
         let id =0;
+        let nameusuario = "";
          response.forEach(element =>{
            sum = sum + element.cantidadventa;
            nombre = element.nombrecliente;
@@ -43,6 +44,7 @@
            camb = element.cambio;
            pag = element.pagototal;
            id = element.idfactura;
+           nameusuario = element.nombreusuario
         })
       
         LabelCantidad.append(" " + sum)
@@ -54,6 +56,7 @@
         labelcamb.append(camb)
         labelpag.append(pag)
         labelid.append(id)
+        labelusuario.append(nameusuario)
     }
     window.onload = async () =>{
         CargarDatos();
@@ -248,6 +251,7 @@
      
         <p>Direccion: Cementerio</p>
         <p>Correo: LibreriaAuxi@gmail.com</p>
+        <p>Factura Hecha Por:<span id="labelusuario"></span></p>
       </div>
      
     </div>
