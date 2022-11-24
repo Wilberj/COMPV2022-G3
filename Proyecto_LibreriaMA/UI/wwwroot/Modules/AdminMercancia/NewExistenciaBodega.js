@@ -79,6 +79,8 @@ class NewExistenciaBodega extends HTMLElement {
         this.Nuevoexisbodega.NuevaMercancia.idconvertir = this.Nuevoexisbodega.idconvertir
         this.Nuevoexisbodega.NuevaMercancia.preciocompraunidad = this.Nuevoexisbodega.preciocompraunidad
         this.Nuevoexisbodega.NuevaMercancia.idadmimercancias = undefined
+        this.Nuevoexisbodega.NuevaMercancia.UnidadxOrigen = this.Nuevoexisbodega.UnidadxOrigen
+
         this.Nuevoexisbodega.temporal = this.Nuevoexisbodega.existenciasarticulounidad / this.Nuevoexisbodega.existenciasarticuloorigen;
         this.Nuevoexisbodega.existenciaorigentemporal = this.Nuevoexisbodega.existenciasarticuloorigen
         this.Nuevoexisbodega.existenciaunidadtemporal = this.Nuevoexisbodega.existenciasarticulounidad

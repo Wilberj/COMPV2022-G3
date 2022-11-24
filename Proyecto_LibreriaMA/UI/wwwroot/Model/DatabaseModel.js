@@ -59,7 +59,7 @@ class Bodega {
     }
     idbodega = { type: "number", primary: true };
     nombrebodega = { type: "text" };
-    Descripcion = { type: "text" };
+    descripcion = { type: "text" };
     activo = { type: "checkbox" };
 
 }

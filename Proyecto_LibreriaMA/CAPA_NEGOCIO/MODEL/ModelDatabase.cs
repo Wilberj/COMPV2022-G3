@@ -118,7 +118,7 @@ namespace CAPA_NEGOCIO.MODEL
     {
         public int? idbodega { get; set; }
         public string? nombrebodega { get; set; }
-        public string? Descripcion { get; set; }
+        public string? descripcion { get; set; }
         public bool? activo { get; set; }
     }
     //public class BodegaxArticulo : EntityClass
