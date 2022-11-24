@@ -8,6 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddControllers().SetCompatibilityVersion(CompatibilityVersion.Latest).AddJsonOptions(JsonOptions =>
                     JsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null);
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(option =>
+    {
+        option.LoginPath = "/Acceso/Index";
+        option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+        option.AccessDeniedPath = "/Pages/Privacy";
+    });
+        
 
 var app = builder.Build();
 
@@ -27,10 +35,18 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
+
+app.UseEndpoints(endpoins =>
+{
+    endpoins.MapRazorPages();
+    endpoins.MapControllers();
+    endpoins.MapControllerRoute(
       name: "default",
      pattern: "{controller=Acceso}/{action=Index}"
      );
+
+}
+);
 
 app.MapRazorPages();
 app.MapControllers();

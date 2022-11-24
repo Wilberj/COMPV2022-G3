@@ -34,15 +34,17 @@ a {
     background: #fbfbfb;
     border-radius: 8px;
     box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
-    height: 410px;
+    height: 440px;
     margin: 6rem auto 8.1rem auto;
-    width: 329px;
+    width: 360px;
   }
   #card-content {
     padding: 12px 44px;
   }
   #title {
     text-align: center;
+    color:  #2dbd6e;
+    font-size: 70px;
   }
   #card-title {
     font-family: "Raleway Thin", sans-serif;
@@ -70,7 +72,7 @@ a {
     margin: 0 auto;
     margin-top: 50px;
     transition: 0.25s;
-    width: 153px;
+    width: 180px;
   }
   #submit-btn:hover {
     box-shadow: 0px 1px 18px #24c64f;
@@ -97,4 +99,4 @@ a {
     margin: -1.1rem auto 0 auto;
     width: 89px;
   }
-  
+ 

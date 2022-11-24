@@ -36,7 +36,7 @@ namespace CAPA_NEGOCIO.MODEL
                         {
                             nombreusuario = dr["nombreusuario"].ToString(),
                             contrasena = dr["contrasena"].ToString(),
-                            idroles = (Rol)dr["idroles"],
+                            idroles = dr["idroles"].ToString(),
                         };
                     }
                 }

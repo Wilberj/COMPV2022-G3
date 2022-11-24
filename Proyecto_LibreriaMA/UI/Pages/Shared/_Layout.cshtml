@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+@using Microsoft.AspNetCore.Identity;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -24,29 +26,40 @@
                     <a href="~/login" class="nav__link">Login</a>
                 </div>
             </li>*@
-           <li class="list-item">
+           @if(User.IsInRole("1") || User.IsInRole("2"))
+            {
+                 <li class="list-item">
                <div class="list__button">
                    <i class="fa-solid fa-house"></i>
-                  <a href="#" class="nav__link">Inicio</a>
+                  <a href="~/Inicio/Inicio" class="nav__link">Inicio</a>
                </div>
                </li>
-
-           <li class="list-item">
+            }
+          
+                 @if(User.IsInRole("1") || User.IsInRole("2"))
+            {
+                  <li class="list-item">
                <div class="list__button">
                    <i class="fa-solid fa-rectangle-list"></i>
                     <a href="~/ViewCatalogos"  class="nav__link"> Mantenimiento de Catalogos</a>
                </div>
            </li>
-
-           <li class="list-item">
+            }
+         
+              @if(User.IsInRole("1"))
+                 {
+                  <li class="list-item">
                    <div class="list__button">
                              <i class="fa-solid fa-bag-shopping"></i>
                           <a href="~/GestionCompras/Compra"  class="nav__link"> Gestion Compra</a>
-               </div>
+                      </div>
 
-           </li>
-
-            <li class="list-item">
+                    </li>
+              }
+         
+            @if (User.IsInRole("1"))
+            {
+                  <li class="list-item">
 
                <div class="list__button">
                          <i class="fa-solid fa-cart-shopping"></i>
@@ -54,23 +67,32 @@
                </div>
 
            </li>
-           <li  class="list-item">
+            }
+            @if (User.IsInRole("1"))
+            {
+                <li  class="list-item">
 
               <div class="list__button">
                   <i class="fa-solid fa-list-check"></i>
                   <a href="~/GestionArticulos/GestionArticulos"  class="nav__link">Gestion Articulos</a></div> 
 
             </li>
-
-               <li class="list-item">  
+            }
+           
+            @if(User.IsInRole("1") || User.IsInRole("2"))
+            {
+                 <li class="list-item">  
                    <div class="list__button">
                        <i class="fa-solid fa-store"></i>
                   <a href="~/GestionVentas/Ventas"  class="nav__link">Gestion Ventas</a>
                </div>
 
             </li>
-
-           <li class="list-item list__item--click">
+            }
+           
+            @if(User.IsInRole("1") || User.IsInRole("2"))
+            {
+                  <li class="list-item list__item--click">
                <div class="list__button list__button--click">
                    <i class="fa-regular fa-file"></i>
                     <a href="#" class="nav__link">Gestion reportes </a>
@@ -89,6 +111,8 @@
                        </li>
                 </ul>         
            </li>
+            }
+          
         </ul>
     </aside>
     <script src="~/CoreComponents/utilidades.js"> </script>

@@ -17,8 +17,8 @@ namespace CAPA_NEGOCIO.MODEL
         public int? telefonousuario { get; set; }
         public string? email { get; set; }
         public bool? activo { get; set; }
-        // public int? idroles { get; set; }
+         public string? idroles { get; set; }
 
-        public Rol idroles { get; set; }
+        //public Rol idroles { get; set; }
     }
 }

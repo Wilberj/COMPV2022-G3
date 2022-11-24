@@ -12,16 +12,16 @@ body {
     background-size: cover;
     
         background-size: 200% 200%;
-        animation: fanimado 150s linear infinite alternate;
+        /* animation: fanimado 150s linear infinite alternate; */
     }
-@keyframes fanimado{
+/* @keyframes fanimado{
    from {
     background-position: 0 0;
    }
    to{
     background-position: 100% 100%;
    }
-}
+} */
 
 .header, .nav1 {
     background-image: linear-gradient(135deg,
@@ -148,6 +148,21 @@ body {
   
 .button_topp:active {
     transform: translateY(-1px);
+  }
+  .titulo1{
+   
+  }
+  .Divtitulo{
+    align-items: center;
+     text-align: center;
+    height: 300px;
+    font-size: 60px;
+    justify-content: center;
+    width: 750px;
+   font-weight: bold;
+    color: rgb(251, 246, 246);
+    margin-left: 480px;
+   
   }
 /*
 .nav2 li a {
