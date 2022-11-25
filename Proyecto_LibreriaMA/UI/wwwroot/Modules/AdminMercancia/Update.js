@@ -45,7 +45,7 @@ class Update extends HTMLElement {
                     {
                         tagName: "input",
                         type: "button",
-                        className: "btn_primary",
+                        className: "btnagregar",
                         value: "Guardar Cambios",
                         onclick: async () => {
                             console.log(this.Bodega);

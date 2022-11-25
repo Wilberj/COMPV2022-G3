@@ -69,7 +69,8 @@ class ViewAdminMercancia {
     idtamanoxarticulo = { type: "number", hidden: true };
     idcompra = { type: "number", hidden: true };
     UnidadxOrigen = { type: "number", hidden: true };
-
+    existenciasarticulounidadtempotempo = { type: "number", hidden: true };
+    variable = { type: "number", hidden: true };
 
 }
 export { ViewAdminMercancia }

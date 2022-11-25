@@ -45,7 +45,7 @@ class AgregarDetalleBodegaxExistencias extends HTMLElement {
         this.Table.filter.append(
             Render.Create({
                 tagName: 'input', type: 'button',
-                className: 'btn_primary', value: 'Anadir Existencia de Articulo a Mover', onclick: async () => {
+                className: 'btnagregar', value: 'Anadir Existencia de Articulo a Mover', onclick: async () => {
 
                     const Modal = new ModalComponent
                         (new AgregarArticulosDañados((articulo) => {
@@ -69,7 +69,7 @@ class AgregarDetalleBodegaxExistencias extends HTMLElement {
                 {
                     tagName: "input",
                     type: "button",
-                    className: "btn_primary",
+                    className: "btnagregar",
                     value: "Agregar Informacion Al Detalle",
                     onclick: async () => {
                         this.NuevoBodegaxExiste.idtamanoxarticulo = this.Dataset[0].idtamanoxarticulo

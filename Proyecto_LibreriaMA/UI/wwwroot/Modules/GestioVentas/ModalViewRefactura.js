@@ -352,7 +352,7 @@ class Agregar extends HTMLElement {
                 {
                     tagName: "input",
                     type: "button",
-                    className: "btn_primary",
+                    className: "btnagregar",
                     value: "Guardar Refactura",
                     onclick: async () => {
                         if (this.NuevaFactura.descuentofactura == null || this.NuevaFactura.idestado == null||this.NuevaFactura.pagototal ==null ){

@@ -79,7 +79,7 @@ window.onload = async () => {
     AppMain.append(formBodegaxArti);
     TableBodegaxarticulo.filter.append(Render.Create({
         tagName: 'input', type: 'button',
-        className: 'btn_primary', value: 'Anadir', onclick: async () => {
+        className: 'btnagregar', value: 'Anadir', onclick: async () => {
             const Modal = new ModalComponent(
                 new AgregarDetalleBodegaxExistencias((bodegaart) => {
 

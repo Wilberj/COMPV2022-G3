@@ -85,6 +85,7 @@ class NewExistenciaBodega extends HTMLElement {
         this.Nuevoexisbodega.existenciaorigentemporal = this.Nuevoexisbodega.existenciasarticuloorigen
         this.Nuevoexisbodega.existenciaunidadtemporal = this.Nuevoexisbodega.existenciasarticulounidad
         this.Nuevoexisbodega.precioventatemporal = this.Nuevoexisbodega.precioventa
+        this.Nuevoexisbodega.existenciasarticulounidadtempotempo =  this.Nuevoexisbodega.existenciasarticulounidad 
 
         this.append(this.FormexisBodega);
 
@@ -93,7 +94,7 @@ class NewExistenciaBodega extends HTMLElement {
             children: [{
                 tagName: "input",
                 type: "button",
-                className: "btn_primary",
+                className: "btnagregar",
                 value: "Guardar Cambios",
                 onclick: async () => {
 
@@ -104,11 +105,37 @@ class NewExistenciaBodega extends HTMLElement {
                     this.Nuevoexisbodega.precioventa = this.Nuevoexisbodega.precioventatemporal
 
                     if (this.Nuevoexisbodega.GuardarUnidad == true) {
+                        // this.Nuevoexisbodega.existenciaunidadtemporal = this.Nuevoexisbodega.existenciaunidadtemporal - this.Nuevoexisbodega.existenciasarticulounidad
+                         this.Nuevoexisbodega.newexistenciaunidadtemporal = this.Nuevoexisbodega.existenciasarticulounidad
+                         this.Nuevoexisbodega.NuevaMercancia.existenciasarticulounidad = this.Nuevoexisbodega.newexistenciaunidadtemporal
+                        // this.Nuevoexisbodega.existenciasarticulounidad = this.Nuevoexisbodega.existenciaunidadtemporal
+                        // this.Nuevoexisbodega.NuevaMercancia.existenciasarticuloorigen = this.Nuevoexisbodega.existenciaorigentemporal
+                        if (this.Nuevoexisbodega.existenciasarticulounidad > this.Nuevoexisbodega.existenciasarticulounidadtempotempo) {
+                            alert("La cantidad que vendes supera la cantidad del Stock Disponible")
+                            console.log("excedistes");
+                            return;
+                        }
+                        if ( this.Nuevoexisbodega.existenciasarticulounidad < this.Nuevoexisbodega.UnidadxOrigen) {
+                            this.Nuevoexisbodega.NuevaMercancia.existenciasarticuloorigen = 0 
+                        }
+                        else
+                        {
+                            this.Nuevoexisbodega.variable = this.Nuevoexisbodega.existenciasarticuloorigen
+                            this.Nuevoexisbodega.variable = parseInt(this.Nuevoexisbodega.existenciasarticulounidad / this.Nuevoexisbodega.UnidadxOrigen);
+                            this.Nuevoexisbodega.NuevaMercancia.existenciasarticuloorigen  = this.Nuevoexisbodega.variable
+                        }
+                        // if (this.DetalleVenta.cantidadventa >= this.DetalleVenta.Temporal) {
+                        //     this.Dataset[0].existenciasarticuloorigen = this.DetalleVenta.cantidadventa / this.DetalleVenta.Temporal
+                        //     return;
+                        //    }
                         this.Nuevoexisbodega.existenciaunidadtemporal = this.Nuevoexisbodega.existenciaunidadtemporal - this.Nuevoexisbodega.existenciasarticulounidad
-                        this.Nuevoexisbodega.newexistenciaunidadtemporal = this.Nuevoexisbodega.existenciasarticulounidad
-                        this.Nuevoexisbodega.NuevaMercancia.existenciasarticulounidad = this.Nuevoexisbodega.newexistenciaunidadtemporal
+                        
+                        this.Nuevoexisbodega.variable = this.Nuevoexisbodega.existenciasarticuloorigen
+                        this.Nuevoexisbodega.variable = parseInt(this.Nuevoexisbodega.existenciaunidadtemporal / this.Nuevoexisbodega.UnidadxOrigen);
+                        this.Nuevoexisbodega.existenciasarticuloorigen = this.Nuevoexisbodega.variable
+
                         this.Nuevoexisbodega.existenciasarticulounidad = this.Nuevoexisbodega.existenciaunidadtemporal
-                        this.Nuevoexisbodega.NuevaMercancia.existenciasarticuloorigen = this.Nuevoexisbodega.existenciaorigentemporal
+
                     }
 
                     if (this.Nuevoexisbodega.GuardarUnidadOrigen == true) {
@@ -121,7 +148,7 @@ class NewExistenciaBodega extends HTMLElement {
                         this.Nuevoexisbodega.existenciasarticulounidad = this.Nuevoexisbodega.existenciasarticulounidad - this.Nuevoexisbodega.NuevaMercancia.existenciasarticulounidad
                     }
                     
-                    const response = 
+                    const response = true
                         await AjaxTools.PostRequest("../api/AdminMercancia/UpdateAdministracionMercancias", this.Nuevoexisbodega,
                         await AjaxTools.PostRequest("../api/AdminMercancia/SaveAdministracionMercancias", this.Nuevoexisbodega.NuevaMercancia
                         ));
@@ -134,8 +161,11 @@ class NewExistenciaBodega extends HTMLElement {
                                     innerText: " Guardado Completo",
 
                                 }),
+                                window.location.reload()
                             )
+                            
                         );
+                        
                     }
 
 
