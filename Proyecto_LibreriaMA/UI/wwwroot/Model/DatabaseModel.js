@@ -206,6 +206,7 @@ class DetalleFactura {
     activo = { type: "checkbox" };
     Unidad = { hidden: true };
     UnidadOrigen = { hidden: true };
+    variable = { hidden: true };
 }
 export { DetalleFactura }
 

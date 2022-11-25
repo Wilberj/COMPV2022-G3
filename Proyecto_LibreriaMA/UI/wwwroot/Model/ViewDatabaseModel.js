@@ -68,7 +68,7 @@ class ViewAdminMercancia {
     idconvertir = { type: "number", hidden: true };
     idtamanoxarticulo = { type: "number", hidden: true };
     idcompra = { type: "number", hidden: true };
-    UnidadxOrigen = { type: "number"};
+    UnidadxOrigen = { type: "number", hidden: true };
 
 
 }

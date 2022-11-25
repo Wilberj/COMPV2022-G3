@@ -8,7 +8,7 @@ import { AgregarDetalleCompra } from "./Components/AgregarDetalle.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
 import { AgregarCompraDevolucion } from "./Components/AgregarCompraDevolucion.js";
 import { AgregarDetallDevolucion } from "./Components/AgregarDetalleDevolucion.js";
-import { ViewAdminMercancia, ViewArticuloCompra } from "../../Model/ViewDatabaseModel.js";
+import { ViewAdminMercancia, ViewArticuloCompra, ViewDetalleDevolucion } from "../../Model/ViewDatabaseModel.js";
 import { AgregarAdminDetalleDevCompra } from "./Components/AgregarAdminDetalleDevCompra.js";
 
 class Identificador {
@@ -16,6 +16,8 @@ class Identificador {
 }
 
 window.onload = async () => {
+    const Detalle = await AjaxTools.PostRequest("../api/GestionCompra/ChargeDetalleDevCompra");
+
     const Dataset = [];
     const DetalleDevolucion = [];
 
@@ -24,7 +26,7 @@ window.onload = async () => {
 
     const NewDevolucionCompra = {
         UpdateCompra: UpdateCompra,
-        DetalleDevolucion: DetalleDevolucion,
+        DetalleDevolucion: Dataset,
         UpdateDetalleCompra: UpdateCompra,
         AdminMerca: UpdateCompra,
     }
@@ -38,10 +40,10 @@ window.onload = async () => {
         children: [
             {
                 tagName: 'input', type: 'button',
-                className: 'button_topp',
+                className: 'button_top',
                 value: 'Guardar registro', onclick: async () => {
 
-                    if(DetalleDevolucion[0] == null){
+                    if(Dataset[0] == null){
                         alert("Debe tener un Detalle Devolucion")
                         console.log("detalle eeehh");
                         return;
@@ -131,6 +133,29 @@ window.onload = async () => {
                         UpdateCompra.push(DetalleDev);
 
                         Modal.Close();
+                        AppMain.append(Render.Create({ id: "TabContainer" }));
+
+                        TabContainer.innerHTML = "";
+                        const TableDetalle = new TableComponent({
+                            ModelObject: new ViewDetalleDevolucion(),
+                            Dataset: Detalle.filter((compra) => {
+                                compra.activo = false
+                                if (compra.idcompra == DetalleDev.idcompra) {
+                                    console.log(compra);
+    
+                                    Dataset.push(compra)
+                                    console.log(Dataset);
+                                    console.log(Dataset);
+                                }
+                                return compra.idcompra == DetalleDev.idcompra
+                            })
+    
+                        });
+                        console.log(Detalle);
+    
+                        TabContainer.append(TableDetalle)
+
+
                         // console.log(NewDevolucionCompra);
                         Table.DrawTableComponent();
 
@@ -155,69 +180,69 @@ window.onload = async () => {
     )
     AppMain.append(FormDevolucionCompra, Table);
 
-    const TableDetalleDevCompra = new TableComponent({
-        ModelObject: new ViewAdminMercancia(),
-        Dataset: DetalleDevolucion,
-         Functions: [
-             {
-                  name: "Remover",
-                  action: async (Dato) => {
-                      const Datof = Dataset.find((x) => x.idadmimercancias == Dato.idadmimercancias);
-                     if (Datof != null) {
-                          Dataset.splice(Dataset.indexOf(Datof), 1);
-                          Table.DrawTableComponent();
-                      }
-                  },
-             },
-         ],
-    });
+    // const TableDetalleDevCompra = new TableComponent({
+    //     ModelObject: new ViewAdminMercancia(),
+    //     Dataset: DetalleDevolucion,
+    //      Functions: [
+    //          {
+    //               name: "Remover",
+    //               action: async (Dato) => {
+    //                   const Datof = Dataset.find((x) => x.idadmimercancias == Dato.idadmimercancias);
+    //                  if (Datof != null) {
+    //                       Dataset.splice(Dataset.indexOf(Datof), 1);
+    //                       Table.DrawTableComponent();
+    //                   }
+    //               },
+    //          },
+    //      ],
+    // });
 
-     TableDetalleDevCompra.filter.append(
-         Render.Create({
-             tagName: 'input', type: 'button',
-             className: 'btnagregar', value: 'Anadir detalle', onclick: async () => {
+    //  TableDetalleDevCompra.filter.append(
+    //      Render.Create({
+    //          tagName: 'input', type: 'button',
+    //          className: 'btnagregar', value: 'Anadir detalle', onclick: async () => {
 
-                 if(UpdateCompra[0] == null){
-                     alert("Primero se debe seleccionar una compra")
-                     return;
-                 }
-                 console.log("llllll");
-                 console.log(DetalleDevolucion);
-                  const Modal = new ModalComponent
-                  (new AgregarAdminDetalleDevCompra((Detalledev) => {
-                    const tempo = Detalledev
+    //              if(UpdateCompra[0] == null){
+    //                  alert("Primero se debe seleccionar una compra")
+    //                  return;
+    //              }
+    //              console.log("llllll");
+    //              console.log(DetalleDevolucion);
+    //               const Modal = new ModalComponent
+    //               (new AgregarAdminDetalleDevCompra((Detalledev) => {
+    //                 const tempo = Detalledev
 
-                    console.log(tempo);
-                    DetalleDevolucion.push(Detalledev);
+    //                 console.log(tempo);
+    //                 DetalleDevolucion.push(Detalledev);
 
-                    // DetalleDevCompra === tempo ;
+    //                 // DetalleDevCompra === tempo ;
 
 
-                      Modal.Close();
-                      // console.log(NewDevolucionCompra);
-                      NewDevolucionCompra.idadmimercancias = DetalleDevolucion[0].idadmimercancias
+    //                   Modal.Close();
+    //                   // console.log(NewDevolucionCompra);
+    //                   NewDevolucionCompra.idadmimercancias = DetalleDevolucion[0].idadmimercancias
 
-                      TableDetalleDevCompra.DrawTableComponent();
+    //                   TableDetalleDevCompra.DrawTableComponent();
                    
-                      console.log(NewDevolucionCompra);
+    //                   console.log(NewDevolucionCompra);
 
 
-                      console.log("Dataset");
+    //                   console.log("Dataset");
 
-                      console.log(DetalleDevolucion);
+    //                   console.log(DetalleDevolucion);
 
-                  }));
+    //               }));
 
-              AppMain.append(Modal)
-             }
-         })
-     )
+    //           AppMain.append(Modal)
+    //          }
+    //      })
+    //  )
      AppMain.append(Render.Create({
          tagName: "h3",
          innerText: "Agregar detalles", class: "header1"
      })
      );
-     AppMain.append(TableDetalleDevCompra);
+    //  AppMain.append(TableDetalleDevCompra);
 }
 
 export { Identificador }

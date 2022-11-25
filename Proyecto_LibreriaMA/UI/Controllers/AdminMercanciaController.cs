@@ -38,7 +38,7 @@ namespace UI.Controllers
         }
         public Object ChargeArticulos(ViewGestionArticulos ent)
         {
-            return new ViewGestionArticulos().Get<ViewGestionArticulos>();
+            return ent.Get<ViewGestionArticulos>();
         }
 
     }

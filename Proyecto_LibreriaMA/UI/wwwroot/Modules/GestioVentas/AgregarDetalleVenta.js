@@ -122,9 +122,6 @@ class AgregarDetalleVenta extends HTMLElement {
                             this.DetalleVenta.variable = parseInt(this.DetalleVenta.nuevo / this.Dataset[0].UnidadxOrigen);
                             this.Dataset[0].existenciasarticuloorigen = this.DetalleVenta.variable
                             
-
-                           
-                            
                         }
                         if (this.DetalleVenta.UnidadOrigen == true) {
 

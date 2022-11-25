@@ -116,12 +116,13 @@ class NewExistenciaBodega extends HTMLElement {
                         this.Nuevoexisbodega.newexistenciaorigentemporal = this.Nuevoexisbodega.existenciasarticuloorigen
                         this.Nuevoexisbodega.NuevaMercancia.existenciasarticuloorigen = this.Nuevoexisbodega.newexistenciaorigentemporal
                         this.Nuevoexisbodega.existenciasarticuloorigen = this.Nuevoexisbodega.existenciaorigentemporal
-                        this.Nuevoexisbodega.NuevaMercancia.existenciasarticulounidad = this.Nuevoexisbodega.newexistenciaorigentemporal * this.Nuevoexisbodega.temporal
+                        this.Nuevoexisbodega.NuevaMercancia.existenciasarticulounidad = this.Nuevoexisbodega.newexistenciaorigentemporal * this.Nuevoexisbodega.UnidadxOrigen
                         this.Nuevoexisbodega.existenciasarticulounidad = this.Nuevoexisbodega.existenciaunidadtemporal
                         this.Nuevoexisbodega.existenciasarticulounidad = this.Nuevoexisbodega.existenciasarticulounidad - this.Nuevoexisbodega.NuevaMercancia.existenciasarticulounidad
                     }
                     
-                    const response = await AjaxTools.PostRequest("../api/AdminMercancia/UpdateAdministracionMercancias", this.Nuevoexisbodega,
+                    const response = 
+                        await AjaxTools.PostRequest("../api/AdminMercancia/UpdateAdministracionMercancias", this.Nuevoexisbodega,
                         await AjaxTools.PostRequest("../api/AdminMercancia/SaveAdministracionMercancias", this.Nuevoexisbodega.NuevaMercancia
                         ));
                     console.log(this.Nuevoexisbodega);

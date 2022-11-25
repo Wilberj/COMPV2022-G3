@@ -1,7 +1,8 @@
+import { ModalComponent } from "../../CoreComponents/ModalComponent.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
-import { ViewArticulosDanados, ViewCompra, ViewGestionArticulos } from "../../Model/ViewDatabaseModel.js";
+import { ViewGestionArticulos } from "../../Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js";
-//import {ArticulosDanados} from "../../Model/DatabaseModel.js";
+import { ViewCrearArticulo } from "./ViewCrearArticulo.js";
 
 
 window.onload = async () => {
@@ -11,6 +12,14 @@ window.onload = async () => {
     })
     );
 
+    const Articulos =
+        await AjaxTools.PostRequest("../api/AdminMercancia/ChargeArticulos")
+
+
+    const Table = new TableComponent({
+        Dataset: Articulos,
+        ModelObject: new ViewGestionArticulos()
+    })
     AppMain.append(Render.Create({
         class: "FormContainer2",
         children: [
@@ -18,8 +27,23 @@ window.onload = async () => {
                 tagName: 'input', type: 'button',
                 className: 'button_top',
                 value: 'Ingresar Nuevo Articulo', onclick: async () => {
+                    const Modal = new ModalComponent
+                        (new ViewCrearArticulo(() => {
+
+                            // if (DetalleCompra.filter((x) => x.idarticulo == compra.idarticulo).length > 0) {
+                            //     alert("El Detalle ya existe")
+                            //     return;
+                            // }
+
+                            Modal.Close();
+                            Table.DrawTableComponent();
+
+                            console.log(Articulos);
+
+                        }));
+                    AppMain.append(Modal)
                     //cargar vists
-                    window.location = "./ViewCrearArticulos"
+                    //   window.location = "./ViewCrearArticulos"
                 }
             },
             {
@@ -33,13 +57,8 @@ window.onload = async () => {
         ]
 
     }));
-    
-    const ArticulosDana =
-        await AjaxTools.PostRequest("../api/AdminMercancia/ChargeArticulos")
 
-    AppMain.append(new TableComponent({
-        Dataset: ArticulosDana,
-        ModelObject: new ViewGestionArticulos()
-    }))
+
+    AppMain.append(Table)
 
 }
