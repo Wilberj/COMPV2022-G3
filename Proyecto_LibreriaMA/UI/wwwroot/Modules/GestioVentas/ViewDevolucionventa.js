@@ -53,9 +53,9 @@ window.onload = async () => {
                         }
                     }
                     const response = true
-                            // await AjaxTools.PostRequest("../api/GestionVenta/SaveDevolucionventa",
-                            //    NewDevolucionVenta
-                            // );
+                            await AjaxTools.PostRequest("../api/GestionVenta/SaveDevolucionventa",
+                               NewDevolucionVenta
+                            );
                     if (response == true) {
                         console.log(NewDevolucionVenta);
                         AppMain.append(

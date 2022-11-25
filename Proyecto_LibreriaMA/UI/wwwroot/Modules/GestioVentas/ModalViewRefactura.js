@@ -28,7 +28,8 @@ class Agregar extends HTMLElement {
         this.suma = 0;
 
         this.iva = 0;
-        this.totalventa = 0
+        this.totalventa = 0 
+       
         //////
         // this.DetallVenta = {};
         this.NuevaFactura = {};
@@ -68,6 +69,8 @@ class Agregar extends HTMLElement {
                 subtotalventa: { hidden: true },
                 iva: { hidden: true },
                 totalventa: { hidden: true },
+                Dolares: { type: "checkbox" },
+                CambioDolar: { type: "Number" },
                 // totalventa: { type: "number"}
             }),
             EditObject: this.NuevaFactura
@@ -170,10 +173,11 @@ class Agregar extends HTMLElement {
                             // this.DetalleDevventa.AdminMercas[0].idadmimercancias= this.DetalleDevventa.idadmimercancias 
                             this.DetalleDevventa.AdminMercas[0].existenciasarticulounidad = parseInt(this.DetalleDevventa.cantidad + this.DetalleDevventa.AdminMercas[0].existenciasarticulounidad)
                             console.log(this.NewDevolucionVenta);
-
+                                //Guarda El dEtalle de Devoluciuon losquiero
                             await AjaxTools.PostRequest("../api/GestionVenta/SaveDetalleDevolucionventa",
                             this.NewDevolucionVenta
                             );
+                            //aqui termina la api  de guardar 
                             const Datof = this.Detalles.find((x) => x.iddetallefactura == Dato.iddetallefactura);
                             if (Datof != null) {
                                 this.NuevaFactura.DetallVenta.splice(
@@ -209,11 +213,8 @@ class Agregar extends HTMLElement {
                             //this.Table.DrawTableComponent(this.Detalles);
 
                         }
-                        //console.log(this.DetalleDevventa);
-                        // await AjaxTools.PostRequest("../api/GestionVenta/SaveDetalleDevolucionventa",
-                        // this.NewDevolucionVenta
-                        //  );
-                        console.log(this.NewDevolucionVenta);
+                        console.log(this.DetalleDevventa);
+                
                     },
                 },
             ],
@@ -354,6 +355,14 @@ class Agregar extends HTMLElement {
                     className: "btn_primary",
                     value: "Guardar Refactura",
                     onclick: async () => {
+                        if (this.NuevaFactura.descuentofactura == null || this.NuevaFactura.idestado == null||this.NuevaFactura.pagototal ==null ){
+                            alert("Falta rellenar campos")
+                            console.log("pjo a esto");
+                            return;
+                        }
+                        var dolarito = 0;
+                       // this.dolarito =0;
+                        var cantidad_dolar = 0;
                         this.lolaso = []
                         //   this.lolaso.push(this.de)
                         //  console.log("lolasorp",this.lolaso);
@@ -364,9 +373,22 @@ class Agregar extends HTMLElement {
                             this.NuevaFactura.DetallVenta[i].activo = true
                             this.NuevaFactura.DetallVenta[i].idfactura = undefined
                             this.NuevaFactura.DetallVenta[i].iddetallefactura = undefined
-
                         }
                         this.NuevaFactura.cambio = this.NuevaFactura.pagototal - this.totalventa
+                        if (this.NuevaFactura.Dolares == true) {
+                            dolarito = this.NuevaFactura.CambioDolar //35 cs vale el dolar
+                            console.log("35cordoba el dolar",dolarito);
+                            cantidad_dolar = this.NuevaFactura.pagototal * dolarito //aqui tengo 35*20 = 700 pot ejemplo
+                            console.log("35 * el pago del cliente", cantidad_dolar);
+
+                            this.NuevaFactura.subtotalventa = this.TotalSuma,
+                            this.NuevaFactura.iva = this.iva,
+                            this.NuevaFactura.totalventa = this.totalventa - parseInt(this.NuevaFactura.descuentofactura)
+                            this.NuevaFactura.pagototal = cantidad_dolar
+                            this.NuevaFactura.cambio = cantidad_dolar - this.NuevaFactura.totalventa
+
+                        }
+                        
 
 
                         /// for (i = 0; i < this.Detalles.length; i++) {
@@ -397,7 +419,7 @@ class Agregar extends HTMLElement {
                                                 tagName: 'input', type: 'button',
                                                 className: 'btn_quinto',
                                                 value: 'Generar Factura', onclick: async () => {
-                                                    //window.location = "./viewFactura1"
+                                                    window.location = "./viewFactura1"
 
                                                 }
                                             }
