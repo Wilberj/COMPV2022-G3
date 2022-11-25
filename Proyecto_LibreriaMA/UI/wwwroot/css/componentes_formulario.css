@@ -12,9 +12,10 @@
 .FormContainer2 {
     grid-template-columns: calc(33% - 10px) calc(33% - 10px) calc(33% - 10px);
 }
-.btn,
-.btn_primary,
-.btn_secundary {
+/******  *****/
+
+.btn_primary
+ {
     padding: 5px;
     display: flex;
     justify-content: center;
@@ -166,11 +167,70 @@
 .btn_primary {
     background-color: var(--color-primary);
 }
-
+/**********boton de x***************/
 .btn_secundary {
-    background-color: var(--color-secundario);
-}
+        --primary-color: #ff2424;
+        --secondary-color: #fff;
+        --hover-color: rgb(128, 35, 35);
+        box-sizing: border-box;
+        border: 0;
+        border-radius: 20px;
+        color: var(--secondary-color);
+        padding: 0.8em 1.8em;
+        background: var(--primary-color);
+        display: flex;
+        transition: 0.2s;
+        align-items: center;
+        gap: 0.6em;
+        font-weight: bold;
+      }
+      
+     .btn_secundary:hover {
+        background-color: var(--hover-color);
+        color: #ff7575;
+      }
+      
+/**************************************/
 
+/****** botones de editar y mover *****/
+.btn {
+    --c: #fff;
+   /* text color */
+    background: linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p,100%)/300% no-repeat,
+      #1ae200;
+   /* background color */
+    color: #0000;
+    border: none;
+    transform: perspective(500px) rotateY(calc(20deg*var(--_i,-1)));
+    text-shadow: calc(var(--_i,-1)* 0.08em) -.01em 0   var(--c),
+      calc(var(--_i,-1)*-0.08em)  .01em 2px #0004;
+    outline-offset: .1em;
+    transition: 0.3s;
+  }
+  
+  .btn:hover,
+  .btn:focus-visible {
+    --_p: 0%;
+    --_i: 1;
+  }
+  
+  .btn:active {
+    text-shadow: none;
+    color: var(--c);
+    box-shadow: inset 0 0 9e9q #0005;
+    transition: 0s;
+  }
+  
+  .btn {
+    font-family: system-ui, sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 2.5px;
+    cursor: pointer;
+    padding: .1em .3em;
+    border-radius: 20px;
+  }
+/**********************************/
 .text, .text_primary,
 .text_secundary {
     padding: 10px;

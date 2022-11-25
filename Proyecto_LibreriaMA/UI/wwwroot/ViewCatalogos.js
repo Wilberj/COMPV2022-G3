@@ -174,7 +174,7 @@ const FormOptions = (form, table, action = "Save", Modal) => {
         children: [
             {
                 tagName: 'input', type: 'button',
-                className: 'btn',
+                className: 'btnagregar',
                 value: 'Guardar', onclick: async () => {
                     console.log(form.FormObject);
                     const data = await AjaxTools.PostRequest(

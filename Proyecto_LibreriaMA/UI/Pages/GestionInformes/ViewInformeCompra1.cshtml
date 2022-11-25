@@ -1,0 +1,159 @@
+﻿@page
+@model UI.Pages.GestionInformes.ViewInformeCompra1Model
+@{
+}
+
+<script type="module">
+    import TableInforme from "../CoreComponents/InformeComponent.js"
+    const CargarDatos = async () =>{
+        let UrlP = "../api/InformesCompra/TakeInformeCompraEjemplo1";
+        const ObjInst ={
+            Params: [Fecha1.value, Fecha2.value]
+        }
+        let response = await fetch(UrlP,{
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json; charset=utf-8",
+                'Accept': "*/*"
+            },
+            body: JSON.stringify(ObjInst)
+        });
+        response = await response.json();
+        console.log(response);
+        labelSubtitle.innerText = `LIBRERÍA MARIA AUXILIADORA
+
+        Informe de compras realizadas,
+        comprendidas en el período seleccionado
+
+        Del ${Fecha1.value} al ${Fecha2.value}`;
+        TableInforme(response, TableData, ["idcompra","fechacompra","nombreproveedor","subtotalcompra","iva","totalcompra"]);
+        let sum = 0;
+        let sum1 = 0;
+        response.forEach(element =>{
+            sum1 = sum1 + element.subtotalcompra;
+            sum = sum + element.totalcompra;
+        })
+        LabelTotal.append(" " + sum)
+        LabelCantidad.append(" " + sum1)
+    }
+    window.onload = async () =>{
+       // CargarDatos();
+        BtnUpdate.onclick = () =>{
+            CargarDatos();
+        }
+        BtnPrint.onclick = () =>{
+             const PrintNode = Page.innerHTML;
+            const ventimp = window.open(' ', 'popimpr');
+            ventimp.document.write(PrintNode);
+            ventimp.document.close();
+            ventimp.print();
+            ventimp.close();
+        }
+    }
+
+</script>
+<div class="FrmContainer">
+    <input class="Fech" type="date" id="Fecha1" value="2022-01-01"/>
+      <input class="Fech" type="date" id="Fecha2" value="2022-11-04"/>
+</div>
+
+<div class="FrmContainer">
+    <input class="BTN BTNOK2" type="button" id="BtnPrint" value= "Inprimir"/>
+    <input class="BTN BTNOK2" type="button" id="BtnUpdate" value= "Actualizar"/>
+</div>
+<div class="InformeContainer">
+    <div class="page" id="Page">
+        <style>
+            .Fech{
+                color:black;
+                margin-bottom: 10px;
+                 border-radius: 8px;
+                 width: 150px;
+                 height: 25px;
+                font-weight: bold;
+            }
+            @* .InformeContainer {
+                background-color: #b9b9b9;
+                padding: 10px;
+                height: 800px;
+                overflow: auto;
+                border: solid 2px #888;
+            } *@
+            .page {
+                background-color: #fff;
+                width: 20cm;
+                height: 25.7cm;
+                display: block;
+                margin: 0 auto;
+                margin-bottom: 0.5cm;
+                box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+                padding: 1cm 2cm;
+            }
+             h4 {
+                color:black;
+                text-align: center;
+                font-size: 25px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        
+            }
+            .BTN {
+                padding: 1.3em 3em;
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 2.5px;
+                font-weight: 500;
+                color: #000;
+                background-color: #fff;
+                border: none;
+                border-radius: 45px;
+                box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease 0s;
+                cursor: pointer;
+                outline: none;
+            }
+  
+            .BTN:hover {
+                background-color: #288bee;
+                box-shadow: 0px 15px 20px rgba(26, 115, 79, 0.4);
+                color: #fff;
+                transform: translateY(-7px);
+            }
+            
+            .BTN:active {
+                transform: translateY(-1px);
+            }
+         
+            .TableInforme {
+                width: 100%;
+               
+                margin-bottom: 30px;
+            }
+                 .TableInforme th {
+                    border-bottom: solid 1px #b9b9b9;
+                    text-align: center;
+                    background-color: #05e4fc;
+                
+                }
+                .TableInforme td {
+                    border-bottom: solid 1px #b9b9b9;
+                    text-align: center;
+                    background-color: #b8f8ff;
+                
+                }
+        </style>
+        <section>
+          
+         
+            <h4 id="labelSubtitle">INFORME DE COMPRAS POR FECHA</h4>
+        </section>
+        <table id="TableData" class="TableInforme">
+            <thead>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <hr />
+          <label id="LabelCantidad"> Sub Total Compra C$: </label> <br />
+        <label id="LabelTotal"> Total Compra C$: </label>
+    </div>
+</div>
