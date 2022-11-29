@@ -79,8 +79,8 @@
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 500;
-    color: #000;
-    background-color: #fff;
+    color: rgb(255, 255, 255);
+    background-color: #e91555;
     border: none;
     border-radius: 45px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -90,8 +90,8 @@
   }
   
 .button_top:hover {
-    background-color: #288bee;
-    box-shadow: 0px 15px 20px rgba(26, 115, 79, 0.4);
+  background-color: #ff4d82;
+  box-shadow: 0px 15px 20px #ffb0c8;
     color: #fff;
     transform: translateY(-7px);
   }
@@ -99,15 +99,15 @@
 .button_top:active {
     transform: translateY(-1px);
   }
-
+/****** Topp ********/
   .button_topp {
     padding: 1.3em 3em;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 500;
-    color: #000;
-    background-color: #fff;
+    color: rgb(255, 255, 255);
+    background-color: #e91555;
     border: none;
     border-radius: 45px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -117,8 +117,8 @@
   }
   
 .button_topp:hover {
-    background-color: #13fc6c;
-    box-shadow: 0px 15px 20px rgba(26, 115, 79, 0.4);
+  background-color: #ff4d82;
+  box-shadow: 0px 15px 20px #ffb0c8;
     color: #fff;
     transform: translateY(-7px);
   }
@@ -139,7 +139,7 @@
     align-items: center;
     font-size: 18px;
     cursor: pointer;
-    background-color: #11575c;
+    background-color: #e91555;
     color: #fff;
     border: none;
     border-radius: 45px;
@@ -149,9 +149,9 @@
    .btnagregar:hover {
     border-radius: 45px;
     transform: translateY(-10px);
-    box-shadow: 0 7px 0 -2px #05ff65,
-     0 15px 0 -4px #0267ff,
-     0 16px 10px -3px #0267ff;
+    box-shadow: 0 7px 0 -2px #e73d70,
+    0 15px 0 -4px #ff7aa2,
+    0 16px 10px -3px #c92b5a;
    }
    
    /* .btnagregar:active {
@@ -169,7 +169,7 @@
 }
 /**********boton de x***************/
 .btn_secundary {
-        --primary-color: #ff2424;
+        --primary-color: #ff4d82;
         --secondary-color: #fff;
         --hover-color: rgb(128, 35, 35);
         box-sizing: border-box;
@@ -198,7 +198,7 @@
     --c: #fff;
    /* text color */
     background: linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p,100%)/300% no-repeat,
-      #1ae200;
+    #e91555;
    /* background color */
     color: #0000;
     border: none;
@@ -315,5 +315,5 @@
     transition: all 0.5s;
 }
 .TabMenu label:hover{
-   color: white;
+  color: #d6104b;
 }
