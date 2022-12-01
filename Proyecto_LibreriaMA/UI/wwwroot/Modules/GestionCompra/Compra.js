@@ -1,10 +1,11 @@
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
-
-import { ViewArticuloCompra, ViewCompra } from "../../Model/ViewDatabaseModel.js";
+import { ModalComponent } from "../../CoreComponents/ModalComponent.js";
+import { ViewArticuloCompra, ViewCompra, ViewDetalleDevolucion, ViewDevolucionCompra } from "../../Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js";
 
 
 window.onload = async () => {
+    // const Detalle = await AjaxTools.PostRequest("../api/GestionCompra/ChargeArticulos");
     AppMain.append(Render.Create({ tagName: "h1",
     innerText: "Gestion de compras", class: "header1" })
     );
@@ -30,16 +31,68 @@ window.onload = async () => {
             }
         ]
     }))
-    const MisArticulos =
-        await AjaxTools.PostRequest("../api/GestionCompra/MisArticulos")
+    // const MisArticulos =
+    //     await AjaxTools.PostRequest("../api/GestionCompra/MisArticulos")
+    const Detalle = await AjaxTools.PostRequest("../api/GestionCompra/ChargeDevCompra");
+    const Detalles = await AjaxTools.PostRequest("../api/GestionCompra/ChargeDetalleCompra");
     AppMain.append(new TableComponent({
-        Dataset: MisArticulos, 
-        ModelObject: new ViewCompra(
+        Dataset: Detalle, 
+        ModelObject: new ViewDevolucionCompra(
         ),
-        // Functions: [    
-        //     {
-        //         name: "Detalles", action: async(Articulos) =>{
-        //             //Cargar detalle
+
+        Functions: [    
+            {
+                name: "Detalles", action: async () => {
+
+                    const Modal = new ModalComponent(
+                        AppMain.append(Render.Create({ id: "TabContainer" }));
+
+                        TabContainer.innerHTML = "";
+                        const TableDetalle = new TableComponent({
+                            ModelObject: new ViewDetalleDevolucion(),
+                            Dataset: Detalle.filter((compra) => {
+                                compra.activo = false
+                                if (compra.idcompra == DetalleDev.idcompra) {
+                                    console.log(compra);
+    
+                                    Dataset.push(compra)
+                                    console.log(Dataset);
+                                    console.log(Dataset);
+                                }
+                                return compra.idcompra == DetalleDev.idcompra
+                            })
+    
+                        });
+                        console.log(Detalle);
+    
+                        TabContainer.append(TableDetalle)
+                        Modal.close()
+                    )};
+                    AppMain.append(Modal)
+                }]
+        //                    /***** */
+
+        //             AppMain.append(Render.Create({ id: "TabContainer" }));
+
+        //             TabContainer.innerHTML = "";
+        //             const TableDetalle = new TableComponent({
+        //                 ModelObject: new ViewDetalleDevolucion(),
+        //                 Dataset: Detalle.filter((compra) => {
+        //                     compra.activo = false
+        //                     if (compra.idcompra == DetalleDev.idcompra) {
+        //                         console.log(compra);
+
+        //                         Dataset.push(compra)
+        //                         console.log(Dataset);
+        //                         console.log(Dataset);
+        //                     }
+        //                     return compra.idcompra == DetalleDev.idcompra
+        //                 })
+
+        //             });
+        //             console.log(Detalle);
+
+        //             TabContainer.append(TableDetalle)
         //         }
         //     }
         // ]
