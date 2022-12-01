@@ -2,6 +2,7 @@ import { TableComponent } from "../../CoreComponents/TableComponent.js";
 import { ModalComponent } from "../../CoreComponents/ModalComponent.js";
 import { ViewArticuloCompra, ViewCompra, ViewDetalleDevolucion, ViewDevolucionCompra } from "../../Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js";
+import { DetalleCompraProductos } from "../../Model/DatabaseModel.js";
 
 
 window.onload = async () => {
@@ -42,34 +43,31 @@ window.onload = async () => {
 
         Functions: [    
             {
-                name: "Detalles", action: async () => {
+                name: "Detalles", action: async (lol) => {
+                console.log(lol );
+                    const Modal = new ModalComponent()     
+                    AppMain.append(Render.Create({ id: "TabContainer" }));
 
-                    const Modal = new ModalComponent(
-                        AppMain.append(Render.Create({ id: "TabContainer" }));
+                    TabContainer.innerHTML = "";
+                    const TableDetalle = new TableComponent({
+                        ModelObject: new ViewDetalleDevolucion(),
+                        Dataset: Detalles.filter((compra) => {
+                            if (compra.idcompra == Detalles.idcompra) {
+                                console.log(Detalles);
 
-                        TabContainer.innerHTML = "";
-                        const TableDetalle = new TableComponent({
-                            ModelObject: new ViewDetalleDevolucion(),
-                            Dataset: Detalle.filter((compra) => {
-                                compra.activo = false
-                                if (compra.idcompra == DetalleDev.idcompra) {
-                                    console.log(compra);
-    
-                                    Dataset.push(compra)
-                                    console.log(Dataset);
-                                    console.log(Dataset);
-                                }
-                                return compra.idcompra == DetalleDev.idcompra
-                            })
-    
-                        });
-                        console.log(Detalle);
-    
-                        TabContainer.append(TableDetalle)
-                        Modal.close()
-                    )};
-                    AppMain.append(Modal)
-                }]
+
+                            }
+                            return compra.idcompra == Detalles.idcompra
+                        })
+
+                    });
+                    console.log(Detalles);
+
+                    TabContainer.append(TableDetalle)
+                    
+                    AppMain.append(Modal);
+                    
+    }}]
         //                    /***** */
 
         //             AppMain.append(Render.Create({ id: "TabContainer" }));
