@@ -33,7 +33,7 @@ window.onload = async () => {
                 className: 'button_topp',
                 value: 'Guardar Compra', onclick: async () => {
 
-                    if (NuevaCompra.descuentocompra == null || NuevaCompra.idestado == null) {
+                    if (NuevaCompra.descuentocompra == null) {
                         alert("Falta rellenar campos")
                         console.log("pjo a esto");
                         return;

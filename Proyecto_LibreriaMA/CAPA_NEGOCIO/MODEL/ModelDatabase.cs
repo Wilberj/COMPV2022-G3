@@ -178,7 +178,7 @@ namespace CAPA_NEGOCIO.MODEL
         public decimal? descuentocompra { get; set; }
         public decimal? totalcompra { get; set; }
         public int? idproveedor { get; set; }
-        public int? idestado { get; set; }
+        //public int? idestado { get; set; }
         public bool? activo { get; set; }
 
         public List<DetalleCompraProductos>? DetalleCompra { get; set; }
@@ -247,8 +247,14 @@ namespace CAPA_NEGOCIO.MODEL
         public int? telefonousuario { get; set; }
         public string? email { get; set; }
         public bool? activo { get; set; }
+        public int? idroles { get; set; }
+      
     }
-
+    public class Roles : EntityClass
+    {
+        public int? idroles { get; set; }
+        public string? descripcion { get; set; }
+    }
     public class DetalleCompraProductos : EntityClass
     {
         public int? iddetallecompra { get; set; }
@@ -503,12 +509,12 @@ namespace CAPA_NEGOCIO.MODEL
             return true;
         }
     }
-    public class Estado : EntityClass
-    {
-        public int? idestado { get; set; }
-        public string? nombreestado { get; set; }
-        public bool? activo { get; set; }
-    }
+    //public class Estado : EntityClass
+    //{
+    //    public int? idestado { get; set; }
+    //    public string? nombreestado { get; set; }
+    //    public bool? activo { get; set; }
+    //}
 
     public class Factura : EntityClass
     {
@@ -519,7 +525,7 @@ namespace CAPA_NEGOCIO.MODEL
         public decimal? subtotalventa { get; set; }
         public decimal? iva { get; set; }
         public int? idusuario { get; set; }
-        public int? idestado { get; set; }
+       // public int? idestado { get; set; }
         public decimal? descuentofactura { get; set; }
         public Decimal? pagototal { get; set; }
         public Decimal? cambio { get; set; }

@@ -74,19 +74,19 @@ namespace UI.Controllers
         {
             return ent.Update("idproveedor");
         }
-        public Object GetEstado(Estado ent)
-        {
-            return ent.Get<Estado>();
-        }
-        public Object SaveEstado(Estado ent)
-        {
-            ent.idestado = (Int32)ent.Save();
-            return ent;
-        }
-        public Object UpdateEstado(Estado ent)
-        {
-            return ent.Update("idestado");
-        }
+        //public Object GetEstado(Estado ent)
+        //{
+        //    return ent.Get<Estado>();
+        //}
+        //public Object SaveEstado(Estado ent)
+        //{
+        //    ent.idestado = (Int32)ent.Save();
+        //    return ent;
+        //}
+        //public Object UpdateEstado(Estado ent)
+        //{
+        //    return ent.Update("idestado");
+        //}
         public Object GetDatosUsuarios(DatosUsuarios ent)
         {
             return ent.Get<DatosUsuarios>();
@@ -209,6 +209,10 @@ namespace UI.Controllers
         public Object UpdateTamanoxArticulo(TamanoxArticulo ent)
         {
             return ent.Update("idtamanoxarticulo");
+        }
+        public Object Getroles(Roles ent)
+        {
+            return ent.Get<Roles>();
         }
     }
 

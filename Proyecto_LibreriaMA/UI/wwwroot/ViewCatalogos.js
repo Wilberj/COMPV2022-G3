@@ -23,18 +23,18 @@ window.onload = async () => {
             //         ChargeCatalogo(Model)
             //     }
             // },
-            {
-                tagName: 'label', innerText: 'Datos Usuarios', onclick: async () => {
-                    const data = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetDatosUsuarios")
+            // {
+            //     tagName: 'label', innerText: 'Datos Usuarios', onclick: async () => {
+            //         const data = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetDatosUsuarios")
 
-                    const Model = new DatosUsuarios({
-                        email: {
-                            type: "EMAIL"
-                        }
-                    })
-                    ChargeCatalogo(Model)
-                }
-            }, 
+            //         const Model = new DatosUsuarios({
+            //             email: {
+            //                 type: "EMAIL"
+            //             }
+            //         })
+            //         ChargeCatalogo(Model)
+            //     }
+            // }, 
              {
                 tagName: 'label', innerText: 'Proveedor', onclick: async () => {
                     const data = await AjaxTools.PostRequest("api/MantenimientoCatalogos/GetProveedor")

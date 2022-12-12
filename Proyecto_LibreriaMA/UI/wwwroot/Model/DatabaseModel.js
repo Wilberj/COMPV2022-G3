@@ -119,7 +119,7 @@ class CompraProductos {
     fechacompra = { type: "date" };
     idusuario = { type: "number" };
     idproveedor = { type: "number", };
-    idestado = { type: "number", };
+    //idestado = { type: "number", };
     subtotalcompra = { type: "number" };
     iva = { type: "number" };
     descuentocompra = { type: "number" };
@@ -168,6 +168,7 @@ class DatosUsuarios {
     telefonousuario = { type: "number" };
     email = { type: "text" };
     activo = { type: "checkbox" };
+    idroles = { type: "number"  };
 }
 export { DatosUsuarios }
 class DetalleCompraProductos {
@@ -187,6 +188,18 @@ class DetalleCompraProductos {
     activo = { type: "checkbox", hidden: true };
 }
 export { DetalleCompraProductos }
+class Roles {
+    constructor(props) {
+     for (const prop in props) {
+      this[prop] = props[prop];
+     }
+    }
+    idroles = { type: "number" , primary: true  };
+    
+    descripcion = { type: "text"  };
+    
+   }
+   export{ Roles }
 class DetalleFactura {
     constructor(props) {
         for (const prop in props) {
@@ -263,17 +276,17 @@ class DevolucionVenta {
 
 }
 export { DevolucionVenta }
-class Estado {
-    constructor(props) {
-        for (const prop in props) {
-            this[prop] = props[prop];
-        }
-    }
-    idestado = { type: "number", primary: true };
-    nombreestado = { type: "text" };
-    activo = { type: "checkbox" };
-}
-export { Estado }
+// class Estado {
+//     constructor(props) {
+//         for (const prop in props) {
+//             this[prop] = props[prop];
+//         }
+//     }
+//     idestado = { type: "number", primary: true };
+//     nombreestado = { type: "text" };
+//     activo = { type: "checkbox" };
+// }
+// export { Estado }
 class Factura {
     constructor(props) {
         for (const prop in props) {
@@ -287,7 +300,7 @@ class Factura {
     subtotalventa = { type: "number" };
     iva = { type: "number" };
     idusuario = { type: "number" };
-    idestado = { type: "number" };
+    //idestado = { type: "number" };
     descuentofactura = { type: "number" };
     pagototal = { type: "number"};
     cambio = { type: "number", hidden: true };

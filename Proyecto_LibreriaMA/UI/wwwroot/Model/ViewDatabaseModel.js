@@ -196,3 +196,23 @@ class ViewListArticuloVenta {
     
    }
    export{ViewGestionArticulos}
+   class ViewGestionUsuarios {
+    constructor(props) {
+     for (const prop in props) {
+      this[prop] = props[prop];
+     }
+    }
+    nombreusuario = { type: "text" };
+    contrasena = { type: "text"  };
+    email = { type: "text"  };
+    descripcion = { type: "text",hidden:true  };
+    idusuario = { type: "number",hidden:true  };
+    telefonousuario = { type: "number"  };
+    cedula = { type: "text" ,hidden:true };
+    apellidousuario = { type: "text"  };
+    direccionusuario = { type: "text"  };
+    idroles = { type: "number" ,hidden:true };
+    Roles =  { hidden:true };
+    activo = { type: "checkbox"  };
+   }
+   export{ViewGestionUsuarios}

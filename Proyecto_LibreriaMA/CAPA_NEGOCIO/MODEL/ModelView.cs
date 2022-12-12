@@ -150,5 +150,19 @@ namespace CAPA_NEGOCIO.MODEL
         public int? idarticulo { get; set; }
         public int? idtamanoxarticulo { get; set; }
     }
+    public class ViewGestionUsuarios : EntityClass
+    {
+        public string? nombreusuario { get; set; }
+        public string? apellidousuario { get; set; }
+        public string? contrasena { get; set; }
+        public string? email { get; set; }
+        public string? descripcion { get; set; }
+        public int? idusuario { get; set; }
+        public int? telefonousuario { get; set; }
+        public string? cedula { get; set; }
+        public string? direccionusuario { get; set; }
+        public int? idroles { get; set; }
+        public bool? activo { get; set; }
+    }
 
 }

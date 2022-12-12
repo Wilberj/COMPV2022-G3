@@ -2,8 +2,8 @@ body {
     display: grid;
     margin: 0px;
     padding: 0px;
-    grid-template-rows: 50px calc(100vh - 50px);
-    grid-template-columns: 200px calc(100% - 200px);
+    grid-template-rows: 70px calc(100vh - 70px);
+    grid-template-columns: 300px calc(96% - 190px);
     font-family: Arial;
    
     background-color: #ffffff;
@@ -45,11 +45,12 @@ body {
     background-image: linear-gradient(135deg,
     #8b0e34,#c92b5a,#8b0e34);
     border: 4px solid rgb(255, 255, 255);
-   
+   /* height: 100%;*/
 }
 .AppAside i{
     color: white;
     font-size: 20px;
+   
 }
 
 

@@ -29,7 +29,7 @@ window.onload = async () => {
                 tagName: 'input', type: 'button',
                 className: 'button_topp',
                 value: 'Guardar Venta', onclick: async () => {
-                    if (NuevaFactura.descuentofactura == null || NuevaFactura.idestado == null) {
+                    if (NuevaFactura.descuentofactura == null) {
                         alert("Falta rellenar campos")
                         console.log("pjo a esto");
                         return;
