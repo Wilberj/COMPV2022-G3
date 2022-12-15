@@ -7,7 +7,11 @@ import { ViewAdminMercancia } from "../../Model/ViewDatabaseModel.js";
 import { ViewrticuloVenta } from "./ViewListArticuloVenta.js";
 import { FacturaDevolucion } from "./ViewDevolucionventa.js";
 import { AgregarDetalleVenta } from "./AgregarDetalleVenta.js";
+import { EditDevolucion } from "./Components/EditDevolucion.js";
 
+class DatoEdit {
+    EditDevolucion
+}
 class Agregar extends HTMLElement {
     constructor(action = () => { }) {
         super();
@@ -155,6 +159,63 @@ class Agregar extends HTMLElement {
 
             Functions: [
                 {
+                    name: "Editar",
+                    action: async (Dato) => {
+                        DatoEdit = Dato
+                        console.log("este es el DatoEdit",DatoEdit);
+     
+                        const Modal = new ModalComponent(
+                            new EditDevolucion(() => {
+                                // Admin.AdminMerca = JSON.parse(JSON.stringify(AdminMerca))
+                                // console.log(Admin);
+
+                                // MisArticulos.push();
+                                Modal.Close();
+                                
+                                this.Table.DrawTableComponent();
+                                if (Dato.idfactura == this.Facturas.idfactura) {
+                                    console.log(Dato);
+                
+                                    this.NuevaFactura.DetallVenta.push(Dato)
+                                    console.log("PRUEBAAAAAAAAAA", this.NuevaFactura.DetallVenta);
+                
+                                    console.log("DATOS CALCULADOS");
+                                    this.NuevaFactura.DetallVenta.splice(
+                                        this.NuevaFactura.DetallVenta.indexOf(Dato), 1);
+                                    this.Total.splice(this.NuevaFactura.DetallVenta.indexOf(Dato.totalventa), 1);
+                                    console.log("TOTAL SPLICE");
+
+                                    console.log(this.Total);
+                                    this.Total.push(Dato.precioventa * Dato.cantidadventa) 
+                                    console.log("TOTAL TOTAL");
+
+                                    console.log(this.Total);
+
+                                    this.TotalSuma = this.Total.reduce((a, b) => Number(a) + Number(b), 0);
+                                    this.iva = this.TotalSuma * 0.15;
+                                    this.totalventa = this.TotalSuma + this.iva
+                                    // // ConvertirMedida.push(DetalleCompra.ConvertirMedida);
+                                    console.log(this.TotalSuma);
+                                    console.log(this.totalventa);
+                                    if (this.Table =! null) {
+                                        document.getElementById("Subtotal").innerHTML = this.TotalSuma;
+                                        document.getElementById("IVA").innerHTML = this.iva;
+                                        document.getElementById("Total").innerHTML = this.totalventa;
+                                        this.NuevaFactura.subtotalventa = this.TotalSuma
+                                        this.NuevaFactura.iva = this.iva
+                                        this.NuevaFactura.totalventa = this.totalventa
+                                    }
+                
+                                }
+                                return Dato.idfactura == this.Facturas.idfactura
+                            })
+                            
+                        )
+                        this.append(Modal)
+
+                    }},
+
+                {
                     name: "Remover",
                     action: async (Dato) => {
                         console.log(Dato);
@@ -170,6 +231,7 @@ class Agregar extends HTMLElement {
 
                             this.DetalleDevventa.AdminMercas.push(Dato)
                             console.log("este es el adminmercas", this.DetalleDevventa.AdminMercas);
+
                             this.DetalleDevventa.cantidad = this.DetalleDevventa.AdminMercas[0].cantidadventa
                             this.DetalleDevventa.idadmimercancias = this.DetalleDevventa.AdminMercas[0].idadmimercancias
                             // this.DetalleDevventa.AdminMercas[0].idadmimercancias= this.DetalleDevventa.idadmimercancias 
@@ -493,4 +555,4 @@ class Agregar extends HTMLElement {
     }
 }
 customElements.define('w-agregar', Agregar)
-export { Agregar };
+export { Agregar, DatoEdit };

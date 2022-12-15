@@ -37,6 +37,7 @@ window.onload = async () => {
 
                             Modal.Close();
                             Table.DrawTableComponent();
+                            window.location.reload()
 
                             console.log(Articulos);
 

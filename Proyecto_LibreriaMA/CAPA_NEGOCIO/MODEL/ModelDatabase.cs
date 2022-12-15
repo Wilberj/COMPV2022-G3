@@ -440,7 +440,6 @@ namespace CAPA_NEGOCIO.MODEL
         public int? idfactura { get; set; }
         public DateTime? Fechadevolucion { get; set; }
         public string? descripciondevolucion { get; set; }
-
         public List<DetalleDevolucionVenta>? DetalleDevventas { get; set; }
         public List<Factura>? Updateventa { get; set; }
         public List<DetalleFactura>? DetalleFacturas { get; set; }

@@ -148,7 +148,7 @@ class NewExistenciaBodega extends HTMLElement {
                         this.Nuevoexisbodega.existenciasarticulounidad = this.Nuevoexisbodega.existenciasarticulounidad - this.Nuevoexisbodega.NuevaMercancia.existenciasarticulounidad
                     }
                     
-                    const response = true
+                    const response = 
                         await AjaxTools.PostRequest("../api/AdminMercancia/UpdateAdministracionMercancias", this.Nuevoexisbodega,
                         await AjaxTools.PostRequest("../api/AdminMercancia/SaveAdministracionMercancias", this.Nuevoexisbodega.NuevaMercancia
                         ));

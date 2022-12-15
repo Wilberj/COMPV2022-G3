@@ -187,6 +187,8 @@ class ViewListArticuloVenta {
       this[prop] = props[prop];
      }
     }
+    nombremarca = { type: "text" };
+
     nombrearticulo = { type: "text" };
     descripcionarticulo = { type: "text"  };
     nombretamano = { type: "text"  };

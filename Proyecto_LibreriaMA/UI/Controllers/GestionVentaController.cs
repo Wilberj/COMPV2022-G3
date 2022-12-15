@@ -17,7 +17,6 @@ namespace UI.Controllers
         }
         [HttpPost]
 
-
         public Object ChargeArticulosVenta(ViewListArticuloVenta ent)
         {
             return ent.Get<ViewListArticuloVenta>();
@@ -49,6 +48,10 @@ namespace UI.Controllers
         public Object DevolucionVentaList(DevolucionVenta ent)
         {
             return ent.Get<DevolucionVenta>();
+        }
+        public Object ChargeVentaList(Factura ent)
+        {
+            return ent.Get<Factura>();
         }
     }
 }

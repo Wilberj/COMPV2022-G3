@@ -31,8 +31,8 @@ class Articulos {
     fechadeingreso = { type: "date" };
     color = { type: "text" };
     idcategoria = { type: "number", hidden: true };
-    idmarca = { type: "number", hidden: true  };
-    idmaterial = { type: "number", hidden: true   };
+    idmarca = { type: "number", hidden: true };
+    idmaterial = { type: "number", hidden: true };
 }
 export { Articulos }
 class ArticulosDanados {
@@ -168,7 +168,7 @@ class DatosUsuarios {
     telefonousuario = { type: "number" };
     email = { type: "text" };
     activo = { type: "checkbox" };
-    idroles = { type: "number"  };
+    idroles = { type: "number" };
 }
 export { DatosUsuarios }
 class DetalleCompraProductos {
@@ -190,16 +190,16 @@ class DetalleCompraProductos {
 export { DetalleCompraProductos }
 class Roles {
     constructor(props) {
-     for (const prop in props) {
-      this[prop] = props[prop];
-     }
+        for (const prop in props) {
+            this[prop] = props[prop];
+        }
     }
-    idroles = { type: "number" , primary: true  };
-    
-    descripcion = { type: "text"  };
-    
-   }
-   export{ Roles }
+    idroles = { type: "number", primary: true };
+
+    descripcion = { type: "text" };
+
+}
+export { Roles }
 class DetalleFactura {
     constructor(props) {
         for (const prop in props) {
@@ -221,6 +221,12 @@ class DetalleFactura {
     Unidad = { hidden: true };
     UnidadOrigen = { hidden: true };
     variable = { hidden: true };
+    iddetalledevolucion = { hidden: true };
+    iddevolucionventa = { hidden: true }
+    idadmimercancias = { hidden: true }
+    cantidad = { hidden: true }
+    cantidadadevolver = { hidden: true }
+
 }
 export { DetalleFactura }
 
@@ -243,7 +249,7 @@ class DetalleDevolucionVenta {
             this[prop] = props[prop];
         }
     }
-    iddetalledevolucion = { type: "number", primary: true };
+    iddetalledevolucion = { type: "number", primary: true, hidden: true };
     iddevolucionventa = { type: "number" };
     idadmimercancias = { type: "number" };
     cantidad = { type: "number" };
@@ -273,6 +279,9 @@ class DevolucionVenta {
     idfactura = { type: "number" };
     Fechadevolucion = { type: "date" };
     descripciondevolucion = { type: "text" };
+    DetalleDevventas = { type: "text", hidden: true };
+    Updateventa = { type: "text", hidden: true };
+    DetalleFacturas = { type: "text", hidden: true };
 
 }
 export { DevolucionVenta }
@@ -302,10 +311,10 @@ class Factura {
     idusuario = { type: "number" };
     //idestado = { type: "number" };
     descuentofactura = { type: "number" };
-    pagototal = { type: "number"};
+    pagototal = { type: "number" };
     cambio = { type: "number", hidden: true };
-    activo = { type: "checkbox",hidden:true };
-
+    activo = { type: "checkbox" };
+    DetallVenta = { hidden: true };
 }
 export { Factura }
 class Marca {

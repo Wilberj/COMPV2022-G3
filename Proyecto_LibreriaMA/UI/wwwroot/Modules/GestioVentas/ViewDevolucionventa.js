@@ -52,7 +52,7 @@ window.onload = async () => {
                             return;
                         }
                     }
-                    const response = true
+                    const response = 
                             await AjaxTools.PostRequest("../api/GestionVenta/SaveDevolucionventa",
                                NewDevolucionVenta
                             );
@@ -158,20 +158,7 @@ window.onload = async () => {
                                 console.log(Datosprueba);
                             }
                             return factura.idfactura == DetalleDev.idfactura
-                        }),
-                        Functions: [
-                            {
-                                name: "Remover",
-                                action: async (Dato) => {
-                                    console.log(Dato);
-                                    const Datof = Datosprueba.find((x) => x.iddetallefactura == Dato.iddetallefactura);
-                                    if (Datof != null) {
-                                        Datosprueba.splice(Datosprueba.indexOf(Datof), 1);
-                                        TableDetalle.DrawTableComponent(Datosprueba);
-                                    }
-                                },
-                            },
-                        ]
+                        })
 
                     });
                     console.log(Detalle);

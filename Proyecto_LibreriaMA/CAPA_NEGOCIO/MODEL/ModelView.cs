@@ -144,6 +144,8 @@ namespace CAPA_NEGOCIO.MODEL
     public class ViewGestionArticulos : EntityClass
     {
         public string? nombrearticulo { get; set; }
+        public string? nombremarca { get; set; }
+
         public string? nombretamano { get; set; }
         public string? descripcionarticulo { get; set; }
         public int? idtamano { get; set; }
