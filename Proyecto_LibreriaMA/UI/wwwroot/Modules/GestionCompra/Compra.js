@@ -44,28 +44,32 @@ window.onload = async () => {
         Functions: [    
             {
                 name: "Detalles", action: async (lol) => {
-                console.log(lol );
-                    const Modal = new ModalComponent()     
-                    AppMain.append(Render.Create({ id: "TabContainer" }));
-
-                    TabContainer.innerHTML = "";
-                    const TableDetalle = new TableComponent({
-                        ModelObject: new ViewDetalleDevolucion(),
-                        Dataset: Detalles.filter((compra) => {
-                            if (compra.idcompra == Detalles.idcompra) {
-                                console.log(Detalles);
-
-
-                            }
-                            return compra.idcompra == Detalles.idcompra
-                        })
-
-                    });
-                    console.log(Detalles);
-
-                    TabContainer.append(TableDetalle)
-                    
-                    AppMain.append(Modal);
+                    console.log("aaaa factura", lol );
+                        const Modal = new ModalComponent( new TableComponent(() => {
+                            
+                        }));
+                        AppMain.append(Render.Create({ id: "TabContainer" }));
+    
+                        TabContainer.innerHTML = "";
+                        const TableDetalle = new TableComponent({
+                            ModelObject: new ViewDetalleDevolucion(),
+                            Dataset: Detalles.filter((compra) => {
+                                if (compra.idcompra == lol.idcompra) {
+                                    console.log("todos detalles",Detalles);
+    
+    
+                                }
+                                return compra.idcompra == lol.idcompra
+                            })
+    
+                        });
+                        console.log("aaaa modal", Detalles);
+                        console.log("aaaa modal", Modal);
+                       
+                        console.log("iiii tsbledetslle", TableDetalle);
+    
+                        TabContainer.append(TableDetalle) 
+                    AppMain.append(Modal)
                     
     }}]
         //                    /***** */
