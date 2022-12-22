@@ -266,7 +266,10 @@ class DevolucionCompra {
     idcompra = { type: "number" };
     Fechadevolucioncompra = { type: "date" };
     descripciondevolucion = { type: "text" };
-
+    UpdateCompra = {hidden: true };
+    UpdateDetalleCompra = {hidden: true };
+    DetalleDevolucion = {hidden: true };
+    AdminMerca = {hidden: true };
 }
 export { DevolucionCompra }
 class DevolucionVenta {
