@@ -1,12 +1,11 @@
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
-import { DevolucionVenta } from "../../Model/DatabaseModel.js";
-import { ViewAdminMercancia } from "../../Model/ViewDatabaseModel.js";
+import { DevolucionCompra } from "../../Model/DatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js"
 
 window.onload = async () => {
     AppMain.append(Render.Create({
         tagName: "h1",
-    innerText: "Gestion devolucion de ventas", class: "header1" 
+    innerText: "Gestion devolucion de compras", class: "header1" 
     }));
     AppMain.append(Render.Create({
         class: "FormContainer2",
@@ -17,7 +16,7 @@ window.onload = async () => {
                 className: 'button_top',
                 value: 'Ingresar nueva devolucion', onclick: async () => {
                     //cargar vists
-                    window.location = "./ViewDevolucionVenta"
+                    window.location = "./ViewDevolucionCompra"
 
                 }
             }
@@ -26,10 +25,10 @@ window.onload = async () => {
     }))
     //esta vista es de lo de adminstracion ..se podria cambiar luego vemos
     const MisArticulos =
-     await AjaxTools.PostRequest("../api/GestionVenta/DevolucionVentaList");
+     await AjaxTools.PostRequest("../api/GestionCompra/ChargeDevCompra");
     AppMain.append(new TableComponent({
         Dataset: MisArticulos, 
-        ModelObject: new DevolucionVenta(
+        ModelObject: new DevolucionCompra(
         ),
         // Functions: [    
         //     {

@@ -25,9 +25,9 @@ window.onload = async () => {
             {
                 tagName: 'input', type: 'button',
                 className: 'button_top',
-                value: 'Ingresar devolucion', onclick: async () => {
+                value: 'Gestion devolucion', onclick: async () => {
                     //cargar vists
-                    window.location = "./ViewDevolucionCompra"
+                    window.location = "./ViewDevolucionList"
                 }
             }
         ]
