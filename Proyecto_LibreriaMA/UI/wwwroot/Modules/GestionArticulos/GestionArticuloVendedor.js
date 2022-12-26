@@ -1,6 +1,6 @@
 import { ModalComponent } from "../../CoreComponents/ModalComponent.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
-import { ViewGestionArticulos } from "../../Model/ViewDatabaseModel.js";
+import { ViewAdminMercancia, ViewGestionArticulos } from "../../Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js";
 import { ViewCrearArticulo } from "./ViewCrearArticulo.js";
 
@@ -11,13 +11,13 @@ window.onload = async () => {
     })
     );
 
-    const Articulos =
-        await AjaxTools.PostRequest("../api/AdminMercancia/ChargeArticulos")
+    const MisArticulos =
+        await AjaxTools.PostRequest("../../api/GestionCompra/AdminMercancia")
 
 
-    const Table = new TableComponent({
-        Dataset: Articulos,
-        ModelObject: new ViewGestionArticulos()
+        const Table = new TableComponent({
+            Dataset: MisArticulos,
+            ModelObject: new ViewAdminMercancia()
     })
     AppMain.append(Render.Create({
         class: "FormContainer2",

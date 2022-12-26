@@ -25,7 +25,7 @@ window.onload = async () => {
     }))
     //esta vista es de lo de adminstracion ..se podria cambiar luego vemos
     const MisArticulos =
-     await AjaxTools.PostRequest("../api/GestionCompra/ChargeDevCompra");
+     await AjaxTools.PostRequest("../api/GestionCompra/DevCompraList");
     AppMain.append(new TableComponent({
         Dataset: MisArticulos, 
         ModelObject: new DevolucionCompra(
