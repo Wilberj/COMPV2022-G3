@@ -187,15 +187,20 @@ class ViewListArticuloVenta {
       this[prop] = props[prop];
      }
     }
-    nombremarca = { type: "text" };
-
     nombrearticulo = { type: "text" };
-    descripcionarticulo = { type: "text"  };
     nombretamano = { type: "text"  };
-    idtamano = { type: "number", hidden:true };
-    idarticulo = { type: "number", hidden:true };
-    idtamanoxarticulo = { type: "number", hidden:true };
-    
+    descripcionarticulo = { type: "text"  };
+    idtamano = { type: "number" ,hidden:true };
+    idarticulo = { type: "number"  };
+    idtamanoxarticulo = { type: "number",hidden:true  };
+    nombremarca = { type: "text"  };
+    activo = { type: "checkbox"  };
+    fechadeingreso = { type: "date",hidden:true  };
+    color = { type: "text" };
+    idcategoria = { type: "number",hidden:true  };
+    idmarca = { type: "number",hidden:true  };
+    idmaterial = { type: "number",hidden:true };
+ 
    }
    export{ViewGestionArticulos}
    class ViewGestionUsuarios {

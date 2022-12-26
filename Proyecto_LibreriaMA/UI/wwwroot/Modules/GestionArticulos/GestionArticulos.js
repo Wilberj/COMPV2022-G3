@@ -2,9 +2,14 @@ import { ModalComponent } from "../../CoreComponents/ModalComponent.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
 import { ViewGestionArticulos } from "../../Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js";
+import { Updatearticulo} from "./Updatearticulo.js";
 import { ViewCrearArticulo } from "./ViewCrearArticulo.js";
 
 
+
+class Artiedit{
+    ArtiUpdate
+}
 window.onload = async () => {
     AppMain.append(Render.Create({
         tagName: "h1",
@@ -18,7 +23,24 @@ window.onload = async () => {
 
     const Table = new TableComponent({
         Dataset: Articulos,
-        ModelObject: new ViewGestionArticulos()
+        ModelObject: new ViewGestionArticulos(),
+        Functions:[
+            {
+                name: "Editar", action: async (ArtiUpdate) => {
+                    Artiedit = ArtiUpdate
+                    console.log("eyyartiedit",Artiedit);
+                    console.log("wyyarticulos",Articulos);
+                    const Modal = new ModalComponent(
+                       new Updatearticulo(()=>{
+                        Articulos.push();
+                        Modal.Close();
+                        Table.DrawTableComponent();
+                       })
+                    )
+                    AppMain.append(Modal)
+                }   
+            }
+        ]
     })
     AppMain.append(Render.Create({
         class: "FormContainer2",
@@ -63,3 +85,4 @@ window.onload = async () => {
     AppMain.append(Table)
 
 }
+export {Artiedit}

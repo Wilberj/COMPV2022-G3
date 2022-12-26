@@ -143,14 +143,21 @@ namespace CAPA_NEGOCIO.MODEL
     }
     public class ViewGestionArticulos : EntityClass
     {
-        public string? nombrearticulo { get; set; }
-        public string? nombremarca { get; set; }
-
-        public string? nombretamano { get; set; }
-        public string? descripcionarticulo { get; set; }
-        public int? idtamano { get; set; }
         public int? idarticulo { get; set; }
+        public string? nombrearticulo { get; set; }
+        public string? descripcionarticulo { get; set; }
+        public string? nombretamano { get; set; }
+     
+        public int? idtamano { get; set; }
         public int? idtamanoxarticulo { get; set; }
+        public string? nombremarca { get; set; }
+        public string? color { get; set; }
+        public bool? activo { get; set; }
+        public DateTime? fechadeingreso { get; set; }
+        public int? idcategoria { get; set; }
+        public int? idmarca { get; set; }
+        public int? idmaterial { get; set; }
+
     }
     public class ViewGestionUsuarios : EntityClass
     {
