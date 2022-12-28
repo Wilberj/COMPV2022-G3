@@ -3,8 +3,11 @@ import { ModalComponent } from "../../CoreComponents/ModalComponent.js";
 import { ViewArticuloCompra, ViewCompra, ViewDetalleDevolucion, ViewDevolucionCompra } from "../../Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js";
 import { DetalleCompraProductos } from "../../Model/DatabaseModel.js";
+import { TableDetalleCompra } from "./Components/TableDetalle.js";
 
+class lolito {
 
+}
 window.onload = async () => {
     // const Detalle = await AjaxTools.PostRequest("../api/GestionCompra/ChargeArticulos");
     AppMain.append(Render.Create({ tagName: "h1",
@@ -35,7 +38,7 @@ window.onload = async () => {
     // const MisArticulos =
     //     await AjaxTools.PostRequest("../api/GestionCompra/MisArticulos")
     const Detalle = await AjaxTools.PostRequest("../api/GestionCompra/ChargeDevCompra");
-    const Detalles = await AjaxTools.PostRequest("../api/GestionCompra/ChargeDetalleCompra");
+    // const Detalles = await AjaxTools.PostRequest("../api/GestionCompra/ChargeDetalleCompra");
     AppMain.append(new TableComponent({
         Dataset: Detalle, 
         ModelObject: new ViewDevolucionCompra(
@@ -44,31 +47,14 @@ window.onload = async () => {
         Functions: [    
             {
                 name: "Detalles", action: async (lol) => {
+                    lolito = lol
                     console.log("aaaa factura", lol );
-                        const Modal = new ModalComponent( new TableComponent(() => {
-                            
-                        }));
-                        AppMain.append(Render.Create({ id: "TabContainer" }));
-    
-                        TabContainer.innerHTML = "";
-                        const TableDetalle = new TableComponent({
-                            ModelObject: new ViewDetalleDevolucion(),
-                            Dataset: Detalles.filter((compra) => {
-                                if (compra.idcompra == lol.idcompra) {
-                                    console.log("todos detalles",Detalles);
-    
-    
-                                }
-                                return compra.idcompra == lol.idcompra
-                            })
-    
-                        });
-                        console.log("aaaa modal", Detalles);
-                        console.log("aaaa modal", Modal);
-                       
-                        console.log("iiii tsbledetslle", TableDetalle);
-    
-                        TabContainer.append(TableDetalle) 
+                    
+                        const Modal = new ModalComponent( 
+
+                            new TableDetalleCompra()
+                        );
+                        
                     AppMain.append(Modal)
                     
     }}]
@@ -100,3 +86,4 @@ window.onload = async () => {
         // ]
     }))    
 }
+export { lolito };
