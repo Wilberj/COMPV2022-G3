@@ -7,6 +7,7 @@ import { AjaxTools, Render } from "../utility.js";
 import { AgregarArticuloCompra } from "./Components/AgregarArticuloCompra.js";
 import { AgregarDetalleCompra } from "./Components/AgregarDetalle.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
+import { ModalComponentFactura } from "../../CoreComponents/ModalComponenttwo.js";
 
 // class TotalSuma {insaast = 0}
 
@@ -56,7 +57,7 @@ window.onload = async () => {
                     // }
 
                     const response =
-                        await AjaxTools.PostRequest("../api/GestionCompra/SaveCompra",
+                      await AjaxTools.PostRequest("../api/GestionCompra/SaveCompra",
                             NuevaCompra,
 
                             // Total.forEach(function (tot) {
@@ -69,9 +70,9 @@ window.onload = async () => {
                         );
                     if (response == true) {
                         AppMain.append(
-                            new ModalComponent(
+                            new ModalComponentFactura(
                                 Render.Create({
-                                    tagName: "h1",
+                                    tagName: "h5",
                                     innerText: "Compra Guardada",
                                 }),
                                
