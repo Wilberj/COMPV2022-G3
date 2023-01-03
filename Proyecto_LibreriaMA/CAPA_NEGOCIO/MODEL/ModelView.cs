@@ -173,5 +173,35 @@ namespace CAPA_NEGOCIO.MODEL
         public int? idroles { get; set; }
         public bool? activo { get; set; }
     }
+    public class ViewDevolucionesCompras : EntityClass
+    {
+        public int? iddevolucioncompra { get; set; }
+        public int? idproveedor { get; set; }
+        public string? Fechadevolucioncompra { get; set; }
+        public string? descripciondevolucion { get; set; }
+        public int? idcompra { get; set; }
+        public string? nombreproveedor { get; set; }
+    }
+    public class Viewdevoldetallecompra : EntityClass
+    {
+        // public int? iddetalledevolucioncompra { get; set; }
+      
+        public int? iddevolucioncompra { get; set; }
+        public int? idcompra { get; set; }
+      public int? iddetallecompra { get; set; }
+        public string? nombrearticulo { get; set; }
+        public Decimal? preciocompra { get; set; }
+        public Decimal? cantidadcompra { get; set; }
+
+    }
+    public class Viewbackcompra : EntityClass
+    {
+        public int? iddetallecompra { get; set; }
+        public int? idcompra { get; set; }
+        public int? idarticulo { get; set; }
+        public Decimal? preciocompra { get; set; }
+        public Decimal? cantidadcompra { get; set; }
+        public string? nombrearticulo { get; set; }
+    }
 
 }

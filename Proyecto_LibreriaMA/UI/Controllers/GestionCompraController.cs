@@ -68,7 +68,21 @@ namespace UI.Controllers
 
             return ent.Get<DevolucionCompra>();
         }
+        public Object Devolcompra(ViewDevolucionesCompras ent)
+        {
 
+            return ent.Get<ViewDevolucionesCompras>();
+        }
+        public Object DevolDetallecompra(Viewdevoldetallecompra ent)
+        {
+
+            return ent.Get<Viewdevoldetallecompra>();
+        }
+        public Object Backdevolcompra(Viewbackcompra ent)
+        {
+
+            return ent.Get<Viewbackcompra>();
+        }
         //  public Object GetAdministracionMercancias(AdministracionMercancias ent)
         // {
         //     return ent.Get<AdministracionMercancias>();

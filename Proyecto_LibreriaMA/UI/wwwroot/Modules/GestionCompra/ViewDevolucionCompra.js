@@ -8,7 +8,7 @@ import { AgregarDetalleCompra } from "./Components/AgregarDetalle.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
 import { AgregarCompraDevolucion } from "./Components/AgregarCompraDevolucion.js";
 import { AgregarDetallDevolucion } from "./Components/AgregarDetalleDevolucion.js";
-import { ViewAdminMercancia, ViewArticuloCompra, ViewDetalleDevolucion } from "../../Model/ViewDatabaseModel.js";
+import { ViewAdminMercancia, ViewArticuloCompra, Viewbackcompra, ViewDetalleDevolucion } from "../../Model/ViewDatabaseModel.js";
 import { AgregarAdminDetalleDevCompra } from "./Components/AgregarAdminDetalleDevCompra.js";
 
 class Identificador {
@@ -16,7 +16,8 @@ class Identificador {
 }
 
 window.onload = async () => {
-    const Detalle = await AjaxTools.PostRequest("../api/GestionCompra/ChargeDetalleDevCompra");
+    //para cuando se agrega los detalles en la devolucion la anterior se repetia los  datos y no era la bd
+    const Detalle = await AjaxTools.PostRequest("../api/GestionCompra/Backdevolcompra");
 
     const Dataset = [];
     const DetalleDevolucion = [];
@@ -137,15 +138,15 @@ window.onload = async () => {
 
                         TabContainer.innerHTML = "";
                         const TableDetalle = new TableComponent({
-                            ModelObject: new ViewDetalleDevolucion(),
+                            ModelObject: new Viewbackcompra(),
                             Dataset: Detalle.filter((compra) => {
                                 compra.activo = false
                                 if (compra.idcompra == DetalleDev.idcompra) {
-                                    console.log(compra);
+                                    console.log(compra);//este es el que trae el articulo
     
                                     Dataset.push(compra)
                                     console.log(Dataset);
-                                    console.log(Dataset);
+                                   // console.log(Dataset);
                                 }
                                 return compra.idcompra == DetalleDev.idcompra
                             })

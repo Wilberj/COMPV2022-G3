@@ -1,7 +1,14 @@
+import { ModalComponent } from "../../CoreComponents/ModalComponent.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
 import { DevolucionCompra } from "../../Model/DatabaseModel.js";
+import { ViewDevolucionesCompras } from "../../Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js"
+import { TableDevolCompra } from "./Components/TableDevolCompra.js";
 
+
+class devolvito{
+
+}
 window.onload = async () => {
     AppMain.append(Render.Create({
         tagName: "h1",
@@ -25,17 +32,25 @@ window.onload = async () => {
     }))
     //esta vista es de lo de adminstracion ..se podria cambiar luego vemos
     const MisArticulos =
-     await AjaxTools.PostRequest("../api/GestionCompra/DevCompraList");
+     await AjaxTools.PostRequest("../api/GestionCompra/Devolcompra");
     AppMain.append(new TableComponent({
         Dataset: MisArticulos, 
-        ModelObject: new DevolucionCompra(
+        ModelObject: new ViewDevolucionesCompras(
         ),
-        // Functions: [    
-        //     {
-        //         name: "Detalles", action: async(Articulos) =>{
-        //             //Cargar detalle
-        //         }
-        //     }
-        // ]
+        Functions: [    
+            {
+                name: "Detalles", action: async(detalledevol) =>{
+                    //Cargar detalle
+                    devolvito = detalledevol
+                    console.log("detalle Escogido", detalledevol);
+
+                    const Modal = new ModalComponent(
+                        new TableDevolCompra()
+                    );
+                    AppMain.append(Modal)
+                }
+            }
+        ]
     }))    
 }
+export {devolvito}

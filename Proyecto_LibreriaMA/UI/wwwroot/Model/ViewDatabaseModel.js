@@ -119,8 +119,8 @@ class ViewDetalleDevolucion {
     nombrearticulo = { type: "text" };
     preciocompra = { type: "number" };
     cantidadcompra = { type: "number" };
-    idcompra = { type: "number", hidden: true };
-    iddetallecompra = { type: "number", hidden: true };
+    idcompra = { type: "number",hidden:true};
+    iddetallecompra = { type: "number",hidden:true};
     preciocompraunidad = { type: "number", hidden: true };
     existenciasarticuloorigen = { type: "number", hidden: true };
     existenciasarticulounidad = { type: "number" , hidden: true };
@@ -223,3 +223,50 @@ class ViewListArticuloVenta {
     activo = { type: "checkbox"  };
    }
    export{ViewGestionUsuarios}
+
+   class ViewDevolucionesCompras {
+    constructor(props) {
+     for (const prop in props) {
+      this[prop] = props[prop];
+     }
+    }
+    iddevolucioncompra = { type: "number"};
+    idproveedor = { type: "number"  };
+    Fechadevolucioncompra = { type: "text"  };
+    descripciondevolucion = { type: "text"  };
+    idcompra = { type: "number"  };
+    nombreproveedor = { type: "text"  };
+   }
+   export{ViewDevolucionesCompras}
+   class Viewdevoldetallecompra {
+    constructor(props) {
+     for (const prop in props) {
+      this[prop] = props[prop];
+     }
+    }
+    //iddetalledevolucioncompra = { type: "number",};
+    iddetallecompra = { type: "number"};
+    iddevolucioncompra = { type: "number"  };
+    idcompra = { type: "number" };
+   iddetallecompra = { type: "number",hidden:true  };
+   preciocompra = { type: "number"  };
+    nombrearticulo = { type: "text"  };
+    cantidadcompra = { type: "number"  };
+    
+   }
+   export{Viewdevoldetallecompra}
+   class Viewbackcompra {
+    constructor(props) {
+     for (const prop in props) {
+      this[prop] = props[prop];
+     }
+    }
+    iddetallecompra = { type: "number"};
+    idcompra = { type: "number"  };
+    idarticulo = { type: "number"  };
+    preciocompra = { type: "number"  };
+    cantidadcompra = { type: "number"  };
+    nombrearticulo = { type: "text"  };
+    
+   }
+   export{Viewbackcompra}
