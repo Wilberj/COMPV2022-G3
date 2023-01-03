@@ -1,7 +1,12 @@
+import { ModalComponent } from "../../CoreComponents/ModalComponent.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
 import { DevolucionVenta } from "../../Model/DatabaseModel.js";
 import { ViewAdminMercancia } from "../../Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js"
+import { TableDetalleDevoVenta } from "./Components/TableDetalle.js";
+class DetalleDevoVenta{
+
+}
 
 window.onload = async () => {
     AppMain.append(Render.Create({
@@ -31,12 +36,20 @@ window.onload = async () => {
         Dataset: MisArticulos, 
         ModelObject: new DevolucionVenta(
         ),
-        // Functions: [    
-        //     {
-        //         name: "Detalles", action: async(Articulos) =>{
-        //             //Cargar detalle
-        //         }
-        //     }
-        // ]
+        Functions: [    
+            {
+                name: "Detalles", action: async (detalle) => {
+                    DetalleDevoVenta = detalle
+                    console.log("aaaa factura", detalle );
+                    
+                        const Modal = new ModalComponent( 
+
+                            new TableDetalleDevoVenta()
+                        );
+                        
+                    AppMain.append(Modal)
+                    
+    }}]
     }))    
 }
+export {DetalleDevoVenta}

@@ -172,7 +172,7 @@ class Agregar extends HTMLElement {
                                 // MisArticulos.push();
                                 Modal.Close();
                                 
-                                this.Table.DrawTableComponent();
+                                this.Table.DrawTableComponent(this.NuevaFactura.DetallVenta);
                                 if (Dato.idfactura == this.Facturas.idfactura) {
                                     console.log(Dato);
                 
@@ -268,11 +268,15 @@ class Agregar extends HTMLElement {
                             // const Datof = this.Detalles.find((x) => x.iddetallefactura == Dato.iddetallefactura);
                             console.log("AQUI VAN LOS DETALLESSS", this.NuevaFactura.DetallVenta);
                             if (Datof != null) {
+                                console.log("AQUI VAN LOS DETALLESSS antes",this.Detalles);
+
                                 this.Detalles.splice(this.Detalles.indexOf(Datof), 1);
+                                console.log("AQUI VAN LOS DETALLESSS despuesd",this.Detalles);
+
                                 // this.NuevaFactura.DetallVenta.splice(this.NuevaFactura.DetallVenta.indexOf(Datof), 1);
                                 this.Table.DrawTableComponent(this.Detalles);
+
                             }
-                            console.log(this.Detalles);
                         } else {
                             return;
                             //this.Table.DrawTableComponent(this.Detalles);

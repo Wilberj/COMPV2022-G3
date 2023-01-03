@@ -53,5 +53,9 @@ namespace UI.Controllers
         {
             return ent.Get<Factura>();
         }
+        public Object ChargeDevoVentaList(ViewDevolDetalleVenta ent)
+        {
+            return ent.Get<ViewDevolDetalleVenta>();
+        }
     }
 }
