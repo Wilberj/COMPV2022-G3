@@ -1,6 +1,6 @@
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
 import { ModalComponent } from "../../CoreComponents/ModalComponent.js";
-import { ViewArticuloCompra, ViewCompra, ViewDetalleDevolucion, ViewDevolucionCompra } from "../../Model/ViewDatabaseModel.js";
+import { ViewArticuloCompra, ViewCompra, ViewDetalleDevolucion, ViewDevolucionCompra, ViewDevolucionComprac } from "../../Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js";
 import { DetalleCompraProductos } from "../../Model/DatabaseModel.js";
 import { TableDetalleCompra } from "./Components/TableDetalle.js";
@@ -41,7 +41,7 @@ window.onload = async () => {
     // const Detalles = await AjaxTools.PostRequest("../api/GestionCompra/ChargeDetalleCompra");
     AppMain.append(new TableComponent({
         Dataset: Detalle, 
-        ModelObject: new ViewDevolucionCompra(
+        ModelObject: new ViewDevolucionComprac(
         ),
 
         Functions: [    

@@ -287,3 +287,86 @@ class ViewDevolDetalleVenta {
 
 }
 export { ViewDevolDetalleVenta }
+
+class ViewDevolucionComprac {
+    constructor(props) {
+        for (const prop in props) {
+            this[prop] = props[prop];
+        }
+    }
+    nombreproveedor = { type: "text" };
+    nombreusuario = { type: "text" };
+    fechacompra = { type: "date" };
+    idcompra = { type: "number" };
+    idproveedor = { type: "number", hidden: true };
+    activo = { type: "checkbox" };
+
+}
+export { ViewDevolucionComprac }
+
+class VerDetalleCompra {
+    constructor(props) {
+        for (const prop in props) {
+            this[prop] = props[prop];
+        }
+    }
+    nombrearticulo = { type: "text"};
+    Unidades = { type: "text", hidden: true };
+    Articulos = { type: "text", hidden: true };
+    ConvertMedida = { type: "text", hidden: true };
+    Tamanos = { type: "text", hidden: true };
+    AdminMercanciaComp = { type: "text", hidden: true };
+    activo = { type: "text", hidden: true };
+    idarticulo = { type: "number"};
+    preciocompra = { type: "number" };
+    cantidadcompra = { type: "number" };
+    idcompra = { type: "number"};
+    iddetallecompra = { type: "number"};
+    preciocompraunidad = { type: "number", hidden: true };
+    descuentocompra = { type: "number", hidden: true };
+    existenciasarticuloorigen = { type: "number", hidden: true };
+    existenciasarticulounidad = { type: "number" , hidden: true };
+
+}
+export { VerDetalleCompra }
+
+class VerDetalleVenta {
+    constructor(props) {
+        for (const prop in props) {
+            this[prop] = props[prop];
+        }
+    }
+    nombrearticulo = { type: "text"};
+    idadmimercancias = { type: "text", hidden: true };
+    idtamanoxarticulo = { type: "text", hidden: true };
+    ConvertMedida = { type: "text", hidden: true };
+    AdminMercanciaComp = { type: "text", hidden: true };
+    activo = { type: "text", hidden: true };
+    idarticulo = { type: "number"};
+    precioventa = { type: "number" };
+    cantidadventa = { type: "number" };
+    idfactura = { type: "number" };
+    iddetallefactura = { type: "number"};
+    preciocompraunidad = { type: "number", hidden: true };
+    existenciasarticuloorigen = { type: "number", hidden: true };
+    existenciasarticulounidad = { type: "number" , hidden: true };
+
+}
+export { VerDetalleVenta }
+
+
+   class viewdevolventav {
+    constructor(props) {
+     for (const prop in props) {
+      this[prop] = props[prop];
+     }
+    }
+    idfactura = { type: "number" };
+    fechafactura = { type: "date"  };
+    nombrecliente = { type: "text"  };
+    idusuario = { type: "number", hidden: true };
+    nombreusuario = { type: "text"  };
+    activo = { type: "checkbox" };
+
+   }
+   export{viewdevolventav}
