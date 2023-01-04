@@ -222,8 +222,8 @@ body {
 }
 .AppMain section{
    
-    height: 50vh;
-    margin: 5%;
+    /* height: 50vh;
+    margin: 5%; */
     display: flex;
     justify-content: center;
     align-items: center;
