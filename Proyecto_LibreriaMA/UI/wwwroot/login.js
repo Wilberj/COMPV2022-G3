@@ -15,10 +15,8 @@ window.onload = async () => {
           </head>
           
           <body>
-          <div id="title" class="Divtitulo">
-           <h4 class="titulo1">Bienvenido</h4>
-          <h4 class="titulo1">Libreria Maria Auxiliadora</h4>
-         
+          <div class="divlogo">
+           <img src="../image/logoLM.png" class="logo">         
             </div>
           </body>
             </html>

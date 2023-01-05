@@ -22,7 +22,7 @@ body {
 }
 label {
   font-family: "Raleway", sans-serif;
-  font-size: 11pt;
+  font-size: 14pt;
 }
 #forgot-pass {
   color: #2dbd6e;
@@ -35,25 +35,27 @@ label {
   background: #fbfbfb;
   border-radius: 8px;
   box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
-  height: 440px;
+  height: 600px;
   margin: 6rem auto 8.1rem auto;
-  width: 360px;
+  width: 490px;
 }
 #card-content {
-  padding: 12px 44px;
+  padding: 20px 34px;
 }
 #title {
   text-align: center;
   color:  #ffffff;
-  font-size: 70px;
+  font-size: 65px;
   font-family: "Raleway Thin", sans-serif;
 }
 #card-title {
   font-family: "Raleway Thin", sans-serif;
   letter-spacing: 4px;
-  padding-bottom: 23px;
+  padding-bottom: 75px;
   padding-top: 13px;
   text-align: center;
+  font-size: 25px;
+
 }
 #signup {
   color: #2dbd6e;
@@ -70,11 +72,12 @@ label {
   cursor: pointer;
   color: white;
   font-family: "Raleway SemiBold", sans-serif;
-  height: 42.3px;
+  height: 47px;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 60px;
   transition: 0.25s;
-  width: 180px;
+  width: 216px;
+  font-size: 16px;
 }
 #submit-btn:hover {
   box-shadow: 0px 1px 18px #ff89ac;
@@ -86,14 +89,15 @@ label {
 }
 .form-border {
   background: -webkit-linear-gradient(right,#d6104b,#cbad6d);
-  height: 1px;
+  height: 2px;
   width: 100%;
 }
 .form-content {
   background: #fbfbfb;
   border: none;
   outline: none;
-  padding-top: 14px;
+  padding-top: 16px;
+  font-size: 16px;
 }
 .underline-title {
   background: -webkit-linear-gradient(right,#d6104b,#f1ce80);
