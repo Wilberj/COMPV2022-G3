@@ -255,3 +255,44 @@ f-modal {
       left: 25%;
       color:black;
  }
+ /***********MODALREFACTURA**********/
+ w-modalrefact {
+    overflow-y: scroll;
+
+    opacity: 0;
+    transition: all 1s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+w-modalrefact .ModalContentrefact {
+    width: 80%;
+    top: 5%;
+    max-width: 2000px;
+    background-color: var(--color-main);
+    border-radius: 0.4cm;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+w-modalrefact .ModalHeaderrefact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+w-modalrefact .ModalHeaderrefact label {
+    font-size: 24px;
+    font-weight: bold;
+}
+.ModalContentComponentrefact{
+    padding: 15px;
+}

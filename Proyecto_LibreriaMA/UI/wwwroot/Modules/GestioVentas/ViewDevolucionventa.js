@@ -7,6 +7,7 @@ import { TableComponent } from "../../CoreComponents/TableComponent.js";
 import { viewDetalleDevolucionVenta, viewdevolventa } from "../../Model/ViewDatabaseModel.js";
 import { AgregarVentaDevolucion } from "./Components/AgregarVentaDevolucion.js";
 import { Agregar } from "./ModalViewRefactura.js";
+import { ModalComponentrefact } from "../../CoreComponents/ModalComponentRefactura.js";
 
 class IdentificadorFactura {
     id;
@@ -62,14 +63,14 @@ window.onload = async () => {
                             new ModalComponent(
                                 Render.Create({
                                     tagName: "h1",
-                                    innerText: "Devolucion ",
+                                    innerText: "Devolucion",
                                     children: [
                                         {
                                             tagName: 'input', type: 'button',
                                             className: 'button_refactura',
                                             value: 'Refactura', onclick: async () => {
 
-                                                const Modal = new ModalComponent
+                                                const Modal = new ModalComponentrefact
 
                                                     (new Agregar((articulo) => {
                                                         

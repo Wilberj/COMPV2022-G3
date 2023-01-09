@@ -81,7 +81,7 @@
     letter-spacing: 2.5px;
     font-weight: 500;
     color: rgb(255, 255, 255);
-    background-color: #e91555;
+    background-color: #1f1f38; 
     border: none;
     border-radius: 45px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -91,8 +91,8 @@
   }
   
 .button_top:hover {
-  background-color: #ff4d82;
-  box-shadow: 0px 15px 20px #ffb0c8;
+  background-color: #4db5ff;
+  box-shadow: 0px 15px 20px #5f5f98;
     color: #fff;
     transform: translateY(-7px);
   }
@@ -108,7 +108,7 @@
     letter-spacing: 2.5px;
     font-weight: 500;
     color: rgb(255, 255, 255);
-    background-color: #e91555;
+    background-color: #4db5ff;
     border: none;
     border-radius: 45px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -118,11 +118,10 @@
   }
   
 .button_topp:hover {
-  background-color: #ff4d82;
-  box-shadow: 0px 15px 20px #ffb0c8;
+  background-color: #3588c3;
+  box-shadow: 0px 15px 20px #5f5f98;
     color: #fff;
-    transform: translateY(-7px);
-  }
+    transform: translateY(-7px);}
   
 .button_topp:active {
     transform: translateY(-1px);
@@ -137,7 +136,7 @@
   letter-spacing: 2.5px;
   font-weight: 500;
   color: rgb(255, 255, 255);
-  background-color: #e91555;
+  background-color: #4db5ff;
   border: none;
   border-radius: 45px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -147,10 +146,10 @@
 }
 
 .button_refactura:hover {
-background-color: #ff4d82;
-box-shadow: 0px 15px 20px #ffb0c8;
-  color: #fff;
-  transform: translateY(-7px);
+  background-color: #3588c3;
+  box-shadow: 0px 15px 20px #5f5f98;
+    color: #fff;
+    transform: translateY(-7px);
 }
 
 .button_refactura:active {
@@ -168,7 +167,7 @@ box-shadow: 0px 15px 20px #ffb0c8;
     align-items: center;
     font-size: 18px;
     cursor: pointer;
-    background-color: #e91555;
+    background-color: #4db5ff;
     color: #fff;
     border: none;
     border-radius: 45px;
@@ -178,9 +177,9 @@ box-shadow: 0px 15px 20px #ffb0c8;
    .btnagregar:hover {
     border-radius: 45px;
     transform: translateY(-10px);
-    box-shadow: 0 7px 0 -2px #e73d70,
-    0 15px 0 -4px #ff7aa2,
-    0 16px 10px -3px #c92b5a;
+    box-shadow: 0 7px 0 -2px #3588c3,
+    0 15px 0 -4px #4db5ff,
+    0 16px 10px -3px #3588c3;
    }
    
    /* .btnagregar:active {
@@ -227,7 +226,7 @@ box-shadow: 0px 15px 20px #ffb0c8;
     --c: #fff;
    /* text color */
     background: linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p,100%)/300% no-repeat,
-    #e91555;
+    #1f1f38;
    /* background color */
     color: #0000;
     border: none;
@@ -264,7 +263,7 @@ box-shadow: 0px 15px 20px #ffb0c8;
   .btncerrarsesion{
     --c: #fff;
     /* text color */
-     background-color:rgb(29, 157, 216);
+     background-color:#4db5ff;
     /* background color */
      color: #0000;
      border: none;
@@ -380,5 +379,5 @@ box-shadow: 0px 15px 20px #ffb0c8;
     transition: all 0.5s;
 }
 .TabMenu label:hover{
-  color: #d6104b;
+  color: #4db5ff;
 }

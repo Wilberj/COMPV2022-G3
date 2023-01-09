@@ -25,14 +25,14 @@ body {
 
 .header, .nav1 {
     /*esto modifique*/
-    background-color: #03f7ff;
-    color: rgb(100, 98, 98);
+    background-color: #1f1f38;
+    color: rgb(255, 255, 255);
     font-size: 18px;
     font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid white;
+    border: 1px solid black;
     box-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.5);
 }
 
@@ -43,20 +43,20 @@ body {
 
 .AppAside {
     /*esto modifique*/
-    background-color: #03f7ff;
+    background-color: #1f1f38;
     height: 100%;
     /*border: 4px solid rgb(255, 255, 255);
    /* height: 100%;*/
 }
 .AppAside i{
-    color: rgb(100, 98, 98);
+    color: rgb(255, 255, 255);
     font-size: 20px;
    
 }
 
 
 .nav__link{
-    color: rgb(100, 98, 98);
+    color: rgb(255, 255, 255);
     display: block;
     padding: 15px 0;
     text-decoration: none;
@@ -90,7 +90,7 @@ body {
    
 }
 .list-item:hover{
-    background: rgba(255, 255,0,0.20);
+    background: #4db5ff;
     border-bottom: 2px solid white;
 }
 
@@ -160,7 +160,7 @@ body {
   .logo{
     width: 750px;
     margin-left: 480px;
-   
+
   }
 /*
 .nav2 li a {
