@@ -4,6 +4,7 @@ import { DetalleFactura, Factura } from "../../Model/DatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
 import { AgregarDetalleVenta } from "./AgregarDetalleVenta.js";
+import { ModalComponentventa } from "../../CoreComponents/ModalComponentFactura.js";
 
 
 window.onload = async () => {
@@ -62,22 +63,22 @@ window.onload = async () => {
                     }
 
                     console.log(NuevaFactura);
-                    const response =
-                        await AjaxTools.PostRequest("../api/GestionVenta/SaveFactura",
-                            NuevaFactura,
+                   // const response =
+                 //       //await AjaxTools.PostRequest("../api/GestionVenta/SaveFactura",
+                          //  NuevaFactura,
 
 
-                        );
-                    if (response == true) {
+                      //  );
+                    //if (response == true) {
                         AppMain.append(
-                            new ModalComponent(
+                            new ModalComponentventa(
                                 Render.Create({
-                                    tagName: "h1",
+                                    tagName: "h5",
                                     innerText: "Factura Realizada",
                                     children: [
                                         {
                                             tagName: 'input', type: 'button',
-                                            className: 'btn_quinto',
+                                            className: 'botonventa1',
                                             value: 'Generar Factura', onclick: async () => {
                                                 window.location = "./viewFactura1"
 
@@ -91,7 +92,7 @@ window.onload = async () => {
 
                         );
 
-                    }
+                   // }
 
                 },
             },

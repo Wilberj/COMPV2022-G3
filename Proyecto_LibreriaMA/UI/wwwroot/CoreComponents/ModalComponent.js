@@ -27,7 +27,7 @@ class ModalComponent extends HTMLElement {
         return {
             class: "ModalHeader",
             children: [
-                { tagName: 'label', innerText: 'Modal' },
+                { tagName: 'label'},
                 {
                     tagName: 'input', type: 'button',
                     className: 'btn_secundary', value: 'X',

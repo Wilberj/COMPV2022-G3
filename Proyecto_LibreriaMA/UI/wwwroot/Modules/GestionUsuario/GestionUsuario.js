@@ -4,6 +4,8 @@ import { ViewGestionArticulos, ViewGestionUsuarios } from "../../Model/ViewDatab
 import { AjaxTools, Render } from "../utility.js";
 import { ViewCrearUsuario } from "./ViewCrearUsuario.js";
 import {UpdateUsuario} from "./UpdateUsuario.js"
+import { ModalComponentventa } from "../../CoreComponents/ModalComponentFactura.js";
+import { ModalComponentFactura } from "../../CoreComponents/ModalComponenttwo.js";
 
 
 class Userda {
@@ -35,7 +37,16 @@ window.onload = async () =>{
                         )
                         AppMain.append(Modal)
                     }
-                }
+                },
+                // {
+                //     name: "lol", action: async (UserUpdate) => {
+                       
+                //         const Modal = new ModalComponent(
+                        
+                //         )
+                //         AppMain.append(Modal)
+                //     }
+                // }
                 // {
                 //     name: "Eliminar", action: async (UserUpdate) => {
                 //       // const  Userda = [UserUpdate]

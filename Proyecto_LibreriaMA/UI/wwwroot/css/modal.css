@@ -10,7 +10,10 @@ w-modal {
 }
 
 w-modal .ModalContent {
-    width: 90%;
+    position: absolute;
+    width: 60%;
+    top: 15%;
+    left: 20%;
     height: auto;
     max-width: 2000px;
     background-color: var(--color-main);
@@ -68,7 +71,7 @@ f-modal {
     background-color: white;
     z-index: 1;
     background-image: url(../image/Money3.png);
-  background-position: 20%;
+    background-position: 20%;
      /* SOMBRAS CODIGO */
      animation-duration: 1s;
      box-shadow: 0px 0px 66px 1px rgb(23, 6, 170);
@@ -129,4 +132,126 @@ f-modal {
       text-align: center;
       margin-top: -50px;
       left: 22%;
+ }
+ /*************ModalVenta*****************/
+ f-modalv {
+    /* display:none; */
+     opacity: 0;
+     transition: all 1s;
+     position: fixed;
+     top:0;
+     left: 0;
+     bottom: 0;
+     right: 0;
+     /* #034AA6,#0284A8 ,#049DD9,#04677BF*/
+     background-color: rgba(0, 0, 0, 0.233);
+ 
+     /* SOMBRAS CODIGO */
+     -webkit-transition: all 0.5s;
+     -moz-transition: all 0.5s;
+     -ms-transition: all 0.5s;
+     -o-transition: all  0.5s;;
+ }
+ f-modalv .ModalContentventa{
+    position: absolute;
+    left: 40%;
+    top: 15%;
+     width: 45vh;
+     min-height: 38vh;
+     border-radius: 20px;
+    /* display: flex;*/
+     justify-content: center;
+     align-items: center;
+     background-color: white;
+     z-index: 1;
+     background-image: url(../image/Money3.png);
+   background-position: 20%;
+      /* SOMBRAS CODIGO */
+      animation-duration: 1s;
+      box-shadow: 0px 0px 66px 1px rgb(23, 6, 170);
+      /* -webkit-box-shadow: 0px 0px 66px 1px rgba(0, 0, 0, 0.884); */
+      -webkit-box-shadow: 0px 0px 66px 1px#e91555;
+      -moz-box-shadow:0px 0px 66px 1px rgb(23, 6, 170); ;
+ }
+ f-modalv .ModalContentComponentaventa{
+    padding: 15px;
+}
+.ModalHeaderaventa{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+.ModalContentventa label{
+    font-size: 36px;
+    font-weight:700;
+ 
+   /* width: 100px;*/
+    text-align: center;
+    margin-top: 50px;
+}
+
+.botonventa{
+    position: absolute;
+    top: 80%;
+    font-size: 30px;
+    right: 20%;
+    width: 60%;
+    color: white;
+     background-color: #e91555;
+     padding: 9px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     box-sizing: border-box;
+     border-radius: 14px;
+     border: none;
+     font-weight: bold;
+     cursor: pointer;
+     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+     transition: all 0.5s ease 0s;
+}
+.botonventa:hover{
+    background-color: #ff4d82;
+    box-shadow: 0px 15px 20px #ffb0c8;
+      color: #fff;
+      transform: translateY(-5px);
+ }
+ .botonventa1{
+    position: absolute;
+    top: 600%;
+    font-size: 30px;
+    right: -15%;
+    width: 124%;
+    color: white;
+     background-color: #e91555;
+     padding: 9px ;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     box-sizing: border-box;
+     border-radius: 14px;
+     border: none;
+     font-weight: bold;
+     cursor: pointer;
+     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+     transition: all 0.5s ease 0s;
+ }
+ .botonventa1:hover{
+    background-color: #ff4d82;
+    box-shadow: 0px 15px 20px #ffb0c8;
+      color: #fff;
+      transform: translateY(-5px);
+ }
+ h5{
+    position: absolute;
+      font-size: 36px;
+      font-weight:700;
+     /* width: 100px;*/
+      text-align: center;
+      margin-top: -50px;
+      left: 25%;
+      color:black;
  }

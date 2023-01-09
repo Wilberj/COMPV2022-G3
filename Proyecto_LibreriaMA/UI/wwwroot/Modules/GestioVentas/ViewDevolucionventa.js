@@ -66,7 +66,7 @@ window.onload = async () => {
                                     children: [
                                         {
                                             tagName: 'input', type: 'button',
-                                            className: 'button_top',
+                                            className: 'button_refactura',
                                             value: 'Refactura', onclick: async () => {
 
                                                 const Modal = new ModalComponent
