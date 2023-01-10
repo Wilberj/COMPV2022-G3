@@ -110,6 +110,17 @@ class AgregarDetalleCompra extends HTMLElement {
                 className: 'btnagregar', value: 'Anadir Articulo', onclick: async () => {
                     //code
 
+                    if (this.DetalleCompra.cantidadcompra != null ||
+
+                        this.DetalleCompra.Cantidad_unidades != null ||
+                        this.DetalleCompra.precioventa != null ||
+                        this.DetalleCompra.descuentocompra != null ||
+                        this.DetalleCompra.preciocompra != null) {
+                    alert("No rellenar datos antes de haber seleccionado un articulo")
+                    console.log("pjo a esto");
+                    return;
+                }
+
                     const Modal = new ModalComponent
 
                         (new AgregarArticuloCompra((articulo) => {
