@@ -2,7 +2,7 @@ body {
     display: grid;
     margin: 0px;
     padding: 0px;
-    grid-template-rows: 80px calc(92vh - 0px);
+    grid-template-rows: 84px calc(92vh - 0px);
     grid-template-columns: 240px calc(100% - 240px);
     font-family: Arial;
     background-color: #ffffff;

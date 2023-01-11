@@ -30,7 +30,8 @@ window.onload = async () => {
                 tagName: 'input', type: 'button',
                 className: 'button_topp',
                 value: 'Guardar Venta', onclick: async () => {
-                    if (NuevaFactura.descuentofactura == null) {
+                    NuevaFactura.activo = true;
+                    if (NuevaFactura.descuentofactura == null || NuevaFactura.pagototal == null) {
                         alert("Falta rellenar campos")
                         console.log("pjo a esto");
                         return;
@@ -55,44 +56,44 @@ window.onload = async () => {
                             console.log("35 * el pago del cliente", cantidad_dolar);
 
                             NuevaFactura.subtotalventa = TotalSuma,
-                            NuevaFactura.iva = iva,
-                            NuevaFactura.totalventa = totalventa - parseInt(NuevaFactura.descuentofactura)
+                                NuevaFactura.iva = iva,
+                                NuevaFactura.totalventa = totalventa - parseInt(NuevaFactura.descuentofactura)
                             NuevaFactura.cambio = cantidad_dolar - NuevaFactura.totalventa
                             NuevaFactura.pagototal = cantidad_dolar
                         }
                     }
-
+                    
                     console.log(NuevaFactura);
-                   // const response =
-                 //       //await AjaxTools.PostRequest("../api/GestionVenta/SaveFactura",
-                          //  NuevaFactura,
+                    const response =
+                    await AjaxTools.PostRequest("../api/GestionVenta/SaveFactura",
+                      NuevaFactura,
 
 
-                      //  );
-                    //if (response == true) {
-                        AppMain.append(
-                            new ModalComponentventa(
-                                Render.Create({
-                                    tagName: "h5",
-                                    innerText: "Factura Realizada",
-                                    children: [
-                                        {
-                                            tagName: 'input', type: 'button',
-                                            className: 'botonventa1',
-                                            value: 'Generar Factura', onclick: async () => {
-                                                window.location = "./viewFactura1"
+                     );
+                    if (response == true) {
+                    AppMain.append(
+                        new ModalComponentventa(
+                            Render.Create({
+                                tagName: "h5",
+                                innerText: "Factura Realizada",
+                                children: [
+                                    {
+                                        tagName: 'input', type: 'button',
+                                        className: 'botonventa1',
+                                        value: 'Generar Factura', onclick: async () => {
+                                            window.location = "./viewFactura1"
 
-                                            }
                                         }
-                                    ]
-                                }),
+                                    }
+                                ]
+                            }),
 
-                                // window.location.reload()
-                            )
+                            // window.location.reload()
+                        )
 
-                        );
+                    );
 
-                   // }
+                     }
 
                 },
             },
@@ -103,6 +104,7 @@ window.onload = async () => {
     const FormVentaProduutos = new FormComponet({
         EditObject: NuevaFactura,
         Model: new Factura({
+            
             idusuario: {
                 type: "select",
                 Dataset: dataC.map((d) => ({ id: d.idusuario, desc: d.nombreusuario }))
@@ -116,7 +118,7 @@ window.onload = async () => {
             Cordoba: { type: "checkbox" },
             Dolares: { type: "checkbox" },
             CambioDolar: { type: "Number" },
-
+            activo: { hidden: true },
         }),
 
 

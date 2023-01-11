@@ -46,7 +46,6 @@ window.onload = async () => {
                         }
                     }
 
-
                     // if (DetalleCompra < 1) {
                     //     alert("Agregue articulos a la compra")
                     //     return;
@@ -55,6 +54,7 @@ window.onload = async () => {
                     //     alert("El check tiene que estar activo")
                     //     return;
                     // }
+                    NuevaCompra.activo = true;
 
                     const response =
                       await AjaxTools.PostRequest("../api/GestionCompra/SaveCompra",
@@ -103,8 +103,8 @@ window.onload = async () => {
             },
             subtotalcompra: {hidden: true},
             iva: {hidden: true},
-            totalcompra: {hidden: true}
-
+            totalcompra: {hidden: true},
+            activo: {hidden: true}
         })
     })
     AppMain.append(FormCompraProductos);

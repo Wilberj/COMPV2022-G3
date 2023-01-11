@@ -40,10 +40,10 @@ namespace UI.Controllers
             return ent.Get<ViewDetalleDevolucion>();
         }
 
-        public Object ChargeDetalleCompra(DetalleCompraProductos ent)
+        public Object ChargeDetalleCompra(Viewbackcompra ent)
         {
 
-            return ent.Get<DetalleCompraProductos>();
+            return ent.Get<Viewbackcompra>();
         }
 
         public Object ChargeArticulosDanados(ViewArticulosDanados ent)

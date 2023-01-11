@@ -262,7 +262,7 @@ class Viewbackcompra {
         }
     }
     iddetallecompra = { type: "number" };
-    idcompra = { type: "number" };
+    idcompra = { type: "number", hidden: true };
     idarticulo = { type: "number" };
     preciocompra = { type: "number" };
     cantidadcompra = { type: "number" };

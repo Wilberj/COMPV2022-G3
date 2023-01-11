@@ -110,18 +110,22 @@ class AgregarDetalleCompra extends HTMLElement {
                 className: 'btnagregar', value: 'Anadir Articulo', onclick: async () => {
                     //code
 
-                    if (this.DetalleCompra.cantidadcompra != null ||
+                    if (this.DetalleCompra.cantidadcompra !== undefined 
+                        // this.DetalleCompra.Cantidad_unidades !== "" 
+                    //     this.DetalleCompra.precioventa != "" ||
+                    //     this.DetalleCompra.descuentocompra != "" ||
+                    //     this.DetalleCompra.preciocompra != ""
+                        ) {          
+                                     console.log( "ANTES",   this.DetalleCompra);
 
-                        this.DetalleCompra.Cantidad_unidades != null ||
-                        this.DetalleCompra.precioventa != null ||
-                        this.DetalleCompra.descuentocompra != null ||
-                        this.DetalleCompra.preciocompra != null) {
                     alert("No rellenar datos antes de haber seleccionado un articulo")
-                    console.log("pjo a esto");
-                    delete this.DetalleCompra.cantidadcompra;
-                    return;
+                   console.log("DESPUES",  this.DetalleCompra);
                 }
-
+                else if ( this.DetalleCompra.cantidadcompra == "" && 
+                     this.DetalleCompra.Cantidad_unidades == null &&
+                    this.DetalleCompra.precioventa == null &&
+                     this.DetalleCompra.descuentocompra == null &&
+                    this.DetalleCompra.preciocompra == null){
                     const Modal = new ModalComponent
 
                         (new AgregarArticuloCompra((articulo) => {
@@ -138,7 +142,24 @@ class AgregarDetalleCompra extends HTMLElement {
                         }));
                     AppMain.append(Modal)
                 }
-            })
+                else {
+                    const Modal = new ModalComponent
+
+                    (new AgregarArticuloCompra((articulo) => {
+
+                        if (this.Dataset.length > 0) {
+                            alert("Ya existe el articulo")
+                            return;
+                        }
+                        this.DetalleCompra.idarticulo = JSON.parse(JSON.stringify(articulo.idarticulo))
+                        this.Dataset.push(articulo);
+                        Modal.Close();
+                        console.log(this.Dataset);
+                        this.Table.DrawTableComponent();
+                    }));
+                AppMain.append(Modal)
+                }
+            }})
         )
         this.append(this.Form,
             

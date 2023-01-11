@@ -1,5 +1,5 @@
 import { TableComponent } from "../../../CoreComponents/TableComponent.js";
-import { VerDetalleCompra, ViewDetalleDevolucion } from "../../../Model/ViewDatabaseModel.js";
+import { VerDetalleCompra, Viewbackcompra, ViewDetalleDevolucion } from "../../../Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "../../../Modules/utility.js";
 import { lolito } from "../Compra.js";
 
@@ -19,7 +19,7 @@ class TableDetalleCompra extends HTMLElement {
     
         TabContainer.innerHTML = "";
          this.TableDetalle = new TableComponent({
-            ModelObject: new VerDetalleCompra(),
+            ModelObject: new Viewbackcompra(),
             Dataset: this.Detalles.filter((compra) => {
                 if (compra.idcompra == lolito.idcompra) {
                     console.log("todos detalles",this.Detalles);
