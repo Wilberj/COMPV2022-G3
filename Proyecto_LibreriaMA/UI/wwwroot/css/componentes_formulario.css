@@ -146,10 +146,11 @@
 }
 
 .button_refactura:hover {
-  background-color: #3588c3;
+ background-color: #3588c3;
   box-shadow: 0px 15px 20px #5f5f98;
     color: #fff;
     transform: translateY(-7px);
+  
 }
 
 .button_refactura:active {

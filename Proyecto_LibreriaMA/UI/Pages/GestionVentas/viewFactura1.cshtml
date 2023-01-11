@@ -220,14 +220,18 @@
 
                      padding-left:420px;
                 }
-                .labelfecha1{
+               .labelfecha1{
                         
                      font-weight:normal;
                      margin-top:18px;
+                     color: black;
+                     margin-left: 12px;
                 }
                 .labeln{
                  
                     text-align:initial;
+                    color:black;
+                    margin-left: 12px;
                     
                 }
                 .label{
@@ -258,20 +262,18 @@
         </div>
         <div class="row fact-info mt-3">
       <div class="col-3">
-        <h5>Facturar a:</h5>
-        <p id="labelNombre" class="label">
-        
-        </p>
+        <p>Facturar a: <span id="labelNombre" class="label"> </span></p>
+      
       </div>
       <div class="col-4">
-        <h5>N° de factura:</h5>
-        <h5>Fecha de venta: </h5>
+        <p>N° de factura:<span class="labeln" id="labelid" ></span></p>
+        <p>Fecha de venta:<span class="labelfecha1" id="labelfecha"></span> </p>
       </div>
-      <div class="col-5">
+     @* <div class="col-5">
         <p id="labelid" class="labeln"></p>
         <p id=labelfecha class="labelfecha1"></p>
         
-      </div>
+      </div>*@
     </div>
   
         <table id="TableData" class="TableInforme table-borderless factura">
