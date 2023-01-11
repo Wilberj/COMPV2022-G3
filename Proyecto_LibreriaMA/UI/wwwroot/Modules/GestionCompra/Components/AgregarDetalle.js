@@ -118,6 +118,7 @@ class AgregarDetalleCompra extends HTMLElement {
                         this.DetalleCompra.preciocompra != null) {
                     alert("No rellenar datos antes de haber seleccionado un articulo")
                     console.log("pjo a esto");
+                    delete this.DetalleCompra.cantidadcompra;
                     return;
                 }
 
