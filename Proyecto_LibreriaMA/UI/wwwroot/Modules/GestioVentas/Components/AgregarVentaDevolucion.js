@@ -1,6 +1,5 @@
 import { TableComponent } from "../../../CoreComponents/TableComponent.js";
-import { DetalleFactura } from "../../../Model/DatabaseModel.js";
-import { ViewArticuloCompra, ViewCompra, viewDetalleDevolucionVenta, ViewDevolucionCompra, viewdevolventa } from "../../../Model/ViewDatabaseModel.js";
+import { viewdevolventa } from "../../../Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "../../utility.js";
 import { IdentificadorFactura } from "../ViewDevolucionventa.js";
 

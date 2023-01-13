@@ -1,7 +1,7 @@
 ﻿import { ModalComponent } from "../../CoreComponents/ModalComponent.js";
 import { TableComponent } from "../../CoreComponents/TableComponent.js";
 import { Factura } from "../../Model/DatabaseModel.js";
-import { ViewAdminMercancia, viewdevolventa, viewdevolventav } from "../../Model/ViewDatabaseModel.js";
+import { ViewAdminMercancia, viewdevolventa, ViewListFactura } from "../../Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js"
 import { TableDetalleVenta } from "./Components/TableDetalleV.js";
 class lolito {
@@ -42,7 +42,7 @@ window.onload = async () => {
     // const Detalles = await AjaxTools.PostRequest("../api/GestionCompra/ChargeDetalleCompra");
     AppMain.append(new TableComponent({
         Dataset: DetalleV, 
-        ModelObject: new viewdevolventav(
+        ModelObject: new ViewListFactura(
         ),
         Functions: [    
             {

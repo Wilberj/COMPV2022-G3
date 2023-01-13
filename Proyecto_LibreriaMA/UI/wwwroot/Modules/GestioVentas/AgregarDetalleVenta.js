@@ -63,6 +63,7 @@ class AgregarDetalleVenta extends HTMLElement {
                         Modal.Close();
                         console.log("este es");
                         console.log(this.Dataset);
+
                         this.Table.DrawTableComponent();
                     }));
                 AppMain.append(Modal)
@@ -121,7 +122,8 @@ class AgregarDetalleVenta extends HTMLElement {
                             this.DetalleVenta.variable = this.Dataset[0].existenciasarticuloorigen
                             this.DetalleVenta.variable = parseInt(this.DetalleVenta.nuevo / this.Dataset[0].UnidadxOrigen);
                             this.Dataset[0].existenciasarticuloorigen = this.DetalleVenta.variable
-                            
+                            this.DetalleVenta.totaldetalle = this.DetalleVenta.cantidadventa * this.DetalleVenta.precioventa - this.DetalleVenta.descuentoventa;
+
                         }
                         if (this.DetalleVenta.UnidadOrigen == true) {
 
@@ -144,11 +146,13 @@ class AgregarDetalleVenta extends HTMLElement {
                             this.DetalleVenta.sacarunidad = this.Dataset[0].existenciasarticulounidad
                             this.DetalleVenta.sacarunidad = parseInt(this.DetalleVenta.calculo * this.Dataset[0].UnidadxOrigen);
                             this.Dataset[0].existenciasarticulounidad = this.DetalleVenta.sacarunidad
-
+                            this.DetalleVenta.CalculoPrecioOrigen  = parseInt(this.DetalleVenta.cantidadventa) * parseInt(this.Dataset[0].precioventa)
+                            this.DetalleVenta.totaldetalle = parseInt(this.DetalleVenta.CalculoPrecioOrigen) * parseInt(this.Dataset[0].UnidadxOrigen) - parseInt(this.DetalleVenta.descuentoventa)
+                            this.DetalleVenta.cantidadventatemporal = this.DetalleVenta.cantidadventa  
+                            this.DetalleVenta.cantidadventa = parseInt(this.DetalleVenta.cantidadventatemporal) *  parseInt(this.Dataset[0].UnidadxOrigen)
                         }
 
-                        this.DetalleVenta.totaldetalle = this.DetalleVenta.cantidadventa * this.DetalleVenta.precioventa - this.DetalleVenta.descuentoventa;
-                        
+                        this.DetalleVenta.activo = true 
 
                         console.log(this.DetalleVenta);
                         console.log(this.Dataset);

@@ -115,13 +115,14 @@ namespace CAPA_NEGOCIO.MODEL
         public string? nombrearticulo { get; set; }
     }
 
-    public class viewdevolventa : EntityClass
+    public class ViewListFactura : EntityClass
     {
         public int? idfactura { get; set; }
         public DateTime? fechafactura { get; set; }
         public string? nombrecliente { get; set; }
         public string? nombreusuario { get; set; }
         public int? idusuario { get; set; }
+        public decimal? totalventa { get; set; }
         public bool? activo { get; set; }
 
     }
@@ -200,7 +201,6 @@ namespace CAPA_NEGOCIO.MODEL
         public int? idcompra { get; set; }
         public int? idarticulo { get; set; }
         public string? nombrearticulo { get; set; }
-
         public Decimal? preciocompra { get; set; }
         public Decimal? cantidadcompra { get; set; }
     }
@@ -213,6 +213,23 @@ namespace CAPA_NEGOCIO.MODEL
         public int? idfactura { get; set; }
         public int? iddetallefactura { get; set; }
         public int? iddevolucionventa { get; set; }
+    }
+    public class ViewTableDetalleVenta : EntityClass
+    {
+        public int? idadmimercancias { get; set; }
+        public string? nombrearticulo { get; set; }
+        public string? nombremarca { get; set; }
+
+        public string? nombretamano { get; set; }
+        public int? idtamanoxarticulo { get; set; }
+        public int? idfactura { get; set; }
+        public int? existenciasarticuloorigen { get; set; }
+        public int? existenciasarticulounidad { get; set; }
+        public Decimal? precioventa { get; set; }
+        public int? iddetallefactura { get; set; }
+        public Decimal? cantidadventa { get; set; }
+        public bool? activo { get; set; }
+
     }
 
 }

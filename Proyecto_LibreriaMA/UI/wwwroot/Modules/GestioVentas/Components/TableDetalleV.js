@@ -1,5 +1,5 @@
 import { TableComponent } from "../../../CoreComponents/TableComponent.js";
-import { VerDetalleCompra, VerDetalleVenta, ViewDetalleDevolucion } from "../../../Model/ViewDatabaseModel.js";
+import { ViewTableDetalleVenta } from "../../../Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "../../../Modules/utility.js";
 import { lolito } from "../Ventas.js";
 
@@ -13,13 +13,13 @@ class TableDetalleVenta extends HTMLElement {
     }
     connectedCallback() { }
     Draw = async () => {
-        this.Detalles = await AjaxTools.PostRequest("../api/GestionVenta/ChargeDetaDevVenta");
+        this.Detalles = await AjaxTools.PostRequest("../api/GestionVenta/ChargeTableDetalleVenta");
 
         this.append(Render.Create({ id: "TabContainer" }));
     
         TabContainer.innerHTML = "";
          this.TableDetalle = new TableComponent({
-            ModelObject: new VerDetalleVenta(),
+            ModelObject: new ViewTableDetalleVenta(),
             Dataset: this.Detalles.filter((venta) => {
                 if (venta.idfactura == lolito.idfactura) {
                     console.log("todos detalles",this.Detalles);

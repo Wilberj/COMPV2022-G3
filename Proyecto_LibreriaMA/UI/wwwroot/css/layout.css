@@ -2,8 +2,8 @@ body {
     display: grid;
     margin: 0px;
     padding: 0px;
-    grid-template-rows: 84px calc(92vh - 0px);
-    grid-template-columns: 240px calc(100% - 240px);
+    grid-template-rows: 91px calc(92vh - 0px);
+    grid-template-columns: 245px calc(100% - 245px);
     font-family: Arial;
     background-color: #ffffff;
    
@@ -32,7 +32,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid white;
+    border: 1px solid black;
     box-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.5);
 }
 

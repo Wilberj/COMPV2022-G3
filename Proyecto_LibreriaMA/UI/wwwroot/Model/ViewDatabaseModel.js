@@ -278,12 +278,12 @@ class ViewDevolDetalleVenta {
         }
     }
     nombrearticulo = { type: "text" };
-    idtamanoxarticulo = { type: "number", hidden: true  };
-    idadmimercancias = { type: "number", hidden: true  };
+    idtamanoxarticulo = { type: "number", hidden: true };
+    idadmimercancias = { type: "number", hidden: true };
     cantidad = { type: "number" };
     idfactura = { type: "number" };
-    iddetallefactura = { type: "number", hidden: true  };
-    iddevolucionventa = { type: "number"  };
+    iddetallefactura = { type: "number", hidden: true };
+    iddevolucionventa = { type: "number" };
 
 }
 export { ViewDevolDetalleVenta }
@@ -310,63 +310,64 @@ class VerDetalleCompra {
             this[prop] = props[prop];
         }
     }
-    nombrearticulo = { type: "text"};
+    nombrearticulo = { type: "text" };
     Unidades = { type: "text", hidden: true };
     Articulos = { type: "text", hidden: true };
     ConvertMedida = { type: "text", hidden: true };
     Tamanos = { type: "text", hidden: true };
     AdminMercanciaComp = { type: "text", hidden: true };
     activo = { type: "text", hidden: true };
-    idarticulo = { type: "number"};
+    idarticulo = { type: "number" };
     preciocompra = { type: "number" };
     cantidadcompra = { type: "number" };
-    idcompra = { type: "number"};
-    iddetallecompra = { type: "number"};
+    idcompra = { type: "number" };
+    iddetallecompra = { type: "number" };
     preciocompraunidad = { type: "number", hidden: true };
     descuentocompra = { type: "number", hidden: true };
     existenciasarticuloorigen = { type: "number", hidden: true };
-    existenciasarticulounidad = { type: "number" , hidden: true };
+    existenciasarticulounidad = { type: "number", hidden: true };
 
 }
 export { VerDetalleCompra }
 
-class VerDetalleVenta {
+class ViewTableDetalleVenta {
     constructor(props) {
         for (const prop in props) {
             this[prop] = props[prop];
         }
     }
-    nombrearticulo = { type: "text"};
+    nombrearticulo = { type: "text" };
     idadmimercancias = { type: "text", hidden: true };
     idtamanoxarticulo = { type: "text", hidden: true };
     ConvertMedida = { type: "text", hidden: true };
-    AdminMercanciaComp = { type: "text", hidden: true };
     activo = { type: "text", hidden: true };
-    idarticulo = { type: "number"};
+    nombretamano = { type: "text" };
+    idarticulo = { type: "number" };
     precioventa = { type: "number" };
     cantidadventa = { type: "number" };
-    idfactura = { type: "number" };
-    iddetallefactura = { type: "number"};
+    nombremarca = { type: "text" };
+    idfactura = { type: "number", hidden: true };
+    iddetallefactura = { type: "number", hidden: true };
     preciocompraunidad = { type: "number", hidden: true };
     existenciasarticuloorigen = { type: "number", hidden: true };
-    existenciasarticulounidad = { type: "number" , hidden: true };
+    existenciasarticulounidad = { type: "number", hidden: true };
 
 }
-export { VerDetalleVenta }
+export { ViewTableDetalleVenta }
 
 
-   class viewdevolventav {
+class ViewListFactura {
     constructor(props) {
-     for (const prop in props) {
-      this[prop] = props[prop];
-     }
+        for (const prop in props) {
+            this[prop] = props[prop];
+        }
     }
     idfactura = { type: "number" };
-    fechafactura = { type: "date"  };
-    nombrecliente = { type: "text"  };
+    fechafactura = { type: "date" };
+    nombrecliente = { type: "text" };
     idusuario = { type: "number", hidden: true };
-    nombreusuario = { type: "text"  };
+    nombreusuario = { type: "text" };
     activo = { type: "checkbox" };
-
-   }
-   export{viewdevolventav}
+    totalventa = { type: "number" };
+}
+export { ViewListFactura }

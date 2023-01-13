@@ -26,15 +26,20 @@ namespace UI.Controllers
         {
             return ent.SaveFactura();
         }
-        public Object ChargeDevVentas(viewdevolventa ent)
+        public Object ChargeDevVentas(ViewListFactura ent)
         {
 
-            return ent.Get<viewdevolventa>();
+            return ent.Get<ViewListFactura>();
         }
         public Object ChargeDetaDevVenta(viewDetalleDevolucionVenta ent)
         {
 
             return ent.Get<viewDetalleDevolucionVenta>();
+        }
+        public Object ChargeTableDetalleVenta(ViewTableDetalleVenta ent)
+        {
+
+            return ent.Get<ViewTableDetalleVenta>();
         }
         public Object SaveDevolucionventa(DevolucionVenta ent)
         {

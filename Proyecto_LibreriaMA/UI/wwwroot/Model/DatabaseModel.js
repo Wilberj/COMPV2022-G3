@@ -217,7 +217,7 @@ class DetalleFactura {
     precioventa = { type: "number" };
     cantidadventa = { type: "number" };
     descuentoventa = { type: "number" };
-    activo = { type: "checkbox" };
+    activo = { type: "checkbox", hidden: true };
     Unidad = { hidden: true };
     UnidadOrigen = { hidden: true };
     variable = { hidden: true };
@@ -226,6 +226,8 @@ class DetalleFactura {
     idadmimercancias = { hidden: true }
     cantidad = { hidden: true }
     cantidadadevolver = { hidden: true }
+    CalculoPrecioOrigen = { hidden: true }
+    cantidadventatemporal =  { hidden: true }
 
 }
 export { DetalleFactura }
