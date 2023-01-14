@@ -261,12 +261,18 @@ class Viewbackcompra {
             this[prop] = props[prop];
         }
     }
-    iddetallecompra = { type: "number" };
+    iddetallecompra = { type: "number", hidden: true };
     idcompra = { type: "number", hidden: true };
-    idarticulo = { type: "number" };
+    idarticulo = { type: "number", hidden: true };
     preciocompra = { type: "number" };
     cantidadcompra = { type: "number" };
     nombrearticulo = { type: "text" };
+    idtamanoxarticulo = { type: "number", hidden: true };
+    nombretamano = { type: "text" };
+    nombremarca = { type: "text" };
+    idconvertir = { type: "number", hidden: true };
+    nombreunidad = { type: "text" };
+
 
 }
 export { Viewbackcompra }
@@ -300,6 +306,7 @@ class ViewDevolucionComprac {
     idcompra = { type: "number" };
     idproveedor = { type: "number", hidden: true };
     activo = { type: "checkbox" };
+    totalcompra = { type: "number" };
 
 }
 export { ViewDevolucionComprac }

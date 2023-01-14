@@ -58,7 +58,9 @@ namespace CAPA_NEGOCIO.MODEL
         public DateTime? fechacompra { get; set; }
         public string? nombreproveedor { get; set; }
         public string? nombreusuario { get; set; }
+        public Decimal? totalcompra { get; set; }
         public bool? activo { get; set; }
+
 
 
     }
@@ -203,6 +205,11 @@ namespace CAPA_NEGOCIO.MODEL
         public string? nombrearticulo { get; set; }
         public Decimal? preciocompra { get; set; }
         public Decimal? cantidadcompra { get; set; }
+        public int? idtamanoxarticulo { get; set; }
+        public string? nombretamano { get; set; }
+        public string? nombremarca { get; set; }
+        public int? idconvertir { get; set; }
+        public string? nombreunidad { get; set; }
     }
     public class ViewDevolDetalleVenta : EntityClass
     {
