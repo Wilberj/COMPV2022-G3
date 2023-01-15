@@ -33,7 +33,7 @@
             sum1 = sum1 + element.subtotalcompra;
             sum = sum + element.totalcompra;
         })
-        LabelTotal.append(" " + sum)
+        LabelTotal.append(" " + sum.toFixed(2))
         LabelCantidad.append(" " + sum1)
     }
     window.onload = async () =>{

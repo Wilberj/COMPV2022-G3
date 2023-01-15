@@ -221,6 +221,7 @@ class ViewGestionUsuarios {
     idroles = { type: "number", hidden: true };
     Roles = { hidden: true };
     activo = { type: "checkbox" };
+    nombrecategoria = { type: "text" };
 }
 export { ViewGestionUsuarios }
 

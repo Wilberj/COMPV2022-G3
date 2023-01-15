@@ -147,10 +147,10 @@ namespace CAPA_NEGOCIO.MODEL
     public class ViewGestionArticulos : EntityClass
     {
         public int? idarticulo { get; set; }
+        public string? nombrecategoria { get; set; }
         public string? nombrearticulo { get; set; }
         public string? descripcionarticulo { get; set; }
         public string? nombretamano { get; set; }
-     
         public int? idtamano { get; set; }
         public int? idtamanoxarticulo { get; set; }
         public string? nombremarca { get; set; }
