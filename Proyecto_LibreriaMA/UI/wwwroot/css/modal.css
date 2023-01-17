@@ -1,4 +1,6 @@
 w-modal {
+    overflow-y: scroll;
+
     opacity: 0;
     transition: all 1s;
     position: fixed;
@@ -41,6 +43,8 @@ w-modal .ModalHeader label {
 }
 /*******AQUIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO******/
 f-modal {
+    overflow-y: scroll;
+
     /* display:none; */
      opacity: 0;
      transition: all 1s;
@@ -76,7 +80,7 @@ f-modal {
      animation-duration: 1s;
      box-shadow: 0px 0px 66px 1px rgb(23, 6, 170);
      /* -webkit-box-shadow: 0px 0px 66px 1px rgba(0, 0, 0, 0.884); */
-     -webkit-box-shadow: 0px 0px 66px 1px#e91555;
+     -webkit-box-shadow: 0px 0px 66px 1px#1f1f38;
      -moz-box-shadow:0px 0px 66px 1px rgb(23, 6, 170); ;
  }
  f-modal .ModalHeadera{
@@ -170,7 +174,7 @@ f-modal {
       animation-duration: 1s;
       box-shadow: 0px 0px 66px 1px rgb(23, 6, 170);
       /* -webkit-box-shadow: 0px 0px 66px 1px rgba(0, 0, 0, 0.884); */
-      -webkit-box-shadow: 0px 0px 66px 1px#e91555;
+      -webkit-box-shadow: 0px 0px 66px 1px#1f1f38;
       -moz-box-shadow:0px 0px 66px 1px rgb(23, 6, 170); ;
  }
  f-modalv .ModalContentComponentaventa{

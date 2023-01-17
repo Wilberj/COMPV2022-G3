@@ -142,7 +142,7 @@ class ViewListArticuloVenta {
     UnidadxOrigen = { type: "number", hidden: true };
     existenciasarticulounidad = { type: "number" };
     nombrearticulo = { type: "text" };
-
+    nombremarca = { type: "text" };
 }
 export { ViewListArticuloVenta }
 class viewdevolventa {

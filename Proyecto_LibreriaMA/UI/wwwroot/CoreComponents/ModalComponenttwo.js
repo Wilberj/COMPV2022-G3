@@ -35,8 +35,7 @@ class ModalComponentFactura extends HTMLElement {
              className: 'botoncito',value: 'Cerrar',
             onclick : ()=> {
                 this.Close();
-               // alert("¡Se ha realizado la compra!");
-                //window.location = "./ViewVenta"
+                window.location = "./Compra"
             }}
 
             ]
