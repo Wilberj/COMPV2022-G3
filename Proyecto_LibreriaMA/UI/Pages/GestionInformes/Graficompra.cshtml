@@ -53,44 +53,43 @@
                     backgroundColor: ["#03B100", "#0083B1", "#0800B1"],
                     borderColor: "#000000",
                     borderWidth: 1,
-          
                 }]
             },
             options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
+            indexAxis: 'y',
+    // Elements options apply to all of the options unless overridden in a dataset
+    // In this case, we are setting the border of each horizontal bar to be 2px wide
+            elements: {
+            bar: {
+                borderWidth: 2,
             }
-        });
+            },
+            responsive: true,
+            plugins: {
+            legend: {
+                position: 'right',
+            },
+            title: {
+                display: true,
+                text: 'Chart.js Horizontal Bar Chart'
+            }
+            }
+        },
+
+                });
 
     }
 
     window.onload = async () => {
         CargarDatos();
 
-        //BtnUpdate.onclick = () => {
-        //    CargarDatos();
-        //}
-        //BtnPrint.onclick = () => {
-        //    const PrintNode = Page.innerHTML;
-        //    const ventimp = window.open(' ', 'popimpr');
-        //    ventimp.document.write(PrintNode);
-        //    ventimp.document.close();
-        //    ventimp.print();
-        //    ventimp.close();
-        //}
-        //salir.onclick = () => { //Boton de salir
-        //    window.location = "./MenuReporte"
-        //}
     }
 
 </script>
 
-<section>
-    <h1> * INFORME *</h1>
+<section class = "graficocompra">
 
     <div class="ContenedorGrafico">
-        <canvas id="myChart" width="400" height="100"></canvas>
-    </div> </section>
+        <canvas id="myChart" width="2300" height="900"></canvas>
+    </div> 
+    </section>
