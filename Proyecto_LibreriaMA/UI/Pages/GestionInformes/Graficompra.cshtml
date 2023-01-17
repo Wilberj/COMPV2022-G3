@@ -1,0 +1,96 @@
+﻿@page
+@model UI.Pages.GestionInformes.GraficompraModel
+@{
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script type="module">
+
+    import CreateTableInforme from "../CoreComponents/InformeComponent.js";
+
+    const CargarDatos = async () => {
+        //let UrlP = "../api/InformeVenta/TakeInformeVentaGrafico";
+        let UrlP = "../api/Informes/TakeInformecompraGrafico";
+        const ObjInst = {
+
+        }
+
+        let response = await fetch(UrlP, {
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json; charset-utf-8",
+                'Accept': "/"
+            },
+            body: JSON.stringify(ObjInst)
+        });
+
+        response = await response.json();
+        console.log(response);
+        //labelSubtitle.innerText = "Informe general de la VENTA";
+        //CreateTableInforme(response, Mes, ["Mes"]);
+        //CreateTableInforme(response, Cantidad, ["Cantidad"]);
+
+        var arrayMes = [];
+        var arrayCantidad = [];
+        let sum = 0;
+        response.forEach(element => {
+            arrayMes.push(element.mes)
+            arrayCantidad.push(element.cantidad)
+        });
+
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: arrayMes,
+                datasets: [{
+                    label: 'Compras Por Mes',
+                    data: arrayCantidad,
+                    backgroundColor: ["#03B100", "#0083B1", "#0800B1"],
+                    borderColor: "#000000",
+                    borderWidth: 1,
+          
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+    }
+
+    window.onload = async () => {
+        CargarDatos();
+
+        //BtnUpdate.onclick = () => {
+        //    CargarDatos();
+        //}
+        //BtnPrint.onclick = () => {
+        //    const PrintNode = Page.innerHTML;
+        //    const ventimp = window.open(' ', 'popimpr');
+        //    ventimp.document.write(PrintNode);
+        //    ventimp.document.close();
+        //    ventimp.print();
+        //    ventimp.close();
+        //}
+        //salir.onclick = () => { //Boton de salir
+        //    window.location = "./MenuReporte"
+        //}
+    }
+
+</script>
+
+<section>
+    <h1> * INFORME *</h1>
+
+    <div class="ContenedorGrafico">
+        <canvas id="myChart" width="400" height="100"></canvas>
+    </div> </section>
