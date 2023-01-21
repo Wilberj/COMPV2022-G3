@@ -30,7 +30,12 @@ class AgregarDetalleVenta extends HTMLElement {
             EditObject: this.DetalleVenta
         }),
             this.Table = new TableComponent({
-                ModelObject: new ViewAdminMercancia(),
+                ModelObject: new ViewAdminMercancia(
+                    {
+                        preciocompraunidad: { type: "number", hidden: true }
+
+                    }
+                ),
                 Dataset: this.Dataset,
                 Functions: [
                     {
@@ -81,7 +86,7 @@ class AgregarDetalleVenta extends HTMLElement {
                     value: "Agregar Informacion Al Detalle venta",
                     onclick: async () => {
 
-                        if (this.DetalleVenta.cantidadventa == null /*||this.DetalleVenta.descuentoventa == null*/ 
+                        if (this.DetalleVenta.cantidadventa == null /*||this.DetalleVenta.descuentoventa == null*/
                            /*this.DetalleVenta.precioventa == null*/) {
                             alert("Falta rellenar campos")
                             console.log("pjo a esto");
@@ -92,7 +97,7 @@ class AgregarDetalleVenta extends HTMLElement {
                                 alert("Escoge el articulo que se vendera")
                                 console.log("pjo a esto");
                                 return;
-                            } 
+                            }
 
                         }
                         this.DetalleVenta.idtamanoxarticulo = this.Dataset[0].idtamanoxarticulo
@@ -102,12 +107,12 @@ class AgregarDetalleVenta extends HTMLElement {
                         // this.DetalleVenta.sacarorigen = this.DetalleVenta.cantidadventa / this.DetalleVenta.Temporal
                         this.DetalleVenta.nuevo = this.Dataset[0].existenciasarticulounidad - this.DetalleVenta.cantidadventa
                         this.DetalleVenta.calculo = this.Dataset[0].existenciasarticuloorigen - this.DetalleVenta.cantidadventa
-                        
+
 
 
                         if (this.DetalleVenta.Unidad == true) {
-                            
-                            
+
+
                             if (this.DetalleVenta.cantidadventa > this.Dataset[0].existenciasarticulounidad) {
                                 alert("La cantidad que vendes supera la cantidad del Stock Disponible")
                                 console.log("excedistes");
@@ -118,12 +123,18 @@ class AgregarDetalleVenta extends HTMLElement {
                             //     return;
                             //    }
                             this.Dataset[0].existenciasarticulounidad = this.Dataset[0].existenciasarticulounidad - this.DetalleVenta.cantidadventa
-                            
+
                             this.DetalleVenta.variable = this.Dataset[0].existenciasarticuloorigen
                             this.DetalleVenta.variable = parseInt(this.DetalleVenta.nuevo / this.Dataset[0].UnidadxOrigen);
                             this.Dataset[0].existenciasarticuloorigen = this.DetalleVenta.variable
                             this.DetalleVenta.totaldetalle = this.DetalleVenta.cantidadventa * this.DetalleVenta.precioventa - this.DetalleVenta.descuentoventa;
-
+                            this.DetalleVenta.variabledescuenotmax = this.Dataset[0].precioventa - this.Dataset[0].preciocompraunidad
+                            this.DetalleVenta.variabledescuenotmax1 = this.DetalleVenta.variabledescuenotmax - 1
+                            this.DetalleVenta.variabledescuenotmax2 = this.DetalleVenta.variabledescuenotmax1 * this.DetalleVenta.cantidadventa
+                            if (this.DetalleVenta.descuentoventa > this.DetalleVenta.variabledescuenotmax2) {
+                                alert("El descuento que intenta ingresar no genera ninguna ganancia " + "Descuento maximo para este articulo: " + this.DetalleVenta.variabledescuenotmax2.toFixed(2))
+                                return;
+                            }
                         }
                         if (this.DetalleVenta.UnidadOrigen == true) {
 
@@ -146,13 +157,23 @@ class AgregarDetalleVenta extends HTMLElement {
                             this.DetalleVenta.sacarunidad = this.Dataset[0].existenciasarticulounidad
                             this.DetalleVenta.sacarunidad = parseInt(this.DetalleVenta.calculo * this.Dataset[0].UnidadxOrigen);
                             this.Dataset[0].existenciasarticulounidad = this.DetalleVenta.sacarunidad
-                            this.DetalleVenta.CalculoPrecioOrigen  = parseInt(this.DetalleVenta.cantidadventa) * parseInt(this.Dataset[0].precioventa)
+                            this.DetalleVenta.CalculoPrecioOrigen = parseInt(this.DetalleVenta.cantidadventa) * parseInt(this.Dataset[0].precioventa)
+                            this.DetalleVenta.precioorigen = this.Dataset[0].preciocompraunidad * this.Dataset[0].UnidadxOrigen
+                            this.DetalleVenta.precioorigenganancia = this.Dataset[0].precioventa * this.Dataset[0].UnidadxOrigen
+                            this.DetalleVenta.variabledescuenotmax = this.DetalleVenta.precioorigenganancia - this.DetalleVenta.precioorigen
+                            this.DetalleVenta.variabledescuenotmax1 = this.DetalleVenta.variabledescuenotmax - 1
+                            this.DetalleVenta.variabledescuenotmax2 = this.DetalleVenta.variabledescuenotmax1 * this.DetalleVenta.cantidadventa
+                            if (this.DetalleVenta.descuentoventa > this.DetalleVenta.variabledescuenotmax2) {
+                                alert("El descuento que intenta ingresar no genera ninguna ganancia " + "Descuento maximo para este articulo: " + this.DetalleVenta.variabledescuenotmax2.toFixed(2))
+                                return;
+                            }
+
                             this.DetalleVenta.totaldetalle = parseInt(this.DetalleVenta.CalculoPrecioOrigen) * parseInt(this.Dataset[0].UnidadxOrigen) - parseInt(this.DetalleVenta.descuentoventa)
-                            this.DetalleVenta.cantidadventatemporal = this.DetalleVenta.cantidadventa  
-                            this.DetalleVenta.cantidadventa = parseInt(this.DetalleVenta.cantidadventatemporal) *  parseInt(this.Dataset[0].UnidadxOrigen)
+                            this.DetalleVenta.cantidadventatemporal = this.DetalleVenta.cantidadventa
+                            this.DetalleVenta.cantidadventa = parseInt(this.DetalleVenta.cantidadventatemporal) * parseInt(this.Dataset[0].UnidadxOrigen)
                         }
 
-                        this.DetalleVenta.activo = true 
+                        this.DetalleVenta.activo = true
 
                         console.log(this.DetalleVenta);
                         console.log(this.Dataset);

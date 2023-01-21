@@ -54,7 +54,7 @@ class ViewAdminMercancia {
     Seleccionar_Bodega = { type: "number", hidden: true };
     existenciasarticulounidades = { type: "number", hidden: true };
     idconvertir = { type: "number", hidden: true };
-    nombrearticulo = { type: "text" };
+    nombrearticulo = { type: "text" };  
     nombrebodega = { type: "text" };
     existenciasarticulounidad = { type: "number" };
     existenciasarticuloorigen = { type: "number" };
@@ -71,7 +71,6 @@ class ViewAdminMercancia {
     UnidadxOrigen = { type: "number", hidden: true };
     existenciasarticulounidadtempotempo = { type: "number", hidden: true };
     variable = { type: "number", hidden: true };
-
 }
 export { ViewAdminMercancia }
 
@@ -143,6 +142,7 @@ class ViewListArticuloVenta {
     existenciasarticulounidad = { type: "number" };
     nombrearticulo = { type: "text" };
     nombremarca = { type: "text" };
+    preciocompraunidad = { type: "number", hidden: true };
 }
 export { ViewListArticuloVenta }
 class viewdevolventa {

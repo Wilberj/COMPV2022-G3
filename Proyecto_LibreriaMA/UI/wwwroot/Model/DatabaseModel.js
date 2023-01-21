@@ -227,8 +227,12 @@ class DetalleFactura {
     cantidad = { hidden: true }
     cantidadadevolver = { hidden: true }
     CalculoPrecioOrigen = { hidden: true }
-    cantidadventatemporal =  { hidden: true }
-
+    cantidadventatemporal = { hidden: true }
+    variabledescuenotmax = { type: "number", hidden: true };
+    variabledescuenotmax1 = { type: "number", hidden: true };
+    variabledescuenotmax2 = { type: "number", hidden: true };
+    precioorigen = { type: "number", hidden: true };
+    precioorigenganancia = { type: "number", hidden: true };
 }
 export { DetalleFactura }
 
@@ -268,10 +272,10 @@ class DevolucionCompra {
     idcompra = { type: "number" };
     Fechadevolucioncompra = { type: "date" };
     descripciondevolucion = { type: "text" };
-    UpdateCompra = {hidden: true };
-    UpdateDetalleCompra = {hidden: true };
-    DetalleDevolucion = {hidden: true };
-    AdminMerca = {hidden: true };
+    UpdateCompra = { hidden: true };
+    UpdateDetalleCompra = { hidden: true };
+    DetalleDevolucion = { hidden: true };
+    AdminMerca = { hidden: true };
 }
 export { DevolucionCompra }
 class DevolucionVenta {

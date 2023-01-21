@@ -113,6 +113,7 @@ namespace CAPA_NEGOCIO.MODEL
         public int? idadmimercancias { get; set; }
         public int? idtamanoxarticulo { get; set; }
         public Decimal? precioventa { get; set; }
+        public Decimal? preciocompraunidad { get; set; }
         public int? existenciasarticuloorigen { get; set; }
         public int? UnidadxOrigen { get; set; }
         public int? existenciasarticulounidad { get; set; }
